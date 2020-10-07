@@ -6,11 +6,20 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/05 13:46:44 by tseo              #+#    #+#             */
-/*   Updated: 2020/10/07 10:52:03 by tseo             ###   ########.fr       */
+/*   Updated: 2020/10/07 10:57:16 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <limits.h>
+
+static int	check_over_range(unsigned long long num, int sign)
+{
+	if (num > LLONG_MAX - 1 && sign == -1)
+		return (0);
+	if (num > LLONG_MAX && sign == 1)
+		return (-1);
+	return (num * sign);
+}
 
 int		ft_atoi(const char *str)
 {
@@ -29,11 +38,7 @@ int		ft_atoi(const char *str)
 	while ('0' <= str[i] && str[i] <= '9')
 	{
 		n = 10 * n + (str[i] - '0');
-		if (n > LLONG_MAX - 1 && sign == -1)
-			return (0);
-		if (n > LLONG_MAX - 1 && sign == 1)
-			return (-1);
 		i++;
 	}
-	return (sign * n);
+	return (check_over_range(n, sign));
 }
