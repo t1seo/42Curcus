@@ -6,23 +6,20 @@
 /*   By: 아이디 <이메일>                                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/03 11:53:18 by tseo              #+#    #+#             */
-/*   Updated: 2020/10/07 10:12:15 by 아이디              ###   ########.fr       */
+/*   Updated: 2020/10/07 10:16:05 by 아이디              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+void*	ft_memcpy(void *dst, const void* src, size_t n)
 {
-	size_t i;
+	void *ret;
 
 	if (!dst && !src)
 		return (0);
-	i = 0;
-	while (i < n)
-	{
-		*(char*)(dst + i) = *(char*)(src + i);
-		i++;
-	}
-	return (dst);
+	ret = dst;
+	while (n--)
+		*(char*)dst++ = *(char*)src++;
+	return (ret);
 }
