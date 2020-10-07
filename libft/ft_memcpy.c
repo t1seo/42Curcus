@@ -6,7 +6,7 @@
 /*   By: 아이디 <이메일>                                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/03 11:53:18 by tseo              #+#    #+#             */
-/*   Updated: 2020/10/07 10:06:28 by 아이디              ###   ########.fr       */
+/*   Updated: 2020/10/07 10:09:53 by 아이디              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,15 @@
 
 void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	void *ret;
+	size_t i;
 
-	ret = dst;
-	while (n--)
-		*(char*)dst++ = *(char*)src++;
-	return (ret);
+	if (!dst)
+		return (0);
+	i = 0;
+	while (i < n)
+	{
+		*(char*)(dst + i) = *(char*)(src + i);
+		i++;
+	}
+	return (dst);
 }
