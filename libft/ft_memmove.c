@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: 아이디 <이메일>                                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/03 14:09:23 by tseo              #+#    #+#             */
-/*   Updated: 2020/10/06 20:22:48 by tseo             ###   ########.fr       */
+/*   Updated: 2020/10/07 10:22:30 by 아이디              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	*ft_memmove(void *dst, const void *src, size_t n)
 {
 	void *ret;
 
-	if (!dst || !src)
+	if (!dst && !src)
 		return (NULL);
 	ret = dst;
 	if (dst <= src)
