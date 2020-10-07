@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: 아이디 <이메일>                                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/03 10:48:06 by tseo              #+#    #+#             */
-/*   Updated: 2020/10/06 20:15:51 by tseo             ###   ########.fr       */
+/*   Updated: 2020/10/07 09:52:33 by 아이디              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@ void	*ft_memset(void *ptr, int value, size_t n)
 {
 	void *ret;
 
-	if (!ptr)
-		return (NULL);
 	ret = ptr;
 	while (n--)
 		*(char*)ptr++ = (unsigned char)value;
