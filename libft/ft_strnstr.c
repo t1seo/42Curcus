@@ -6,7 +6,7 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/05 12:09:27 by tseo              #+#    #+#             */
-/*   Updated: 2020/10/06 20:06:39 by tseo             ###   ########.fr       */
+/*   Updated: 2020/10/07 10:39:23 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ char	*ft_strnstr(const char *s1, const char *s2, size_t len)
 	size_t i;
 	size_t j;
 
-	if (!s1 || !s2)
-		return (0);
 	if (!s2[0])
 		return ((char*)s1);
 	i = 0;
