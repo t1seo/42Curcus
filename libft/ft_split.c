@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: 아이디 <이메일>                                  +#+  +:+       +#+        */
+/*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/06 10:31:41 by tseo              #+#    #+#             */
-/*   Updated: 2020/10/07 09:48:20 by 아이디              ###   ########.fr       */
+/*   Updated: 2020/10/07 12:39:12 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ char			**ft_split(char const *s, char c)
 {
 	char	**word_arr;
 
+	if (!s)
+		return (0);
 	if (!(word_arr = (char**)malloc(sizeof(char *) * (count_words(s, c) + 1))))
 		return (0);
 	word_arr = fill_words(word_arr, s, c);

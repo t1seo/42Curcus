@@ -6,7 +6,7 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/05 20:41:40 by tseo              #+#    #+#             */
-/*   Updated: 2020/10/06 20:13:19 by tseo             ###   ########.fr       */
+/*   Updated: 2020/10/07 12:38:10 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,10 @@ char			*ft_strtrim(char const *s1, char const *set)
 	size_t	start;
 	size_t	end;
 
+	if (!s1)
+		return (0);
+	if (!set)
+		return (ft_strdup(s1));
 	start = 0;
 	while (s1[start] && is_set(s1[start], set))
 		start++;
