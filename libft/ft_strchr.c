@@ -6,7 +6,7 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/05 11:31:15 by tseo              #+#    #+#             */
-/*   Updated: 2020/10/06 20:21:18 by tseo             ###   ########.fr       */
+/*   Updated: 2020/10/07 10:35:38 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 char	*ft_strchr(const char *s, int c)
 {
-	if (!s)
-		return (0);
 	while (*s != (unsigned char)c)
 	{
 		if (*s == 0)
