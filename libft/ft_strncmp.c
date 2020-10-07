@@ -6,7 +6,7 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/05 13:33:21 by tseo              #+#    #+#             */
-/*   Updated: 2020/10/06 20:07:04 by tseo             ###   ########.fr       */
+/*   Updated: 2020/10/07 16:10:59 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,12 @@ size_t	ft_strncmp(const char *s1, const char *s2, size_t n)
 	size_t i;
 
 	i = 0;
+	if (!s1 && !s2)
+		return (0);
+	else if (!s1 || !s2)
+		return (s1 == 0 ? -1 : 1);
+	if (n == 0)
+		return (0);
 	while (*s1 && *s2 && i < n)
 	{
 		if (*s1 != *s2)
