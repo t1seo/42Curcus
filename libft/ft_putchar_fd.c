@@ -6,7 +6,7 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/06 15:15:41 by tseo              #+#    #+#             */
-/*   Updated: 2020/10/06 15:22:05 by tseo             ###   ########.fr       */
+/*   Updated: 2020/10/07 12:44:52 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,10 @@
 
 void	ft_putchar_fd(char c, int fd)
 {
+	unsigned char ch;
+
 	if (fd < 0)
 		return ;
-	write(fd, &c, 1);
+	ch = (unsigned char)c;
+	write(fd, &ch, 1);
 }
