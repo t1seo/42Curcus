@@ -6,7 +6,7 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/06 10:31:41 by tseo              #+#    #+#             */
-/*   Updated: 2020/10/07 12:42:15 by tseo             ###   ########.fr       */
+/*   Updated: 2020/10/11 16:46:11 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,53 +14,68 @@
 
 static size_t	count_words(char const *s, char c)
 {
-	size_t count;
+	size_t size;
 
-	count = 0;
-	while (*s)
+	size = 0;
+	while (*s != 0)
 	{
-		count++;
-		while (*s && (*s != c))
-			s++;
-		while (*s == c)
+		if (*s != c && *s != 0)
+		{
+			size++;
+			while (*s != c && *s != 0)
+				s++;
+		}
+		else if (*s != 0)
 			s++;
 	}
-	return (count);
+	return (size);
 }
 
-static char		**fill_words(char **arr, char const *s, char c)
+static void		ft_strcpy(char *str, char *p, char const *s)
 {
-	size_t	idx;
-	char	*start;
+	while (p < s)
+		*str++ = *p++;
+	*str = 0;
+}
 
-	idx = 0;
-	while (*s)
+static void		split_words(char **words_arr, char const *s, char c)
+{
+	size_t	i;
+	char	*p;
+
+	if (*s == 0)
+		return ;
+	i = 0;
+	while (*s != 0)
 	{
-		if (*s != c)
+		if (*s != c && *s != 0)
 		{
-			start = (char*)s;
-			while (*s && *s != c)
+			p = (char*)s;
+			while (*s != c && *s != 0)
 				s++;
-			if (!(arr[idx] = (char*)malloc(s - start + 1)))
-				return (0);
-			ft_strlcpy(arr[idx], start, s - start + 1);
-			idx++;
+			words_arr[i] = (char*)malloc(sizeof(char) * (s - p + 1));
+			ft_strcpy(words_arr[i], p, s);
+			i++;
 		}
-		else
+		else if (*s != 0)
 			s++;
 	}
-	arr[idx] = 0;
-	return (arr);
 }
 
 char			**ft_split(char const *s, char c)
 {
-	char	**word_arr;
+	char	**words_arr;
+	size_t	size;
 
-	if (!s)
-		return (0);
-	if (!(word_arr = (char**)malloc(sizeof(char *) * (count_words(s, c) + 1))))
-		return (0);
-	word_arr = fill_words(word_arr, s, c);
-	return (word_arr);
+	if (s == 0)
+		return ((void*)0);
+	size = count_words(s, c);
+	words_arr = (char**)malloc(sizeof(char*) * (size + 1));
+	if (words_arr == 0)
+		return ((void*)0);
+	words_arr[size] = 0;
+	if (size == 0)
+		return (words_arr);
+	split_words(words_arr, s, c);
+	return (words_arr);
 }
