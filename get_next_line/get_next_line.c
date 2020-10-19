@@ -6,7 +6,7 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/17 15:43:28 by tseo              #+#    #+#             */
-/*   Updated: 2020/10/19 21:05:56 by tseo             ###   ########.fr       */
+/*   Updated: 2020/10/19 21:16:13 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,21 @@ int		get_next_line(int fd, char **line)
 	int				idx;
 
 	if (fd < 0 || !line || BUFFER_SIZE < 1)
-		reutrn (-1);
+		return (-1);
 	while ((r_size = read(fd, buf, BUFFER_SIZE) > 0))
 	{
 		buf[r_size] = '\0';
 		strs[fd] = ft_strjoin(strs[fd], buf);
+		if ((idx = get_newline_idx(strs[fd])) != -1)
+
 
 		// check new line of strs[fd]
 		// if strs[fd] has new line character -> get_line
 
 	}
+
+	// need to add exceptions
+	// r < 0
+	// r == 0 && strs[fd] == NULL
+	// else return 1 by using get_line
 }
