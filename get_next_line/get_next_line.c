@@ -6,7 +6,7 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/17 15:43:28 by tseo              #+#    #+#             */
-/*   Updated: 2020/10/19 21:16:13 by tseo             ###   ########.fr       */
+/*   Updated: 2020/10/20 20:06:25 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,13 @@ int		get_newline_idx(char *str)
 	return (-1);
 }
 
-int		get_line(char **strs, char **line, int idx)
+int		get_line(int fd, char **strs, char **line, int idx)
 {
+	char *tmp;
 
+	// before new line should be allocated at 'line'
+
+	// after new line should be allocated at 'strs[fd]'
 }
 
 int		get_next_line(int fd, char **line)
