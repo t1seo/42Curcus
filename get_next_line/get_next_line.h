@@ -6,7 +6,7 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/17 15:43:31 by tseo              #+#    #+#             */
-/*   Updated: 2020/10/21 14:46:12 by tseo             ###   ########.fr       */
+/*   Updated: 2020/10/21 14:58:50 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,9 @@
 # endif
 
 int		    get_next_line(int fd, char **line);
-char        *ft_strjoin(char *s1, char *s2);
+char        *ft_append(char *s1, char *s2);
 char	    *ft_strdup(const char *s);
 size_t		ft_strlen(const char *s);
-char	    *ft_strchr(const char *s, int c);
 
 
 #endif

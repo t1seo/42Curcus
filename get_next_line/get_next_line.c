@@ -6,7 +6,7 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/17 15:43:28 by tseo              #+#    #+#             */
-/*   Updated: 2020/10/21 14:47:03 by tseo             ###   ########.fr       */
+/*   Updated: 2020/10/21 14:49:59 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int		get_next_line(int fd, char **line)
 	{
 		idx = -1;
 		buf[rd_size] = '\0';
-		strs[fd] = ft_strjoin(strs[fd], buf);
+		strs[fd] = ft_append(strs[fd], buf);
 		if ((idx = get_newline_idx(strs[fd])) != -1)
 			return (get_line(fd, strs, line, idx));
 	}
