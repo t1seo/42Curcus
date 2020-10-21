@@ -6,7 +6,7 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/17 15:43:31 by tseo              #+#    #+#             */
-/*   Updated: 2020/10/21 20:25:06 by tseo             ###   ########.fr       */
+/*   Updated: 2020/10/21 22:06:31 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <unistd.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 30
+#  define BUFFER_SIZE 3000
 # endif
 
 # define MAX_FD 10000

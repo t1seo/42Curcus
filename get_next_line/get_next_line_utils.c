@@ -6,7 +6,7 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/17 15:43:24 by tseo              #+#    #+#             */
-/*   Updated: 2020/10/21 20:26:08 by tseo             ###   ########.fr       */
+/*   Updated: 2020/10/21 22:00:01 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ size_t		ft_strlen(const char *s)
 
 char		*ft_strchr(const char *s, int c)
 {
+	if (!s)
+		return (0);
 	while (*s != (unsigned char)c)
 	{
 		if (*s == 0)
