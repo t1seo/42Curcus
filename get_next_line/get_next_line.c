@@ -6,7 +6,7 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/17 15:43:28 by tseo              #+#    #+#             */
-/*   Updated: 2020/10/21 14:03:21 by tseo             ###   ########.fr       */
+/*   Updated: 2020/10/21 14:47:03 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,22 @@ int		get_line(int fd, char **strs, char **line, int idx)
 {
 	char *tmp;
 
+	if (idx != -1)
+	{
+		strs[fd][idx] = 0;
+		*line = ft_strdup(strs[fd]);
+		tmp = ft_strdup(&strs[fd][idx + 1]);
+		free(strs[fd]);
+		strs[fd] = tmp;
+		return (1);
+	}
+	else if (idx == -1) // 파일의 끝에 도달했을 때
+	{
+		*line = ft_strdup(strs[fd]);
+		free(strs[fd]);
+		return (0);
+	}
+
 }
 
 int		get_next_line(int fd, char **line)
@@ -44,6 +60,7 @@ int		get_next_line(int fd, char **line)
 		return (-1);
 	while ((rd_size = read(fd, buf, BUFFER_SIZE) > 0))
 	{
+		idx = -1;
 		buf[rd_size] = '\0';
 		strs[fd] = ft_strjoin(strs[fd], buf);
 		if ((idx = get_newline_idx(strs[fd])) != -1)
