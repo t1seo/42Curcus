@@ -6,11 +6,11 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/17 15:43:09 by tseo              #+#    #+#             */
-/*   Updated: 2020/10/22 22:19:29 by tseo             ###   ########.fr       */
+/*   Updated: 2020/10/22 22:38:36 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 static int		get_line(char **strs, char **line, char *ptr, int fd)
 {
