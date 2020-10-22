@@ -6,7 +6,7 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/17 15:43:24 by tseo              #+#    #+#             */
-/*   Updated: 2020/10/21 22:00:01 by tseo             ###   ########.fr       */
+/*   Updated: 2020/10/22 22:42:43 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ char		*ft_strappend(char *s1, char *s2)
 		s1 = ft_strdup(s2);
 		return (s1);
 	}
-	else if (s1 != 0)
+	else
 	{
 		tmp = ft_strjoin(s1, s2);
 		free(s1);
