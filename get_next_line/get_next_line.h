@@ -6,7 +6,7 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/17 15:43:31 by tseo              #+#    #+#             */
-/*   Updated: 2020/10/22 22:22:12 by tseo             ###   ########.fr       */
+/*   Updated: 2020/10/22 22:28:10 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 # define ERROR -1
 # define EOF_REACHED 0
 
-int         get_next_line(int fd, char **line);
+int			get_next_line(int fd, char **line);
 
 size_t		ft_strlen(const char *s);
 char		*ft_strchr(const char *s, int c);

@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_bonus.h                              :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/17 15:43:16 by tseo              #+#    #+#             */
-/*   Updated: 2020/10/22 22:19:38 by tseo             ###   ########.fr       */
+/*   Created: 2020/10/17 15:43:31 by tseo              #+#    #+#             */
+/*   Updated: 2020/10/22 22:29:15 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#ifndef GET_NEXT_LINE_BONUS_H
+# define GET_NEXT_LINE_BONUS_H
 
 # include <stdlib.h>
 # include <unistd.h>
@@ -26,7 +26,8 @@
 # define ERROR -1
 # define EOF_REACHED 0
 
-int         get_next_line(int fd, char **line);
+int			get_next_line(int fd, char **line);
+
 size_t		ft_strlen(const char *s);
 char		*ft_strchr(const char *s, int c);
 char		*ft_strdup(const char *s);
