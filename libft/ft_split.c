@@ -6,7 +6,7 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/06 10:31:41 by tseo              #+#    #+#             */
-/*   Updated: 2020/10/11 16:46:11 by tseo             ###   ########.fr       */
+/*   Updated: 2020/10/23 21:55:04 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,11 +68,11 @@ char			**ft_split(char const *s, char c)
 	size_t	size;
 
 	if (s == 0)
-		return ((void*)0);
+		return (0);
 	size = count_words(s, c);
 	words_arr = (char**)malloc(sizeof(char*) * (size + 1));
 	if (words_arr == 0)
-		return ((void*)0);
+		return (0);
 	words_arr[size] = 0;
 	if (size == 0)
 		return (words_arr);
