@@ -1,31 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/24 09:42:42 by tseo              #+#    #+#             */
-/*   Updated: 2020/10/24 14:15:49 by tseo             ###   ########.fr       */
+/*   Created: 2020/10/03 16:13:46 by tseo              #+#    #+#             */
+/*   Updated: 2020/10/06 20:14:09 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "libft.h"
 
-# include "libft/libft.h"
-# include <stdarg.h>
-
-typedef struct      s_format_info
+size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
-    char type;
-    int width;
-    int minus;
-    int zero;
-    int dot;
-    int star;
-}                   t_format_info;
+	size_t i;
 
-int		ft_printf(const char *format, ...);
-
-#endif
+	if (!dst || !src)
+		return (0);
+	i = 0;
+	if (size > 0)
+	{
+		while (src[i] && i < (size - 1))
+		{
+			dst[i] = src[i];
+			i++;
+		}
+		dst[i] = 0;
+	}
+	while (src[i])
+		i++;
+	return (i);
+}

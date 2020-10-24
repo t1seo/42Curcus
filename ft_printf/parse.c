@@ -1,31 +1,13 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/24 09:42:42 by tseo              #+#    #+#             */
-/*   Updated: 2020/10/24 14:15:49 by tseo             ###   ########.fr       */
+/*   Created: 2020/10/24 14:15:02 by tseo              #+#    #+#             */
+/*   Updated: 2020/10/24 14:15:16 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
-
-# include "libft/libft.h"
-# include <stdarg.h>
-
-typedef struct      s_format_info
-{
-    char type;
-    int width;
-    int minus;
-    int zero;
-    int dot;
-    int star;
-}                   t_format_info;
-
-int		ft_printf(const char *format, ...);
-
-#endif
+#include "ft_printf.h"

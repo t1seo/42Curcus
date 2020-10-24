@@ -1,31 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/24 09:42:42 by tseo              #+#    #+#             */
-/*   Updated: 2020/10/24 14:15:49 by tseo             ###   ########.fr       */
+/*   Created: 2020/10/05 15:36:59 by tseo              #+#    #+#             */
+/*   Updated: 2020/10/05 15:37:59 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "libft.h"
 
-# include "libft/libft.h"
-# include <stdarg.h>
-
-typedef struct      s_format_info
+void	*ft_calloc(size_t count, size_t size)
 {
-    char type;
-    int width;
-    int minus;
-    int zero;
-    int dot;
-    int star;
-}                   t_format_info;
+	void *ptr;
 
-int		ft_printf(const char *format, ...);
-
-#endif
+	if (!(ptr = malloc(count * size)))
+		return (0);
+	ft_bzero(ptr, count * size);
+	return (ptr);
+}

@@ -1,31 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/24 09:42:42 by tseo              #+#    #+#             */
-/*   Updated: 2020/10/24 14:15:49 by tseo             ###   ########.fr       */
+/*   Created: 2020/10/06 16:49:03 by tseo              #+#    #+#             */
+/*   Updated: 2020/10/07 16:02:23 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "libft.h"
 
-# include "libft/libft.h"
-# include <stdarg.h>
-
-typedef struct      s_format_info
+void	ft_lstclear(t_list **lst, void (*del)(void*))
 {
-    char type;
-    int width;
-    int minus;
-    int zero;
-    int dot;
-    int star;
-}                   t_format_info;
+	t_list *temp;
 
-int		ft_printf(const char *format, ...);
-
-#endif
+	while (lst && *lst)
+	{
+		temp = (*lst)->next;
+		ft_lstdelone(*lst, del);
+		*lst = temp;
+	}
+}

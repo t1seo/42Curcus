@@ -1,31 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/24 09:42:42 by tseo              #+#    #+#             */
-/*   Updated: 2020/10/24 14:15:49 by tseo             ###   ########.fr       */
+/*   Created: 2020/10/03 15:31:51 by tseo              #+#    #+#             */
+/*   Updated: 2020/10/06 20:08:43 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "libft.h"
 
-# include "libft/libft.h"
-# include <stdarg.h>
-
-typedef struct      s_format_info
+int		ft_memcmp(const void *ptr1, const void *ptr2, size_t n)
 {
-    char type;
-    int width;
-    int minus;
-    int zero;
-    int dot;
-    int star;
-}                   t_format_info;
-
-int		ft_printf(const char *format, ...);
-
-#endif
+	while (n--)
+	{
+		if (*(unsigned char*)ptr1 != *(unsigned char*)ptr2)
+			return (*(unsigned char*)ptr1 - *(unsigned char*)ptr2);
+		ptr1++;
+		ptr2++;
+	}
+	return (0);
+}

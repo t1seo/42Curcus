@@ -1,31 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/24 09:42:42 by tseo              #+#    #+#             */
-/*   Updated: 2020/10/24 14:15:49 by tseo             ###   ########.fr       */
+/*   Created: 2020/10/03 19:11:56 by tseo              #+#    #+#             */
+/*   Updated: 2020/10/06 20:14:39 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "libft.h"
 
-# include "libft/libft.h"
-# include <stdarg.h>
-
-typedef struct      s_format_info
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
-    char type;
-    int width;
-    int minus;
-    int zero;
-    int dot;
-    int star;
-}                   t_format_info;
+	size_t i;
 
-int		ft_printf(const char *format, ...);
-
-#endif
+	i = 0;
+	while (*dst && i < size)
+	{
+		i++;
+		dst++;
+	}
+	while (*src && i + 1 < size)
+	{
+		*dst++ = *src++;
+		i++;
+	}
+	if (i < size)
+		*dst = 0;
+	while (*src++)
+		i++;
+	return (i);
+}

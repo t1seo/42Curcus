@@ -1,31 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/24 09:42:42 by tseo              #+#    #+#             */
-/*   Updated: 2020/10/24 14:15:49 by tseo             ###   ########.fr       */
+/*   Created: 2020/10/05 12:09:27 by tseo              #+#    #+#             */
+/*   Updated: 2020/10/07 10:39:23 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "libft.h"
 
-# include "libft/libft.h"
-# include <stdarg.h>
-
-typedef struct      s_format_info
+char	*ft_strnstr(const char *s1, const char *s2, size_t len)
 {
-    char type;
-    int width;
-    int minus;
-    int zero;
-    int dot;
-    int star;
-}                   t_format_info;
+	size_t i;
+	size_t j;
 
-int		ft_printf(const char *format, ...);
-
-#endif
+	if (!s2[0])
+		return ((char*)s1);
+	i = 0;
+	while (s1[i] && i < len)
+	{
+		j = 0;
+		while (s1[i + j] && s2[j] && i + j < len && s1[i + j] == s2[j])
+			j++;
+		if (!s2[j])
+			return ((char*)(s1 + i));
+		i++;
+	}
+	return (0);
+}

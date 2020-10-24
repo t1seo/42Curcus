@@ -1,31 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/24 09:42:42 by tseo              #+#    #+#             */
-/*   Updated: 2020/10/24 14:15:49 by tseo             ###   ########.fr       */
+/*   Created: 2020/10/05 19:20:16 by tseo              #+#    #+#             */
+/*   Updated: 2020/10/07 12:35:17 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "libft.h"
 
-# include "libft/libft.h"
-# include <stdarg.h>
-
-typedef struct      s_format_info
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-    char type;
-    int width;
-    int minus;
-    int zero;
-    int dot;
-    int star;
-}                   t_format_info;
+	char	*str;
+	int		len;
 
-int		ft_printf(const char *format, ...);
-
-#endif
+	if (!s1 && !s2)
+		return (0);
+	else if (!s1 || !s2)
+		return (!s1 ? ft_strdup(s2) : ft_strdup(s1));
+	len = ft_strlen(s1) + ft_strlen(s2);
+	if (!(str = (char*)malloc(sizeof(char) * (len + 1))))
+		return (0);
+	ft_strlcpy(str, s1, len + 1);
+	ft_strlcat(str, s2, len + 1);
+	return (str);
+}

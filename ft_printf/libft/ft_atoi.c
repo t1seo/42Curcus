@@ -1,31 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/24 09:42:42 by tseo              #+#    #+#             */
-/*   Updated: 2020/10/24 14:15:49 by tseo             ###   ########.fr       */
+/*   Created: 2020/10/05 13:46:44 by tseo              #+#    #+#             */
+/*   Updated: 2020/10/07 11:19:04 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include <limits.h>
 
-# include "libft/libft.h"
-# include <stdarg.h>
-
-typedef struct      s_format_info
+int		ft_atoi(const char *str)
 {
-    char type;
-    int width;
-    int minus;
-    int zero;
-    int dot;
-    int star;
-}                   t_format_info;
+	int i;
+	int n;
+	int sign;
 
-int		ft_printf(const char *format, ...);
-
-#endif
+	i = 0;
+	n = 0;
+	sign = 1;
+	while ((9 <= str[i] && str[i] <= 13) || str[i] == ' ')
+		i++;
+	sign = (str[i] == '-') ? -1 : 1;
+	if (str[i] == '+' || str[i] == '-')
+		i++;
+	while ('0' <= str[i] && str[i] <= '9')
+	{
+		n = 10 * n + (str[i] - '0');
+		i++;
+	}
+	return (n * sign);
+}

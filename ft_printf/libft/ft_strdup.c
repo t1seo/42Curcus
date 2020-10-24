@@ -1,31 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/24 09:42:42 by tseo              #+#    #+#             */
-/*   Updated: 2020/10/24 14:15:49 by tseo             ###   ########.fr       */
+/*   Created: 2020/10/05 15:42:36 by tseo              #+#    #+#             */
+/*   Updated: 2020/10/06 20:07:27 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "libft.h"
 
-# include "libft/libft.h"
-# include <stdarg.h>
-
-typedef struct      s_format_info
+char	*ft_strdup(const char *s)
 {
-    char type;
-    int width;
-    int minus;
-    int zero;
-    int dot;
-    int star;
-}                   t_format_info;
+	int		i;
+	char	*ret;
 
-int		ft_printf(const char *format, ...);
-
-#endif
+	if (!(ret = malloc(sizeof(char) * (ft_strlen(s) + 1))))
+		return (0);
+	i = 0;
+	while (s[i])
+	{
+		ret[i] = s[i];
+		i++;
+	}
+	ret[i] = 0;
+	return (ret);
+}

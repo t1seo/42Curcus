@@ -1,31 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/24 09:42:42 by tseo              #+#    #+#             */
-/*   Updated: 2020/10/24 14:15:49 by tseo             ###   ########.fr       */
+/*   Created: 2020/10/05 16:09:00 by tseo              #+#    #+#             */
+/*   Updated: 2020/10/07 12:28:22 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "libft.h"
 
-# include "libft/libft.h"
-# include <stdarg.h>
-
-typedef struct      s_format_info
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-    char type;
-    int width;
-    int minus;
-    int zero;
-    int dot;
-    int star;
-}                   t_format_info;
+	char *str;
 
-int		ft_printf(const char *format, ...);
-
-#endif
+	if (!s || !len || ft_strlen(s) <= start)
+		return (ft_strdup(""));
+	if (!(str = (char*)malloc(sizeof(*s) * (len + 1))))
+		return (0);
+	ft_strlcpy(str, s + start, len + 1);
+	return (str);
+}
