@@ -6,7 +6,7 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 09:42:46 by tseo              #+#    #+#             */
-/*   Updated: 2020/10/25 03:25:30 by tseo             ###   ########.fr       */
+/*   Updated: 2020/10/25 03:26:13 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	init_info(t_format_info **info)
 	ft_memset(*info, 0, sizeof(t_format_info));
 }
 
+// TODO : test
 void	parse_format(const char **format, va_list *ap, t_format_info **info, int *ret)
 {
 	while (*format)
