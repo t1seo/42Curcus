@@ -10,7 +10,9 @@ int main(void)
 	// printf("Hello, World!\n");
 
 	// printf("ft_printf : ");
-	ft_printf("%.3d\n", 24);
+	int n;
+	n = ft_printf("a%.3d b %4s\n", 24);
+	printf("%d\n" ,n);
 
 	// nothing in format
 	// n = printf("");

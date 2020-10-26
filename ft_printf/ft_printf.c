@@ -6,7 +6,7 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 09:42:46 by tseo              #+#    #+#             */
-/*   Updated: 2020/10/27 00:51:39 by tseo             ###   ########.fr       */
+/*   Updated: 2020/10/27 05:20:21 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static void		init_format_parsing(const char *format, va_list *ap, int *count)
 				(*count) = -1;
 				break ;
 			}
-			print_parsed_data(info);
+			// print_parsed_data(info); // TEST parsing info
 			// TODO: print parsed argument
 			reset_info(info);
 			continue ;
