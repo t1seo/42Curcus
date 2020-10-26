@@ -6,7 +6,7 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 09:42:46 by tseo              #+#    #+#             */
-/*   Updated: 2020/10/26 14:28:18 by tseo             ###   ########.fr       */
+/*   Updated: 2020/10/26 20:55:54 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,35 +17,23 @@ char	*g_format_type = "cspdiuxX%";
 
 void	reset_info(t_arg_info *info)
 {
+	info->flag = 0;
+	info->width = 0;
+	info->precision = 0;
+	info->specifier = 0;
+	info->data = 0;
 }
 
-// void	parse_info(const char *format, va_list *ap, int *count)
+// void	parse_info(const char **ptr, va_list *ap, int *count)
 // {
 
 // }
 
-// format ex) "hello %*d %c world %s"
-void	parse_format(const char *format, va_list *ap, int *count, t_arg_info *info)
-{
-	const char *ptr = format;
-	int idx;
 
-	while (*ptr)
-	{
-		if ((*ptr) == '%')
-		{
-			ptr += idx;
-			continue ;
-		}
-		write(1, ptr++, 1);
-		(*count)++;
-	}
-	free(info);
-}
 
 void		init_format_parsing(const char *format, va_list *ap, int *count)
 {
-	int	i;
+	const char *ptr = format;
 	t_arg_info *info;
 
 	(*count) = 0;
@@ -57,6 +45,21 @@ void		init_format_parsing(const char *format, va_list *ap, int *count)
 		return ;
 	}
 	reset_info(info);
+	while (*ptr)
+	{
+		if ((*ptr) == '%')
+		{
+			// parse_info()
+			// TODO: parsing infomation of format
+			// TOTO: check validation of parsed format
+			// TODO: print argument as parsed
+			reset_info(info);
+			continue ;
+		}
+		write(1, ptr++, 1);
+		(*count)++;
+	}
+	free(info);
 	parse_format(format, ap, count, info);
 }
 
