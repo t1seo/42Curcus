@@ -6,54 +6,68 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 09:42:46 by tseo              #+#    #+#             */
-/*   Updated: 2020/10/25 03:26:13 by tseo             ###   ########.fr       */
+/*   Updated: 2020/10/26 14:28:18 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include <stdio.h>
 
-void	init_info(t_format_info **info)
+char	*g_format_type = "cspdiuxX%";
+
+void	reset_info(t_arg_info *info)
 {
-	ft_memset(*info, 0, sizeof(t_format_info));
 }
 
-// TODO : test
-void	parse_format(const char **format, va_list *ap, t_format_info **info, int *ret)
+// void	parse_info(const char *format, va_list *ap, int *count)
+// {
+
+// }
+
+// format ex) "hello %*d %c world %s"
+void	parse_format(const char *format, va_list *ap, int *count, t_arg_info *info)
 {
-	while (*format)
+	const char *ptr = format;
+	int idx;
+
+	while (*ptr)
 	{
-		write(1, &format, 1);
-		(*format)++;
-		(*ret)++;
+		if ((*ptr) == '%')
+		{
+			ptr += idx;
+			continue ;
+		}
+		write(1, ptr++, 1);
+		(*count)++;
 	}
+	free(info);
 }
 
-int		init_format_parsing(const char **format, va_list *ap)
+void		init_format_parsing(const char *format, va_list *ap, int *count)
 {
 	int	i;
-	int	ret;
-	t_format_info	*info;
+	t_arg_info *info;
 
+	(*count) = 0;
 	if (!ft_strlen(format))
-		return (0);
-	if (!(info = malloc(sizeof(t_format_info))))
-		return (-1);
-	parse_format(format, ap, &info, &ret);
-	return (ret);
+		return ;
+	if (!(info = (t_arg_info*)malloc(sizeof(t_arg_info))))
+	{
+		(*count) = -1;
+		return ;
+	}
+	reset_info(info);
+	parse_format(format, ap, count, info);
 }
 
-// ft_printf("%s %d %c\n", "Hello ", 42, '!');
 int			ft_printf(const char *format, ...)
 {
 	int			ret;
 	va_list		ap;
 
 	va_start(ap, format);
-	ret = init_format_parsing(&format, &ap);
+	init_format_parsing(format, &ap, &ret);
 	va_end(ap);
 
-	// return the number of characters printed
-	// return a negative value if an error occurs
-	// return 0 if format string is empty
 	return (ret);
 }
