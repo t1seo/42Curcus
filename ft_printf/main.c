@@ -3,14 +3,14 @@
 
 int main(void)
 {
-	int n = 0;
+	// int n = 0;
 
 	// just print
-	n = printf("Hello, World!\n");
-	printf("Return value of printf : %d\n", n);
+	// printf("printf : ");
+	// printf("Hello, World!\n");
 
-	n = ft_printf("Hello, World!\n");
-	printf("Return value of ft_printf : %d\n\n", n);
+	printf("ft_printf : ");
+	ft_printf("Hello, World!\n");
 
 	// nothing in format
 	// n = printf("");
