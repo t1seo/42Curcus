@@ -9,8 +9,8 @@ int main(void)
 	// printf("printf : ");
 	// printf("Hello, World!\n");
 
-	printf("ft_printf : ");
-	ft_printf("Hello, World!\n");
+	// printf("ft_printf : ");
+	ft_printf("%.3d\n", 24);
 
 	// nothing in format
 	// n = printf("");

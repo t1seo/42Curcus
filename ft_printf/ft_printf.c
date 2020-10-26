@@ -6,7 +6,7 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 09:42:46 by tseo              #+#    #+#             */
-/*   Updated: 2020/10/26 23:53:14 by tseo             ###   ########.fr       */
+/*   Updated: 2020/10/27 00:51:39 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,15 @@ void reset_info(t_va_info *info)
 	if (!(info->va_data))
 		free(info->va_data);
 	ft_memset(info, 0, sizeof(t_va_info));
+}
+
+void print_parsed_data(t_va_info *info)
+{
+	printf("\n");
+	printf("flag : %c\n", info->flag);
+	printf("width : %d\n", info->width);
+	printf("precision : %d\n", info->precision);
+	printf("specifier : %c\n", info->specifier);
 }
 
 static void		init_format_parsing(const char *format, va_list *ap, int *count)
@@ -46,6 +55,7 @@ static void		init_format_parsing(const char *format, va_list *ap, int *count)
 				(*count) = -1;
 				break ;
 			}
+			print_parsed_data(info);
 			// TODO: print parsed argument
 			reset_info(info);
 			continue ;
@@ -53,6 +63,7 @@ static void		init_format_parsing(const char *format, va_list *ap, int *count)
 		write(1, ptr++, 1);
 		(*count)++;
 	}
+	reset_info(info);
 	free(info);
 }
 
