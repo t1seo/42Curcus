@@ -6,7 +6,7 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 14:15:02 by tseo              #+#    #+#             */
-/*   Updated: 2020/10/27 15:58:37 by tseo             ###   ########.fr       */
+/*   Updated: 2020/10/27 22:17:40 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void		parsing_precision(const char **ptr, t_va_info *info, va_list *ap)
 
 int	parsing_specifier(const char **ptr, t_va_info *info)
 {
-	char *format_type;
+	const char *format_type;
 
 	format_type = g_format_type;
 	while (*format_type)

@@ -6,7 +6,7 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 09:42:42 by tseo              #+#    #+#             */
-/*   Updated: 2020/10/27 21:52:56 by tseo             ###   ########.fr       */
+/*   Updated: 2020/10/27 22:13:24 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,6 @@ int         allocate_hex(t_va_info *info, va_list *ap);
 int         allocate_percent(t_va_info *info);
 
 void        reset_info(t_va_info *info);
-char	    *ft_itoa_hex(unsigned long int value, char *base);
+char	    *ft_itoa_hex(unsigned long int value, char const *base);
 
 #endif
