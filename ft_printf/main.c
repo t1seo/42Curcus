@@ -4,12 +4,12 @@
 int main(void)
 {
 	int n;
-	n = ft_printf("TEST: %c\n", 'a');
+	n = ft_printf("CHAR TEST: %c\n", 'a');
+	printf("%d\n", n);
+	n = 0;
 
-
-	ft_printf("== str test == : %s\n", "Hello");
-
-
-
+	ft_printf("STR TEST: %s\n", "Hello");
+	printf("%d\n", n);
+	n = 0;
 	return 0;
 }
