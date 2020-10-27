@@ -6,7 +6,7 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 09:42:46 by tseo              #+#    #+#             */
-/*   Updated: 2020/10/27 05:20:21 by tseo             ###   ########.fr       */
+/*   Updated: 2020/10/27 16:00:21 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,8 @@
 
 char	*g_format_type = "cspdiuxX%";
 
-void reset_info(t_va_info *info)
-{
-	if (!(info->va_data))
-		free(info->va_data);
-	ft_memset(info, 0, sizeof(t_va_info));
-}
-
-void print_parsed_data(t_va_info *info)
+// TEST function
+void print_parsed_data_test(t_va_info *info)
 {
 	printf("\n");
 	printf("flag : %c\n", info->flag);
@@ -31,40 +25,63 @@ void print_parsed_data(t_va_info *info)
 	printf("specifier : %c\n", info->specifier);
 }
 
-static void		init_format_parsing(const char *format, va_list *ap, int *count)
+static int		parsing_format(const char **ptr, t_va_info *info, va_list *ap)
+{
+	(*ptr)++;
+	parsing_flag(ptr, info);
+	parsing_width(ptr, info, ap);
+	parsing_precision(ptr, info, ap);
+	if (!(parsing_specifier(ptr, info)))
+		return (0);
+	return (1);
+}
+
+
+static int		data_allocation(t_va_info *info, va_list *ap)
+{
+	return (1);
+}
+
+// static int		print_parsed_data(int *count, t_va_info *info, va_list *ap)
+// {
+// 	if (info->specifier == 'c')
+// 		return (print_parsed_char(info, ap, count));
+// 	return (1);
+// }
+
+
+static int		init_format_parsing(const char *format, va_list *ap)
 {
 	const char *ptr = format;
 	t_va_info *info;
+	int count;
 
-	(*count) = 0;
+	count = 0;
 	if (!ft_strlen(format))
-		return ;
+		return (0);
 	if (!(info = (t_va_info*)malloc(sizeof(t_va_info))))
-	{
-		(*count) = -1;
-		return ;
-	}
+		return (-1);
 	reset_info(info);
 	while (*ptr)
 	{
 		if ((*ptr) == '%')
 		{
-			// TODO: parsing infomation of format
-			if (!(parsing_format(&ptr, info, ap)))
-			{
-				(*count) = -1;
-				break ;
-			}
-			// print_parsed_data(info); // TEST parsing info
-			// TODO: print parsed argument
+			// TODO : parsing format
+			// TODO : data allocation
+			if (!(parsing_format(&ptr, info, ap))
+				|| !(data_allocation(info, ap)))
+				return (-1);
+			// TODO : print parsed data
+			print_parsed_data_test(info);
 			reset_info(info);
 			continue ;
 		}
 		write(1, ptr++, 1);
-		(*count)++;
+		(count)++;
 	}
 	reset_info(info);
 	free(info);
+	return (count);
 }
 
 int			ft_printf(const char *format, ...)
@@ -73,7 +90,7 @@ int			ft_printf(const char *format, ...)
 	va_list		ap;
 
 	va_start(ap, format);
-	init_format_parsing(format, &ap, &ret);
+	ret = init_format_parsing(format, &ap);
 	va_end(ap);
 
 	return (ret);
