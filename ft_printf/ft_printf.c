@@ -6,7 +6,7 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 09:42:46 by tseo              #+#    #+#             */
-/*   Updated: 2020/10/27 17:36:41 by tseo             ###   ########.fr       */
+/*   Updated: 2020/10/27 19:34:23 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ static int		data_allocation(t_va_info *info, va_list *ap)
 		return (allocate_char_data(info, ap));
 	if (info->specifier == 's')
 		return (allocate_str_data(info, ap));
+	if (info->specifier == 'p')
+		return (allocate_pointer_data(info, ap));
 	return (1);
 }
 
