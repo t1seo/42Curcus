@@ -1,15 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   allocating_chars.c                                 :+:      :+:    :+:   */
+/*   allocating_chars_data.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/27 15:41:55 by tseo              #+#    #+#             */
-/*   Updated: 2020/10/27 15:42:24 by tseo             ###   ########.fr       */
+/*   Updated: 2020/10/27 17:03:54 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int
+int		allocate_char_data(t_va_info *info, va_list *ap)
+{
+	if (!(info->va_data = (char*)malloc(sizeof(char) * 2)))
+		return (0);
+	info->va_data[0] = va_arg(*ap, int);
+	info->va_data[1] = 0;
+	return (1);
+}
+
+int		allocate_str_data(t_va_info *info, va_list *ap)
+{
+
+}
