@@ -6,7 +6,7 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/27 15:41:55 by tseo              #+#    #+#             */
-/*   Updated: 2020/10/27 17:03:54 by tseo             ###   ########.fr       */
+/*   Updated: 2020/10/27 17:13:33 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,16 @@ int		allocate_char_data(t_va_info *info, va_list *ap)
 
 int		allocate_str_data(t_va_info *info, va_list *ap)
 {
+	char	*tmp;
 
+	tmp = va_arg(*ap, char*);
+	if (!tmp)
+	{
+		if (!(info->va_data = ft_strdup("(null)")))
+			return (0);
+		return (1);
+	}
+	if (!(info->va_data = ft_strdup(tmp)))
+		return (0);
+	return (1);
 }
