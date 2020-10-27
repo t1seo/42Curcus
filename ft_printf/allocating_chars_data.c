@@ -6,7 +6,7 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/27 15:41:55 by tseo              #+#    #+#             */
-/*   Updated: 2020/10/27 20:47:57 by tseo             ###   ########.fr       */
+/*   Updated: 2020/10/27 22:06:48 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int		allocate_percent(t_va_info *info)
 {
 	if (!(info->va_data = (char*)malloc(sizeof(char) * 2)))
 		return (0);
-	info->va_data[0];
-	info->va_data[1];
+	info->va_data[0] = '%';
+	info->va_data[1] = 0;
 	return (1);
 }
