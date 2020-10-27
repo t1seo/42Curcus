@@ -6,14 +6,14 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 09:42:46 by tseo              #+#    #+#             */
-/*   Updated: 2020/10/27 19:34:23 by tseo             ###   ########.fr       */
+/*   Updated: 2020/10/27 21:50:01 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <stdio.h>
 
-char	*g_format_type = "cspdiuxX%";
+char const *g_format_type = "cspdiuxX%";
 
 // TEST function
 void print_parsed_data_test(t_va_info *info)
@@ -45,6 +45,14 @@ static int		data_allocation(t_va_info *info, va_list *ap)
 		return (allocate_str_data(info, ap));
 	if (info->specifier == 'p')
 		return (allocate_pointer_data(info, ap));
+	if (info->specifier == 'd' || info->specifier == 'i')
+		return (allocate_signed_int(info, ap));
+	if (info->specifier == 'u')
+		return (allocate_unsigned_int(info, ap));
+	if (info->specifier == 'x' || info->specifier == 'X')
+		return (allocate_hex(info, ap));
+	if (info->specifier == '%')
+		return (allocate_percent(info));
 	return (1);
 }
 

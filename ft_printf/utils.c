@@ -6,7 +6,7 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/27 15:58:29 by tseo              #+#    #+#             */
-/*   Updated: 2020/10/27 20:39:55 by tseo             ###   ########.fr       */
+/*   Updated: 2020/10/27 21:48:54 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,11 @@ void reset_info(t_va_info *info)
 	ft_memset(info, 0, sizeof(t_va_info));
 }
 
-char	*ft_itoa_hex(unsigned long int value)
+char	*ft_itoa_hex(unsigned long int value, char *base)
 {
 	unsigned long int	n;
 	int					i;
 	char				*ret;
-	const char			*hex_digits = "0123456789abcdef";
 
 	n = value;
 	i = 0;
@@ -40,7 +39,7 @@ char	*ft_itoa_hex(unsigned long int value)
 	while (n)
 	{
 		--i;
-		ret[i] = hex_digits[n % 16];
+		ret[i] = base[n % 16];
 		n /= 16;
 	}
 	return (ret);
