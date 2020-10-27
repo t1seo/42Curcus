@@ -8,7 +8,7 @@ int main(void)
 	printf("%d\n", n);
 	n = 0;
 
-	ft_printf("STR TEST: %s\n", "Hello");
+	n = ft_printf("STR TEST: %s\n", "Hello");
 	printf("%d\n", n);
 	n = 0;
 	return 0;
