@@ -6,7 +6,7 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/27 15:58:29 by tseo              #+#    #+#             */
-/*   Updated: 2020/10/27 19:27:54 by tseo             ###   ########.fr       */
+/*   Updated: 2020/10/27 19:38:43 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ char	*ft_itoa_hex(unsigned int value)
 		n /= 16;
 		++i;
 	}
-	printf("%d\n", i);
 	n = value;
 	if (!(ret = (char*)malloc(sizeof(char) * (i + 1))))
 		return (0);
