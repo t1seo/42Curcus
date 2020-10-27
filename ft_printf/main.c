@@ -15,5 +15,19 @@ int main(void)
 
 	ft_printf("%p\n", str);
 	printf("%p\n", str);
+
+	ft_printf("%d\n", 123);
+	ft_printf("%i\n", -123);
+
+	ft_printf("%u\n", 123);
+	printf("%u\n", 123);
+	ft_printf("%u\n", -123);
+	printf("%u\n", -123);
+
+	ft_printf("%x\n", 123);
+	ft_printf("%x\n", -123);
+	ft_printf("%X\n", 123);
+	ft_printf("%X\n", -123);
+
 	return 0;
 }
