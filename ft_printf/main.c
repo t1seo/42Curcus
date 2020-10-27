@@ -3,13 +3,11 @@
 
 int main(void)
 {
+	ft_printf("hello\n");
+	ft_printf("== char test == : %c\n", 'a');
 
-	int n;
-	n = ft_printf("== char test == : %c\n", 'a');
-	printf("%d\n" ,n);
 
-	n = ft_printf("== str test == : %s\n", "Hello");
-	printf("%d\n", n);
+	ft_printf("== str test == : %s\n", "Hello");
 
 
 
