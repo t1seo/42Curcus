@@ -3,8 +3,8 @@
 
 int main(void)
 {
-	ft_printf("hello\n");
-	ft_printf("== char test == : %c\n", 'a');
+	int n;
+	n = ft_printf("TEST: %c\n", 'a');
 
 
 	ft_printf("== str test == : %s\n", "Hello");
