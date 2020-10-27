@@ -6,7 +6,7 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 09:42:46 by tseo              #+#    #+#             */
-/*   Updated: 2020/10/27 17:05:13 by tseo             ###   ########.fr       */
+/*   Updated: 2020/10/27 17:06:06 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void print_parsed_data_test(t_va_info *info)
 	printf("width : %d\n", info->width);
 	printf("precision : %d\n", info->precision);
 	printf("specifier : %c\n", info->specifier);
+	printf("va_data : %s\n", info->va_data);
 }
 
 static int		parsing_format(const char **ptr, t_va_info *info, va_list *ap)
