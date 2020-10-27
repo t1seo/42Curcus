@@ -5,8 +5,11 @@ int main(void)
 {
 
 	int n;
-	n = ft_printf("%c\n", 'a');
+	n = ft_printf("char test : %c\n", 'a');
 	printf("%d\n" ,n);
+
+	n = ft_printf("str test : %s\n", "Hello, world!");
+	printf("%d\n", n);
 
 
 
