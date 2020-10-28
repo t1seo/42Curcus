@@ -6,7 +6,7 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/27 15:58:29 by tseo              #+#    #+#             */
-/*   Updated: 2020/10/27 22:12:00 by tseo             ###   ########.fr       */
+/*   Updated: 2020/10/28 20:12:58 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ char	*ft_itoa_hex(unsigned long int value, char const *base)
 
 	n = value;
 	i = 0;
+	if (value == 0 || value < 0)
+		++i;
 	while (n)
 	{
 		n /= 16;
@@ -36,6 +38,10 @@ char	*ft_itoa_hex(unsigned long int value, char const *base)
 	if (!(ret = (char*)malloc(sizeof(char) * (i + 1))))
 		return (0);
 	ret[i] = 0;
+	if (value < 0)
+		ret[i] = '-';
+	if (value == 0)
+		ret[i] = '0';
 	while (n)
 	{
 		--i;

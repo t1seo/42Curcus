@@ -6,7 +6,7 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/27 15:44:19 by tseo              #+#    #+#             */
-/*   Updated: 2020/10/27 21:56:46 by tseo             ###   ########.fr       */
+/*   Updated: 2020/10/28 20:28:03 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int		allocate_unsigned_int(t_va_info *info, va_list *ap)
 {
 	unsigned int tmp;
 
-	tmp = (unsigned int)va_arg(*ap, int);
+	tmp = va_arg(*ap, unsigned int);
 	if (!(info->va_data = ft_itoa(tmp)))
 		return (0);
 	return (1);
