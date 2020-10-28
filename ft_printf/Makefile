@@ -35,11 +35,11 @@ $(OBJ_DIR)/%.o : $(SRC_DIR)/%.c
 all : $(NAME)
 
 clean :
-	$(MAKE) -C ./lib clean
+	$(MAKE) -C ./libft clean
 	rm -rf $(OBJS)
 
 fclean :
-	$(MAKE) -C ./lib fclean
+	$(MAKE) -C ./libft fclean
 	rm -rf $(NAME) $(OBJS)
 
 re : fclean all
