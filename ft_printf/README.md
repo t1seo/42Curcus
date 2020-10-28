@@ -5,3 +5,4 @@
 
 ### TO DO
 - [ ] print parsed data
+- [ ] makefile compile option
