@@ -6,11 +6,11 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 09:42:46 by tseo              #+#    #+#             */
-/*   Updated: 2020/10/27 21:50:01 by tseo             ###   ########.fr       */
+/*   Updated: 2020/10/29 14:17:46 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../header/ft_printf.h"
 #include <stdio.h>
 
 char const *g_format_type = "cspdiuxX%";
@@ -56,12 +56,13 @@ static int		data_allocation(t_va_info *info, va_list *ap)
 	return (1);
 }
 
-// static int		print_parsed_data(int *count, t_va_info *info, va_list *ap)
-// {
-// 	if (info->specifier == 'c')
-// 		return (print_parsed_char(info, ap, count));
-// 	return (1);
-// }
+static int		print_parsed_data(int *count, t_va_info *info, va_list *ap)
+{
+	if (info->specifier == 'c')
+		return (print_parsed_char(info, ap, count));
+
+	return (1);
+}
 
 
 static void		init_format_parsing(const char *format, t_va_info *info,
@@ -71,15 +72,14 @@ static void		init_format_parsing(const char *format, t_va_info *info,
 	{
 		if ((*format) == '%')
 		{
-			// TODO : data allocation
 			if (!(parsing_format(&format, info, ap))
-				|| !(data_allocation(info, ap)))
+				|| !(data_allocation(info, ap))
+				|| !(print_parsed_data(count, info, ap)))
 			{
 				(*count) = -1;
 				break ;
 			}
-			// TODO : print parsed data
-			print_parsed_data_test(info);
+			// print_parsed_data_test(info);
 			reset_info(info);
 			continue ;
 		}

@@ -6,11 +6,11 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/27 15:44:19 by tseo              #+#    #+#             */
-/*   Updated: 2020/10/28 20:59:02 by tseo             ###   ########.fr       */
+/*   Updated: 2020/10/29 13:16:51 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../header/ft_printf.h"
 
 char const	*hex_digits_lower = "0123456789abcdef";
 char const	*hex_digits_upper = "0123456789ABCDEF";

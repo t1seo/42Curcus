@@ -6,11 +6,11 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 14:15:02 by tseo              #+#    #+#             */
-/*   Updated: 2020/10/27 22:17:40 by tseo             ###   ########.fr       */
+/*   Updated: 2020/10/29 13:16:11 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../header/ft_printf.h"
 
 // printf에서 -와 0을 동시에 flag 옵션을 주면 - 우선
 void		parsing_flag(const char **ptr, t_va_info *info)

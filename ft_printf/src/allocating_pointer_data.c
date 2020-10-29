@@ -6,11 +6,11 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/27 15:43:59 by tseo              #+#    #+#             */
-/*   Updated: 2020/10/28 21:03:34 by tseo             ###   ########.fr       */
+/*   Updated: 2020/10/29 13:16:41 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../header/ft_printf.h"
 
 int		allocate_pointer_data(t_va_info *info, va_list *ap)
 {
