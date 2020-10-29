@@ -6,7 +6,7 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/27 15:58:29 by tseo              #+#    #+#             */
-/*   Updated: 2020/10/28 20:59:53 by tseo             ###   ########.fr       */
+/*   Updated: 2020/10/29 21:06:04 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,10 @@ char	*ft_itoa_base(unsigned long int value, char const *base)
 		n /= len;
 	}
 	return (ret);
+}
+
+void	memset_and_move(char *dst, int value, int len, t_va_info *info)
+{
+	ft_memset(dst, value, info->width);
+	ft_memmove(dst, info->va_data, len);
 }

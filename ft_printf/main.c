@@ -3,31 +3,26 @@
 
 int main(void)
 {
-	// int n;
-	// n = ft_printf("CHAR TEST: %c\n", 'a');
-	// printf("=> %d\n", n);
-	// n = 0;
+	// test char %c
+    ft_printf("%10c Hello\n", 'a');
+    ft_printf("%010c Hello\n", 'a');
+    ft_printf("%-10c Hello\n", 'a');
+	ft_printf("%.5c Hello\n",'a');
+	ft_printf("%-010c Hello\n",'a');
+	ft_printf("%0-10c Hello\n", 'a');
 
-	// n = ft_printf("STR TEST: %s\n", "Hello");
-	// printf("=> %d\n", n);
-	// n = 0;
-	// char *str = "hello";
+	ft_printf("%10s world!\n","Hello");
+	ft_printf("%010s world!\n", "Hello");
+	ft_printf("%-10s world!\n", "Hello");
+	ft_printf("%.10s world!\n", "Hello");
+	ft_printf("%-010s world!\n", "Hello");
+	ft_printf("%0-10s world!\n", "Hello");
 
-	// ft_printf("%p\n", str);
-	// printf("%p\n", str);
-
-	// ft_printf("%d\n", 123);
-	// ft_printf("%i\n", -123);
-
-	ft_printf("%u\n", 123);
-	printf("%u\n", 123);
-	ft_printf("%u\n", -123);
-	printf("%u\n", -123);
-
-	ft_printf("%x\n", 123);
-	ft_printf("%x\n", -123);
-	ft_printf("%X\n", 123);
-	ft_printf("%X\n", -123);
-
+	ft_printf("%10% world!\n");
+	ft_printf("%010% world!\n");
+	ft_printf("%-10% world!\n");
+	ft_printf("%.5% world!\n");
+	ft_printf("%-010% world!\n");
+	ft_printf("%0-10% world!\n");
 	return 0;
 }

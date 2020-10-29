@@ -6,7 +6,7 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 09:42:46 by tseo              #+#    #+#             */
-/*   Updated: 2020/10/29 14:17:46 by tseo             ###   ########.fr       */
+/*   Updated: 2020/10/29 21:21:55 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,14 @@ static int		data_allocation(t_va_info *info, va_list *ap)
 	return (1);
 }
 
-static int		print_parsed_data(int *count, t_va_info *info, va_list *ap)
+static int		make_aligned_data(t_va_info *info)
 {
 	if (info->specifier == 'c')
-		return (print_parsed_char(info, ap, count));
+		return (make_aligned_char(info));
+	if (info->specifier == 's')
+		return (make_aligned_str(info));
+	if (info->specifier == '%')
+		return (make_aligned_percent(info));
 
 	return (1);
 }
@@ -74,12 +78,14 @@ static void		init_format_parsing(const char *format, t_va_info *info,
 		{
 			if (!(parsing_format(&format, info, ap))
 				|| !(data_allocation(info, ap))
-				|| !(print_parsed_data(count, info, ap)))
+				|| !(make_aligned_data(info)))
 			{
 				(*count) = -1;
 				break ;
 			}
 			// print_parsed_data_test(info);
+			ft_putstr(info->va_data);
+			(*count) += ft_strlen(info->va_data);
 			reset_info(info);
 			continue ;
 		}
