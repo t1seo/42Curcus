@@ -6,7 +6,7 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/17 15:43:09 by tseo              #+#    #+#             */
-/*   Updated: 2020/10/22 22:38:36 by tseo             ###   ########.fr       */
+/*   Updated: 2020/10/29 09:35:07 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int		get_line(char **strs, char **line, char *ptr, int fd)
 		tmp = ft_strdup(ptr + 1);
 		free(strs[fd]);
 		strs[fd] = tmp;
-		return (SUCCESS);
+		return (1);
 	}
 	if (strs[fd] != 0)
 	{
@@ -32,7 +32,7 @@ static int		get_line(char **strs, char **line, char *ptr, int fd)
 	}
 	else
 		*line = ft_strdup("");
-	return (EOF_REACHED);
+	return (0);
 }
 
 int				get_next_line(int fd, char **line)
@@ -43,7 +43,7 @@ int				get_next_line(int fd, char **line)
 	char			*ptr;
 
 	if (fd < 0 || !line || BUFFER_SIZE < 1)
-		return (ERROR);
+		return (-1);
 	while ((ptr = ft_strchr(strs[fd], '\n')) == 0
 			&& (rd_size = read(fd, buf, BUFFER_SIZE)) > 0)
 	{
@@ -51,6 +51,6 @@ int				get_next_line(int fd, char **line)
 		strs[fd] = ft_strappend(strs[fd], buf);
 	}
 	if (rd_size < 0)
-		return (ERROR);
+		return (-1);
 	return (get_line(strs, line, ptr, fd));
 }

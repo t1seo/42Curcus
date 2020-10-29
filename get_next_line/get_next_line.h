@@ -6,7 +6,7 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/17 15:43:31 by tseo              #+#    #+#             */
-/*   Updated: 2020/10/22 22:28:10 by tseo             ###   ########.fr       */
+/*   Updated: 2020/10/29 09:35:23 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,10 @@
 # include <unistd.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 3000
+#  define BUFFER_SIZE 25
 # endif
 
-# define MAX_FD 10000
-
-# define SUCCESS 1
-# define ERROR -1
-# define EOF_REACHED 0
+# define MAX_FD 1023
 
 int			get_next_line(int fd, char **line);
 
