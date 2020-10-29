@@ -6,7 +6,7 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 09:42:42 by tseo              #+#    #+#             */
-/*   Updated: 2020/10/29 21:11:45 by tseo             ###   ########.fr       */
+/*   Updated: 2020/10/29 21:52:10 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,14 @@ int         allocate_percent(t_va_info *info);
 
 void        reset_info(t_va_info *info);
 char	    *ft_itoa_base(unsigned long int value, char const *base);
+int		    get_max(int a, int b);
 
 int		make_aligned_char(t_va_info *info);
 int		make_aligned_str(t_va_info *info);
 int		make_aligned_percent(t_va_info *info);
+int		make_aligned_ptr(t_va_info *info);
+
+
 
 
 #endif

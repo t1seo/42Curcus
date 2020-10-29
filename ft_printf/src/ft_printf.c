@@ -6,7 +6,7 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 09:42:46 by tseo              #+#    #+#             */
-/*   Updated: 2020/10/29 21:21:55 by tseo             ###   ########.fr       */
+/*   Updated: 2020/10/29 22:18:31 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ static int		make_aligned_data(t_va_info *info)
 		return (make_aligned_str(info));
 	if (info->specifier == '%')
 		return (make_aligned_percent(info));
+	if (info->specifier == 'p')
+		return (make_aligned_ptr(info));
 
 	return (1);
 }

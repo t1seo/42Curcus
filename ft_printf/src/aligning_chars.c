@@ -6,7 +6,7 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/27 15:19:10 by tseo              #+#    #+#             */
-/*   Updated: 2020/10/29 21:24:12 by tseo             ###   ########.fr       */
+/*   Updated: 2020/10/29 22:08:11 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int		make_aligned_char(t_va_info *info)
 
 	len = ft_strlen(info->va_data);
 	r_len = info->width - len;
-	if (info->width > ft_strlen(info->va_data))
+	if (info->width > len)
 	{
 		if (!(parsed_char = (char*)malloc(sizeof(char) * (info->width + 1))))
 			return (0);
