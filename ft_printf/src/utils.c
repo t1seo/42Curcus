@@ -6,11 +6,11 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/27 15:58:29 by tseo              #+#    #+#             */
-/*   Updated: 2020/10/31 01:14:24 by tseo             ###   ########.fr       */
+/*   Updated: 2020/10/31 01:18:15 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../header/ft_printf.h"
 
 void	reset_info(t_va_info *info)
 {
