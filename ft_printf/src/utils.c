@@ -6,7 +6,7 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/27 15:58:29 by tseo              #+#    #+#             */
-/*   Updated: 2020/10/31 01:18:15 by tseo             ###   ########.fr       */
+/*   Updated: 2020/10/31 01:20:23 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	handling_width_util(t_va_info *info, char *parsed_data,
 	}
 }
 
-void		make_free(char *tmp, t_va_info *info)
+void		ft_make_free(char *tmp, t_va_info *info)
 {
 	free(info->va_data);
 	info->va_data = tmp;

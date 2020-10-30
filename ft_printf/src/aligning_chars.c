@@ -6,7 +6,7 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/27 15:19:10 by tseo              #+#    #+#             */
-/*   Updated: 2020/10/31 01:14:54 by tseo             ###   ########.fr       */
+/*   Updated: 2020/10/31 01:20:40 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int				make_aligned_char(t_va_info *info)
 			ft_memmove(parsed_char, info->va_data, len);
 		else if (info->flag == 0 || info->flag == '0')
 			ft_memmove(parsed_char + r_len, info->va_data, len);
-		make_free(parsed_char, info);
+		ft_make_free(parsed_char, info);
 	}
 	return (1);
 }
@@ -46,7 +46,7 @@ int				make_aligned_str(t_va_info *info)
 		if (!(parsed_str = (char*)malloc(sizeof(char) * (info->precision + 1))))
 			return (0);
 		ft_strlcpy(parsed_str, info->va_data, info->precision);
-		make_free(parsed_str, info);
+		ft_make_free(parsed_str, info);
 	}
 	len = ft_strlen(info->va_data);
 	if (info->width > len)
@@ -59,7 +59,7 @@ int				make_aligned_str(t_va_info *info)
 			ft_memmove(parsed_str, info->va_data, len);
 		else
 			ft_memmove(parsed_str + (info->width - len), info->va_data, len);
-		make_free(parsed_str, info);
+		ft_make_free(parsed_str, info);
 	}
 	return (1);
 }
