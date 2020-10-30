@@ -6,7 +6,7 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 09:42:46 by tseo              #+#    #+#             */
-/*   Updated: 2020/10/31 03:04:39 by tseo             ###   ########.fr       */
+/*   Updated: 2020/10/31 06:28:05 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ static int		parsing_format(const char **ptr, t_va_info *info, va_list *ap)
 
 static int		data_allocation(t_va_info *info, va_list *ap)
 {
+	if (info->specifier == '%')
+		return (allocate_percent(info));
 	if (info->specifier == 'c')
 		return (allocate_char_data(info, ap));
 	if (info->specifier == 's')
@@ -39,8 +41,6 @@ static int		data_allocation(t_va_info *info, va_list *ap)
 		return (allocate_unsigned_int(info, ap));
 	if (info->specifier == 'x' || info->specifier == 'X')
 		return (allocate_hex(info, ap));
-	if (info->specifier == '%')
-		return (allocate_percent(info));
 	return (1);
 }
 
