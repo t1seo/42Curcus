@@ -6,7 +6,7 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/27 15:44:19 by tseo              #+#    #+#             */
-/*   Updated: 2020/10/31 02:35:45 by tseo             ###   ########.fr       */
+/*   Updated: 2020/10/31 02:40:19 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,17 @@ int		allocate_unsigned_int(t_va_info *info, va_list *ap)
 	unsigned int tmp;
 
 	tmp = va_arg(*ap, unsigned int);
-	if (!(info->va_data = ft_itoa_base(tmp, g_int_digits)))
-		return (0);
+	if (tmp == 0 && info->precision == 0)
+	{
+		if (!(info->va_data = (char*)malloc(sizeof(char) * 1)))
+			return (0);
+		info->va_data[0] = 0;
+	}
+	else
+	{
+		if (!(info->va_data = ft_itoa_base(tmp, g_int_digits)))
+			return (0);
+	}
 	return (1);
 }
 
@@ -50,12 +59,18 @@ int		allocate_hex(t_va_info *info, va_list *ap)
 	unsigned int tmp;
 
 	tmp = va_arg(*ap, unsigned int);
-	if (info->specifier == 'x')
+	if (tmp == 0 && info->precision == 0)
+	{
+		if (!(info->va_data = (char*)malloc(sizeof(char) * 1)))
+			return (0);
+		info->va_data[0] = 0;
+	}
+	else if (info->specifier == 'x')
 	{
 		if (!(info->va_data = ft_itoa_base(tmp, g_hex_digits_lower)))
 			return (0);
 	}
-	if (info->specifier == 'X')
+	else if (info->specifier == 'X')
 	{
 		if (!(info->va_data = ft_itoa_base(tmp, g_hex_digits_upper)))
 			return (0);
