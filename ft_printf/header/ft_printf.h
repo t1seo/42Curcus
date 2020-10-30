@@ -6,7 +6,7 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 09:42:42 by tseo              #+#    #+#             */
-/*   Updated: 2020/10/30 23:09:46 by tseo             ###   ########.fr       */
+/*   Updated: 2020/10/30 23:34:42 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ int					get_max(int a, int b);
 void				handling_width_util(t_va_info *info,
 									char *parsed_data, int len, int r_len);
 
+int					make_aligned(t_va_info *info);
 int					make_aligned_char(t_va_info *info);
 int					make_aligned_str(t_va_info *info);
 int					make_aligned_percent(t_va_info *info);

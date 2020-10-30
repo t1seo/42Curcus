@@ -16,8 +16,9 @@ SRC_NAME = ft_printf.c	\
 			allocating_pointer_data.c \
 			aligning_chars.c \
 			aligning_numbers.c \
-			aligning_pointer.c 
-			
+			aligning_pointer.c \
+			making_aligned.c
+
 SRCS = $(addprefix $(SRC_DIR)/, $(SRC_NAME))
 
 OBJ_DIR = $(SRC_DIR)
