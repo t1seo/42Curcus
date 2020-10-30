@@ -6,34 +6,34 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/27 15:19:10 by tseo              #+#    #+#             */
-/*   Updated: 2020/10/31 06:36:59 by tseo             ###   ########.fr       */
+/*   Updated: 2020/10/31 06:46:19 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/ft_printf.h"
 
-// int				make_aligned_char(void)
-// {
-// 	// char	*parsed_char;
-// 	// int		len;
-// 	// int		r_len;
+int				make_aligned_char(t_va_info *info)
+{
+	char	*parsed_char;
+	int		len;
+	int		r_len;
 
-// 	// len = ft_strlen(info->va_data);
-// 	// r_len = info->width - len;
-// 	// if (info->width > len)
-// 	// {
-// 	// 	if (!(parsed_char = (char*)malloc(sizeof(char) * (info->width))))
-// 	// 		return (0);
-// 	// 	ft_memset(parsed_char, ' ', info->width - 1);
-// 	// 	parsed_char[info->width - 1] = 0;
-// 	// 	if (info->flag == '-')
-// 	// 		ft_memmove(parsed_char, info->va_data, len);
-// 	// 	else if (info->flag == 0 || info->flag == '0')
-// 	// 		ft_memmove(parsed_char + r_len, info->va_data, len);
-// 	// 	ft_make_free(parsed_char, info);
-// 	// }
-// 	return (1);
-// }
+	len = ft_strlen(info->va_data);
+	r_len = info->width - len;
+	if (info->width > len)
+	{
+		if (!(parsed_char = (char*)malloc(sizeof(char) * (info->width))))
+			return (0);
+		ft_memset(parsed_char, ' ', info->width - 1);
+		parsed_char[info->width - 1] = 0;
+		if (info->flag == '-')
+			ft_memmove(parsed_char, info->va_data, len);
+		else if (info->flag == 0 || info->flag == '0')
+			ft_memmove(parsed_char + r_len, info->va_data, len);
+		ft_make_free(parsed_char, info);
+	}
+	return (1);
+}
 
 
 
