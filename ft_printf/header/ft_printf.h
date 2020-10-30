@@ -6,7 +6,7 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 09:42:42 by tseo              #+#    #+#             */
-/*   Updated: 2020/10/30 23:04:00 by tseo             ###   ########.fr       */
+/*   Updated: 2020/10/30 23:05:10 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@
 
 typedef struct		s_va_info
 {
-    char			flag;
-    int				width;
-    int				precision;
-    char			specifier;
-    char			*va_data;
+	char			flag;
+	int				width;
+	int				precision;
+	char			specifier;
+	char			*va_data;
 }					t_va_info;
 
 extern char const	*g_format_type;
