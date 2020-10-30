@@ -6,7 +6,7 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/27 15:41:55 by tseo              #+#    #+#             */
-/*   Updated: 2020/10/29 13:17:00 by tseo             ###   ########.fr       */
+/*   Updated: 2020/10/31 00:46:43 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,15 @@
 
 int		allocate_char_data(t_va_info *info, va_list *ap)
 {
+	char tmp;
+
 	if (!(info->va_data = (char*)malloc(sizeof(char) * 2)))
 		return (0);
-	info->va_data[0] = va_arg(*ap, int);
+	tmp = va_arg(*ap, int);
+	if (!tmp)
+		info->va_data[0] = '\x00';
+	else
+		info->va_data[0] = tmp;
 	info->va_data[1] = 0;
 	return (1);
 }
