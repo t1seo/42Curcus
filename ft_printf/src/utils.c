@@ -6,7 +6,7 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/27 15:58:29 by tseo              #+#    #+#             */
-/*   Updated: 2020/10/30 22:55:13 by tseo             ###   ########.fr       */
+/*   Updated: 2020/10/30 23:08:18 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int		get_max(int a, int b)
 		return (b);
 }
 
-int		handling_width_util(t_va_info *info, char *parsed_data,
+void	handling_width_util(t_va_info *info, char *parsed_data,
 							int len, int r_len)
 {
 	if (info->precision == -1 && info->flag == '0')
