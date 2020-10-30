@@ -6,7 +6,7 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 09:42:42 by tseo              #+#    #+#             */
-/*   Updated: 2020/10/30 23:05:10 by tseo             ###   ########.fr       */
+/*   Updated: 2020/10/30 23:05:52 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,10 @@ extern char const	*g_int_digits;
 int					ft_printf(const char *format, ...);
 
 void				parsing_flag(const char **ptr, t_va_info *info);
-void				parsing_width(const char **ptr, t_va_info *info, va_list *ap);
-void				parsing_precision(const char **ptr, t_va_info *info, va_list *ap);
+void				parsing_width(const char **ptr,
+								t_va_info *info, va_list *ap);
+void				parsing_precision(const char **ptr,
+								t_va_info *info, va_list *ap);
 int					parsing_specifier(const char **ptr, t_va_info *info);
 
 int					allocate_char_data(t_va_info *info, va_list *ap);
