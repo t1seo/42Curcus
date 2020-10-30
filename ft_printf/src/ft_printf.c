@@ -6,7 +6,7 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 09:42:46 by tseo              #+#    #+#             */
-/*   Updated: 2020/10/31 03:03:29 by tseo             ###   ########.fr       */
+/*   Updated: 2020/10/31 03:04:39 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ static void		init_format_parsing(const char *format, t_va_info *info,
 				(*count) = -1;
 				break ;
 			}
-			ft_putstr_fd(info->va_data, ft_strlen(info->va_data));
+			ft_putstr(info->va_data);
 			(*count) += ft_strlen(info->va_data);
 			reset_info(info);
 			continue ;
