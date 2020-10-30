@@ -6,7 +6,7 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/27 15:43:59 by tseo              #+#    #+#             */
-/*   Updated: 2020/10/29 13:16:41 by tseo             ###   ########.fr       */
+/*   Updated: 2020/10/30 22:40:44 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int		allocate_pointer_data(t_va_info *info, va_list *ap)
 	char				*hex_data;
 
 	tmp = (unsigned long)va_arg(*ap, void*);
-	if (!(hex_data = ft_itoa_base(tmp, hex_digits_lower)))
+	if (!(hex_data = ft_itoa_base(tmp, g_hex_digits_lower)))
 		return (0);
 	if (!(info->va_data = ft_strjoin("0x", hex_data)))
 	{

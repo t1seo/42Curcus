@@ -6,7 +6,7 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 09:42:42 by tseo              #+#    #+#             */
-/*   Updated: 2020/10/30 22:06:43 by tseo             ###   ########.fr       */
+/*   Updated: 2020/10/30 22:54:22 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,9 @@ typedef struct      s_va_info
 }                   t_va_info;
 
 extern char const   *g_format_type;
-extern char const   *hex_digits_lower;
-extern char const   *hex_digits_upper;
+extern char const   *g_hex_digits_lower;
+extern char const   *g_hex_digits_upper;
+extern char const	*g_int_digits;
 
 int                 ft_printf(const char *format, ...);
 
@@ -47,6 +48,8 @@ int                 allocate_percent(t_va_info *info);
 void                reset_info(t_va_info *info);
 char                *ft_itoa_base(unsigned long int value, char const *base);
 int                 get_max(int a, int b);
+int                 handling_width_util(t_va_info *info, 
+                                        char *parsed_data, int len, int r_len);
 
 int                 make_aligned_char(t_va_info *info);
 int                 make_aligned_str(t_va_info *info);

@@ -6,13 +6,13 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 09:42:46 by tseo              #+#    #+#             */
-/*   Updated: 2020/10/30 22:07:24 by tseo             ###   ########.fr       */
+/*   Updated: 2020/10/30 22:26:51 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/ft_printf.h"
 
-char const *g_format_type = "cspdiuxX%";
+char const		*g_format_type = "cspdiuxX%";
 
 static int		parsing_format(const char **ptr, t_va_info *info, va_list *ap)
 {
@@ -58,14 +58,13 @@ static int		make_aligned_data(t_va_info *info)
 		return (make_aligned_int(info));
 	if (info->specifier == 'u')
 		return (make_aligned_uint(info));
-	if (info->specifier == 'x' || info->specifier =='X')
+	if (info->specifier == 'x' || info->specifier == 'X')
 		return (make_aligned_hex(info));
 	return (1);
 }
 
-
 static void		init_format_parsing(const char *format, t_va_info *info,
-									 va_list *ap, int *count)
+									va_list *ap, int *count)
 {
 	while (*format)
 	{
@@ -90,15 +89,14 @@ static void		init_format_parsing(const char *format, t_va_info *info,
 	free(info);
 }
 
-int			ft_printf(const char *format, ...)
+int				ft_printf(const char *format, ...)
 {
 	int			ret;
 	va_list		ap;
-	t_va_info *info;
+	t_va_info	*info;
 
 	if (!ft_strlen(format))
 		return (0);
-
 	ret = 0;
 	if (!(info = (t_va_info*)malloc(sizeof(t_va_info))))
 		return (-1);

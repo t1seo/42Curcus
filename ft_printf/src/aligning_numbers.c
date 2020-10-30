@@ -6,16 +6,65 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/27 15:44:50 by tseo              #+#    #+#             */
-/*   Updated: 2020/10/30 22:09:53 by tseo             ###   ########.fr       */
+/*   Updated: 2020/10/30 22:56:50 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/ft_printf.h"
-#include <stdio.h>
 
-int		make_aligned_int(t_va_info *info)
+static int	handling_precision(t_va_info *info, int len, int r_len)
 {
-	char *parsed_int;
+	char *parsed_data;
+
+	if (info->va_data[0] == '-')
+	{
+		if (!(parsed_data = (char*)malloc(sizeof(char)
+							* (info->precision + 2))))
+			return (0);
+		ft_memset(parsed_data, '0', info->precision);
+		parsed_data[info->precision + 1] = 0;
+		ft_memmove(parsed_data + r_len + 2, info->va_data + 1, len - 1);
+		parsed_data[0] = '-';
+	}
+	else
+	{
+		if (!(parsed_data = (char*)malloc(sizeof(char)
+							* (info->precision + 1))))
+			return (0);
+		ft_memset(parsed_data, '0', info->precision);
+		parsed_data[info->precision] = 0;
+		ft_memmove(parsed_data + r_len, info->va_data, len);
+	}
+	free(info->va_data);
+	info->va_data = parsed_data;
+	parsed_data = 0;
+	return (1);
+}
+
+static int	handling_width(t_va_info *info, int len, int r_len)
+{
+	char *parsed_data;
+
+	if (!(parsed_data = (char*)malloc(sizeof(char) * (info->width + 1))))
+		return (0);
+	parsed_data[info->width] = 0;
+	if (info->flag == '-')
+	{
+		ft_memset(parsed_data, ' ', info->width);
+		ft_memmove(parsed_data, info->va_data, len);
+	}
+	else if (info->flag == 0 || info->flag == '0')
+	{
+		handling_width_util(info, parsed_data, len, r_len);
+	}
+	free(info->va_data);
+	info->va_data = parsed_data;
+	parsed_data = 0;
+	return (1);
+}
+
+int			make_aligned_int(t_va_info *info)
+{
 	int len;
 	int r_len;
 
@@ -23,76 +72,29 @@ int		make_aligned_int(t_va_info *info)
 	if (info->precision > len)
 	{
 		r_len = info->precision - len;
-		if (info->va_data[0] == '-')
-		{
-			if (!(parsed_int = (char*)malloc(sizeof(char) * (info->precision + 2))))
-				return (0);
-			ft_memset(parsed_int, '0', info->precision);
-			parsed_int[info->precision + 1] = 0;
-			ft_memmove(parsed_int + r_len + 2, info->va_data + 1, len - 1);
-			parsed_int[0] = '-';
-		}
-		else
-		{
-			if (!(parsed_int = (char*)malloc(sizeof(char) * (info->precision + 1))))
-				return (0);
-			ft_memset(parsed_int, '0', info->precision);
-			parsed_int[info->precision] = 0;
-			ft_memmove(parsed_int + r_len, info->va_data, len);
-		}
-		free(info->va_data);
-		info->va_data = parsed_int;
-		parsed_int = 0;
+		if (!(handling_precision(info, len, r_len)))
+			return (0);
 	}
 	if (info->width > len && info->width > info->precision)
 	{
 		len = ft_strlen(info->va_data);
 		r_len = info->width - len;
-		if (!(parsed_int = (char*)malloc(sizeof(char) * (info->width + 1))))
+		if (!(handling_width(info, len, r_len)))
 			return (0);
-		parsed_int[info->width] = 0;
-		if (info->flag == '-')
-		{
-			ft_memset(parsed_int, ' ', info->width);
-			ft_memmove(parsed_int, info->va_data, len);
-		}
-		else if (info->flag == 0 || info->flag == '0')
-		{
-			if (info->precision == -1 && info->flag == '0')
-			{
-				ft_memset(parsed_int, '0', info->width);
-				if (info->va_data[0] == '-')
-				{
-					ft_memmove(parsed_int + r_len + 1, info->va_data + 1, len - 1);
-					parsed_int[0] = '-';
-				}
-				else
-					ft_memmove(parsed_int + r_len, info->va_data, len);
-			}
-			else
-			{
-				ft_memset(parsed_int, ' ', info->width);
-				ft_memmove(parsed_int + r_len, info->va_data, len);
-			}
-		}
-		free(info->va_data);
-		info->va_data = parsed_int;
-		parsed_int = 0;
 	}
 	return (1);
 }
 
-
-int		make_aligned_uint(t_va_info *info)
+int			make_aligned_uint(t_va_info *info)
 {
 	if (!(make_aligned_int(info)))
 		return (0);
 	return (1);
 }
 
-int     make_aligned_hex(t_va_info *info)
+int			make_aligned_hex(t_va_info *info)
 {
-		if (!(make_aligned_int(info)))
+	if (!(make_aligned_int(info)))
 		return (0);
 	return (1);
 }

@@ -6,13 +6,12 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 14:15:02 by tseo              #+#    #+#             */
-/*   Updated: 2020/10/29 13:16:11 by tseo             ###   ########.fr       */
+/*   Updated: 2020/10/30 22:20:22 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/ft_printf.h"
 
-// printf에서 -와 0을 동시에 flag 옵션을 주면 - 우선
 void		parsing_flag(const char **ptr, t_va_info *info)
 {
 	if (**ptr == '-' || **ptr == '0')
@@ -28,9 +27,6 @@ void		parsing_flag(const char **ptr, t_va_info *info)
 	}
 }
 
-// width * -> 가변인자
-// 양수 : 오른쪽 정렬
-// 음수 : 왼쪽 정렬
 void		parsing_width(const char **ptr, t_va_info *info, va_list *ap)
 {
 	if (**ptr == '*')
@@ -49,9 +45,6 @@ void		parsing_width(const char **ptr, t_va_info *info, va_list *ap)
 		(*ptr)++;
 }
 
-// precision
-// 정수(d, i): 오른쪽 정렬하고 0으로 채운다
-// 음수가 할당되면 무시된다.
 void		parsing_precision(const char **ptr, t_va_info *info, va_list *ap)
 {
 	if (**ptr != '.')
@@ -73,7 +66,7 @@ void		parsing_precision(const char **ptr, t_va_info *info, va_list *ap)
 		(*ptr)++;
 }
 
-int	parsing_specifier(const char **ptr, t_va_info *info)
+int			parsing_specifier(const char **ptr, t_va_info *info)
 {
 	const char *format_type;
 
