@@ -17,7 +17,8 @@ SRC_NAME = ft_printf.c	\
 			aligning_chars.c \
 			aligning_numbers.c \
 			aligning_pointer.c \
-			making_aligned.c
+			making_aligned.c \
+			print_char_data.c
 
 SRCS = $(addprefix $(SRC_DIR)/, $(SRC_NAME))
 

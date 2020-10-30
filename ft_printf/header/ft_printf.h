@@ -6,7 +6,7 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 09:42:42 by tseo              #+#    #+#             */
-/*   Updated: 2020/10/31 06:24:05 by tseo             ###   ########.fr       */
+/*   Updated: 2020/10/31 06:37:05 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void				ft_make_free(char *tmp, t_va_info *info);
 void				print_char_data(t_va_info *info, int *count);
 
 int					make_aligned(t_va_info *info);
-int					make_aligned_char(t_va_info *info);
+// int					make_aligned_char(t_va_info *info);
 int					make_aligned_str(t_va_info *info);
 int					make_aligned_percent(t_va_info *info);
 int					make_aligned_ptr(t_va_info *info);
