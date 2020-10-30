@@ -6,7 +6,7 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/27 15:44:19 by tseo              #+#    #+#             */
-/*   Updated: 2020/10/31 05:16:30 by tseo             ###   ########.fr       */
+/*   Updated: 2020/10/31 05:20:35 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int		allocate_signed_int(t_va_info *info, va_list *ap)
 	int tmp;
 
 	tmp = va_arg(*ap, int);
-	if (tmp == 0 && info->precision == -1)
+	if (tmp == 0 && info->precision == 0)
 	{
 		if (!(info->va_data = (char*)malloc(sizeof(char) * 1)))
 			return (0);
@@ -47,7 +47,7 @@ int		allocate_unsigned_int(t_va_info *info, va_list *ap)
 	unsigned int tmp;
 
 	tmp = va_arg(*ap, unsigned int);
-	if (tmp == 0 && info->precision == -1)
+	if (tmp == 0 && info->precision == 0)
 	{
 		if (!(info->va_data = (char*)malloc(sizeof(char) * 1)))
 			return (0);
@@ -73,7 +73,7 @@ int		allocate_hex(t_va_info *info, va_list *ap)
 	unsigned int tmp;
 
 	tmp = va_arg(*ap, unsigned int);
-	if (tmp == 0 && info->precision == -1)
+	if (tmp == 0 && info->precision == 0)
 	{
 		if (!(info->va_data = (char*)malloc(sizeof(char) * 1)))
 			return (0);
