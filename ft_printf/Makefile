@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = 
+CFLAGS = -Wall -Wextra -Werror
 
 LIB_DIR = ./libft
 
