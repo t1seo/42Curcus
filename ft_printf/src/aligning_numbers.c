@@ -6,7 +6,7 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/27 15:44:50 by tseo              #+#    #+#             */
-/*   Updated: 2020/10/30 22:00:08 by tseo             ###   ########.fr       */
+/*   Updated: 2020/10/30 22:09:53 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,6 @@ int		make_aligned_int(t_va_info *info)
 		}
 		else if (info->flag == 0 || info->flag == '0')
 		{
-			// printf("HELLO\n");
-			// printf("flag : %d\n", info->flag);
-			// printf("precision : %d\n", info->precision);
 			if (info->precision == -1 && info->flag == '0')
 			{
 				ft_memset(parsed_int, '0', info->width);

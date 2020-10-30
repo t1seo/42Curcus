@@ -6,25 +6,13 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 09:42:46 by tseo              #+#    #+#             */
-/*   Updated: 2020/10/30 22:00:39 by tseo             ###   ########.fr       */
+/*   Updated: 2020/10/30 22:07:24 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/ft_printf.h"
-#include <stdio.h>
 
 char const *g_format_type = "cspdiuxX%";
-
-// TEST function
-void print_parsed_data_test(t_va_info *info)
-{
-	printf("\n");
-	printf("flag : %c\n", info->flag);
-	printf("width : %d\n", info->width);
-	printf("precision : %d\n", info->precision);
-	printf("specifier : %c\n", info->specifier);
-	printf("va_data : %s\n", info->va_data);
-}
 
 static int		parsing_format(const char **ptr, t_va_info *info, va_list *ap)
 {
@@ -72,7 +60,6 @@ static int		make_aligned_data(t_va_info *info)
 		return (make_aligned_uint(info));
 	if (info->specifier == 'x' || info->specifier =='X')
 		return (make_aligned_hex(info));
-
 	return (1);
 }
 
@@ -91,7 +78,6 @@ static void		init_format_parsing(const char *format, t_va_info *info,
 				(*count) = -1;
 				break ;
 			}
-			// print_parsed_data_test(info);
 			ft_putstr(info->va_data);
 			(*count) += ft_strlen(info->va_data);
 			reset_info(info);
@@ -120,6 +106,5 @@ int			ft_printf(const char *format, ...)
 	va_start(ap, format);
 	init_format_parsing(format, info, &ap, &ret);
 	va_end(ap);
-
 	return (ret);
 }
