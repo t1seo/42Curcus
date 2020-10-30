@@ -6,13 +6,13 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/27 15:19:10 by tseo              #+#    #+#             */
-/*   Updated: 2020/10/31 00:33:38 by tseo             ###   ########.fr       */
+/*   Updated: 2020/10/31 01:14:54 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/ft_printf.h"
 
-int		make_aligned_char(t_va_info *info)
+int				make_aligned_char(t_va_info *info)
 {
 	char	*parsed_char;
 	int		len;
@@ -30,21 +30,41 @@ int		make_aligned_char(t_va_info *info)
 			ft_memmove(parsed_char, info->va_data, len);
 		else if (info->flag == 0 || info->flag == '0')
 			ft_memmove(parsed_char + r_len, info->va_data, len);
-		free(info->va_data);
-		info->va_data = parsed_char;
-		parsed_char = 0;
+		make_free(parsed_char, info);
 	}
 	return (1);
 }
 
-int		make_aligned_str(t_va_info *info)
+int				make_aligned_str(t_va_info *info)
 {
-	if (!(make_aligned_char(info)))
-		return (0);
+	char	*parsed_str;
+	int		len;
+
+	len = ft_strlen(info->va_data);
+	if (info->precision < len)
+	{
+		if (!(parsed_str = (char*)malloc(sizeof(char) * (info->precision + 1))))
+			return (0);
+		ft_strlcpy(parsed_str, info->va_data, info->precision);
+		make_free(parsed_str, info);
+	}
+	len = ft_strlen(info->va_data);
+	if (info->width > len)
+	{
+		if (!(parsed_str = (char*)malloc(sizeof(char) * (info->width + 1))))
+			return (0);
+		parsed_str[info->width] = 0;
+		ft_memset(parsed_str, 0, info->width);
+		if (info->flag == '-')
+			ft_memmove(parsed_str, info->va_data, len);
+		else
+			ft_memmove(parsed_str + (info->width - len), info->va_data, len);
+		make_free(parsed_str, info);
+	}
 	return (1);
 }
 
-int		make_aligned_percent(t_va_info *info)
+int				make_aligned_percent(t_va_info *info)
 {
 	if (!(make_aligned(info)))
 		return (0);

@@ -6,7 +6,7 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/27 15:58:29 by tseo              #+#    #+#             */
-/*   Updated: 2020/10/30 23:08:18 by tseo             ###   ########.fr       */
+/*   Updated: 2020/10/31 01:14:24 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,4 +74,11 @@ void	handling_width_util(t_va_info *info, char *parsed_data,
 		ft_memset(parsed_data, ' ', info->width);
 		ft_memmove(parsed_data + r_len, info->va_data, len);
 	}
+}
+
+void		make_free(char *tmp, t_va_info *info)
+{
+	free(info->va_data);
+	info->va_data = tmp;
+	tmp = 0;
 }
