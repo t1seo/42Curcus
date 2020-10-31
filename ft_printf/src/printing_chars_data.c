@@ -6,7 +6,7 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/31 19:21:53 by tseo              #+#    #+#             */
-/*   Updated: 2020/10/31 19:44:55 by tseo             ###   ########.fr       */
+/*   Updated: 2020/10/31 20:46:49 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,26 @@ void				print_percent_data(t_va_info *info, int *count)
 		write_padding(info->flag, info->width - 1, count);
 		write(1, &"%%", 1);
 		(*count)++;
+	}
+}
+
+void				print_str_data(t_va_info *info, int *count)
+{
+	int len;
+
+	len = ft_strlen(info->va_data);
+	if (info->precision != -1 && info->precision < len)
+		len = info->precision;
+	if (info->flag == '-')
+	{
+		write(1, info->va_data, len);
+		(*count) += len;
+		write_padding(' ', info->width - len, count);
+	}
+	else
+	{
+		write_padding(' ', info->width - len, count);
+		write(1, info->va_data, len);
+		(*count) += len;
 	}
 }

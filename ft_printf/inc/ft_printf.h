@@ -6,7 +6,7 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 09:42:42 by tseo              #+#    #+#             */
-/*   Updated: 2020/10/31 19:27:22 by tseo             ###   ########.fr       */
+/*   Updated: 2020/10/31 20:10:57 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void				write_padding(char padding, int size, int *count);
 */
 void				print_char_data(t_va_info *info, int *count);
 void				print_percent_data(t_va_info *info, int *count);
-
+void				print_str_data(t_va_info *info, int *count);
 
 
 
