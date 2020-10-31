@@ -6,11 +6,11 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 14:15:02 by tseo              #+#    #+#             */
-/*   Updated: 2020/10/30 22:20:22 by tseo             ###   ########.fr       */
+/*   Updated: 2020/10/31 18:50:33 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../header/ft_printf.h"
+#include "../inc/ft_printf.h"
 
 void		parsing_flag(const char **ptr, t_va_info *info)
 {

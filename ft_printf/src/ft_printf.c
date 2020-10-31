@@ -6,11 +6,12 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 09:42:46 by tseo              #+#    #+#             */
-/*   Updated: 2020/10/31 06:46:50 by tseo             ###   ########.fr       */
+/*   Updated: 2020/10/31 19:26:34 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../header/ft_printf.h"
+#include "../inc/ft_printf.h"
+#include <stdio.h>
 
 char const		*g_format_type = "cspdiuxX%";
 
@@ -44,65 +45,60 @@ static int		data_allocation(t_va_info *info, va_list *ap)
 	return (1);
 }
 
-static int		make_aligned_data(t_va_info *info)
+static void		print_data(t_va_info *info, int *count)
 {
 	if (info->specifier == 'c')
-		return (make_aligned_char(info));
-	if (info->specifier == 's')
-		return (make_aligned_str(info));
+		print_char_data(info, count);
 	if (info->specifier == '%')
-		return (make_aligned_percent(info));
-	if (info->specifier == 'p')
-		return (make_aligned_ptr(info));
-	if (info->specifier == 'd' || info->specifier == 'i')
-		return (make_aligned_int(info));
-	if (info->specifier == 'u')
-		return (make_aligned_uint(info));
-	if (info->specifier == 'x' || info->specifier == 'X')
-		return (make_aligned_hex(info));
-	return (1);
+		print_percent_data(info, count);
+	// printf("info->flag : %c\n", info->flag);
+	// printf("info->width : %d\n", info->width);
+	// printf("info->precision : %d\n", info->precision);
+	// printf("info->specifier : %c\n", info->specifier);
+	// printf("info->va_data : %s\n", info->va_data);
+	// printf("count : %d\n", *count);
 }
 
-static void		init_format_parsing(const char *format, t_va_info *info,
-									va_list *ap, int *count)
+
+static int		init_format_parsing(const char *format, va_list *ap)
 {
+	int			count;
+	t_va_info	*info;
+
+	if (!ft_strlen(format))
+		return (0);
+	if (!(info = (t_va_info*)malloc(sizeof(t_va_info))))
+		return (-1);
+	count = 0;
 	while (*format)
 	{
+		reset_info(info);
 		if ((*format) == '%')
 		{
 			if (!(parsing_format(&format, info, ap))
-				|| !(data_allocation(info, ap))
-				|| !(make_aligned_data(info)))
+				|| !(data_allocation(info, ap)))
 			{
-				(*count) = -1;
+				count = -1;
 				break ;
 			}
-			ft_putstr(info->va_data);
-			(*count) += ft_strlen(info->va_data);
-			reset_info(info);
+			print_data(info, &count);
 			continue ;
 		}
 		write(1, format++, 1);
-		(*count)++;
+		count++;
 	}
 	reset_info(info);
 	free(info);
+	return (count);
 }
 
 int				ft_printf(const char *format, ...)
 {
 	int			ret;
 	va_list		ap;
-	t_va_info	*info;
 
-	if (!ft_strlen(format))
-		return (0);
-	ret = 0;
-	if (!(info = (t_va_info*)malloc(sizeof(t_va_info))))
-		return (-1);
-	reset_info(info);
 	va_start(ap, format);
-	init_format_parsing(format, info, &ap, &ret);
+	ret = init_format_parsing(format, &ap);
 	va_end(ap);
 	return (ret);
 }

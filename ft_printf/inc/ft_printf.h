@@ -6,14 +6,14 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 09:42:42 by tseo              #+#    #+#             */
-/*   Updated: 2020/10/31 06:45:54 by tseo             ###   ########.fr       */
+/*   Updated: 2020/10/31 19:27:22 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-# include "../libft/libft.h"
+# include "../lib/libft.h"
 # include <stdarg.h>
 
 typedef struct		s_va_info
@@ -49,10 +49,21 @@ int					allocate_percent(t_va_info *info);
 
 void				reset_info(t_va_info *info);
 char				*ft_itoa_base(unsigned long int value, char const *base);
-int					get_max(int a, int b);
-void				handling_width_util(t_va_info *info,
-									char *parsed_data, int len, int r_len);
+void				write_padding(char padding, int size, int *count);
 
+/*
+** Printing Data
+*/
+void				print_char_data(t_va_info *info, int *count);
+void				print_percent_data(t_va_info *info, int *count);
+
+
+
+
+
+/*
+**  TEMP
+*/
 void				ft_make_free(char *tmp, t_va_info *info);
 void				print_char_data(t_va_info *info, int *count);
 

@@ -5,18 +5,22 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/27 15:58:29 by tseo              #+#    #+#             */
-/*   Updated: 2020/10/31 05:17:08 by tseo             ###   ########.fr       */
+/*   Created: 2020/10/31 18:47:57 by tseo              #+#    #+#             */
+/*   Updated: 2020/10/31 19:36:25 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../header/ft_printf.h"
+#include "../inc/ft_printf.h"
 
 void	reset_info(t_va_info *info)
 {
 	if (!(info->va_data))
 		free(info->va_data);
-	ft_memset(info, 0, sizeof(t_va_info));
+	info->flag = 0;
+	info->width = -1;
+	info->precision = -1;
+	info->specifier = 0;
+	info->va_data = 0;
 }
 
 char	*ft_itoa_base(unsigned long int value, char const *base)
@@ -47,38 +51,14 @@ char	*ft_itoa_base(unsigned long int value, char const *base)
 	return (ret);
 }
 
-int		get_max(int a, int b)
+void	write_padding(char padding, int size, int *count)
 {
-	if (a > b)
-		return (a);
-	else
-		return (b);
-}
-
-void	handling_width_util(t_va_info *info, char *parsed_data,
-							int len, int r_len)
-{
-	if (info->precision == -1 && info->flag == '0')
+	if (padding == 0)
+		padding = ' ';
+	while (size > 0)
 	{
-		ft_memset(parsed_data, '0', info->width);
-		if (info->va_data[0] == '-')
-		{
-			ft_memmove(parsed_data + r_len + 1, info->va_data + 1, len - 1);
-			parsed_data[0] = '-';
-		}
-		else
-			ft_memmove(parsed_data + r_len, info->va_data, len);
+		write(1, &padding, 1);
+		(*count)++;
+		size--;
 	}
-	else
-	{
-		ft_memset(parsed_data, ' ', info->width);
-		ft_memmove(parsed_data + r_len, info->va_data, len);
-	}
-}
-
-void	ft_make_free(char *tmp, t_va_info *info)
-{
-	free(info->va_data);
-	info->va_data = tmp;
-	tmp = 0;
 }

@@ -1,9 +1,9 @@
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 
-LIB_DIR = ./libft
+LIB_DIR = ./lib
 
-INC = -I./libft -I./header
+INC = -I./lib -I./inc
 
 NAME = libftprintf.a
 
@@ -14,11 +14,8 @@ SRC_NAME = ft_printf.c	\
 			allocating_chars_data.c \
 			allocating_numbers_data.c \
 			allocating_pointer_data.c \
-			aligning_chars.c \
-			aligning_numbers.c \
-			aligning_pointer.c \
-			making_aligned.c \
-			print_char_data.c
+			printing_chars_data.c
+
 
 SRCS = $(addprefix $(SRC_DIR)/, $(SRC_NAME))
 
@@ -37,11 +34,11 @@ $(OBJ_DIR)/%.o : $(SRC_DIR)/%.c
 all : $(NAME)
 
 clean :
-	$(MAKE) -C ./libft clean
+	$(MAKE) -C ./lib clean
 	rm -rf $(OBJS)
 
 fclean :
-	$(MAKE) -C ./libft fclean
+	$(MAKE) -C ./lib fclean
 	rm -rf $(NAME) $(OBJS)
 
 re : fclean all
