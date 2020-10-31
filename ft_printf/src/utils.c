@@ -6,7 +6,7 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/31 18:47:57 by tseo              #+#    #+#             */
-/*   Updated: 2020/10/31 19:36:25 by tseo             ###   ########.fr       */
+/*   Updated: 2020/10/31 22:21:11 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,12 @@ char	*ft_itoa_base(unsigned long int value, char const *base)
 		n /= len;
 	}
 	return (ret);
+}
+
+void	write_letters(char *str, int len, int *count)
+{
+	write(1, str, len);
+	(*count) += len;
 }
 
 void	write_padding(char padding, int size, int *count)

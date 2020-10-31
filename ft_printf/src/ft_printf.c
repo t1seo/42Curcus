@@ -6,7 +6,7 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 09:42:46 by tseo              #+#    #+#             */
-/*   Updated: 2020/10/31 21:39:48 by tseo             ###   ########.fr       */
+/*   Updated: 2020/10/31 22:01:15 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,12 +55,13 @@ static void		print_data(t_va_info *info, int *count)
 		print_str_data(info, count);
 	if (info->specifier == 'p')
 		print_ptr_data(info, count);
-	// printf("info->flag : %c\n", info->flag);
-	// printf("info->width : %d\n", info->width);
-	// printf("info->precision : %d\n", info->precision);
-	// printf("info->specifier : %c\n", info->specifier);
-	// printf("info->va_data : %s\n", info->va_data);
-	// printf("count : %d\n", *count);
+	if (info->specifier == 'd'
+		|| info->specifier == 'i'
+		|| info->specifier == 'u'
+		|| info->specifier == 'd'
+		|| info->specifier == 'x'
+		|| info->specifier == 'X')
+		print_num_data(info, count);
 }
 
 

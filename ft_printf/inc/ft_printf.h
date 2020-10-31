@@ -6,7 +6,7 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 09:42:42 by tseo              #+#    #+#             */
-/*   Updated: 2020/10/31 21:43:42 by tseo             ###   ########.fr       */
+/*   Updated: 2020/10/31 22:21:33 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ int					allocate_percent(t_va_info *info);
 
 void				reset_info(t_va_info *info);
 char				*ft_itoa_base(unsigned long int value, char const *base);
+void				write_letters(char *str, int len, int *count);
 void				write_padding(char padding, int size, int *count);
 
 /*
@@ -58,6 +59,7 @@ void				print_char_data(t_va_info *info, int *count);
 void				print_percent_data(t_va_info *info, int *count);
 void				print_str_data(t_va_info *info, int *count);
 void				print_ptr_data(t_va_info *info, int *count);
+void				print_num_data(t_va_info *info, int *count);
 
 
 
