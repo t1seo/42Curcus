@@ -6,7 +6,7 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 09:42:42 by tseo              #+#    #+#             */
-/*   Updated: 2020/10/31 22:21:33 by tseo             ###   ########.fr       */
+/*   Updated: 2020/11/01 17:39:39 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,35 +47,15 @@ int					allocate_unsigned_int(t_va_info *info, va_list *ap);
 int					allocate_hex(t_va_info *info, va_list *ap);
 int					allocate_percent(t_va_info *info);
 
-void				reset_info(t_va_info *info);
-char				*ft_itoa_base(unsigned long int value, char const *base);
-void				write_letters(char *str, int len, int *count);
-void				write_padding(char padding, int size, int *count);
-
-/*
-** Printing Data
-*/
 void				print_char_data(t_va_info *info, int *count);
 void				print_percent_data(t_va_info *info, int *count);
 void				print_str_data(t_va_info *info, int *count);
 void				print_ptr_data(t_va_info *info, int *count);
 void				print_num_data(t_va_info *info, int *count);
 
-
-
-/*
-**  TEMP
-*/
-void				ft_make_free(char *tmp, t_va_info *info);
-void				print_char_data(t_va_info *info, int *count);
-
-int					make_aligned(t_va_info *info);
-int					make_aligned_char(t_va_info *info);
-int					make_aligned_str(t_va_info *info);
-int					make_aligned_percent(t_va_info *info);
-int					make_aligned_ptr(t_va_info *info);
-int					make_aligned_int(t_va_info *info);
-int					make_aligned_uint(t_va_info *info);
-int					make_aligned_hex(t_va_info *info);
+void				reset_info(t_va_info *info);
+char				*ft_itoa_base(unsigned long int value, char const *base);
+void				write_letters(char *str, int len, int *count);
+void				write_padding(char padding, int size, int *count);
 
 #endif

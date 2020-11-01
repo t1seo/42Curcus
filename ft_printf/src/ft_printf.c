@@ -6,7 +6,7 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 09:42:46 by tseo              #+#    #+#             */
-/*   Updated: 2020/10/31 22:01:15 by tseo             ###   ########.fr       */
+/*   Updated: 2020/11/01 17:53:49 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,16 +64,11 @@ static void		print_data(t_va_info *info, int *count)
 		print_num_data(info, count);
 }
 
-
-static int		init_format_parsing(const char *format, va_list *ap)
+static int		init_format_parsing(const char *format, va_list *ap,
+									t_va_info *info)
 {
 	int			count;
-	t_va_info	*info;
 
-	if (!ft_strlen(format))
-		return (0);
-	if (!(info = (t_va_info*)malloc(sizeof(t_va_info))))
-		return (-1);
 	count = 0;
 	while (*format)
 	{
@@ -101,9 +96,14 @@ int				ft_printf(const char *format, ...)
 {
 	int			ret;
 	va_list		ap;
+	t_va_info	*info;
 
+	if (!(info = (t_va_info*)malloc(sizeof(t_va_info))))
+		return (-1);
+	if (!ft_strlen(format))
+		return (0);
 	va_start(ap, format);
-	ret = init_format_parsing(format, &ap);
+	ret = init_format_parsing(format, &ap, info);
 	va_end(ap);
 	return (ret);
 }
