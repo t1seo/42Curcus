@@ -5,38 +5,89 @@
 #                                                     +:+ +:+         +:+      #
 #    By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2020/10/06 20:28:28 by tseo              #+#    #+#              #
-#    Updated: 2020/10/23 21:56:37 by tseo             ###   ########.fr        #
+#    Created: 2020/11/01 18:15:22 by tseo              #+#    #+#              #
+#    Updated: 2020/11/01 18:17:01 by tseo             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
-HEADER = libft.h
-CFLAGS = -Wall -Wextra -Werror
+
 CC = gcc
-AR = ar rc
+CFLAGS = -Wall -Wextra -Werror
+AR = ar rcs
 RM = rm -f
 
-BSRCS = $(wildcard *lst*.c)
-SRCS = $(filter-out $(BSRCS), $(wildcard *.c))
-OBJS = $(SRCS:.c=.o)
-BOBJS = $(BSRCS:.c=.o)
+FILES = ft_memset \
+		ft_bzero \
+		ft_memcpy \
+		ft_memccpy \
+		ft_memmove \
+		ft_memchr \
+		ft_memcmp \
+		ft_strlen \
+		ft_strlcpy \
+		ft_strlcat \
+		ft_strchr \
+		ft_strrchr \
+		ft_strnstr \
+		ft_strncmp \
+		ft_atoi \
+		ft_isalpha \
+		ft_isdigit \
+		ft_isalnum \
+		ft_isascii \
+		ft_isprint \
+		ft_toupper \
+		ft_tolower \
+		ft_calloc \
+		ft_strdup \
+		ft_substr \
+		ft_strjoin \
+		ft_strtrim \
+		ft_split \
+		ft_itoa \
+		ft_strmapi \
+		ft_putchar_fd \
+		ft_putstr_fd \
+		ft_putendl_fd \
+		ft_putnbr_fd
 
-all: $(NAME)
+BONUS_FILES = 	ft_lstnew \
+	  		ft_lstadd_front \
+	  		ft_lstsize \
+	  		ft_lstlast \
+	  		ft_lstadd_back \
+	  		ft_lstdelone \
+	  		ft_lstclear \
+	  		ft_lstiter \
+	  		ft_lstmap
+
+SRCS_DIR = ./
+SRCS = $(addprefix $(SRCS_DIR), $(addsuffix .c, $(FILES)))
+SRCS_BONUS = $(addprefix $(SRCS_DIR), $(addsuffix .c, $(BONUS_FILES)))
+
+OBJS_DIR = ./
+OBJS = $(addprefix $(OBJS_DIR), $(addsuffix .o, $(FILES)))
+OBJS_BONUS = $(addprefix $(OBJS_DIR), $(addsuffix .o, $(BONUS_FILES)))
+
+
+.c.o: $(SRCS)
+	$(CC) $(CFLAGS) -c -o $@ $<
 
 $(NAME): $(OBJS)
 	$(AR) $@ $^
 
-bonus: $(BOBJS) $(OBJS)
+bonus: $(OBJS_BONUS)
 	$(AR) $(NAME) $^
 
-%.o: %.c $(HEADER)
-	$(CC) $(CFLAGS) -c $< -o $@
+all: $(NAME)
 
 clean:
-	$(RM) $(OBJS) $(BOBJS)
+	$(RM) $(OBJS) $(OBJS_BONUS)
 
 fclean: clean
 	$(RM) $(NAME)
 
-re: fclean all
+re: clean all
+
+.PHONY: bonus all clean fclean re
