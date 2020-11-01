@@ -6,7 +6,7 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/31 22:01:01 by tseo              #+#    #+#             */
-/*   Updated: 2020/11/01 17:27:40 by tseo             ###   ########.fr       */
+/*   Updated: 2020/11/01 17:35:43 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static void		print_num_data_with_precision(t_va_info *info, int va_data_len,
 {
 	int rest_width_len;
 
-	if (va_data_len > info->precision - skip_sign_idx)
+	if (va_data_len > info->precision + skip_sign_idx)
 		rest_width_len = info->width - va_data_len;
 	else
 		rest_width_len = info->width - (info->precision + skip_sign_idx);
