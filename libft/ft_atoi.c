@@ -6,11 +6,11 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/05 13:46:44 by tseo              #+#    #+#             */
-/*   Updated: 2020/10/07 11:19:04 by tseo             ###   ########.fr       */
+/*   Updated: 2020/11/04 14:15:36 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <limits.h>
+#include "libft.h"
 
 int		ft_atoi(const char *str)
 {

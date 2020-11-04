@@ -1,35 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/05 13:46:44 by tseo              #+#    #+#             */
-/*   Updated: 2020/11/04 14:15:57 by tseo             ###   ########.fr       */
+/*   Created: 2020/10/05 15:42:36 by tseo              #+#    #+#             */
+/*   Updated: 2020/11/04 14:18:25 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../ft_lib.h"
 
-int		ft_atoi(const char *str)
+char	*ft_strdup(const char *s)
 {
-	int i;
-	int n;
-	int sign;
+	int		i;
+	char	*ret;
 
+	if (!(ret = malloc(sizeof(char) * (ft_strlen(s) + 1))))
+		return (0);
 	i = 0;
-	n = 0;
-	sign = 1;
-	while ((9 <= str[i] && str[i] <= 13) || str[i] == ' ')
-		i++;
-	sign = (str[i] == '-') ? -1 : 1;
-	if (str[i] == '+' || str[i] == '-')
-		i++;
-	while ('0' <= str[i] && str[i] <= '9')
+	while (s[i])
 	{
-		n = 10 * n + (str[i] - '0');
+		ret[i] = s[i];
 		i++;
 	}
-	return (n * sign);
+	ret[i] = 0;
+	return (ret);
 }

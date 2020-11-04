@@ -1,35 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_memccpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/05 13:46:44 by tseo              #+#    #+#             */
-/*   Updated: 2020/11/04 14:15:57 by tseo             ###   ########.fr       */
+/*   Created: 2020/10/03 13:21:27 by tseo              #+#    #+#             */
+/*   Updated: 2020/11/04 14:17:37 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../ft_lib.h"
 
-int		ft_atoi(const char *str)
+void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 {
-	int i;
-	int n;
-	int sign;
-
-	i = 0;
-	n = 0;
-	sign = 1;
-	while ((9 <= str[i] && str[i] <= 13) || str[i] == ' ')
-		i++;
-	sign = (str[i] == '-') ? -1 : 1;
-	if (str[i] == '+' || str[i] == '-')
-		i++;
-	while ('0' <= str[i] && str[i] <= '9')
+	if (!dst && !src)
+		return (0);
+	while (n--)
 	{
-		n = 10 * n + (str[i] - '0');
-		i++;
+		*(char*)dst++ = *(char*)src;
+		if (*(unsigned char*)src++ == (unsigned char)c)
+			return (dst);
 	}
-	return (n * sign);
+	return (0);
 }
