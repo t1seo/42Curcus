@@ -6,7 +6,7 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 09:42:46 by tseo              #+#    #+#             */
-/*   Updated: 2020/11/10 11:12:55 by tseo             ###   ########.fr       */
+/*   Updated: 2020/11/10 11:15:46 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,7 @@ char const		*g_format_type = "cspdiuxX%";
 
 static int		parsing_format(const char **ptr, t_va_info *info, va_list *ap)
 {
-	while (**ptr != ' ')
-		(*ptr)++;
+	(*ptr)++;
 	parsing_flag(ptr, info);
 	parsing_width(ptr, info, ap);
 	parsing_precision(ptr, info, ap);
