@@ -3,6 +3,5 @@ test
 *.out
 .vscode
 TEST
-main.c
 *.o
 *.a

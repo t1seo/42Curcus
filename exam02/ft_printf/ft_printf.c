@@ -108,6 +108,7 @@ int print_with_flags(char *f, char conversion, va_list ap)
 		}
 		else // . 이 없으면 pre = 0이기 때문에
 			precision = len;
+		i = 0;
 		// width - precision 만큼 공백 출력
 		while (i < width - precision)
 		{
