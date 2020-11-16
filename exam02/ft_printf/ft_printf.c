@@ -24,7 +24,6 @@ void ft_putnbr_base(long long num, int base)
 	}
 }
 
-
 // 8-1. 숫자 길이 함수
 int ft_numlen(int num)
 {
@@ -42,7 +41,6 @@ int ft_hexlen(unsigned int num)
 		i++;
 	return (i);
 }
-
 
 // 7. n 길이만큼 문자열 출력
 void ft_putnstr(char *s, int n)
@@ -91,7 +89,7 @@ int print_with_flags(char *f, char conversion, va_list ap)
 	}
 
 	char *str = 0;
-	int num = 0;;
+	int num = 0;
 	unsigned int unum = 0;
 	int len = 0;
 
@@ -116,7 +114,7 @@ int print_with_flags(char *f, char conversion, va_list ap)
 			nprinted++; // 공백 개수만큼 nprinted++
 			i++;
 		}
-		nprinted += precision; // 출력할 문자 개수만큼 nprinted++
+		nprinted += precision;		// 출력할 문자 개수만큼 nprinted++
 		ft_putnstr(str, precision); // precision 만큼 문자 출력
 	}
 	// d, x 처리
@@ -179,7 +177,7 @@ int print_with_flags(char *f, char conversion, va_list ap)
 		else if (conversion == 'x')
 			ft_putnbr_base(unum, 16);
 	}
-	free(f); // format을 free 해준다
+	free(f);		   // format을 free 해준다
 	return (nprinted); // 출력한 글자 수 리턴
 }
 
@@ -189,7 +187,7 @@ char *ft_strndup(char *s, int n)
 	int i;
 	char *ptr;
 
-	if (!(ptr = (char*)malloc(sizeof(char) * (n + 1))))
+	if (!(ptr = (char *)malloc(sizeof(char) * (n + 1))))
 		return (0);
 	i = 0;
 	while (s[i] && i < n)
@@ -207,7 +205,7 @@ char *find_idx(char *s)
 	int i;
 	i = 0;
 	// 문자가 존재하고 숫자나 점인 경우 idx++
-	while (s[i] && (('0' <= s[i] && s[i] <= '9') || s[i] =='.'))
+	while (s[i] && (('0' <= s[i] && s[i] <= '9') || s[i] == '.'))
 		i++;
 	// 출력 가능한 문자이고
 	if (32 <= s[i] && s[i] <= 126)
@@ -240,9 +238,9 @@ int check_format(va_list ap, char *s)
 			// 서식 문자를 찾으면
 			if (conversion)
 			{
-				format = ft_strndup(s + i, (conversion + 1) - (s + i)); // fomartting 할 내용을 담는다
-				ret += print_with_flags(format, *conversion, ap); // 출력
-				i += ((conversion) - (s + i)); // 인덱스 이동
+				format = ft_strndup(s + i, (conversion + 1) - (s + i)); // formatting 할 내용을 담는다
+				ret += print_with_flags(format, *conversion, ap);		// 출력
+				i += ((conversion) - (s + i));							// 인덱스 이동
 			}
 			else // s, d, x가 없을 때
 				i++;
