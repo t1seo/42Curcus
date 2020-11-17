@@ -117,6 +117,7 @@ int print_with_flags(char *f, char conversion, va_list ap)
 		nprinted += precision;		// 출력할 문자 개수만큼 nprinted++
 		ft_putnstr(str, precision); // precision 만큼 문자 출력
 	}
+
 	// d, x 처리
 	else if (conversion == 'd' || conversion == 'x')
 	{

@@ -1,20 +1,17 @@
 #include <stdio.h>
 #include <stdarg.h>
 
-int
-	ft_printf(char const *format, ...);
+int ft_printf(char const *format, ...);
 
 #ifndef REAL
-# define F	r += ft_printf
+#define F r += ft_printf
 #else
-# define F	r += printf
+#define F r += printf
 #endif
 
-int
-	main(void)
+int main(void)
 {
-	int	r;
-
+	int r;
 	r = 0;
 	F("Simple test\n");
 	F("");
