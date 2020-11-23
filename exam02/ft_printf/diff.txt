@@ -1,0 +1,38 @@
+4c4
+< 02a1154e7fffffff80000000800000007fffffff-----
+---
+> 02a1154e7fffffff80000000800000007ffffffftotowiurwuyrhwrywuier(null)--toto-wiurwuyrhwrywuier-(null)-
+10,11c10,11
+< 
+< -----
+---
+> totowiurwuyrhwrywuier(null)
+> --toto-wiurwuyrhwrywuier-(null)-
+26,29c26,29
+< s4w ~` ~` ~` ~` ~`
+< s4p ~` ~` ~` ~` ~`
+< s10w ~` ~` ~` ~` ~`
+< s10p ~` ~` ~` ~` ~`
+---
+> s4w ~    ` ~toto` ~0123456789` ~tjehurthteutuiehteute` ~(null)`
+> s4p ~` ~toto` ~0123` ~tjeh` ~(nul`
+> s10w ~          ` ~      toto` ~0123456789` ~tjehurthteutuiehteute` ~    (null)`
+> s10p ~` ~toto` ~0123456789` ~tjehurthte` ~(null)`
+43,44c43,44
+< s4w0p ~` ~` ~` ~` ~`
+< s10w0p ~` ~` ~` ~` ~`
+---
+> s4w0p ~    ` ~    ` ~    ` ~    ` ~    `
+> s10w0p ~          ` ~          ` ~          ` ~          ` ~          `
+54,58c54,58
+< s10w4p ~` ~` ~` ~` ~`
+< s10w10p ~` ~` ~` ~` ~`
+< s4w4p ~` ~` ~` ~` ~`
+< s4w10p ~` ~` ~` ~` ~`
+< written: 2879
+---
+> s10w4p ~          ` ~      toto` ~      0123` ~      tjeh` ~      (nul`
+> s10w10p ~          ` ~      toto` ~0123456789` ~tjehurthte` ~    (null)`
+> s4w4p ~    ` ~toto` ~0123` ~tjeh` ~(nul`
+> s4w10p ~          ` ~      toto` ~0123456789` ~tjehurthte` ~    (null)`
+> written: 3379
