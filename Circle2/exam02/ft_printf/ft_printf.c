@@ -2,8 +2,11 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <stdarg.h>
-// 1
-typedef struct s_printf
+
+/*
+** 0. Define Data Types
+*/
+typedef struct s_info
 {
 	va_list ap;
 	int i;
@@ -13,49 +16,64 @@ typedef struct s_printf
 	int precision_width;
 	int precision_parsing;
 	int ret;
-} t_printf;
+} t_info;
 
-void reset_struct(t_printf *tab)
+void reset_struct(t_info *info)
 {
-	tab->len = 0;
-	tab->width = 0;
-	tab->precision = 0;
-	tab->precision_width = 0;
-	tab->precision_parsing = 0;
+	info->len = 0;
+	info->width = 0;
+	info->precision = 0;
+	info->precision_width = 0;
+	info->precision_parsing = 0;
 }
+
+char *int_num = "0123456789";
+char *hex_num = "0123456789abcdef";
+
+/*
+**  1. Libary Functions
+**
+**	1) ft_strlen
+** 	2) ft_putchar
+**	3) ft_putstr_len
+**
+**	4) nbr_len_base
+**	5) ft_putnbr_base
+**	6) ft_atoi
+**
+**	7) is_conv
+**	8) print_space
+**	9) print_zero
+*/
 
 int ft_strlen(char *s)
 {
-	int i;
-
-	i = 0;
+	int i = 0;
 	while (s[i])
 		i++;
 	return (i);
 }
 
-void ft_putchar(char c)
+void ft_putchar(char ch)
 {
-	write(1, &c, 1);
+	write(1, &ch, 1);
 }
 
-void ft_putstr_l(char *s, int len)
+void ft_putstr_len(char *s, int len)
 {
 	write(1, s, len);
 }
 
-int ft_intlen_base(intmax_t nb, char *base)
+int nbr_len_base(intmax_t nb, char *base)
 {
-	int len;
-	int base_len;
+	int len = 1;
+	int base_len = ft_strlen(base);
 
-	len = 1;
-	base_len = ft_strlen(base);
 	if (nb < 0)
 		nb = -nb;
 	while (nb >= base_len)
 	{
-		nb = nb / base_len;
+		nb /= base_len;
 		len++;
 	}
 	return (len);
@@ -63,9 +81,8 @@ int ft_intlen_base(intmax_t nb, char *base)
 
 void ft_putnbr_base(intmax_t nb, char *base)
 {
-	int base_len;
+	int base_len = ft_strlen(base);
 
-	base_len = ft_strlen(base);
 	if (nb < 0)
 		nb = -nb;
 	if (nb >= base_len)
@@ -73,17 +90,15 @@ void ft_putnbr_base(intmax_t nb, char *base)
 	ft_putchar(base[nb % base_len]);
 }
 
-int ft_atoi(char *str, t_printf *tab)
+int ft_atoi(char *str, t_info *info)
 {
-	int atoi;
-
-	atoi = 0;
-	while (str[tab->i] >= '0' && str[tab->i] <= '9')
+	int atoi = 0;
+	while ('0' <= str[info->i] && str[info->i] <= '9')
 	{
-		atoi = atoi * 10 + str[tab->i] - 48;
-		tab->i++;
+		atoi = atoi * 10 + str[info->i] - 48;
+		info->i++; // 인덱스 ++
 	}
-	tab->i--;
+	info->i--; // 인덱스 -1
 	return (atoi);
 }
 
@@ -92,11 +107,10 @@ int is_conv(char c)
 	return (c == 's' || c == 'x' || c == 'd');
 }
 
-void print_spaces(t_printf *tab, int len)
+void print_space(t_info *info, int len)
 {
-	int i;
+	int i = 0;
 
-	i = 0;
 	if (len < 0)
 		return;
 	while (i < len)
@@ -104,14 +118,13 @@ void print_spaces(t_printf *tab, int len)
 		ft_putchar(' ');
 		i++;
 	}
-	tab->ret += len;
+	info->ret += len;
 }
 
-void print_zero(t_printf *tab, int len)
+void print_zero(t_info *info, int len)
 {
-	int i;
+	int i = 0;
 
-	i = 0;
 	if (len < 0)
 		return;
 	while (i < len)
@@ -119,142 +132,125 @@ void print_zero(t_printf *tab, int len)
 		ft_putchar('0');
 		i++;
 	}
-	tab->ret += len;
+	info->ret += len;
 }
 
 // 3
-void convert_str(t_printf *tab)
+void convert_str(t_info *info)
 {
 	char *str;
 
-	str = va_arg(tab->ap, char *);
+	str = va_arg(info->ap, char *);
 	if (!str)
 		str = "(null)";
-	tab->len = ft_strlen(str);
-	if (tab->precision && tab->precision_width < tab->len)
-		tab->len = tab->precision_width;
-	print_spaces(tab, tab->width - tab->len);
-	ft_putstr_l(str, tab->len);
-	tab->ret += tab->len;
+	info->len = ft_strlen(str);
+	if (info->precision && info->precision_width < info->len)
+		info->len = info->precision_width;
+	print_space(info, info->width - info->len);
+	ft_putstr_len(str, info->len);
+	info->ret += info->len;
 }
 
-void convert_int(t_printf *tab)
+void convert_int(t_info *info)
 {
 	intmax_t nb;
 	int sp;
 
 	sp = 0;
-	nb = va_arg(tab->ap, int);
-	tab->len = ft_intlen_base(nb, "0123456789");
+	nb = va_arg(info->ap, int);
+	info->len = nbr_len_base(nb, "0123456789");
 	if (nb == 0)
-		tab->len = 0;
-	if (tab->precision && tab->precision_width > tab->len)
-		sp = tab->precision_width - tab->len;
+		info->len = 0;
+	if (info->precision && info->precision_width > info->len)
+		sp = info->precision_width - info->len;
 	if (nb < 0)
-		tab->len += 1;
-	if (nb == 0 && !tab->precision)
-		tab->len = 1;
-	print_spaces(tab, tab->width - (sp + tab->len));
+		info->len += 1;
+	if (nb == 0 && !info->precision)
+		info->len = 1;
+	print_space(info, info->width - (sp + info->len));
 	if (nb < 0)
 		ft_putchar('-');
-	print_zero(tab, sp);
-	if (tab->precision && nb == 0)
+	print_zero(info, sp);
+	if (info->precision && nb == 0)
 		return;
 	ft_putnbr_base(nb, "0123456789");
-	tab->ret += tab->len;
+	info->ret += info->len;
 }
 
-void convert_hex(t_printf *tab)
+void convert_hex(t_info *info)
 {
 	intmax_t nb;
 	int sp;
 
 	sp = 0;
-	nb = va_arg(tab->ap, unsigned int);
-	tab->len = ft_intlen_base(nb, "0123456789abcdef");
-	if (tab->precision && tab->precision_width > tab->len)
-		sp = tab->precision_width - tab->len;
-	if (nb == 0 && !tab->precision_width && tab->precision == 1)
-		tab->len = 0;
-	print_spaces(tab, tab->width - (sp + tab->len));
-	print_zero(tab, sp);
-	if (tab->precision && tab->precision_width == 0 && nb == 0)
+	nb = va_arg(info->ap, unsigned int);
+	info->len = nbr_len_base(nb, "0123456789abcdef");
+	if (info->precision && info->precision_width > info->len)
+		sp = info->precision_width - info->len;
+	if (nb == 0 && !info->precision_width && info->precision == 1)
+		info->len = 0;
+	print_space(info, info->width - (sp + info->len));
+	print_zero(info, sp);
+	if (info->precision && info->precision_width == 0 && nb == 0)
 		return;
 	ft_putnbr_base(nb, "0123456789abcdef");
-	tab->ret += tab->len;
+	info->ret += info->len;
 }
 
-// 2
-void parse(char *str, t_printf *tab)
+/*
+** 2. ft_printf
+** 1) ft_printf
+** 2) parse
+*/
+
+void parse(char *str, t_info *info)
 {
-	tab->i++;
-	reset_struct(tab);
-	while (!is_conv(str[tab->i]))
+	info->i++;
+	reset_struct(info);
+	// parsing width and precision
+	while (!is_conv(str[info->i]))
 	{
-		if (str[tab->i] >= '0' && str[tab->i] <= '9')
+		if ('0' <= str[info->i] && str[info->i] <= '9')
 		{
-			if (tab->precision_parsing)
-				tab->precision_width = ft_atoi(str, tab);
+			if (info->precision_parsing)
+				info->precision_width = ft_atoi(str, info);
 			else
-				tab->width = ft_atoi(str, tab);
+				info->width = ft_atoi(str, info);
 		}
-		tab->precision_parsing = 0;
-		if (str[tab->i] == '.')
+		// precision flags
+		info->precision_parsing = 0;
+		if (str[info->i] == '.')
 		{
-			tab->precision = 1;
-			tab->precision_parsing = 1;
+			info->precision = 1;		 // used when printing
+			info->precision_parsing = 1; // used when parsing
 		}
-		tab->i++;
+		info->i++;
 	}
-	str[tab->i] == 's' ? convert_str(tab) : 0;
-	str[tab->i] == 'd' ? convert_int(tab) : 0;
-	str[tab->i] == 'x' ? convert_hex(tab) : 0;
+	str[info->i] == 's' ? convert_str(info) : 0;
+	str[info->i] == 'd' ? convert_int(info) : 0;
+	str[info->i] == 'x' ? convert_hex(info) : 0;
 }
 
 int ft_printf(const char *str, ...)
 {
-	t_printf tab;
+	t_info info;
 
-	tab.i = 0;
-	tab.ret = 0;
-	va_start(tab.ap, str);
-	while (str[tab.i])
+	info.i = 0;
+	info.ret = 0;
+	va_start(info.ap, str);
+	while (str[info.i])
 	{
-		if (str[tab.i] == '%')
-			parse((char *)str, &tab);
+		if (str[info.i] == '%')
+			parse((char *)str, &info);
 		else
 		{
-			ft_putchar(str[tab.i]);
-			tab.ret++;
+			ft_putchar(str[info.i]);
+			info.ret++;
 		}
-		tab.i++;
+		info.i++;
 	}
-	va_end(tab.ap);
-	return (tab.ret);
+	va_end(info.ap);
+	return (info.ret);
 }
 
-// int main(void)
-// {
-// 	printf("d4w\n");
-// 	ft_printf("d4w %4d %4d %4d %4d %4d %4d %4d %4d\n", 0, 42, 1, 4554, 2147483647, (int)2147483648, (int)-2147483648, (int)-2147483649);
-// 	printf("d4w %4d %4d %4d %4d %4d %4d %4d %4d\n", 0, 42, 1, 4554, 2147483647, (int)2147483648, (int)-2147483648, (int)-2147483649);
-// 	printf("\n\n");
-
-// 	printf("d10w\n");
-// 	ft_printf("d10w %10d %10d %10d %10d %10d %10d %10d %10d\n", 0, 42, 1, 4554, 2147483647, (int)2147483648, (int)-2147483648, (int)-2147483649);
-// 	printf("d10w %10d %10d %10d %10d %10d %10d %10d %10d\n", 0, 42, 1, 4554, 2147483647, (int)2147483648, (int)-2147483648, (int)-2147483649);
-// 	printf("\n\n");
-
-// 	printf("x4p\n");
-// 	ft_printf("x4w0p %4.0x %4.0x %4.0x %4.0x %4.0x %4.0x %4.0x %4.0x\n", 0, 42, 1, 4554, 2147483647, (int)2147483648, (int)-2147483648, (int)-2147483649);
-// 	printf("x4w0p %4.0x %4.0x %4.0x %4.0x %4.0x %4.0x %4.0x %4.0x\n", 0, 42, 1, 4554, 2147483647, (int)2147483648, (int)-2147483648, (int)-2147483649);
-// 	printf("\n\n");
-
-// 	printf("x10p\n");
-// 	ft_printf("x10w0p %10.0x %10.0x %10.0x %10.0x %10.0x %10.0x %10.0x %10.0x\n", 0, 42, 1, 4554, 2147483647, (int)2147483648, (int)-2147483648, (int)-2147483649);
-// 	printf("x10w0p %10.0x %10.0x %10.0x %10.0x %10.0x %10.0x %10.0x %10.0x\n", 0, 42, 1, 4554, 2147483647, (int)2147483648, (int)-2147483648, (int)-2147483649);
-// 	printf("\n\n");
-
-// 	ft_printf("x10w4p %10.4x %10.4x %10.4x %10.4x %10.4x %10.4x %10.4x %10.4x\n", 0, 42, 1, 4554, 2147483647, (int)2147483648, (int)-2147483648, (int)-2147483649);
-// 	printf("x10w4p %10.4x %10.4x %10.4x %10.4x %10.4x %10.4x %10.4x %10.4x\n", 0, 42, 1, 4554, 2147483647, (int)2147483648, (int)-2147483648, (int)-2147483649);
-// }
+// clear
