@@ -1,23 +1,23 @@
-/*
-** 0. Define Data Types
-*/
-
-#include <stdio.h>
+// 0. Define Data Types
+#include <stdarg.h>
 #include <stdlib.h>
 #include <unistd.h>
-#include <stdarg.h>
 
-typedef struct	s_info
+char	*int_num = "0123456789";
+char	*hex_num = "0123456789abcdef";
+
+typedef struct		s_info
 {
-	va_list ap;
 	int i;
 	int ret;
+	va_list ap;
 
 	int len;
 	int width;
 	int precision;
 	int precision_width;
-}				t_info;
+}					t_info;
+
 
 void	reset_struct(t_info *info)
 {
@@ -27,24 +27,16 @@ void	reset_struct(t_info *info)
 	info->precision_width = 0;
 }
 
-char	*int_num = "0123456789";
-char	*hex_num = "0123456789abcdef";
-
-/*
-** 1. Library Functions
-**
-** 1) ft_strlen
-** 2) ft_putchar
-** 3) ft_putstr_len
-**
-** 4) nbr_len_base
-** 5) ft_putnbr_base
-** 6) ft_atoi
-**
-** 7) is_conv
-** 8) print_space
-** 9) print_zero
-*/
+// 1. Library
+// 1) ft_strlen
+// 2) ft_putchar
+// 3) ft_putstr_len
+// 4) ft_atoi
+// 5) nbr_len_base
+// 6) put_nbr_base
+// 7) is_conv
+// 8) print_space
+// 9) print_zero
 
 int		ft_strlen(char *s)
 {
@@ -62,6 +54,18 @@ void	ft_putchar(char ch)
 void	ft_putstr_len(char *s, int len)
 {
 	write(1, s, len);
+}
+
+int		ft_atoi(char *str, t_info *info)
+{
+	int num = 0;
+	while ('0' <= str[info->i] && str[info->i] <= '9')
+	{
+		num = num * 10 + str[info->i] - '0';
+		info->i++;
+	}
+	info->i--;
+	return (num);
 }
 
 int		nbr_len_base(intmax_t nb, char *base)
@@ -90,21 +94,9 @@ void	ft_putnbr_base(intmax_t nb, char *base)
 	ft_putchar(base[nb % base_len]);
 }
 
-int		ft_atoi(char *str, t_info *info)
-{
-	int num = 0;
-	while ('0' <= str[info->i] && str[info->i] <= '9')
-	{
-		num = num * 10 + str[info->i] - '0';
-		info->i++;
-	}
-	info->i--;
-	return (num);
-}
-
 int		is_conv(char c)
 {
-	return (c == 's' || c == 'x' || c == 'd');
+	return (c == 's' || c == 'd' || c == 'x');
 }
 
 void	print_space(t_info *info, int len)
@@ -135,9 +127,7 @@ void	print_zero(t_info *info, int len)
 	info->ret += len;
 }
 
-/*
-** 3. convert
-*/
+// 3. convert
 void	convert_str(t_info *info)
 {
 	char *str = va_arg(info->ap, char *);
@@ -154,7 +144,7 @@ void	convert_str(t_info *info)
 void	convert_int(t_info *info)
 {
 	intmax_t nb = va_arg(info->ap, int);
-	int	zero_len = 0;
+	int zero_len = 0;
 	info->len = nbr_len_base(nb, int_num);
 
 	if (nb == 0)
@@ -163,14 +153,14 @@ void	convert_int(t_info *info)
 		zero_len = info->precision_width - info->len;
 	if (nb < 0)
 		info->len += 1;
-	if (nb == 0 && info->precision == 0) // 숫자 0, precision 없을 때
+	if (nb == 0 && info->precision == 0)
 		info->len = 1;
 
 	print_space(info, info->width - (zero_len + info->len));
 	if (nb < 0)
 		ft_putchar('-');
 	print_zero(info, zero_len);
-	if (nb == 0 && info->precision) // 숫자 0인데 precision이 존재할 때 아무것도 출력되지 않는다
+	if (nb == 0 && info->precision)
 		return;
 	ft_putnbr_base(nb, int_num);
 	info->ret += info->len;
@@ -184,20 +174,20 @@ void	convert_hex(t_info *info)
 
 	if (info->precision && info->precision_width > info->len)
 		zero_len = info->precision_width - info->len;
-	if (nb == 0 && info->precision && info->precision_width == 0) // nb는 0이고 precision(.)이 존재하는데, 정밀도는 0일 때
+	if (nb == 0  && info->precision && info->precision_width == 0)
 		info->len = 0;
 
 	print_space(info, info->width - (zero_len + info->len));
 	print_zero(info, zero_len);
-	if (nb == 0 && info->precision && info->precision_width == 0) // nb는 0이고 precision(.)이 존재하는데, 정밀도는 0일 때 아무것도 출력하지 않는다
+	if (nb == 0  && info->precision && info->precision_width == 0)
 		return;
 	ft_putnbr_base(nb, hex_num);
 	info->ret += info->len;
 }
 
-/*
-** 2. parse, ft_printf
-*/
+
+// 2. parse, ft_printf
+
 void	parse(char *str, t_info *info)
 {
 	info->i++;
@@ -212,11 +202,11 @@ void	parse(char *str, t_info *info)
 			else
 				info->precision_width = ft_atoi(str, info);
 		}
-
 		if (str[info->i] == '.')
 			info->precision = 1;
 		info->i++;
 	}
+
 	str[info->i] == 's' ? convert_str(info) : 0;
 	str[info->i] == 'd' ? convert_int(info) : 0;
 	str[info->i] == 'x' ? convert_hex(info) : 0;
@@ -225,10 +215,10 @@ void	parse(char *str, t_info *info)
 int		ft_printf(const char *str, ...)
 {
 	t_info info;
-
 	info.i = 0;
 	info.ret = 0;
 	va_start(info.ap, str);
+
 	while (str[info.i])
 	{
 		if (str[info.i] == '%')
@@ -240,7 +230,7 @@ int		ft_printf(const char *str, ...)
 		}
 		info.i++;
 	}
+
 	va_end(info.ap);
 	return (info.ret);
 }
-
