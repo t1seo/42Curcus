@@ -1,0 +1,6 @@
+- [ ] Untextured raycast
+- [ ] minimap
+- [ ] textured raycast
+- [ ] img textured raycast
+- [ ] floor ceiling
+- [ ] sprite

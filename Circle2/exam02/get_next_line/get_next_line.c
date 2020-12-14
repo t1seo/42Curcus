@@ -1,6 +1,6 @@
 #include "get_next_line.h"
 
-size_t		ft_strlen(const char *s)
+size_t ft_strlen(const char *s)
 {
 	size_t i;
 
@@ -10,7 +10,7 @@ size_t		ft_strlen(const char *s)
 	return (i);
 }
 
-char		*ft_strchr(const char *s, int c)
+char *ft_strchr(const char *s, int c)
 {
 	if (!s)
 		return (0);
@@ -20,13 +20,13 @@ char		*ft_strchr(const char *s, int c)
 			return (0);
 		++s;
 	}
-	return ((char*)s);
+	return ((char *)s);
 }
 
-char		*ft_strdup(const char *s)
+char *ft_strdup(const char *s)
 {
-	char	*ret;
-	int		i;
+	char *ret;
+	int i;
 
 	if (!(ret = malloc(sizeof(char) * (ft_strlen(s) + 1))))
 		return (0);
@@ -40,11 +40,11 @@ char		*ft_strdup(const char *s)
 	return (ret);
 }
 
-char		*ft_strjoin(char *s1, char *s2)
+char *ft_strjoin(char *s1, char *s2)
 {
-	int		len;
-	char	*str;
-	int		i;
+	int len;
+	char *str;
+	int i;
 
 	if (!s1 && !s2)
 		return (0);
@@ -63,7 +63,7 @@ char		*ft_strjoin(char *s1, char *s2)
 	return (str);
 }
 
-char		*ft_strappend(char *s1, char *s2)
+char *ft_strappend(char *s1, char *s2)
 {
 	char *tmp;
 
@@ -81,8 +81,7 @@ char		*ft_strappend(char *s1, char *s2)
 	}
 }
 
-
-static int		get_line(char **strs, char **line, char *ptr)
+static int get_line(char **strs, char **line, char *ptr)
 {
 	char *tmp;
 
@@ -105,17 +104,16 @@ static int		get_line(char **strs, char **line, char *ptr)
 	return (0);
 }
 
-int				get_next_line(char **line)
+int get_next_line(char **line)
 {
-	static char		*strs;
-	char			buf[BUFFER_SIZE + 1];
-	int				rd_size;
-	char			*ptr;
+	static char *strs;
+	char buf[BUFFER_SIZE + 1];
+	int rd_size;
+	char *ptr;
 
 	if (!line || BUFFER_SIZE < 1)
 		return (-1);
-	while ((ptr = ft_strchr(strs, '\n')) == 0
-			&& (rd_size = read(0, buf, BUFFER_SIZE)) > 0)
+	while ((ptr = ft_strchr(strs, '\n')) == 0 && (rd_size = read(0, buf, BUFFER_SIZE)) > 0)
 	{
 		buf[rd_size] = 0;
 		strs = ft_strappend(strs, buf);
