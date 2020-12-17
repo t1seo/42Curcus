@@ -144,58 +144,23 @@ void	convert_str(t_info *info)
 	if (!str)
 		str = "(null)";
 	info->len = ft_strlen(str);
-
+	
 	if (info->precision && info->precision_width < info->len)
-		info->len = info->precision_width;
-
+		info->len = info->precison_width;
+	
 	print_space(info, info->width - info->len);
-	ft_putstr_len(str, info->len);
+	ft_putstr_l(str, info->len);
 	info->ret += info->len;
 }
 
 void	convert_int(t_info *info)
 {
-	intmax_t nb = va_arg(info->ap, int);
-	int	zero_len = 0;
-	info->len = nbr_len_base(nb, int_num);
-
-	if (nb == 0)
-		info->len = 0;
-	if (info->precision && info->precision_width > info->len)
-		zero_len = info->precision_width - info->len;
-	if (nb < 0)
-		info->len += 1;
-	if (nb == 0 && info->precision == 0) // 숫자 0, precision 없을 때
-		info->len = 1;
-
-	print_space(info, info->width - (zero_len + info->len));
-	if (nb < 0)
-		ft_putchar('-');
-	print_zero(info, zero_len);
-	if (nb == 0 && info->precision) // 숫자 0인데 precision이 존재할 때 아무것도 출력되지 않는다
-		return;
-	ft_putnbr_base(nb, int_num);
-	info->ret += info->len;
 }
 
 void	convert_hex(t_info *info)
 {
-	intmax_t nb = va_arg(info->ap, unsigned int);
-	int zero_len = 0;
-	info->len = nbr_len_base(nb, hex_num);
-
-	if (info->precision && info->precision_width > info->len)
-		zero_len = info->precision_width - info->len;
-	if (nb == 0 && info->precision && info->precision_width == 0) // nb는 0이고 precision(.)이 존재하는데, 정밀도는 0일 때
-		info->len = 0;
-
-	print_space(info, info->width - (zero_len + info->len));
-	print_zero(info, zero_len);
-	if (nb == 0 && info->precision && info->precision_width == 0) // nb는 0이고 precision(.)이 존재하는데, 정밀도는 0일 때 아무것도 출력하지 않는다
-		return;
-	ft_putnbr_base(nb, hex_num);
-	info->ret += info->len;
 }
+
 
 /*
 ** 2. parse, ft_printf
