@@ -1,0 +1,9 @@
+- [ ] untextured
+- [ ] textured
+- [ ] img textured
+- [ ] floor ceiling
+- [ ] sprite
+- [ ] 2d map
+- [ ] Map parsing
+- [ ] BMP
+- [ ] Makefile

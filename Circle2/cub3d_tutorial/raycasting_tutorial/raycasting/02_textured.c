@@ -1,7 +1,7 @@
 /*
 ** 2. textured raycasting
-** 픽셀별로 이미지를 찍는 방식이 아니라 버퍼에 데이터를 담고 mlx_put_image_to_window()
-** 함수를 이용하여 버퍼에 담긴 이미지를 한 번에 출력한다
+** 픽셀별로 이미지를 찍는 방식이 아니라 버퍼에 데이터를 담고
+** mlx_put_image_to_window() 함수를 이용하여 버퍼에 담긴 이미지를 한 번에 출력한다
 */
 #include "./include/mlx.h"
 #include "./include/key_macos.h"
@@ -76,6 +76,7 @@ int	worldMap[mapWidth][mapHeight] =
 							{4,4,4,4,4,4,4,4,4,4,1,1,1,2,2,2,2,2,2,3,3,3,3,3}
 						};
 
+// 버퍼에 데이터를 담고 mlx_put_image_to_window() 함수로 이미지를 한 번에 출력한다.
 void	draw(t_info *info)
 {
 	for (int y = 0; y < height; y++)
@@ -178,6 +179,9 @@ void	calc(t_info *info)
 		int texNum = worldMap[mapX][mapY];
 
 		// wallX 계산
+		// wallX는 double 형 좌표로 벽의 정확히 어디에 부딪혔는지를 나타낸다
+		// x 면에 부딪힌 경우(side == 0) 벽의 x좌표가 맞지만, y면에 부딪힌 경우(side == 1)에는 벽의 y좌표가 된다
+		// wallX는 텍스쳐의 x좌표에 사용된다
 		double wallX;
 		if (side == 0)
 			wallX = info->posY + perpWallDist * rayDirY;
@@ -185,26 +189,35 @@ void	calc(t_info *info)
 			wallX = info->posX + perpWallDist * rayDirX;
 		wallX -= floor(wallX);
 
-		// x coordinate on the texture
+		// wallX로 텍스쳐의 x좌표를 나타내는 texX를 계산
 		int texX = (int)(wallX * (double)texWidth);
 		if (side == 0 && rayDirX > 0)
 			texX = texWidth - texX - 1;
 		if (side == 1 && rayDirY < 0)
 			texX = texWidth - texX - 1;
 
-		// How much to increase the texture coordinate perscreen pixel
+		// texY의 값은 step의 크기만큼 증가하면서 계산된다
 		double step = 1.0 * texHeight / lineHeight;
-		// Starting texture coordinate
+		// 텍스쳐 좌표 시작
 		double texPos = (drawStart - height / 2 + lineHeight / 2) * step;
+		// 수직선 상 각 픽셀이 텍스처의 어떤 y좌표 texY을 갖게할거지 정해주기 위해 y방향 반복문을 돈다
 		for (int y = drawStart; y < drawEnd; y++)
 		{
-			// Cast the texture coordinate to integer, and mask with (texHeight - 1) in case of overflow
+			// 부동소수점 수인 double 형에서 int형으로 캐스팅해주어 텍스처 픽셀 값을 선택할 수 있게 해준다
+			// 오버플로우 방지를 위해 (texHeight - 1)을 AND 연산 해준다
 			int texY = (int)texPos & (texHeight - 1);
 			texPos += step;
+
+			// 화면 퍼버에 넣을 색깔을 가져온다
 			int color = info->texture[texNum][texHeight * texY + texX];
+
 			// make color darker for y-sides: R, G and B byte each divided through two with a "shift" and an "and"
+			// 벽의 y면에 부딪힌 경우 더 어둡게 표현
+			// 시프트 연산ㅇ로 마지막 비트를 제거해주고 8355711을 AND 연산해서 어둡게 표현한다.
 			if (side == 1)
 				color = (color >> 1) & 8355711;
+
+			// 최종적으로 계산된 color의 값이 현재 버퍼픽셀의 색을으로 설정되면서 반복문의 한 사이클이 결정된다.
 			info->buf[y][x] = color;
 		}
 		x++;

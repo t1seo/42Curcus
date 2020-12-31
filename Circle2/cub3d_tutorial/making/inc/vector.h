@@ -1,25 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   keys.h                                             :+:      :+:    :+:   */
+/*   vector.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/26 21:19:29 by tseo              #+#    #+#             */
-/*   Updated: 2020/12/26 22:26:52 by tseo             ###   ########.fr       */
+/*   Created: 2020/12/31 20:01:06 by tseo              #+#    #+#             */
+/*   Updated: 2020/12/31 20:42:18 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef KEYS_H
-# define KEYS_H
+#ifndef VECTOR_H
+# define VECTOR_H
 
-# define KEY_W 13
-# define KEY_S 1
-# define KEY_A 0
-# define KEY_D 2
-# define KEY_ESC 53
+#include <math.h>
 
-# define KEY_LEFT_ARROW 123
-# define KEY_RIGHT_ARROW 124
+#define PI 3.1415926535897
+
+typedef struct	s_dvec
+{
+	double 		x;
+	double 		y;
+}				t_dvec;
+
+typedef struct	s_ivec
+{
+	int			x;
+	int			y;
+}				t_ivec;
+
+double			get_radian(int num);
+t_dvec			create_dvec(double x, double y);
+t_ivec			create_ivec(int x, int y);
+t_dvec			rotate_vec(t_dvec a, double angle);
 
 #endif
