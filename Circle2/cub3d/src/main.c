@@ -6,62 +6,141 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/10 19:30:45 by tseo              #+#    #+#             */
-/*   Updated: 2021/01/10 20:04:53 by tseo             ###   ########.fr       */
+/*   Updated: 2021/01/11 14:16:53 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
 
-typedef struct s_data
-{
-	void *img;
-	char *addr;
-	int bits_per_pixel; // bits per pixel(bpp)
-	int line_length;
-	int endian;
-} t_data;
+// int map_width;
+// int	map_height;
+// int screen_height;
+// int screen_width;
 
-// mlx_pixel_put 대신 버퍼에 담고 한ㄱ한꺼번에 출력 해주는 함수
-void my_mlx_pixel_put(t_data *data, int x, int y, int color)
-{
-	char *dst;
+int	word_map[MAP_WIDTH][MAP_HEIGHT] =
+						{
+							{4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,7,7,7,7,7,7,7,7},
+							{4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,0,0,0,0,0,0,7},
+							{4,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7},
+							{4,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7},
+							{4,0,3,0,0,0,0,0,0,0,0,0,0,0,0,0,7,0,0,0,0,0,0,7},
+							{4,0,4,0,0,0,0,5,5,5,5,5,5,5,5,5,7,7,0,7,7,7,7,7},
+							{4,0,5,0,0,0,0,5,0,5,0,5,0,5,0,5,7,0,0,0,7,7,7,1},
+							{4,0,6,0,0,0,0,5,0,0,0,0,0,0,0,5,7,0,0,0,0,0,0,8},
+							{4,0,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,7,7,1},
+							{4,0,8,0,0,0,0,5,0,0,0,0,0,0,0,5,7,0,0,0,0,0,0,8},
+							{4,0,0,0,0,0,0,5,0,0,0,0,0,0,0,5,7,0,0,0,7,7,7,1},
+							{4,0,0,0,0,0,0,5,5,5,5,0,5,5,5,5,7,7,7,7,7,7,7,1},
+							{6,6,6,6,6,6,6,6,6,6,6,0,6,6,6,6,6,6,6,6,6,6,6,6},
+							{8,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4},
+							{6,6,6,6,6,6,0,6,6,6,6,0,6,6,6,6,6,6,6,6,6,6,6,6},
+							{4,4,4,4,4,4,0,4,4,4,6,0,6,2,2,2,2,2,2,2,3,3,3,3},
+							{4,0,0,0,0,0,0,0,0,4,6,0,6,2,0,0,0,0,0,2,0,0,0,2},
+							{4,0,0,0,0,0,0,0,0,0,0,0,6,2,0,0,5,0,0,2,0,0,0,2},
+							{4,0,0,0,0,0,0,0,0,4,6,0,6,2,0,0,0,0,0,2,2,0,2,2},
+							{4,0,6,0,6,0,0,0,0,4,6,0,0,0,0,0,5,0,0,0,0,0,0,2},
+							{4,0,0,5,0,0,0,0,0,4,6,0,6,2,0,0,0,0,0,2,2,0,2,2},
+							{4,0,6,0,6,0,0,0,0,4,6,0,6,2,0,0,5,0,0,2,0,0,0,2},
+							{4,0,0,0,0,0,0,0,0,4,6,0,6,2,0,0,0,0,0,2,0,0,0,2},
+							{4,4,4,4,4,4,4,4,4,4,1,1,1,2,2,2,2,2,2,3,3,3,3,3}
+						};
 
-	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
-	// color 입히기
-	*(unsigned int *)dst = color;
+
+void	setup(t_info *info)
+{
+	// map_width = 24;
+	// map_height = 24;
+	// screen_width = 640;
+	// screen_height = 480;
+
+	// TODO: GET PLAYER POSITION AND DIRECION FROM CUB FILE
+	info->player_pos_x = 22.0;
+	info->player_pos_y = 11.5;
+	info->dir_vec_x = -1.0;
+	info->dir_vec_y = 0.0;
+	info->plane_x = 0.0;
+	info->plane_y = 0.66;
+
+	info->move_speed = 0.05;
+	info->rot_speed = 0.05;
+
 }
 
-// 피라미드 찍기
-// x, y : 그릴 위치, size : 피라미드 크기, color : 색상
-void print_pyramid(t_data *data, int x, int y, int size, int color)
+int		press_key(int key, t_info *info)
 {
-	int num = size;
-	for (int i = 0; i < num; i++)
-		for (int j = 0; j < 2 * i + 1; j++)
-			my_mlx_pixel_put(data, num - i + j + x, i + y, color);
+	if (key == KEY_ESC)
+		exit(0);
+	else if (key == KEY_W)
+		info->key_w = 1;
+	else if (key == KEY_A)
+		info->key_a = 1;
+	else if (key == KEY_D)
+		info->key_d = 1;
+	else if (key == KEY_S)
+		info->key_s = 1;
+	else if (key == KEY_LA)
+		info->key_l_arrow = 1;
+	else if (key == KEY_RA)
+		info->key_r_arrow = 1;
+	printf("press key\n");
+	return (0);
 }
 
-int main(void)
+int		release_key(int key, t_info *info)
 {
-	void *mlx;
-	void *win;
-	t_data img;
+	if (key == KEY_ESC)
+		exit(0);
+	else if (key == KEY_W)
+		info->key_w = 0;
+	else if (key == KEY_A)
+		info->key_a = 0;
+	else if (key == KEY_D)
+		info->key_d = 0;
+	else if (key == KEY_S)
+		info->key_s = 0;
+	else if (key == KEY_LA)
+		info->key_l_arrow = 0;
+	else if (key == KEY_RA)
+		info->key_r_arrow = 0;
+	printf("release key\n");
+	return (0);
+}
 
-	mlx = mlx_init();							// 그래픽 시스템에 connection을 만든다.
-	win = mlx_new_window(mlx, 640, 480, "MLX"); // 윈도우 생성
-	img.img = mlx_new_image(mlx, 640, 480);		// 이미지를 만들었다.
 
-	// 이미지를 만들었다면 mlx_get_data_addr을 불러올 수 있다.
-	// 이미지에 픽셀을 그리기 위해 메모리 주소를 가져와야 한다.
-	// bits_per_pexel, line_legnth, endain의 주소를 보낸다.
-	// 항상 이 함수를 통해 set된 line_length를 가지고 메모리 주소 출발점 (offset)을 계산해야 한다.
-	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
+void	init_cub3d(void)
+{
+	t_info info;
 
-	// 픽셀 찍기
-	print_pyramid(&img, 100, 100, 100, 0x000000FF);
+	setup(&info);
+	info.mlx = mlx_init();
+	info.win = mlx_new_window(info.mlx, SCREEN_WIDTH, SCREEN_HEIGHT, "cub3d");
+	info.img.img = mlx_new_image(info.mlx, SCREEN_WIDTH, SCREEN_HEIGHT);
+	info.img.data = (int *)mlx_get_data_addr(info.img.img, &info.img.bpp, &info.img.size_l, &info.img.endian);
+	// mlx_loop_hook(info.mlx, &main_loop, &info);
+	mlx_hook(info.win, X_EVENT_KEY_PRESS, 0, &press_key, &info);
+	mlx_hook(info.win, X_EVENT_KEY_RELEASE, 0, &release_key, &info);
 
-	mlx_put_image_to_window(mlx, win, img.img, 0, 0); // 이미지를 윈도우에 올린다.
-	mlx_loop(mlx);
+	mlx_loop(info.mlx);
+}
 
+int		main(int ac, char **av)
+{
+	// if (ac == 3 && check_cub_file(av[1]) && check_arg(av[2]))
+	// {
+	// 	// TODO: SAVE BMP
+	// 	return (0);
+	// }
+	// else if (ac == 2 && check_cub_file(av[1]))
+	// {
+	// 	// TODO
+	// 	return (0);
+	// }
+	// else
+	// {
+	// 	// TODO: Print Error Message
+	// 	// printf("Error. Invaild ")
+	// 	init_cub3d();
+	// }
+	init_cub3d();
 	return (0);
 }
