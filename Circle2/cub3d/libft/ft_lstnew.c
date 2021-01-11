@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/10 19:29:16 by tseo              #+#    #+#             */
-/*   Updated: 2021/01/10 19:30:37 by tseo             ###   ########.fr       */
+/*   Created: 2020/10/06 15:42:39 by tseo              #+#    #+#             */
+/*   Updated: 2020/10/06 15:46:05 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-#define CUB3D_H
+#include "libft.h"
 
-#include "../libft/libft.h"
-#include "../mlx/mlx.h"
+t_list	*ft_lstnew(void *content)
+{
+	t_list *new_elem;
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <math.h>
-
-
-#endif
+	if (!(new_elem = malloc(sizeof(t_list))))
+		return (0);
+	new_elem->content = content;
+	new_elem->next = 0;
+	return (new_elem);
+}

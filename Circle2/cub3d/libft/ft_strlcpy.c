@@ -1,24 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/10 19:29:16 by tseo              #+#    #+#             */
-/*   Updated: 2021/01/10 19:30:37 by tseo             ###   ########.fr       */
+/*   Created: 2020/10/03 16:13:46 by tseo              #+#    #+#             */
+/*   Updated: 2020/10/06 20:14:09 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-#define CUB3D_H
+#include "libft.h"
 
-#include "../libft/libft.h"
-#include "../mlx/mlx.h"
+size_t	ft_strlcpy(char *dst, const char *src, size_t size)
+{
+	size_t i;
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <math.h>
-
-
-#endif
+	if (!dst || !src)
+		return (0);
+	i = 0;
+	if (size > 0)
+	{
+		while (src[i] && i < (size - 1))
+		{
+			dst[i] = src[i];
+			i++;
+		}
+		dst[i] = 0;
+	}
+	while (src[i])
+		i++;
+	return (i);
+}

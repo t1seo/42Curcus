@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/10 19:29:16 by tseo              #+#    #+#             */
-/*   Updated: 2021/01/10 19:30:37 by tseo             ###   ########.fr       */
+/*   Created: 2020/10/03 15:47:20 by tseo              #+#    #+#             */
+/*   Updated: 2020/10/06 20:07:45 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-#define CUB3D_H
+#include "libft.h"
 
-#include "../libft/libft.h"
-#include "../mlx/mlx.h"
+size_t	ft_strlen(const char *s)
+{
+	size_t i;
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <math.h>
-
-
-#endif
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
+}

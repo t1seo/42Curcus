@@ -1,24 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/10 19:29:16 by tseo              #+#    #+#             */
-/*   Updated: 2021/01/10 19:30:37 by tseo             ###   ########.fr       */
+/*   Created: 2020/10/05 19:20:16 by tseo              #+#    #+#             */
+/*   Updated: 2020/10/07 12:35:17 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-#define CUB3D_H
+#include "libft.h"
 
-#include "../libft/libft.h"
-#include "../mlx/mlx.h"
+char	*ft_strjoin(char const *s1, char const *s2)
+{
+	char	*str;
+	int		len;
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <math.h>
-
-
-#endif
+	if (!s1 && !s2)
+		return (0);
+	else if (!s1 || !s2)
+		return (!s1 ? ft_strdup(s2) : ft_strdup(s1));
+	len = ft_strlen(s1) + ft_strlen(s2);
+	if (!(str = (char*)malloc(sizeof(char) * (len + 1))))
+		return (0);
+	ft_strlcpy(str, s1, len + 1);
+	ft_strlcat(str, s2, len + 1);
+	return (str);
+}

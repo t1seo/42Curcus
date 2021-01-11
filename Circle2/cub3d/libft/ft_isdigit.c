@@ -1,24 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/10 19:29:16 by tseo              #+#    #+#             */
-/*   Updated: 2021/01/10 19:30:37 by tseo             ###   ########.fr       */
+/*   Created: 2020/10/05 14:23:24 by tseo              #+#    #+#             */
+/*   Updated: 2020/10/05 14:23:55 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-#define CUB3D_H
-
-#include "../libft/libft.h"
-#include "../mlx/mlx.h"
-
-#include <stdio.h>
-#include <stdlib.h>
-#include <math.h>
-
-
-#endif
+int		ft_isdigit(int c)
+{
+	return ('0' <= c && c <= '9');
+}

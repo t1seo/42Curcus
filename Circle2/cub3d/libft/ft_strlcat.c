@@ -1,24 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/10 19:29:16 by tseo              #+#    #+#             */
-/*   Updated: 2021/01/10 19:30:37 by tseo             ###   ########.fr       */
+/*   Created: 2020/10/03 19:11:56 by tseo              #+#    #+#             */
+/*   Updated: 2020/10/06 20:14:39 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-#define CUB3D_H
+#include "libft.h"
 
-#include "../libft/libft.h"
-#include "../mlx/mlx.h"
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
+{
+	size_t i;
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <math.h>
-
-
-#endif
+	i = 0;
+	while (*dst && i < size)
+	{
+		i++;
+		dst++;
+	}
+	while (*src && i + 1 < size)
+	{
+		*dst++ = *src++;
+		i++;
+	}
+	if (i < size)
+		*dst = 0;
+	while (*src++)
+		i++;
+	return (i);
+}
