@@ -6,7 +6,7 @@
 #    By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/10 19:32:08 by tseo              #+#    #+#              #
-#    Updated: 2021/01/10 20:10:27 by tseo             ###   ########.fr        #
+#    Updated: 2021/01/12 00:00:45 by tseo             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,8 @@ FRAMEWORK = -framework OpenGL -framework AppKit
 NAME = cub3d
 INCLUDES = ./inc
 SRCS_DIR = ./src
-SRCS_FILES = main.c
+SRCS_FILES = main.c \
+			gnl.c
 SRCS = $(addprefix $(SRCS_DIR)/, $(SRCS_FILES))
 OBJS = $(SRCS:.c=.o)
 
@@ -48,7 +49,7 @@ clean :
 
 fclean : clean
 	$(MAKE) -C $(LIBFT_DIR) fclean
-	$(MAKE) -C $(MLX_DIR) fclean
+	$(MAKE) -C $(MLX_DIR) clean
 	$(RM) $(NAME)
 
 re : fclean all

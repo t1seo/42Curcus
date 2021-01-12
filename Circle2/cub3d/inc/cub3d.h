@@ -6,7 +6,7 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/10 19:29:16 by tseo              #+#    #+#             */
-/*   Updated: 2021/01/11 14:14:07 by tseo             ###   ########.fr       */
+/*   Updated: 2021/01/12 01:17:22 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+#include <fcntl.h>
+#include <string.h>
+#include <errno.h>
 
 #define X_EVENT_KEY_PRESS	2
 #define X_EVENT_KEY_RELEASE 3
@@ -44,6 +47,9 @@
 #define MAP_HEIGHT 24
 #define SCREEN_WIDTH 640
 #define SCREEN_HEIGHT 480
+
+#define MAX_FD 1024
+#define GNL_BUFFER_SIZE 25
 
 
 typedef struct	s_img
@@ -82,6 +88,8 @@ typedef struct	s_info
 	double		move_speed;
 	double		rot_speed;
 }				t_info;
+
+int			get_next_line(int fd, char **line);
 
 
 #endif

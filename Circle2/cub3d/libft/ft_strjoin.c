@@ -6,25 +6,31 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/05 19:20:16 by tseo              #+#    #+#             */
-/*   Updated: 2020/10/07 12:35:17 by tseo             ###   ########.fr       */
+/*   Updated: 2021/01/11 23:58:30 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char		*ft_strjoin(char *s1, char *s2)
 {
-	char	*str;
 	int		len;
+	char	*str;
+	int		i;
 
 	if (!s1 && !s2)
 		return (0);
-	else if (!s1 || !s2)
-		return (!s1 ? ft_strdup(s2) : ft_strdup(s1));
 	len = ft_strlen(s1) + ft_strlen(s2);
-	if (!(str = (char*)malloc(sizeof(char) * (len + 1))))
+	if (!(str = (char *)malloc(sizeof(char) * (len + 1))))
 		return (0);
-	ft_strlcpy(str, s1, len + 1);
-	ft_strlcat(str, s2, len + 1);
+	i = -1;
+	if (str)
+	{
+		while (*s1)
+			str[++i] = *s1++;
+		while (*s2)
+			str[++i] = *s2++;
+	}
+	str[++i] = 0;
 	return (str);
 }
