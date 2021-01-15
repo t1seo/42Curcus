@@ -494,6 +494,7 @@ int		key_release(int key, t_info *info)
 
 void	load_image(t_info *info, int *texture, char *path, t_img *img)
 {
+	// 파일 없을 시에 예외처리 해야 한다
 	img->img = mlx_xpm_file_to_image(info->mlx, path, &img->img_width, &img->img_height);
 	img->data = (int *)mlx_get_data_addr(img->img, &img->bpp, &img->size_l, &img->endian);
 	for (int y = 0; y < img->img_height; y++)

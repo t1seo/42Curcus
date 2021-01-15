@@ -6,7 +6,7 @@
 #    By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/10 19:32:08 by tseo              #+#    #+#              #
-#    Updated: 2021/01/12 00:00:45 by tseo             ###   ########.fr        #
+#    Updated: 2021/01/15 22:12:34 by tseo             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,13 @@ NAME = cub3d
 INCLUDES = ./inc
 SRCS_DIR = ./src
 SRCS_FILES = main.c \
-			gnl.c
+			gnl.c \
+			parsing_map.c \
+			parsing_path.c \
+			parsing_color.c \
+			parsing_util.c \
+			charset_split.c \
+			measuring_map_size.c
 SRCS = $(addprefix $(SRCS_DIR)/, $(SRCS_FILES))
 OBJS = $(SRCS:.c=.o)
 
