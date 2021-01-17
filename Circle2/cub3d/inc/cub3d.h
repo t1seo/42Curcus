@@ -6,7 +6,7 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/10 19:29:16 by tseo              #+#    #+#             */
-/*   Updated: 2021/01/16 00:39:58 by tseo             ###   ########.fr       */
+/*   Updated: 2021/01/16 11:43:20 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,13 +117,16 @@ typedef	struct	s_map_info
 	int			ceil_color; // 7
 	int			map_width;
 	int			map_height;
+	int			player_pos_x;
+	int			player_pos_y;
+	char		player_direction;
 	char		**world_map;
 
 }				t_map_info;
 
 
 int			get_next_line(int fd, char **line);
-int			parse_map_info(t_map_info *map_info);
+void			parse_map_info(t_map_info *map_info);
 int			get_map_size(t_map_info *map_info);
 
 void	print_map_info(t_map_info *map_info); // to be deleted it is for testing
@@ -145,5 +148,11 @@ char	**ft_charset_split(char *str, char *charset);
 ** parsing_util.c
 */
 int		check_all_information(t_map_info *map_info);
+void	print_map_info(t_map_info *map_info);
+
+/*
+** map_validation.c
+*/
+void		check_map_validation(t_map_info *map_info);
 
 #endif

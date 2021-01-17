@@ -1,16 +1,21 @@
-#include <stdio.h>
 #include <stdlib.h>
-typedef struct _test_t {
-    int data;
-}test_t;
+#include <string.h>
+
 int main(void)
 {
-    test_t *test;
-    test = malloc(sizeof(test_t));
-    test->data = 3;
-    printf("test->data = %d\n", test->data);
+	char *heap;
 
-    return 0;
+	heap = malloc(sizeof(char) * 6);
+	heap[0] = 'h';
+	heap[1] = 'e';
+	heap[2] = 'l';
+	heap[3] = 'l';
+	heap[4] = 'o';
+	heap[5] = '\0';
+
+	// free(heap);
+	while(1);
+	system("leaks a.out > leaks_result; cat leaks_result \
+    	| grep leaked && rm -rf leaks_result");
+	return (0);
 }
-
-

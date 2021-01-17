@@ -6,7 +6,7 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 23:45:42 by tseo              #+#    #+#             */
-/*   Updated: 2021/01/16 02:26:17 by tseo             ###   ########.fr       */
+/*   Updated: 2021/01/17 14:49:35 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,8 @@ void	init_cub3d(char *map_file)
 	map_info->map_file_name = ft_strdup(map_file);
 
 	parse_map_info(map_info);
+	check_map_validation(map_info);
+	// print_map_info(map_info);
 	// if (!parse_map_info(map_info))
 	// 	exit(0);
 }

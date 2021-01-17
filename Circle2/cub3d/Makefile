@@ -6,7 +6,7 @@
 #    By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/10 19:32:08 by tseo              #+#    #+#              #
-#    Updated: 2021/01/15 22:12:34 by tseo             ###   ########.fr        #
+#    Updated: 2021/01/16 11:26:27 by tseo             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,8 @@ SRCS_FILES = main.c \
 			parsing_color.c \
 			parsing_util.c \
 			charset_split.c \
-			measuring_map_size.c
+			measuring_map_size.c \
+			map_validation.c
 SRCS = $(addprefix $(SRCS_DIR)/, $(SRCS_FILES))
 OBJS = $(SRCS:.c=.o)
 

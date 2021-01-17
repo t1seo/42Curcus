@@ -6,7 +6,7 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 14:40:33 by tseo              #+#    #+#             */
-/*   Updated: 2021/01/14 00:14:17 by tseo             ###   ########.fr       */
+/*   Updated: 2021/01/17 13:00:09 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,4 +24,40 @@ int		check_all_information(t_map_info *map_info)
 		i++;
 	}
 	return (1);
+}
+
+void	print_map_info(t_map_info *map_info)
+{
+	printf("SCREEN_WIDTH : %d, SCREEN_HEIGHT : %d\n", map_info->screen_width, map_info->screen_height);
+	printf("N WALL TEXTURE PATH : %s\n", map_info->n_wall_texture_path);
+	printf("S WALL TEXTURE PATH : %s\n", map_info->s_wall_texture_path);
+	printf("N WALL TEXTURE PATH : %s\n", map_info->w_wall_texture_path);
+	printf("N WALL TEXTURE PATH : %s\n", map_info->e_wall_texture_path);
+	printf("SPRITE TEXTURE PATH : %s\n", map_info->sprite_texture_path);
+	printf("FLOOR COLOR : %d\n", map_info->floor_color);
+	printf("CEIL COLOR : %d\n", map_info->ceil_color);
+	printf("MAP SIZE : %d x %d\n", map_info->map_width, map_info->map_height);
+
+	// for (int i = 0; i < map_info->map_height; i++)
+	// {
+	// 	for (int j = 0; j < map_info->map_width; j++)
+	// 	{
+	// 		printf("%c", map_info->world_map[i][j]);
+	// 	}
+	// 	printf("\n");
+	// }
+	for (int i = 0; i < map_info->map_height; i++)
+	{
+		printf("%s\n", map_info->world_map[i]);
+	}
+
+	printf("check all infomation:\n");
+	for (int i = 0; i < 8; i++)
+	{
+		printf("%d ", map_info->info_check[i]);
+	}
+	printf("\n");
+
+	printf("Player Position : [%d, %d]\n", map_info->player_pos_x, map_info->player_pos_y);
+	printf("Player Direction : %c\n", map_info->player_direction);
 }

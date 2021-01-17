@@ -6,39 +6,11 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 15:33:10 by tseo              #+#    #+#             */
-/*   Updated: 2021/01/16 02:19:29 by tseo             ###   ########.fr       */
+/*   Updated: 2021/01/17 13:36:31 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
-
-void	print_map_info(t_map_info *map_info)
-{
-	printf("SCREEN_WIDTH : %d, SCREEN_HEIGHT : %d\n", map_info->screen_width, map_info->screen_height);
-	printf("N WALL TEXTURE PATH : %s\n", map_info->n_wall_texture_path);
-	printf("S WALL TEXTURE PATH : %s\n", map_info->s_wall_texture_path);
-	printf("N WALL TEXTURE PATH : %s\n", map_info->w_wall_texture_path);
-	printf("N WALL TEXTURE PATH : %s\n", map_info->e_wall_texture_path);
-	printf("SPRITE TEXTURE PATH : %s\n", map_info->sprite_texture_path);
-	printf("FLOOR COLOR : %d\n", map_info->floor_color);
-	printf("CEIL COLOR : %d\n", map_info->ceil_color);
-	printf("MAP SIZE : %d x %d\n", map_info->map_width, map_info->map_height);
-
-	for (int i = 0; i < map_info->map_height; i++)
-	{
-		for (int j = 0; j < map_info->map_width; j++)
-		{
-			printf("%c", map_info->world_map[i][j]);
-		}
-		printf("\n");
-	}
-
-	printf("check all infomation:\n");
-	for (int i = 0; i < 8; i++)
-	{
-		printf("%d ", map_info->info_check[i]);
-	}
-}
 
 void	reset_map_info(t_map_info *map_info)
 {
@@ -59,6 +31,9 @@ void	reset_map_info(t_map_info *map_info)
 	map_info->map_width = 0;
 	map_info->map_height = 0;
 	map_info->world_map = 0;
+	map_info->player_pos_x = 0;
+	map_info->player_pos_y = 0;
+	map_info->player_direction = 0;
 }
 
 int		parse_resolution(char *detailed_info, t_map_info *map_info)
@@ -114,7 +89,7 @@ int		parse_detailed_map_info(char *detailed_info, t_map_info *map_info)
 }
 
 
-int		parse_map_info(t_map_info *map_info)
+void		parse_map_info(t_map_info *map_info)
 {
 	char 	*line;
 	int		ret;
@@ -127,18 +102,19 @@ int		parse_map_info(t_map_info *map_info)
 	height = 0;
 	if (((fd = open(map_info->map_file_name, O_RDONLY)) == -1))
 	{
-		printf("Error opening file %s: %s\n", map_info->map_file_name, strerror(errno));
+		printf("Error : Failed to open a file %s: %s\n", map_info->map_file_name, strerror(errno));
 		close(fd);
 		exit(0);
 	}
 	reset_map_info(map_info); // 맵 정보 초기화
 	get_map_size(map_info); // 맵 사이즈 읽기
 	// 맵 저장할 공간 동적 할당
-	if (!(map_info->world_map = (char **)malloc(sizeof(char *) * map_info->map_height)))
+	if (!(map_info->world_map = (char **)malloc(sizeof(char *) * map_info->map_height + 1)))
 	{
+		printf("Error : Memory Allocation Failed.\n");
 		close(fd);
-		return (0);
 	}
+	map_info->world_map[map_info->map_height] = 0;
 	while ((ret = get_next_line(fd, &line)) > 0)
 	{
 		i = 0;
@@ -152,21 +128,20 @@ int		parse_map_info(t_map_info *map_info)
 					close(fd);
 					exit(0);
 				}
-
-				// TODO : ADD EXCEPTION HANDLING
-				// parse_detailed_map_info(&line[i], map_info);
 				if (check_all_information(map_info) == 1)
 					flag = 1;
 
 		}
 		else if (flag == 0 && ft_isdigit(line[i]))
 		{
+			printf("Error : Lack of Map Information\n");
 			close(fd);
 			exit(0);
 		}
 		else if (flag == 1 && ft_isdigit(line[i]))
 		{
 			map_info->world_map[height] = ft_strdup(line);
+			// printf("%s\n", map_info->world_map[height]);
 			height++;
 		}
 		// printf("%s\n", line);
@@ -179,9 +154,8 @@ int		parse_map_info(t_map_info *map_info)
 		map_info->world_map[height] = ft_strdup(line);
 		height++;
 	}
+	// TODO: map 마지막에 NULL 넣어주기
 	// printf("%s\n", line);
 	free(line);
-	print_map_info(map_info); // To be deleted
 	close(fd);
-	return (0);
 }

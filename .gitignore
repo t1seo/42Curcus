@@ -5,3 +5,4 @@ test
 TEST
 *.o
 *.a
+cub3D_map_tester

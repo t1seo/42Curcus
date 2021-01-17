@@ -6,7 +6,7 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 14:40:20 by tseo              #+#    #+#             */
-/*   Updated: 2021/01/13 16:58:17 by tseo             ###   ########.fr       */
+/*   Updated: 2021/01/16 03:19:30 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,18 +49,19 @@ int		check_valid_color_range(int r, int g, int b)
 	return (1);
 }
 
-// void	free_colors(char **colors, int len)
-// {
-// 	int i;
+void	free_colors(char **colors, int len)
+{
+	int i;
 
-// 	i = 0;
-// 	while (i < len)
-// 	{
-// 		free(colors[i]);
-// 	}
-// 	free(colors);
+	i = 0;
+	while (i < len + 1)
+	{
+		free(colors[i]);
+		i++;
+	}
+	free(colors);
 
-// }
+}
 
 int		parse_color(char *detailed_info, t_map_info *map_info)
 {
@@ -94,6 +95,6 @@ int		parse_color(char *detailed_info, t_map_info *map_info)
 		map_info->info_check[7] = 1;
 		map_info->ceil_color = convert_rgb_color(r, g, b);
 	}
-	// FREE MOMORY of COLORS ?
+	free_colors(colors, len);
 	return (1);
 }
