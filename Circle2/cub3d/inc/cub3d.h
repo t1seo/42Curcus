@@ -6,7 +6,7 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/10 19:29:16 by tseo              #+#    #+#             */
-/*   Updated: 2021/01/16 11:43:20 by tseo             ###   ########.fr       */
+/*   Updated: 2021/01/18 13:42:08 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,5 +154,11 @@ void	print_map_info(t_map_info *map_info);
 ** map_validation.c
 */
 void		check_map_validation(t_map_info *map_info);
+
+/*
+** check_arguments.c
+*/
+int		check_cub_file(char *str);
+int		check_save_arg(char *str);
 
 #endif

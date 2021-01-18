@@ -6,7 +6,7 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/16 11:23:11 by tseo              #+#    #+#             */
-/*   Updated: 2021/01/17 14:52:12 by tseo             ###   ########.fr       */
+/*   Updated: 2021/01/17 16:33:33 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,7 +152,7 @@ void		check_map_validation(t_map_info *map_info)
 	// {
 	// 	printf("MAP OK.\n");
 	// }
-	int is_zero = 0;
+	// int is_zero = 0;
 	int y;
 	int x;
 		y = -1;
@@ -163,26 +163,20 @@ void		check_map_validation(t_map_info *map_info)
 		{
 			if (test_map[y][x] == '0')
 			{
-				is_zero = 1;
+				// is_zero = 1;
 				if (check_testmap(test_map, x, y) == 0)
 				{
-					printf("ERROR\n");
-					// free_map(test_map, 103);
-	// printf("TEST MAP\n");
-	for (int i = 0; i < map_info->map_height + 2; i++)
-	{
-		printf("%s\n", test_map[i]);
-	}
-	return;
+					printf("Error : Map is not valid\n");
+					exit(0);
 					// return (0);
 				}
 			}
 		}
 	}
-	if (is_zero == 0)
-		printf("ERROR\n");
-	else
-		printf("OK\n");
+	// if (is_zero == 0)
+	// 	printf("ERROR\n");
+	// else
+	// 	printf("OK\n");
 
 
 	// printf("Real Map\n");
@@ -193,4 +187,13 @@ void		check_map_validation(t_map_info *map_info)
 
 	// free_testmap(test_map, map_info->map_height);
 
+
+	// TODO : memory free test_map
+	int len = 0;
+	while (test_map[len])
+		len++;
+	printf("%d\n", len);
+	for (int i = 0; i < len; i++)
+		free(test_map[i]);
+	free(test_map);
 }
