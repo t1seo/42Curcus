@@ -6,12 +6,12 @@
 #    By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/10 19:32:08 by tseo              #+#    #+#              #
-#    Updated: 2021/01/18 13:49:51 by tseo             ###   ########.fr        #
+#    Updated: 2021/01/19 14:59:24 by tseo             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = gcc
-CFALGS = -Wall -Wextra -Werror
+CFALGS = -Wall -Wextra -Werror -g3 -fsanitize=address
 RM = rm -f
 FRAMEWORK = -framework OpenGL -framework AppKit
 
@@ -27,7 +27,15 @@ SRCS_FILES = main.c \
 			charset_split.c \
 			measuring_map_size.c \
 			map_validation.c \
-			check_arguments.c
+			check_arguments.c \
+			initial_setting.c \
+			key_handling.c \
+			player_moving.c \
+			loading_image.c \
+			drawing.c \
+			making_map.c \
+			wall_casting.c \
+			sprite_casting.c
 SRCS = $(addprefix $(SRCS_DIR)/, $(SRCS_FILES))
 OBJS = $(SRCS:.c=.o)
 

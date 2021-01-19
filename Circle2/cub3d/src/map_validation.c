@@ -6,7 +6,7 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/16 11:23:11 by tseo              #+#    #+#             */
-/*   Updated: 2021/01/17 16:33:33 by tseo             ###   ########.fr       */
+/*   Updated: 2021/01/18 23:47:09 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -192,7 +192,6 @@ void		check_map_validation(t_map_info *map_info)
 	int len = 0;
 	while (test_map[len])
 		len++;
-	printf("%d\n", len);
 	for (int i = 0; i < len; i++)
 		free(test_map[i]);
 	free(test_map);

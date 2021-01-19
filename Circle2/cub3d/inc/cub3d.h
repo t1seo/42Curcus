@@ -6,7 +6,7 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/10 19:29:16 by tseo              #+#    #+#             */
-/*   Updated: 2021/01/18 13:42:08 by tseo             ###   ########.fr       */
+/*   Updated: 2021/01/19 15:05:05 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@
 #define X_EVENT_KEY_RELEASE 3
 #define X_EVENT_KEY_EXIT	17
 
-#define TEX_WIDTH	64
-#define TEX_HEIGHT	64
+
+#define NUM_OF_TEXTURES 4
 
 #define KEY_A 0
 #define KEY_D 2
@@ -38,15 +38,26 @@
 #define KEY_RA 124
 #define KEY_ESC 53
 
-// extern int map_width;
-// extern int map_height;
-// extern int screen_width;
-// extern int screen_height;
+extern int g_map_width;
+extern int g_map_height;
+extern int g_screen_width;
+extern int g_screen_height;
+extern int g_tex_width;
+extern int g_tex_height;
+extern int g_num_of_sprites;
+extern int g_floor_color;
+extern int g_ceil_color;
+extern int **g_world_map;
 
-#define MAP_WIDTH 24
-#define MAP_HEIGHT 24
-#define SCREEN_WIDTH 640
-#define SCREEN_HEIGHT 480
+#define MAP_WIDTH g_map_width
+#define MAP_HEIGHT g_map_height
+#define SCREEN_WIDTH g_screen_width
+#define SCREEN_HEIGHT g_screen_height
+#define TEX_WIDTH g_tex_width
+#define TEX_HEIGHT g_tex_height
+#define FLOOR_COLOR g_floor_color;
+#define CEIL_COLOR g_ceil_color;
+#define NUM_OF_SPRITES g_num_of_sprites
 
 #define MAX_FD 1024
 #define GNL_BUFFER_SIZE 25
@@ -63,12 +74,12 @@ typedef struct	s_img
 	int			img_height;
 }				t_img;
 
-typedef struct	s_info
+typedef struct	s_player_info
 {
-	double		player_pos_x;
-	double		player_pos_y;
-	double		dir_vec_x;
-	double		dir_vec_y;
+	double		pos_x;
+	double		pos_y;
+	double		dir_x;
+	double		dir_y;
 	double		plane_x;
 	double		plane_y;
 	void		*mlx;
@@ -84,10 +95,11 @@ typedef struct	s_info
 	// should be memory allocated
 	int			**buf;
 	double		*z_buffer;
-	int			**textures;
+	int			**texture;
+	int			**world_map;
 	double		move_speed;
 	double		rot_speed;
-}				t_info;
+}				t_player_info;
 
 /*
 ** info_check index
@@ -123,6 +135,51 @@ typedef	struct	s_map_info
 	char		**world_map;
 
 }				t_map_info;
+
+typedef struct	s_wall_casting_info
+{
+	double		camera_x;
+	double		ray_dir_x;
+	double		ray_dir_y;
+	int			map_x;
+	int			map_y;
+	double		side_dist_x;
+	double		side_dist_y;
+	double		delta_dist_x;
+	double		delta_dist_y;
+	double		perp_wall_dist;
+	int			step_x;
+	int			step_y;
+	int			hit;
+	int			side;
+	int			line_height;
+	int			draw_start;
+	int			draw_end;
+	int			tex_num;
+	double		wall_x;
+	int			tex_x;
+	double		step;
+	double		tex_pos;
+}				t_wall_casting_info;
+
+typedef struct	s_sprite
+{
+	double		x;
+	double		y;
+	int			texture;
+}				t_sprite;
+
+typedef struct	s_sprite_info
+{
+
+}				t_sprite_info;
+
+typedef struct	s_pair
+{
+	double		first;
+	int			second;
+}				t_pair;
+
 
 
 int			get_next_line(int fd, char **line);
@@ -161,4 +218,50 @@ void		check_map_validation(t_map_info *map_info);
 int		check_cub_file(char *str);
 int		check_save_arg(char *str);
 
+/*
+** initial_setting.c
+*/
+void	setup_player_info(t_player_info *p_info, t_map_info *map_info);
+
+/*
+** key_handling.c
+*/
+int		press_key(int key, t_player_info *p_info);
+int		release_key(int key, t_player_info *p_info);
+void	move_player(t_player_info *p_info, t_map_info *map_info);
+
+/*
+** player_moving.c
+*/
+void	move_forward(t_player_info *p_info, t_map_info *map_info);
+void	move_backward(t_player_info *p_info, t_map_info *map_info);
+void	rot_left(t_player_info *p_info, t_map_info *map_info);
+void	rot_right(t_player_info *p_info, t_map_info *map_info);
+
+/*
+** loading_image.c
+*/
+void	load_texture(t_player_info *p_info, t_map_info *map_info);
+
+/*
+** drawing.c
+*/
+void	draw(t_player_info *p_info);
+void	draw_floor_ceil(t_player_info *p_info);
+
+/*
+** wall_casting.c
+*/
+void	wall_casting(t_player_info *p_info);
+
+/*
+** making_map.c
+*/
+void	make_world_map(t_player_info *p_info, t_map_info *map_info);
+
+/*
+** sprite_casting.c
+*/
+void	setup_sprite_info(t_player_info *p_info);
+void	sprite_casting(t_player_info *p_info);
 #endif

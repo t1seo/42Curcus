@@ -6,7 +6,7 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 14:40:33 by tseo              #+#    #+#             */
-/*   Updated: 2021/01/17 13:00:09 by tseo             ###   ########.fr       */
+/*   Updated: 2021/01/19 02:31:37 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,4 +60,15 @@ void	print_map_info(t_map_info *map_info)
 
 	printf("Player Position : [%d, %d]\n", map_info->player_pos_x, map_info->player_pos_y);
 	printf("Player Direction : %c\n", map_info->player_direction);
+	// int i, j;
+	// 	i = -1;
+	// while (++i < SCREEN_HEIGHT)
+	// {
+	// 	j = -1;
+	// 	while (++j < SCREEN_WIDTH)
+	// 	{
+	// 		printf("%d", p_info->world_map[i][j]);
+	// 	}
+	// 	printf("\n");
+	// }
 }
