@@ -6,7 +6,7 @@
 #    By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/10 19:32:08 by tseo              #+#    #+#              #
-#    Updated: 2021/01/19 14:59:24 by tseo             ###   ########.fr        #
+#    Updated: 2021/01/23 18:36:09 by tseo             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,8 @@ SRCS_FILES = main.c \
 			drawing.c \
 			making_map.c \
 			wall_casting.c \
-			sprite_casting.c
+			sprite_casting.c \
+			saving_bmp.c
 SRCS = $(addprefix $(SRCS_DIR)/, $(SRCS_FILES))
 OBJS = $(SRCS:.c=.o)
 

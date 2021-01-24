@@ -6,7 +6,7 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/10 19:29:16 by tseo              #+#    #+#             */
-/*   Updated: 2021/01/19 15:05:05 by tseo             ###   ########.fr       */
+/*   Updated: 2021/01/24 14:12:52 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 #define X_EVENT_KEY_EXIT	17
 
 
-#define NUM_OF_TEXTURES 4
+#define NUM_OF_TEXTURES 5
 
 #define KEY_A 0
 #define KEY_D 2
@@ -59,6 +59,10 @@ extern int **g_world_map;
 #define CEIL_COLOR g_ceil_color;
 #define NUM_OF_SPRITES g_num_of_sprites
 
+#define U_DIV 1
+#define V_DIV 1
+#define V_MOVE 0.0
+
 #define MAX_FD 1024
 #define GNL_BUFFER_SIZE 25
 
@@ -73,6 +77,16 @@ typedef struct	s_img
 	int			img_width;
 	int			img_height;
 }				t_img;
+
+typedef struct	s_window
+{
+	void	*ptr;
+	void	*win;
+	t_img	img;
+	int		size_x;
+	int		size_y;
+}				t_window;
+
 
 typedef struct	s_player_info
 {
@@ -171,7 +185,19 @@ typedef struct	s_sprite
 
 typedef struct	s_sprite_info
 {
-
+	double		sprite_x;
+	double		sprite_y;
+	double		inv_det;
+	double		transform_x;
+	double		transform_y;
+	int			sprite_screen_x;
+	int			v_move_screen;
+	int			sprite_height;
+	int			draw_start_y;
+	int			draw_end_y;
+	int			sprite_width;
+	int			draw_start_x;
+	int			draw_end_x;
 }				t_sprite_info;
 
 typedef struct	s_pair
@@ -179,6 +205,40 @@ typedef struct	s_pair
 	double		first;
 	int			second;
 }				t_pair;
+
+/*
+** BITMAP
+*/
+#pragma pack(push, 1)
+
+typedef struct		s_bmp_info
+{
+	char			byte_type[2];
+	unsigned int	byte_size;
+	unsigned int	byte_reserved;
+	unsigned int	byte_offset;
+	unsigned		header_size;
+	int				image_width;
+	int				image_height;
+	unsigned short	color_planes;
+	unsigned short	bits_per_pixel;
+	unsigned int	compression;
+	unsigned int	image_size;
+	int				bits_xpels_per_meter;
+	int				bits_ypels_per_meter;
+	unsigned int	color_used;
+	unsigned int	color_important;
+}					t_bmp_info;
+
+#pragma pack(pop)
+
+
+extern t_sprite *g_sprite;
+
+/*
+** main.c
+*/
+void	update(t_player_info *p_info);
 
 
 
@@ -262,6 +322,11 @@ void	make_world_map(t_player_info *p_info, t_map_info *map_info);
 /*
 ** sprite_casting.c
 */
-void	setup_sprite_info(t_player_info *p_info);
 void	sprite_casting(t_player_info *p_info);
+
+/*
+**  saving_bmp.c
+*/
+void	save_bmp(t_player_info *p_info);
+
 #endif

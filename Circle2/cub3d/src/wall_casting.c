@@ -6,7 +6,7 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 01:53:10 by tseo              #+#    #+#             */
-/*   Updated: 2021/01/19 21:11:34 by tseo             ###   ########.fr       */
+/*   Updated: 2021/01/20 19:13:41 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	perform_dda(t_wall_casting_info *w_info)
 			w_info->map_y += w_info->step_y;
 			w_info->side = 1;
 		}
-		if (g_world_map[w_info->map_x][w_info->map_y] > 0)
+		if (g_world_map[w_info->map_x][w_info->map_y] == 1)
 			w_info->hit = 1;
 	}
 	// printf("PERFORM DDA\n");
@@ -148,6 +148,11 @@ void	wall_casting(t_player_info *p_info)
 {
 	int x;
 	t_wall_casting_info w_info;
+	if (!(p_info->z_buffer = (double *)malloc(sizeof(double) * SCREEN_WIDTH)))
+	{
+		printf("Error : Memory Allocation Failed.\n");
+		exit(0);
+	}
 
 	x = -1;
 	while (++x < SCREEN_WIDTH)
@@ -160,6 +165,6 @@ void	wall_casting(t_player_info *p_info)
 		calc_wall_x(p_info, &w_info);
 		calc_wall_texture(&w_info);
 		allocate_texture_in_buf(p_info, &w_info, x);
-		// p_info->z_buffer[x] = w_info.perp_wall_dist;
+		p_info->z_buffer[x] = w_info.perp_wall_dist;
 	}
 }

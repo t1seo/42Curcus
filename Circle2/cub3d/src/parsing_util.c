@@ -6,7 +6,7 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 14:40:33 by tseo              #+#    #+#             */
-/*   Updated: 2021/01/19 02:31:37 by tseo             ###   ########.fr       */
+/*   Updated: 2021/01/20 19:42:07 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,4 +71,9 @@ void	print_map_info(t_map_info *map_info)
 	// 	}
 	// 	printf("\n");
 	// }
+
+	for (int i = 0; i < NUM_OF_SPRITES; i++)
+	{
+		printf("Sprite %d : %lf %lf %d\n", i, g_sprite[i].x, g_sprite[i].y, g_sprite[i].texture);
+	}
 }

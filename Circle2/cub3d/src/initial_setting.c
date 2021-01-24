@@ -6,7 +6,7 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 19:08:22 by tseo              #+#    #+#             */
-/*   Updated: 2021/01/19 14:25:34 by tseo             ###   ########.fr       */
+/*   Updated: 2021/01/22 11:10:24 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,8 @@ void	init_buf(t_player_info *p_info)
 			printf("Error : Memory Allocation Failed.\n");
 			exit(0);
 		}
+
+	// TODO : bzero 사용하기
 	i = -1;
 	while (++i < SCREEN_HEIGHT)
 	{

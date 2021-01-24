@@ -347,7 +347,8 @@ void	calc(t_info *info)
 	for(int i = 0; i < numSprites; i++)
 	{
 		spriteOrder[i] = i;
-		spriteDistance[i] = ((info->posX - sprite[i].x) * (info->posX - sprite[i].x) + (info->posY - sprite[i].y) * (info->posY - sprite[i].y)); //sqrt not taken, unneeded
+		spriteDistance[i] = ((info->posX - sprite[i].x) * (info->posX - sprite[i].x) +
+		(info->posY - sprite[i].y) * (info->posY - sprite[i].y)); //sqrt not taken, unneeded
 	}
 	sortSprites(spriteOrder, spriteDistance, numSprites);
 	//after sorting the sprites, do the projection and draw them

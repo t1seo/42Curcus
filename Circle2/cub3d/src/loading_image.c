@@ -6,7 +6,7 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 01:18:32 by tseo              #+#    #+#             */
-/*   Updated: 2021/01/19 01:26:05 by tseo             ###   ########.fr       */
+/*   Updated: 2021/01/20 19:52:11 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,5 @@ void	load_texture(t_player_info *p_info, t_map_info *map_info)
 	load_image(p_info, p_info->texture[1], map_info->s_wall_texture_path, &img);
 	load_image(p_info, p_info->texture[2], map_info->e_wall_texture_path, &img);
 	load_image(p_info, p_info->texture[3], map_info->w_wall_texture_path, &img);
+	load_image(p_info, p_info->texture[4], map_info->sprite_texture_path, &img);
 }
