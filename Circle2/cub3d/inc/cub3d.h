@@ -6,7 +6,7 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/10 19:29:16 by tseo              #+#    #+#             */
-/*   Updated: 2021/01/25 09:26:03 by tseo             ###   ########.fr       */
+/*   Updated: 2021/01/25 22:02:31 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,11 @@
 #define KEY_LA 123
 #define KEY_RA 124
 #define KEY_ESC 53
+
+
+//parameters for scaling and moving the sprites
+#define uDiv 1
+#define vDiv 1
 
 extern int g_map_width;
 extern int g_map_height;
@@ -199,6 +204,8 @@ typedef struct	s_sprite_info
 	int			sprite_width;
 	int			draw_start_x;
 	int			draw_end_x;
+	int			tex_x;
+	int			tex_y;
 }				t_sprite_info;
 
 typedef struct	s_pair
@@ -207,34 +214,10 @@ typedef struct	s_pair
 	int			second;
 }				t_pair;
 
-/*
-** BITMAP
-*/
-#pragma pack(push, 1)
-
-typedef struct		s_bmp_info
-{
-	char			byte_type[2];
-	unsigned int	byte_size;
-	unsigned int	byte_reserved;
-	unsigned int	byte_offset;
-	unsigned		header_size;
-	int				image_width;
-	int				image_height;
-	unsigned short	color_planes;
-	unsigned short	bits_per_pixel;
-	unsigned int	compression;
-	unsigned int	image_size;
-	int				bits_xpels_per_meter;
-	int				bits_ypels_per_meter;
-	unsigned int	color_used;
-	unsigned int	color_important;
-}					t_bmp_info;
-
-#pragma pack(pop)
-
 
 extern t_sprite *g_sprite;
+extern int		*g_sprite_order;
+extern double	*g_sprite_distance;
 
 /*
 ** main.c
@@ -244,7 +227,6 @@ void	update(t_player_info *p_info);
 
 
 int			get_next_line(int fd, char **line);
-void			parse_map_info(t_map_info *map_info);
 int			get_map_size(t_map_info *map_info);
 
 void	print_map_info(t_map_info *map_info); // to be deleted it is for testing
@@ -263,15 +245,39 @@ int		parse_color(char *detailed_info, t_map_info *map_info);
 char	**ft_charset_split(char *str, char *charset);
 
 /*
-** parsing_util.c
+** parsing_map.c
+*/
+void			parse_map_info(t_map_info *map_info);
+void				parse_detailed_map_info(char *detailed_info, t_map_info *map_info, int fd);
+
+/*
+** parsing_map_util_1.c
 */
 int		check_all_information(t_map_info *map_info);
+int		parse_resolution_x_y(char *detailed_info, t_map_info *map_info);
+void	reset_map_info(t_map_info *map_info);
+void	parse_line(t_map_info *map_info, int fd);
+
+/*
+** parsing_map_util_2.c
+*/
+void	skip_space(char *line, int *i);
+void	get_map_line(t_map_info *map_info, int *height, char *line);
+/*
+** debugging_util.c
+*/
 void	print_map_info(t_map_info *map_info);
 
 /*
 ** map_validation.c
 */
 void		check_map_validation(t_map_info *map_info);
+
+/*
+** map_validation_util.c
+*/
+int			check_player_direction(char c);
+void		copy_world_map(t_map_info *map_info, char **test_map);
 
 /*
 ** check_arguments.c
@@ -283,6 +289,14 @@ int		check_save_arg(char *str);
 ** initial_setting.c
 */
 void	setup_player_info(t_player_info *p_info, t_map_info *map_info);
+
+/*
+** initial_setting_util.c
+*/
+void	setup_direction_vectors(t_player_info *p_info, int i);
+void	setup_player_direction(t_player_info *p_info, t_map_info *map_info);
+void	setup_screen_map_config(t_player_info *p_info, t_map_info *map_info);
+void	setup_player_keys(t_player_info *p_info);
 
 /*
 ** key_handling.c
@@ -316,9 +330,27 @@ void	draw_floor_ceil(t_player_info *p_info);
 void	wall_casting(t_player_info *p_info);
 
 /*
+** wall_casting_calc.c
+*/
+void	calc_step_and_sidedist(t_player_info *p_info,
+								t_wall_casting_info *w_info);
+void	calc_perp_wall_dist(t_player_info *p_info, t_wall_casting_info *w_info);
+void	calc_draw_position(t_wall_casting_info *w_info);
+void	calc_wall_x(t_player_info *p_info, t_wall_casting_info *w_info);
+void	calc_wall_texture(t_wall_casting_info *w_info);
+
+/*
 ** making_map.c
 */
 void	make_world_map(t_player_info *p_info, t_map_info *map_info);
+
+/*
+**  making_map_util.c
+*/
+int		check_map_tile(char tile);
+int		check_invalid_map_tile(char tile);
+void	fill_global_map_with_one(void);
+void	make_global_map(t_map_info *map_info);
 
 /*
 ** sprite_casting.c
@@ -326,8 +358,23 @@ void	make_world_map(t_player_info *p_info, t_map_info *map_info);
 void	sprite_casting(t_player_info *p_info);
 
 /*
+** sprite_casting_calc.c
+*/
+void	calc_relative_position(t_player_info *p_info, t_sprite_info *s_info, int i);
+void	calc_depth_inside_screen(t_player_info *p_info, t_sprite_info *s_info);
+void	calc_center_pos_of_sprite(t_sprite_info *s_info);
+void	calc_sprite_size(t_sprite_info *s_info);
+void	calc_draw_pos_of_sprite(t_sprite_info *s_info);
+
+/*
 **  saving_bmp.c
 */
 void	save_bmp(t_player_info *p_info);
+
+/*
+** error_util.c
+*/
+void	print_error_and_exit(char *error_msg);
+void	print_parsing_error(char *error_msg, int fd);
 
 #endif

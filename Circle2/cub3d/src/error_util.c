@@ -1,42 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_arguments.c                                  :+:      :+:    :+:   */
+/*   error_util.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/18 13:38:11 by tseo              #+#    #+#             */
-/*   Updated: 2021/01/25 10:41:15 by tseo             ###   ########.fr       */
+/*   Created: 2021/01/25 10:35:46 by tseo              #+#    #+#             */
+/*   Updated: 2021/01/25 13:27:50 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
 
-int		check_cub_file(char *str)
+void	print_error_and_exit(char *error_msg)
 {
-	int		i;
-	char	*ptr;
-
-	i = 0;
-	while (str[i])
-		i++;
-	ptr = &str[i - 3];
-	if (str[i - 4] == '.' && !ft_strncmp(ptr, "cub", 3))
-		return (1);
-	else
-	{
-		printf("Error : Wrong File Format\n");
-		return (0);
-	}
+	printf("Error : %s\n", error_msg);
+	exit(0);
 }
 
-int		check_save_arg(char *str)
+
+void	print_parsing_error(char *error_msg, int fd)
 {
-	if ((ft_strlen(str) == 6) && ft_strncmp(str, "--save", 6) == 0)
-		return (1);
-	else
-	{
-		printf("Error : Wrong Option\n");
-		return (0);
-	}
+	printf("Error : %s\n", error_msg);
+	close(fd);
+	exit(0);
 }

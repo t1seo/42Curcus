@@ -1,42 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_arguments.c                                  :+:      :+:    :+:   */
+/*   parsing_map_util_2.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/18 13:38:11 by tseo              #+#    #+#             */
-/*   Updated: 2021/01/25 10:41:15 by tseo             ###   ########.fr       */
+/*   Created: 2021/01/25 13:21:23 by tseo              #+#    #+#             */
+/*   Updated: 2021/01/25 14:03:01 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
 
-int		check_cub_file(char *str)
+void	skip_space(char *line, int *i)
 {
-	int		i;
-	char	*ptr;
-
-	i = 0;
-	while (str[i])
-		i++;
-	ptr = &str[i - 3];
-	if (str[i - 4] == '.' && !ft_strncmp(ptr, "cub", 3))
-		return (1);
-	else
-	{
-		printf("Error : Wrong File Format\n");
-		return (0);
-	}
+	while ((9 <= line[*i] && line[*i] <= 13) || line[*i] == ' ')
+		*i++;
 }
 
-int		check_save_arg(char *str)
+void	get_map_line(t_map_info *map_info, int *height, char *line)
 {
-	if ((ft_strlen(str) == 6) && ft_strncmp(str, "--save", 6) == 0)
-		return (1);
-	else
-	{
-		printf("Error : Wrong Option\n");
-		return (0);
-	}
+	map_info->world_map[*height] = ft_strdup(line);
+	printf("HELLO\n");
+	*height++;
+	printf("WORLD\n");
 }

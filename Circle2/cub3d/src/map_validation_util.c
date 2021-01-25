@@ -1,42 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_arguments.c                                  :+:      :+:    :+:   */
+/*   map_validation_util.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/18 13:38:11 by tseo              #+#    #+#             */
-/*   Updated: 2021/01/25 10:41:15 by tseo             ###   ########.fr       */
+/*   Created: 2021/01/25 14:16:45 by tseo              #+#    #+#             */
+/*   Updated: 2021/01/25 19:02:41 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
 
-int		check_cub_file(char *str)
+int			check_player_direction(char c)
 {
-	int		i;
-	char	*ptr;
+	return (c == 'N' || c == 'S' || c == 'W' || c == 'E');
+}
 
-	i = 0;
-	while (str[i])
-		i++;
-	ptr = &str[i - 3];
-	if (str[i - 4] == '.' && !ft_strncmp(ptr, "cub", 3))
-		return (1);
-	else
+void		copy_world_map(t_map_info *map_info, char **test_map)
+{
+	int x;
+	int y;
+
+	y = -1;
+	while (++y < map_info->map_height)
 	{
-		printf("Error : Wrong File Format\n");
-		return (0);
+		x = -1;
+		while (map_info->world_map[y][++x])
+			test_map[y + 1][x + 1] = map_info->world_map[y][x];
 	}
 }
 
-int		check_save_arg(char *str)
-{
-	if ((ft_strlen(str) == 6) && ft_strncmp(str, "--save", 6) == 0)
-		return (1);
-	else
-	{
-		printf("Error : Wrong Option\n");
-		return (0);
-	}
-}

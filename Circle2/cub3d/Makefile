@@ -6,12 +6,12 @@
 #    By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/10 19:32:08 by tseo              #+#    #+#              #
-#    Updated: 2021/01/25 09:25:17 by tseo             ###   ########.fr        #
+#    Updated: 2021/01/25 21:51:55 by tseo             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = gcc
-CFALGS = -Wall -Wextra -Werror -g3 -fsanitize=address
+CFALGS = -Wall -Wextra -Werror
 RM = rm -f
 FRAMEWORK = -framework OpenGL -framework AppKit
 
@@ -23,20 +23,28 @@ SRCS_FILES = main.c \
 			parsing_map.c \
 			parsing_path.c \
 			parsing_color.c \
-			parsing_util.c \
+			parsing_map_util_1.c \
+			parsing_map_util_2.c \
 			charset_split.c \
 			measuring_map_size.c \
 			map_validation.c \
+			map_validation_util.c \
 			check_arguments.c \
 			initial_setting.c \
+			initial_setting_util.c \
 			key_handling.c \
 			player_moving.c \
 			loading_image.c \
 			drawing.c \
 			making_map.c \
+			making_map_util.c \
 			wall_casting.c \
+			wall_casting_calc.c \
 			sprite_casting.c \
-			saving_bmp.c
+			sprite_casting_calc.c \
+			saving_bmp.c \
+			error_util.c \
+			debugging_util.c
 SRCS = $(addprefix $(SRCS_DIR)/, $(SRCS_FILES))
 OBJS = $(SRCS:.c=.o)
 
@@ -58,11 +66,9 @@ $(NAME) : $(OBJS)
 	$(MAKE) -C $(MLX_DIR) all
 	$(MAKE) -C $(MLX_BETA_DIR) all
 	$(CC) $(CFLAGS) -L$(LIBFT_DIR) -l$(LIBFT_NAME) -L$(MLX_DIR) -l$(MLX_NAME) -L$(MLX_BETA_DIR) -l$(MLX_BETA_NAME) $(FRAMEWORK) $^ -o $@
-	# $(CC) $(CFLAGS) -L$(LIBFT_DIR) -l$(LIBFT_NAME) -L$(MLX_DIR) -l$(MLX_NAME) $(FRAMEWORK) $^ -o $@
 
 $(SRCS_DIR)/$.o : $(SRCS_DIR)/%.c
 	$(CC) $(CFLAGS) -I$(INCLUDES) -I$(MLX_DIR) -I$(LIBFT_DIR) -I$(MLX_BETA_DIR) -c $< -o $@
-	# $(CC) $(CFLAGS) -I$(INCLUDES) -I$(MLX_DIR) -I$(LIBFT_DIR) -c $< -o $@
 
 all : $(NAME)
 
