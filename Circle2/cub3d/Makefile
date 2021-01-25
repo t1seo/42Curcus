@@ -6,7 +6,7 @@
 #    By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/10 19:32:08 by tseo              #+#    #+#              #
-#    Updated: 2021/01/23 18:36:09 by tseo             ###   ########.fr        #
+#    Updated: 2021/01/25 09:25:17 by tseo             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,28 +45,37 @@ LIBFT_NAME = ft
 LIBFT_DIR = ./libft
 LIBFT = $(addprefix $(LIBFT_DIR), libft.a)
 
-MLX_NAME = mlx
+MLX_NAME = mlx_opengl
 MLX_DIR = ./mlx
-MLX = $(addprefix $(MLX_DIR), libmlx.a)
+MLX = $(addprefix $(MLX_DIR), libmlx_opengl.a)
+
+MLX_BETA_NAME = mlx
+MLX_BETA_DIR = ./mlx_beta
+MLX_BETA = $(addprefix $(MLX_BETA_DIR), libmlx.dylib)
 
 $(NAME) : $(OBJS)
 	$(MAKE) -C $(LIBFT_DIR) bonus
 	$(MAKE) -C $(MLX_DIR) all
-	$(CC) $(CFLAGS) -L$(LIBFT_DIR) -l$(LIBFT_NAME) -L$(MLX_DIR) -l$(MLX_NAME) $(FRAMEWORK) $^ -o $@
+	$(MAKE) -C $(MLX_BETA_DIR) all
+	$(CC) $(CFLAGS) -L$(LIBFT_DIR) -l$(LIBFT_NAME) -L$(MLX_DIR) -l$(MLX_NAME) -L$(MLX_BETA_DIR) -l$(MLX_BETA_NAME) $(FRAMEWORK) $^ -o $@
+	# $(CC) $(CFLAGS) -L$(LIBFT_DIR) -l$(LIBFT_NAME) -L$(MLX_DIR) -l$(MLX_NAME) $(FRAMEWORK) $^ -o $@
 
 $(SRCS_DIR)/$.o : $(SRCS_DIR)/%.c
-	$(CC) $(CFLAGS) -I$(INCLUDES) -I$(MLX_DIR) -I$(LIBFT_DIR) -c $< -o $@
+	$(CC) $(CFLAGS) -I$(INCLUDES) -I$(MLX_DIR) -I$(LIBFT_DIR) -I$(MLX_BETA_DIR) -c $< -o $@
+	# $(CC) $(CFLAGS) -I$(INCLUDES) -I$(MLX_DIR) -I$(LIBFT_DIR) -c $< -o $@
 
 all : $(NAME)
 
 clean :
 	$(MAKE) -C $(LIBFT_DIR) clean
 	$(MAKE) -C $(MLX_DIR) clean
+	$(MAKE) -C $(MLX_BETA_DIR) clean
 	$(RM) $(OBJS)
 
 fclean : clean
 	$(MAKE) -C $(LIBFT_DIR) fclean
 	$(MAKE) -C $(MLX_DIR) clean
+	$(MAKE) -C $(MLX_BETA_DIR) clean
 	$(RM) $(NAME)
 
 re : fclean all

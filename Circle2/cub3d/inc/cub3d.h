@@ -6,7 +6,7 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/10 19:29:16 by tseo              #+#    #+#             */
-/*   Updated: 2021/01/24 14:12:52 by tseo             ###   ########.fr       */
+/*   Updated: 2021/01/25 09:26:03 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #define CUB3D_H
 
 #include "../libft/libft.h"
+#include "../mlx_beta/mlx_beta.h"
 #include "../mlx/mlx.h"
 
 #include <stdio.h>

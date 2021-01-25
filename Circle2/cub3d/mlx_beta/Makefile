@@ -12,7 +12,7 @@ C_OBJ=$(C_SRC:.c=.o)
 CFLAGS=-O3
 
 # NAME=libmlx.dylib
-NAME=libmlx_beta.a
+NAME=libmlx.dylib
 
 INC=-I.
 #OPTI=-Ounchecked

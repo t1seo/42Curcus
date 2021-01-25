@@ -6,7 +6,7 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 18:11:22 by tseo              #+#    #+#             */
-/*   Updated: 2021/01/24 20:40:25 by tseo             ###   ########.fr       */
+/*   Updated: 2021/01/25 01:23:14 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ void	save_bmp(t_player_info *p_info)
 {
 	int			fd;
 	t_bmp_info	b_info;
-	update(p_info);
-	draw(p_info);
+	// update(p_info);
+	// draw(p_info);
 
 	int pad = (4 - (SCREEN_WIDTH * 3) % 4) % 4;
 	int file_size = 54 + (SCREEN_WIDTH * SCREEN_HEIGHT) * 3;

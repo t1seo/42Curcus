@@ -6,7 +6,7 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 23:45:42 by tseo              #+#    #+#             */
-/*   Updated: 2021/01/24 13:47:29 by tseo             ###   ########.fr       */
+/*   Updated: 2021/01/25 09:27:49 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,18 @@ int		main_loop(t_player_info *p_info, t_map_info *map_info)
 {
 	update(p_info);
 	draw(p_info);
-	// if (g_flag == 1)
-	// {
-	// 	g_flag = 0;
-	// 	save_bmp(&p_info);
-	// }
+	if (g_flag == 1)
+	{
+		g_flag = 0;
+		save_bmp(p_info);
+	}
 	move_player(p_info, map_info);
+	return (0);
+}
+
+int		red_cross(void)
+{
+	exit(0);
 	return (0);
 }
 
@@ -52,12 +58,17 @@ void	init_cub3d(char *map_file, int save_option)
 	p_info.img.data = (int *)mlx_get_data_addr(p_info.img.img, &p_info.img.bpp, &p_info.img.size_l, &p_info.img.endian);
 
 	if (save_option)
-		save_bmp(&p_info);
-		// g_flag = 1;
+		g_flag = 1;
+		// save_bmp(&p_info);
 
+	int x;
+	int y;
+	mlx_get_screen_size(p_info.mlx, &x, &y);
+	printf("Resolution : %d %d\n", x, y);
 	mlx_loop_hook(p_info.mlx, &main_loop, &p_info);
 	mlx_hook(p_info.win, X_EVENT_KEY_PRESS, 0, &press_key, &p_info);
 	mlx_hook(p_info.win, X_EVENT_KEY_RELEASE, 0, &release_key, &p_info);
+	mlx_hook(p_info.win, 17, 0L, &red_cross, &p_info);
 	mlx_loop(p_info.mlx);
 }
 
