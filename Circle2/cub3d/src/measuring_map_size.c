@@ -6,7 +6,7 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 21:54:18 by tseo              #+#    #+#             */
-/*   Updated: 2021/01/15 22:47:31 by tseo             ###   ########.fr       */
+/*   Updated: 2021/01/26 16:29:23 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,17 +34,16 @@ int			get_map_size(t_map_info *map_info)
 {
 	int		fd;
 	int		ret;
-	char	*line;
 	int		map_width;
 	int		map_height;
-	int		i;
-	int		len;
+	char	*line;
 
 	map_width = 0;
 	map_height = 0;
 	if (((fd = open(map_info->map_file_name, O_RDONLY)) == -1))
 	{
-		printf("Error opening file %s: %s\n", map_info->map_file_name, strerror(errno));
+		printf("Error opening file %s: %s\n",
+				map_info->map_file_name, strerror(errno));
 		close(fd);
 		exit(0);
 	}

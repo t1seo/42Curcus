@@ -6,7 +6,7 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 18:11:22 by tseo              #+#    #+#             */
-/*   Updated: 2021/01/25 19:54:44 by tseo             ###   ########.fr       */
+/*   Updated: 2021/01/26 21:25:01 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,43 +37,31 @@ static void		write_bmp_header(int fd, int file_size)
 	write(fd, bmp_header, 54);
 }
 
-void		write_bmp_pixel_data(t_player_info *p_info, int fd)
+void			write_bmp_pixel_data(t_player_info *p_info, int fd)
 {
-	int y = SCREEN_HEIGHT - 1;
+	int y;
+	int x;
+
+	y = SCREEN_HEIGHT - 1;
 	while (y >= 0)
 	{
-		int x = 0;
+		x = 0;
 		while (x < SCREEN_WIDTH)
 			write(fd, &(p_info->img.data[(y * SCREEN_WIDTH) + x++]), 4);
 		y--;
 	}
 }
 
-void	save_bmp(t_player_info *p_info)
+void			save_bmp(t_player_info *p_info)
 {
-	int			fd;
-	t_bmp_info	b_info;
-	// update(p_info);
-	// draw(p_info);
+	int		fd;
+	int		file_size;
 
-	int pad = (4 - (SCREEN_WIDTH * 3) % 4) % 4;
-	int file_size = 54 + (SCREEN_WIDTH * SCREEN_HEIGHT) * 4;
-	ft_bzero(&b_info, sizeof(b_info));
+	file_size = 54 + (SCREEN_WIDTH * SCREEN_HEIGHT) * 4;
 	if (!(fd = open("screenshot.bmp", O_WRONLY | O_CREAT
-	| O_TRUNC | O_APPEND, 0666)))
-	{
-		printf("Error : cannot open bmp.\n");
-		exit(0);
-	}
+	| O_TRUNC, 0666)))
+		print_error_and_exit("Cannot open bmp file");
 	write_bmp_header(fd, file_size);
-	// int y = SCREEN_HEIGHT - 1;
-	// while (y >= 0)
-	// {
-	// 	int x = 0;
-	// 	while (x < SCREEN_WIDTH)
-	// 		write(fd, &(p_info->img.data[(y * SCREEN_WIDTH) + x++]), 4);
-	// 	y--;
-	// }
 	write_bmp_pixel_data(p_info, fd);
 	close(fd);
 }

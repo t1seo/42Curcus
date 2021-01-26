@@ -6,7 +6,7 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/25 14:16:45 by tseo              #+#    #+#             */
-/*   Updated: 2021/01/25 19:02:41 by tseo             ###   ########.fr       */
+/*   Updated: 2021/01/26 16:18:49 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,3 @@ void		copy_world_map(t_map_info *map_info, char **test_map)
 			test_map[y + 1][x + 1] = map_info->world_map[y][x];
 	}
 }
-

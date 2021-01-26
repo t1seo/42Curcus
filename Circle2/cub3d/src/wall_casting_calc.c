@@ -6,7 +6,7 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/25 20:54:38 by tseo              #+#    #+#             */
-/*   Updated: 2021/01/25 20:58:30 by tseo             ###   ########.fr       */
+/*   Updated: 2021/01/26 21:42:05 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,4 +84,3 @@ void	calc_wall_texture(t_wall_casting_info *w_info)
 	w_info->tex_pos = (w_info->draw_start - SCREEN_HEIGHT / 2
 					+ w_info->line_height / 2) * w_info->step;
 }
-

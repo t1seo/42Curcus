@@ -6,7 +6,7 @@
 #    By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/10 19:32:08 by tseo              #+#    #+#              #
-#    Updated: 2021/01/25 21:51:55 by tseo             ###   ########.fr        #
+#    Updated: 2021/01/26 21:31:41 by tseo             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ SRCS_FILES = main.c \
 			parsing_map.c \
 			parsing_path.c \
 			parsing_color.c \
+			parsing_color_util.c \
 			parsing_map_util_1.c \
 			parsing_map_util_2.c \
 			charset_split.c \
@@ -41,6 +42,7 @@ SRCS_FILES = main.c \
 			wall_casting.c \
 			wall_casting_calc.c \
 			sprite_casting.c \
+			sprite_casting_util.c \
 			sprite_casting_calc.c \
 			saving_bmp.c \
 			error_util.c \

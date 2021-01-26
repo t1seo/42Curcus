@@ -1,37 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vector.h                                           :+:      :+:    :+:   */
+/*   parsing_color_util.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/31 20:01:06 by tseo              #+#    #+#             */
-/*   Updated: 2021/01/10 20:02:21 by tseo             ###   ########.fr       */
+/*   Created: 2021/01/26 16:32:34 by tseo              #+#    #+#             */
+/*   Updated: 2021/01/26 21:42:49 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef VECTOR_H
-# define VECTOR_H
+#include "../inc/cub3d.h"
 
-#include <math.h>
-
-#define PI 3.1415926535897
-
-typedef struct	s_dvec
+int			convert_rgb_color(int r, int g, int b)
 {
-	double 		x;
-	double 		y;
-}				t_dvec;
+	int color;
 
-typedef struct	s_ivec
+	color = 0;
+	color |= (r << 16);
+	color |= (g << 8);
+	color |= b;
+	return (color);
+}
+
+void		free_colors(char **colors, int len)
 {
-	int			x;
-	int			y;
-}				t_ivec;
+	int i;
 
-double			get_radian(int num);
-t_dvec			create_dvec(double x, double y);
-t_ivec			create_ivec(int x, int y);
-t_dvec			rotate_vec(t_dvec a, double angle);
-
-#endif
+	i = 0;
+	while (i < len + 1)
+	{
+		free(colors[i]);
+		i++;
+	}
+	free(colors);
+}

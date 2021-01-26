@@ -6,7 +6,7 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 01:44:37 by tseo              #+#    #+#             */
-/*   Updated: 2021/01/19 01:49:58 by tseo             ###   ########.fr       */
+/*   Updated: 2021/01/26 22:01:13 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ void	draw_floor_ceil(t_player_info *p_info)
 		y = -1;
 		while (++y < SCREEN_HEIGHT)
 		{
-			p_info->buf[y][x] = FLOOR_COLOR;
-			p_info->buf[SCREEN_HEIGHT - y - 1][x] = CEIL_COLOR;
+			p_info->buf[y][x] = g_floor_color;
+			p_info->buf[SCREEN_HEIGHT - y - 1][x] = g_ceil_color;
 		}
 	}
 }

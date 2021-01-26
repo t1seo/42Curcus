@@ -6,13 +6,13 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 15:18:18 by tseo              #+#    #+#             */
-/*   Updated: 2021/01/11 23:53:59 by tseo             ###   ########.fr       */
+/*   Updated: 2021/01/26 15:59:49 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
 
-char		*ft_strappend(char *s1, char *s2)
+char			*ft_strappend(char *s1, char *s2)
 {
 	char *tmp;
 

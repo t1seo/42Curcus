@@ -6,7 +6,7 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 14:44:56 by tseo              #+#    #+#             */
-/*   Updated: 2021/01/25 22:09:05 by tseo             ###   ########.fr       */
+/*   Updated: 2021/01/26 21:31:26 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,57 +88,16 @@ void			calc_sprite_distance(t_player_info *p_info)
 	}
 }
 
-/*
-** loop through every vertical stripe of the sprite on screen
-**
-**	the conditions in the if are:
-**	1) it's in front of camera plane so you don't see things behind you
-**	2) it's on the screen (left)
-**	3) it's on the screen (right)
-**	4) ZBuffer, with perpendicular distance
-*/
-void			allocate_sprite_texture_in_buf(t_player_info *p_info, t_sprite_info *s_info, int i)
-{
-	int stripe;
-	int color;
-	int d;
-	int y;
-
-	stripe = s_info->draw_start_x - 1;
-	while (++stripe < s_info->draw_end_x)
-	{
-		s_info->tex_x = (int)((256 * (stripe - (-s_info->sprite_width / 2 + s_info->sprite_screen_x)) * TEX_WIDTH / s_info->sprite_width) / 256);
-		if (s_info->transform_y > 0 && stripe > 0 && stripe < SCREEN_WIDTH && s_info->transform_y < p_info->z_buffer[stripe])
-		{
-			y = s_info->draw_start_y;
-			while (y < s_info->draw_end_y)
-			{
-				d = (y) * 256 - SCREEN_HEIGHT * 128 + s_info->sprite_height * 128;
-				s_info->tex_y = ((d * TEX_HEIGHT) / s_info->sprite_height) / 256;
-				color = p_info->texture[g_sprite[g_sprite_order[i]].texture][TEX_WIDTH * s_info->tex_y + s_info->tex_x];
-				if ((color & 0x00FFFFFF) != 0)
-					p_info->buf[y][stripe] = color;
-				y++;
-			}
-		}
-	}
-}
-
 void			sprite_casting(t_player_info *p_info)
 {
 	int				i;
 	t_sprite_info	s_info;
 
 	if (!(g_sprite_order = (int *)malloc(sizeof(int) * (NUM_OF_SPRITES))))
-	{
-		printf("Error : Memory Allocation Failed.\n");
-		exit(0);
-	}
-	if (!(g_sprite_distance = (double *)malloc(sizeof(double) * (NUM_OF_SPRITES))))
-	{
-		printf("Error : Memory Allocation Failed.\n");
-		exit(0);
-	}
+		print_error_and_exit("Memory Allocation Failed");
+	if (!(g_sprite_distance = (double *)malloc(sizeof(double)
+							* (NUM_OF_SPRITES))))
+		print_error_and_exit("Memory Allocation Failed");
 	calc_sprite_distance(p_info);
 	sort_sprites(g_sprite_order, g_sprite_distance, NUM_OF_SPRITES);
 	i = -1;
