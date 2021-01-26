@@ -6,7 +6,7 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 14:40:33 by tseo              #+#    #+#             */
-/*   Updated: 2021/01/25 14:10:09 by tseo             ###   ########.fr       */
+/*   Updated: 2021/01/26 22:07:35 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int		check_all_information(t_map_info *map_info)
 	return (1);
 }
 
-int		parse_resolution_x_y(char *detailed_info, t_map_info *map_info)
+void	parse_resolution_x_y(char *detailed_info, t_map_info *map_info)
 {
 	int i;
 	int flag;

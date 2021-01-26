@@ -6,13 +6,13 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/25 19:09:08 by tseo              #+#    #+#             */
-/*   Updated: 2021/01/25 19:17:54 by tseo             ###   ########.fr       */
+/*   Updated: 2021/01/26 22:08:25 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
 
-static const double const g_vectors[4][4] = {
+static const double g_vectors[4][4] = {
 	{-0.66, 0, 0, -1},
 	{0.66, 0, 0, 1},
 	{0, 0.66, -1, 0},

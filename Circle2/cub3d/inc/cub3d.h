@@ -6,7 +6,7 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/10 19:29:16 by tseo              #+#    #+#             */
-/*   Updated: 2021/01/26 22:01:18 by tseo             ###   ########.fr       */
+/*   Updated: 2021/01/26 22:09:05 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -253,7 +253,7 @@ void			parse_detailed_map_info(char *detailed_info,
 ** parsing_map_util_1.c
 */
 int				check_all_information(t_map_info *map_info);
-int				parse_resolution_x_y(char *detailed_info,
+void			parse_resolution_x_y(char *detailed_info,
 								t_map_info *map_info);
 void			reset_map_info(t_map_info *map_info);
 void			parse_line(t_map_info *map_info, int fd);
