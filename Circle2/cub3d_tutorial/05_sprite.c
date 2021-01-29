@@ -372,7 +372,7 @@ void	calc(t_info *info)
 		//parameters for scaling and moving the sprites
 		#define uDiv 1
 		#define vDiv 1
-		#define vMove 0.0
+		#define vMove 5.0
 		int vMoveScreen = (int)(vMove / transformY);
 
 		//calculate height of the sprite on screen

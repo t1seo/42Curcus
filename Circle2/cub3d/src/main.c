@@ -6,7 +6,7 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 23:45:42 by tseo              #+#    #+#             */
-/*   Updated: 2021/01/25 19:50:33 by tseo             ###   ########.fr       */
+/*   Updated: 2021/01/27 22:44:04 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,9 @@ void	update(t_player_info *p_info)
 	draw_floor_ceil(p_info);
 	wall_casting(p_info);
 	sprite_casting(p_info);
+	free(p_info->z_buffer);
+	free(g_sprite_order);
+	free(g_sprite_distance);
 }
 
 int		main_loop(t_player_info *p_info, t_map_info *map_info)

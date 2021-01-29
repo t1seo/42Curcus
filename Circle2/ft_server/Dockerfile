@@ -2,6 +2,8 @@ FROM	debian:buster
 
 LABEL	maintainer="tseo@student.42seoul.kr"
 
+ENV		AUTOINDEX "on"
+
 RUN		apt-get update && apt-get install -y \
 		nginx \
 		openssl \

@@ -12,7 +12,14 @@ mv localhost.dev.key etc/ssl/private/
 chmod 600 etc/ssl/certs/localhost.dev.crt etc/ssl/private/localhost.dev.key
 
 # copy nginx setting
+if [ "$AUTOINDEX" == "off" ];then
+	sed -i "s/autoindex on/autoindex off/" /tmp/default
+else
+	sed -i "s/autoindex off/autoindex on/" /tmp/default
+fi
 cp -rp /tmp/default /etc/nginx/sites-available/
+
+
 
 # install wordpress and copy its setting
 wget https://wordpress.org/latest.tar.gz

@@ -6,7 +6,7 @@
 #    By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/10 19:32:08 by tseo              #+#    #+#              #
-#    Updated: 2021/01/26 21:31:41 by tseo             ###   ########.fr        #
+#    Updated: 2021/01/27 12:33:08 by tseo             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,6 +68,7 @@ $(NAME) : $(OBJS)
 	$(MAKE) -C $(MLX_DIR) all
 	$(MAKE) -C $(MLX_BETA_DIR) all
 	$(CC) $(CFLAGS) -L$(LIBFT_DIR) -l$(LIBFT_NAME) -L$(MLX_DIR) -l$(MLX_NAME) -L$(MLX_BETA_DIR) -l$(MLX_BETA_NAME) $(FRAMEWORK) $^ -o $@
+	install_name_tool -change libmlx.dylib mlx_beta/libmlx.dylib cub3d
 
 $(SRCS_DIR)/$.o : $(SRCS_DIR)/%.c
 	$(CC) $(CFLAGS) -I$(INCLUDES) -I$(MLX_DIR) -I$(LIBFT_DIR) -I$(MLX_BETA_DIR) -c $< -o $@
@@ -89,3 +90,4 @@ fclean : clean
 re : fclean all
 
 .PHONY : all clean fclean re
+
