@@ -1,0 +1,1364 @@
+namespace/metallb-system created
+podsecuritypolicy.policy/controller created
+podsecuritypolicy.policy/speaker created
+serviceaccount/controller created
+serviceaccount/speaker created
+clusterrole.rbac.authorization.k8s.io/metallb-system:controller created
+clusterrole.rbac.authorization.k8s.io/metallb-system:speaker created
+role.rbac.authorization.k8s.io/config-watcher created
+role.rbac.authorization.k8s.io/pod-lister created
+clusterrolebinding.rbac.authorization.k8s.io/metallb-system:controller created
+clusterrolebinding.rbac.authorization.k8s.io/metallb-system:speaker created
+rolebinding.rbac.authorization.k8s.io/config-watcher created
+rolebinding.rbac.authorization.k8s.io/pod-lister created
+daemonset.apps/speaker created
+deployment.apps/controller created
+secret/memberlist created
+configmap/config created
+Sending build context to Docker daemon  7.168kB
+Step 1/8 : FROM	alpine:latest
+latest: Pulling from library/alpine
+ba3557a56b15: Pulling fs layer
+ba3557a56b15: Verifying Checksum
+ba3557a56b15: Download complete
+ba3557a56b15: Pull complete
+Digest: sha256:a75afd8b57e7f34e4dad8d65e2c7ba2e1975c795ce1ee22fa34f8cf46f96a3be
+Status: Downloaded newer image for alpine:latest
+ ---> 28f6e2705743
+Step 2/8 : RUN		apk update && 		apk add openssl && 		apk --update add --no-cache openssh
+ ---> Running in 2649a7a39dad
+fetch https://dl-cdn.alpinelinux.org/alpine/v3.13/main/x86_64/APKINDEX.tar.gz
+fetch https://dl-cdn.alpinelinux.org/alpine/v3.13/community/x86_64/APKINDEX.tar.gz
+[91mERROR: https://dl-cdn.alpinelinux.org/alpine/v3.13/main: DNS lookup error
+WARNING: Ignoring https://dl-cdn.alpinelinux.org/alpine/v3.13/main: No such file or directory
+[0m2 errors; 14 distinct packages available
+[91mERROR: https://dl-cdn.alpinelinux.org/alpine/v3.13/community: DNS lookup error
+WARNING: Ignoring https://dl-cdn.alpinelinux.org/alpine/v3.13/community: No such file or directory
+[0mservice/nginx created
+deployment.apps/nginx created
+namespace/metallb-system created
+podsecuritypolicy.policy/controller created
+podsecuritypolicy.policy/speaker created
+serviceaccount/controller created
+serviceaccount/speaker created
+clusterrole.rbac.authorization.k8s.io/metallb-system:controller created
+clusterrole.rbac.authorization.k8s.io/metallb-system:speaker created
+role.rbac.authorization.k8s.io/config-watcher created
+role.rbac.authorization.k8s.io/pod-lister created
+clusterrolebinding.rbac.authorization.k8s.io/metallb-system:controller created
+clusterrolebinding.rbac.authorization.k8s.io/metallb-system:speaker created
+rolebinding.rbac.authorization.k8s.io/config-watcher created
+rolebinding.rbac.authorization.k8s.io/pod-lister created
+daemonset.apps/speaker created
+deployment.apps/controller created
+secret/memberlist created
+configmap/config created
+Sending build context to Docker daemon  8.192kB
+Step 1/10 : FROM	alpine:latest
+latest: Pulling from library/alpine
+ba3557a56b15: Pulling fs layer
+ba3557a56b15: Verifying Checksum
+ba3557a56b15: Download complete
+ba3557a56b15: Pull complete
+Digest: sha256:a75afd8b57e7f34e4dad8d65e2c7ba2e1975c795ce1ee22fa34f8cf46f96a3be
+Status: Downloaded newer image for alpine:latest
+ ---> 28f6e2705743
+Step 2/10 : RUN		apk update && 		apk add openssl
+ ---> Running in af4c5c3aefe2
+fetch https://dl-cdn.alpinelinux.org/alpine/v3.13/main/x86_64/APKINDEX.tar.gz
+fetch https://dl-cdn.alpinelinux.org/alpine/v3.13/community/x86_64/APKINDEX.tar.gz
+[91mERROR: https://dl-cdn.alpinelinux.org/alpine/v3.13/main: DNS lookup error
+WARNING: Ignoring https://dl-cdn.alpinelinux.org/alpine/v3.13/main: No such file or directory
+[0m[91mERROR: https://dl-cdn.alpinelinux.org/alpine/v3.13/community: DNS lookup error
+WARNING: Ignoring https://dl-cdn.alpinelinux.org/alpine/v3.13/community: No such file or directory
+[0m2 errors; 14 distinct packages available
+service/nginx created
+deployment.apps/nginx created
+namespace/metallb-system created
+podsecuritypolicy.policy/controller created
+podsecuritypolicy.policy/speaker created
+serviceaccount/controller created
+serviceaccount/speaker created
+clusterrole.rbac.authorization.k8s.io/metallb-system:controller created
+clusterrole.rbac.authorization.k8s.io/metallb-system:speaker created
+role.rbac.authorization.k8s.io/config-watcher created
+role.rbac.authorization.k8s.io/pod-lister created
+clusterrolebinding.rbac.authorization.k8s.io/metallb-system:controller created
+clusterrolebinding.rbac.authorization.k8s.io/metallb-system:speaker created
+rolebinding.rbac.authorization.k8s.io/config-watcher created
+rolebinding.rbac.authorization.k8s.io/pod-lister created
+daemonset.apps/speaker created
+deployment.apps/controller created
+secret/memberlist created
+configmap/config created
+Sending build context to Docker daemon  8.192kB
+Step 1/11 : FROM	alpine:latest
+latest: Pulling from library/alpine
+ba3557a56b15: Pulling fs layer
+ba3557a56b15: Verifying Checksum
+ba3557a56b15: Download complete
+ba3557a56b15: Pull complete
+Digest: sha256:a75afd8b57e7f34e4dad8d65e2c7ba2e1975c795ce1ee22fa34f8cf46f96a3be
+Status: Downloaded newer image for alpine:latest
+ ---> 28f6e2705743
+Step 2/11 : RUN		apk update && 		apk add openssl
+ ---> Running in 0fa7db3e48c1
+fetch https://dl-cdn.alpinelinux.org/alpine/v3.13/main/x86_64/APKINDEX.tar.gz
+[91mERROR: https://dl-cdn.alpinelinux.org/alpine/v3.13/main: DNS lookup error
+WARNING: Ignoring https://dl-cdn.alpinelinux.org/alpine/v3.13/main: No such file or directory
+[0mfetch https://dl-cdn.alpinelinux.org/alpine/v3.13/community/x86_64/APKINDEX.tar.gz
+[91mERROR: https://dl-cdn.alpinelinux.org/alpine/v3.13/community: DNS lookup error
+WARNING: Ignoring https://dl-cdn.alpinelinux.org/alpine/v3.13/community: No such file or directory
+[0m2 errors; 14 distinct packages available
+service/nginx created
+deployment.apps/nginx created
+namespace/metallb-system created
+podsecuritypolicy.policy/controller created
+podsecuritypolicy.policy/speaker created
+serviceaccount/controller created
+serviceaccount/speaker created
+clusterrole.rbac.authorization.k8s.io/metallb-system:controller created
+clusterrole.rbac.authorization.k8s.io/metallb-system:speaker created
+role.rbac.authorization.k8s.io/config-watcher created
+role.rbac.authorization.k8s.io/pod-lister created
+clusterrolebinding.rbac.authorization.k8s.io/metallb-system:controller created
+clusterrolebinding.rbac.authorization.k8s.io/metallb-system:speaker created
+rolebinding.rbac.authorization.k8s.io/config-watcher created
+rolebinding.rbac.authorization.k8s.io/pod-lister created
+daemonset.apps/speaker created
+deployment.apps/controller created
+secret/memberlist created
+configmap/config created
+Sending build context to Docker daemon   12.8kB
+Step 1/12 : FROM	alpine:latest
+latest: Pulling from library/alpine
+ba3557a56b15: Pulling fs layer
+ba3557a56b15: Verifying Checksum
+ba3557a56b15: Pull complete
+Digest: sha256:a75afd8b57e7f34e4dad8d65e2c7ba2e1975c795ce1ee22fa34f8cf46f96a3be
+Status: Downloaded newer image for alpine:latest
+ ---> 28f6e2705743
+Step 2/12 : RUN		apk update && 		apk add openssl
+ ---> Running in c2ddc86b6edc
+fetch https://dl-cdn.alpinelinux.org/alpine/v3.13/main/x86_64/APKINDEX.tar.gz
+[91mERROR: [0m[91mhttps://dl-cdn.alpinelinux.org/alpine/v3.13/main: DNS lookup error
+WARNING: Ignoring https://dl-cdn.alpinelinux.org/alpine/v3.13/main: No such file or directory
+[0mfetch https://dl-cdn.alpinelinux.org/alpine/v3.13/community/x86_64/APKINDEX.tar.gz
+[91mERROR: https://dl-cdn.alpinelinux.org/alpine/v3.13/community: DNS lookup error
+WARNING: Ignoring https://dl-cdn.alpinelinux.org/alpine/v3.13/community: No such file or directory
+[0m2 errors; 14 distinct packages available
+service/nginx created
+deployment.apps/nginx created
+namespace/metallb-system created
+podsecuritypolicy.policy/controller created
+podsecuritypolicy.policy/speaker created
+serviceaccount/controller created
+serviceaccount/speaker created
+clusterrole.rbac.authorization.k8s.io/metallb-system:controller created
+clusterrole.rbac.authorization.k8s.io/metallb-system:speaker created
+role.rbac.authorization.k8s.io/config-watcher created
+role.rbac.authorization.k8s.io/pod-lister created
+clusterrolebinding.rbac.authorization.k8s.io/metallb-system:controller created
+clusterrolebinding.rbac.authorization.k8s.io/metallb-system:speaker created
+rolebinding.rbac.authorization.k8s.io/config-watcher created
+rolebinding.rbac.authorization.k8s.io/pod-lister created
+daemonset.apps/speaker created
+deployment.apps/controller created
+secret/memberlist created
+configmap/config created
+Sending build context to Docker daemon  14.34kB
+Step 1/11 : FROM alpine:3.12.0
+3.12.0: Pulling from library/alpine
+df20fa9351a1: Pulling fs layer
+df20fa9351a1: Verifying Checksum
+df20fa9351a1: Download complete
+df20fa9351a1: Pull complete
+Digest: sha256:185518070891758909c9f839cf4ca393ee977ac378609f700f60a771a2dfe321
+Status: Downloaded newer image for alpine:3.12.0
+ ---> a24bb4013296
+Step 2/11 : RUN apk update && 	apk add openssl && 	apk --update add --no-cache openssh
+ ---> Running in b06a477ddb11
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.12/main/x86_64/APKINDEX.tar.gz
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.12/community/x86_64/APKINDEX.tar.gz
+v3.12.3-100-g6c15d99352 [http://dl-cdn.alpinelinux.org/alpine/v3.12/main]
+v3.12.3-105-gafac7633d2 [http://dl-cdn.alpinelinux.org/alpine/v3.12/community]
+OK: 12756 distinct packages available
+(1/1) Installing openssl (1.1.1j-r0)
+Executing busybox-1.31.1-r16.trigger
+OK: 6 MiB in 15 packages
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.12/main/x86_64/APKINDEX.tar.gz
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.12/community/x86_64/APKINDEX.tar.gz
+(1/9) Installing openssh-keygen (8.3_p1-r1)
+(2/9) Installing ncurses-terminfo-base (6.2_p20200523-r0)
+(3/9) Installing ncurses-libs (6.2_p20200523-r0)
+(4/9) Installing libedit (20191231.3.1-r0)
+(5/9) Installing openssh-client (8.3_p1-r1)
+(6/9) Installing openssh-sftp-server (8.3_p1-r1)
+(7/9) Installing openssh-server-common (8.3_p1-r1)
+(8/9) Installing openssh-server (8.3_p1-r1)
+(9/9) Installing openssh (8.3_p1-r1)
+Executing busybox-1.31.1-r16.trigger
+OK: 12 MiB in 24 packages
+Removing intermediate container b06a477ddb11
+ ---> fee24658f7fa
+Step 3/11 : RUN	apk add nginx && 	mkdir -p /run/nginx
+ ---> Running in acc8761026d8
+(1/2) Installing pcre (8.44-r0)
+(2/2) Installing nginx (1.18.0-r1)
+Executing nginx-1.18.0-r1.pre-install
+Executing busybox-1.31.1-r16.trigger
+OK: 14 MiB in 26 packages
+Removing intermediate container acc8761026d8
+ ---> d2b1479d092c
+Step 4/11 : RUN	sed -i s/#PermitRootLogin.*/PermitRootLogin\ yes/ /etc/ssh/sshd_config   	&& echo "root:root" | chpasswd   	&& rm -rf /var/cache/apk/*   	&& sed -ie 's/#Port 22/Port 22/g' /etc/ssh/sshd_config   	&& sed -ri 's/#HostKey \/etc\/ssh\/ssh_host_key/HostKey \/etc\/ssh\/ssh_host_key/g' /etc/ssh/sshd_config   	&& sed -ir 's/#HostKey \/etc\/ssh\/ssh_host_rsa_key/HostKey \/etc\/ssh\/ssh_host_rsa_key/g' /etc/ssh/sshd_config   	&& sed -ir 's/#HostKey \/etc\/ssh\/ssh_host_dsa_key/HostKey \/etc\/ssh\/ssh_host_dsa_key/g' /etc/ssh/sshd_config   	&& sed -ir 's/#HostKey \/etc\/ssh\/ssh_host_ecdsa_key/HostKey \/etc\/ssh\/ssh_host_ecdsa_key/g' /etc/ssh/sshd_config   	&& sed -ir 's/#HostKey \/etc\/ssh\/ssh_host_ed25519_key/HostKey \/etc\/ssh\/ssh_host_ed25519_key/g' /etc/ssh/sshd_config   	&& /usr/bin/ssh-keygen -A   	&& ssh-keygen -t rsa -b 4096 -f  /etc/ssh/ssh_host_key
+ ---> Running in 837d4418d6e2
+[91mchpasswd: password for 'root' changed
+[0mssh-keygen: generating new host keys: RSA DSA ECDSA ED25519 
+Generating public/private rsa key pair.
+[91mEnter passphrase (empty for no passphrase): Enter same passphrase again: [0mYour identification has been saved in /etc/ssh/ssh_host_key
+Your public key has been saved in /etc/ssh/ssh_host_key.pub
+The key fingerprint is:
+SHA256:rIBTaa0Xz+rKXw/vD1Zx/xCAH+4jRKpRHcD//+bt49A root@837d4418d6e2
+The key's randomart image is:
++---[RSA 4096]----+
+|       ..o.o.    |
+|     o  o + ..   |
+|    + o. + o..o  |
+|   + ..=. o oo o |
+|  o o .oS. o. . .|
+|   . o.o  ..+ ...|
+|      o o o. + E.|
+|   . . . = .  o.o|
+|    ooo  .+.. .**|
++----[SHA256]-----+
+Removing intermediate container 837d4418d6e2
+ ---> 31d253255cfd
+Step 5/11 : COPY /src/nginx.conf /etc/nginx/nginx.conf
+ ---> f35c031de6b3
+Step 6/11 : WORKDIR /var/www/html
+ ---> Running in 728a48ddf91b
+Removing intermediate container 728a48ddf91b
+ ---> 27e9ff58dec6
+Step 7/11 : COPY /src/index.html /var/www/html
+ ---> ca163d6a9a5d
+Step 8/11 : COPY /src/ser.pem /etc/nginx/ssl/ser.pem
+ ---> cd43299a9d60
+Step 9/11 : COPY /src/ser.key /etc/nginx/ssl/ser.key
+ ---> 130cb4cc7239
+Step 10/11 : EXPOSE 80 443 22
+ ---> Running in b0751075bad1
+Removing intermediate container b0751075bad1
+ ---> 0edec8348cc7
+Step 11/11 : CMD /usr/sbin/sshd; /usr/sbin/nginx -g 'daemon off;'
+ ---> Running in 0948fe4d213a
+Removing intermediate container 0948fe4d213a
+ ---> 6d42a7a493fc
+Successfully built 6d42a7a493fc
+Successfully tagged ft_service_nginx:latest
+service/nginx created
+deployment.apps/nginx created
+namespace/metallb-system created
+podsecuritypolicy.policy/controller created
+podsecuritypolicy.policy/speaker created
+serviceaccount/controller created
+serviceaccount/speaker created
+clusterrole.rbac.authorization.k8s.io/metallb-system:controller created
+clusterrole.rbac.authorization.k8s.io/metallb-system:speaker created
+role.rbac.authorization.k8s.io/config-watcher created
+role.rbac.authorization.k8s.io/pod-lister created
+clusterrolebinding.rbac.authorization.k8s.io/metallb-system:controller created
+clusterrolebinding.rbac.authorization.k8s.io/metallb-system:speaker created
+rolebinding.rbac.authorization.k8s.io/config-watcher created
+rolebinding.rbac.authorization.k8s.io/pod-lister created
+daemonset.apps/speaker created
+deployment.apps/controller created
+secret/memberlist created
+configmap/config created
+Sending build context to Docker daemon  17.92kB
+Step 1/8 : FROM		alpine
+latest: Pulling from library/alpine
+ba3557a56b15: Pulling fs layer
+ba3557a56b15: Verifying Checksum
+ba3557a56b15: Download complete
+ba3557a56b15: Pull complete
+Digest: sha256:a75afd8b57e7f34e4dad8d65e2c7ba2e1975c795ce1ee22fa34f8cf46f96a3be
+Status: Downloaded newer image for alpine:latest
+ ---> 28f6e2705743
+Step 2/8 : EXPOSE		80 443 22
+ ---> Running in 2aab96394b90
+Removing intermediate container 2aab96394b90
+ ---> 8525f5e5ca86
+Step 3/8 : RUN			apk add nginx openssl openssh
+ ---> Running in e46c8b81ff42
+fetch https://dl-cdn.alpinelinux.org/alpine/v3.13/main/x86_64/APKINDEX.tar.gz
+fetch https://dl-cdn.alpinelinux.org/alpine/v3.13/community/x86_64/APKINDEX.tar.gz
+[91mERROR: https://dl-cdn.alpinelinux.org/alpine/v3.13/main: DNS lookup error
+WARNING: Ignoring https://dl-cdn.alpinelinux.org/alpine/v3.13/main: No such file or directory
+[0m[91mERROR: https://dl-cdn.alpinelinux.org/alpine/v3.13/community: DNS lookup error
+WARNING: Ignoring https://dl-cdn.alpinelinux.org/alpine/v3.13/community: No such file or directory
+[0m[91mERROR: unable to select packages:
+[0m  nginx (no such package):
+    required by: world[nginx]
+  openssh (no such package):
+    required by: world[openssh]
+  openssl (no such package):
+    required by: world[openssl]
+configmap/nginx-config created
+deployment.apps/nginx created
+service/nginx created
+namespace/metallb-system created
+podsecuritypolicy.policy/controller created
+podsecuritypolicy.policy/speaker created
+serviceaccount/controller created
+serviceaccount/speaker created
+clusterrole.rbac.authorization.k8s.io/metallb-system:controller created
+clusterrole.rbac.authorization.k8s.io/metallb-system:speaker created
+role.rbac.authorization.k8s.io/config-watcher created
+role.rbac.authorization.k8s.io/pod-lister created
+clusterrolebinding.rbac.authorization.k8s.io/metallb-system:controller created
+clusterrolebinding.rbac.authorization.k8s.io/metallb-system:speaker created
+rolebinding.rbac.authorization.k8s.io/config-watcher created
+rolebinding.rbac.authorization.k8s.io/pod-lister created
+daemonset.apps/speaker created
+deployment.apps/controller created
+secret/memberlist created
+configmap/config created
+Sending build context to Docker daemon  11.78kB
+Step 1/11 : FROM alpine:latest
+latest: Pulling from library/alpine
+ba3557a56b15: Pulling fs layer
+ba3557a56b15: Verifying Checksum
+ba3557a56b15: Download complete
+ba3557a56b15: Pull complete
+Digest: sha256:a75afd8b57e7f34e4dad8d65e2c7ba2e1975c795ce1ee22fa34f8cf46f96a3be
+Status: Downloaded newer image for alpine:latest
+ ---> 28f6e2705743
+Step 2/11 : RUN apk update && 	apk add openssl && 	apk --update add --no-cache openssh
+ ---> Running in 672e0dfdb003
+fetch https://dl-cdn.alpinelinux.org/alpine/v3.13/main/x86_64/APKINDEX.tar.gz
+fetch https://dl-cdn.alpinelinux.org/alpine/v3.13/community/x86_64/APKINDEX.tar.gz
+[91mERROR: https://dl-cdn.alpinelinux.org/alpine/v3.13/main: DNS lookup error
+WARNING: Ignoring https://dl-cdn.alpinelinux.org/alpine/v3.13/main: No such file or directory
+[0m[91mERROR: https://dl-cdn.alpinelinux.org/alpine/v3.13/community: DNS lookup error
+WARNING: Ignoring https://dl-cdn.alpinelinux.org/alpine/v3.13/community: No such file or directory
+[0m2 errors; 14 distinct packages available
+namespace/metallb-system created
+podsecuritypolicy.policy/controller created
+podsecuritypolicy.policy/speaker created
+serviceaccount/controller created
+serviceaccount/speaker created
+clusterrole.rbac.authorization.k8s.io/metallb-system:controller created
+clusterrole.rbac.authorization.k8s.io/metallb-system:speaker created
+role.rbac.authorization.k8s.io/config-watcher created
+role.rbac.authorization.k8s.io/pod-lister created
+clusterrolebinding.rbac.authorization.k8s.io/metallb-system:controller created
+clusterrolebinding.rbac.authorization.k8s.io/metallb-system:speaker created
+rolebinding.rbac.authorization.k8s.io/config-watcher created
+rolebinding.rbac.authorization.k8s.io/pod-lister created
+daemonset.apps/speaker created
+deployment.apps/controller created
+secret/memberlist created
+configmap/config created
+Sending build context to Docker daemon  11.78kB
+Step 1/11 : FROM alpine:latest
+latest: Pulling from library/alpine
+ba3557a56b15: Pulling fs layer
+ba3557a56b15: Verifying Checksum
+ba3557a56b15: Download complete
+ba3557a56b15: Pull complete
+Digest: sha256:a75afd8b57e7f34e4dad8d65e2c7ba2e1975c795ce1ee22fa34f8cf46f96a3be
+Status: Downloaded newer image for alpine:latest
+ ---> 28f6e2705743
+Step 2/11 : RUN apk update && 	apk add openssl && 	apk --update add --no-cache openssh
+ ---> Running in 982a6e408c2a
+fetch https://dl-cdn.alpinelinux.org/alpine/v3.13/main/x86_64/APKINDEX.tar.gz
+[91mERROR: [0m[91mhttps://dl-cdn.alpinelinux.org/alpine/v3.13/main: DNS lookup error[0m[91m
+[0m[91mWARNING: [0m[91mIgnoring https://dl-cdn.alpinelinux.org/alpine/v3.13/main: No such file or directory[0m[91m
+[0mfetch https://dl-cdn.alpinelinux.org/alpine/v3.13/community/x86_64/APKINDEX.tar.gz
+[91mERROR: [0m[91mhttps://dl-cdn.alpinelinux.org/alpine/v3.13/community: DNS lookup error[0m[91m
+[0m[91mWARNING: [0m[91mIgnoring https://dl-cdn.alpinelinux.org/alpine/v3.13/community: No such file or directory[0m[91m
+[0m2 errors; 14 distinct packages available
+namespace/metallb-system created
+podsecuritypolicy.policy/controller created
+podsecuritypolicy.policy/speaker created
+serviceaccount/controller created
+serviceaccount/speaker created
+clusterrole.rbac.authorization.k8s.io/metallb-system:controller created
+clusterrole.rbac.authorization.k8s.io/metallb-system:speaker created
+role.rbac.authorization.k8s.io/config-watcher created
+role.rbac.authorization.k8s.io/pod-lister created
+clusterrolebinding.rbac.authorization.k8s.io/metallb-system:controller created
+clusterrolebinding.rbac.authorization.k8s.io/metallb-system:speaker created
+rolebinding.rbac.authorization.k8s.io/config-watcher created
+rolebinding.rbac.authorization.k8s.io/pod-lister created
+daemonset.apps/speaker created
+deployment.apps/controller created
+secret/memberlist created
+configmap/config created
+Sending build context to Docker daemon  15.36kB
+Step 1/11 : FROM alpine:3.12.0
+3.12.0: Pulling from library/alpine
+df20fa9351a1: Pulling fs layer
+df20fa9351a1: Verifying Checksum
+df20fa9351a1: Download complete
+df20fa9351a1: Pull complete
+Digest: sha256:185518070891758909c9f839cf4ca393ee977ac378609f700f60a771a2dfe321
+Status: Downloaded newer image for alpine:3.12.0
+ ---> a24bb4013296
+Step 2/11 : RUN apk update && 	apk add openssl
+ ---> Running in 55021854845b
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.12/main/x86_64/APKINDEX.tar.gz
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.12/community/x86_64/APKINDEX.tar.gz
+v3.12.3-100-g6c15d99352 [http://dl-cdn.alpinelinux.org/alpine/v3.12/main]
+v3.12.3-105-gafac7633d2 [http://dl-cdn.alpinelinux.org/alpine/v3.12/community]
+OK: 12756 distinct packages available
+(1/1) Installing openssl (1.1.1j-r0)
+Executing busybox-1.31.1-r16.trigger
+OK: 6 MiB in 15 packages
+Removing intermediate container 55021854845b
+ ---> 5549aac1b9f6
+Step 3/11 : RUN	apk add nginx && 	mkdir -p /run/nginx
+ ---> Running in b1d2e719e47e
+(1/2) Installing pcre (8.44-r0)
+(2/2) Installing nginx (1.18.0-r1)
+Executing nginx-1.18.0-r1.pre-install
+Executing busybox-1.31.1-r16.trigger
+OK: 8 MiB in 17 packages
+Removing intermediate container b1d2e719e47e
+ ---> 91b4d6ad8657
+Step 4/11 : RUN	sed -i s/#PermitRootLogin.*/PermitRootLogin\ yes/ /etc/ssh/sshd_config   	&& echo "root:root" | chpasswd   	&& rm -rf /var/cache/apk/*   	&& sed -ie 's/#Port 22/Port 22/g' /etc/ssh/sshd_config   	&& sed -ri 's/#HostKey \/etc\/ssh\/ssh_host_key/HostKey \/etc\/ssh\/ssh_host_key/g' /etc/ssh/sshd_config   	&& sed -ir 's/#HostKey \/etc\/ssh\/ssh_host_rsa_key/HostKey \/etc\/ssh\/ssh_host_rsa_key/g' /etc/ssh/sshd_config   	&& sed -ir 's/#HostKey \/etc\/ssh\/ssh_host_dsa_key/HostKey \/etc\/ssh\/ssh_host_dsa_key/g' /etc/ssh/sshd_config   	&& sed -ir 's/#HostKey \/etc\/ssh\/ssh_host_ecdsa_key/HostKey \/etc\/ssh\/ssh_host_ecdsa_key/g' /etc/ssh/sshd_config   	&& sed -ir 's/#HostKey \/etc\/ssh\/ssh_host_ed25519_key/HostKey \/etc\/ssh\/ssh_host_ed25519_key/g' /etc/ssh/sshd_config   	&& /usr/bin/ssh-keygen -A   	&& ssh-keygen -t rsa -b 4096 -f  /etc/ssh/ssh_host_key
+ ---> Running in c8ec1686c108
+[91msed: /etc/ssh/sshd_config: No such file or directory
+[0mnamespace/metallb-system unchanged
+podsecuritypolicy.policy/controller configured
+podsecuritypolicy.policy/speaker configured
+serviceaccount/controller unchanged
+serviceaccount/speaker unchanged
+clusterrole.rbac.authorization.k8s.io/metallb-system:controller unchanged
+clusterrole.rbac.authorization.k8s.io/metallb-system:speaker unchanged
+role.rbac.authorization.k8s.io/config-watcher unchanged
+role.rbac.authorization.k8s.io/pod-lister unchanged
+clusterrolebinding.rbac.authorization.k8s.io/metallb-system:controller unchanged
+clusterrolebinding.rbac.authorization.k8s.io/metallb-system:speaker unchanged
+rolebinding.rbac.authorization.k8s.io/config-watcher unchanged
+rolebinding.rbac.authorization.k8s.io/pod-lister unchanged
+daemonset.apps/speaker unchanged
+deployment.apps/controller unchanged
+configmap/config unchanged
+Sending build context to Docker daemon  6.656kB
+Step 1/7 : FROM	alpine
+latest: Pulling from library/alpine
+ba3557a56b15: Pulling fs layer
+service/nginx unchanged
+deployment.apps/nginx unchanged
+namespace/metallb-system created
+podsecuritypolicy.policy/controller created
+podsecuritypolicy.policy/speaker created
+serviceaccount/controller created
+serviceaccount/speaker created
+clusterrole.rbac.authorization.k8s.io/metallb-system:controller created
+clusterrole.rbac.authorization.k8s.io/metallb-system:speaker created
+role.rbac.authorization.k8s.io/config-watcher created
+role.rbac.authorization.k8s.io/pod-lister created
+clusterrolebinding.rbac.authorization.k8s.io/metallb-system:controller created
+clusterrolebinding.rbac.authorization.k8s.io/metallb-system:speaker created
+rolebinding.rbac.authorization.k8s.io/config-watcher created
+rolebinding.rbac.authorization.k8s.io/pod-lister created
+daemonset.apps/speaker created
+deployment.apps/controller created
+secret/memberlist created
+configmap/config created
+Sending build context to Docker daemon  7.168kB
+Step 1/7 : FROM	alpine
+latest: Pulling from library/alpine
+ba3557a56b15: Pulling fs layer
+ba3557a56b15: Verifying Checksum
+ba3557a56b15: Download complete
+ba3557a56b15: Pull complete
+Digest: sha256:a75afd8b57e7f34e4dad8d65e2c7ba2e1975c795ce1ee22fa34f8cf46f96a3be
+Status: Downloaded newer image for alpine:latest
+ ---> 28f6e2705743
+Step 2/7 : RUN		apk update
+ ---> Running in b4d60c6cb7bf
+fetch https://dl-cdn.alpinelinux.org/alpine/v3.13/main/x86_64/APKINDEX.tar.gz
+fetch https://dl-cdn.alpinelinux.org/alpine/v3.13/community/x86_64/APKINDEX.tar.gz
+[91mERROR: https://dl-cdn.alpinelinux.org/alpine/v3.13/main: DNS lookup error
+WARNING: Ignoring https://dl-cdn.alpinelinux.org/alpine/v3.13/main: No such file or directory
+[0m[91mERROR: https://dl-cdn.alpinelinux.org/alpine/v3.13/community: DNS lookup error
+WARNING: Ignoring https://dl-cdn.alpinelinux.org/alpine/v3.13/community: No such file or directory
+[0m2 errors; 14 distinct packages available
+service/nginx created
+deployment.apps/nginx created
+namespace/metallb-system created
+podsecuritypolicy.policy/controller created
+podsecuritypolicy.policy/speaker created
+serviceaccount/controller created
+serviceaccount/speaker created
+clusterrole.rbac.authorization.k8s.io/metallb-system:controller created
+clusterrole.rbac.authorization.k8s.io/metallb-system:speaker created
+role.rbac.authorization.k8s.io/config-watcher created
+role.rbac.authorization.k8s.io/pod-lister created
+clusterrolebinding.rbac.authorization.k8s.io/metallb-system:controller created
+clusterrolebinding.rbac.authorization.k8s.io/metallb-system:speaker created
+rolebinding.rbac.authorization.k8s.io/config-watcher created
+rolebinding.rbac.authorization.k8s.io/pod-lister created
+daemonset.apps/speaker created
+deployment.apps/controller created
+secret/memberlist created
+configmap/config created
+Sending build context to Docker daemon  7.168kB
+Step 1/11 : FROM	alpine
+latest: Pulling from library/alpine
+ba3557a56b15: Pulling fs layer
+ba3557a56b15: Verifying Checksum
+ba3557a56b15: Download complete
+ba3557a56b15: Pull complete
+Digest: sha256:a75afd8b57e7f34e4dad8d65e2c7ba2e1975c795ce1ee22fa34f8cf46f96a3be
+Status: Downloaded newer image for alpine:latest
+ ---> 28f6e2705743
+Step 2/11 : RUN		apk update
+ ---> Running in 3bf48f2c9aa2
+fetch https://dl-cdn.alpinelinux.org/alpine/v3.13/main/x86_64/APKINDEX.tar.gz
+fetch https://dl-cdn.alpinelinux.org/alpine/v3.13/community/x86_64/APKINDEX.tar.gz
+[91mERROR: https://dl-cdn.alpinelinux.org/alpine/v3.13/main: DNS lookup error
+WARNING: Ignoring https://dl-cdn.alpinelinux.org/alpine/v3.13/main: No such file or directory
+[0m[91mERROR: https://dl-cdn.alpinelinux.org/alpine/v3.13/community: DNS lookup error
+WARNING: Ignoring https://dl-cdn.alpinelinux.org/alpine/v3.13/community: No such file or directory
+[0m2 errors; 14 distinct packages available
+service/nginx created
+deployment.apps/nginx created
+namespace/metallb-system created
+podsecuritypolicy.policy/controller created
+podsecuritypolicy.policy/speaker created
+serviceaccount/controller created
+serviceaccount/speaker created
+clusterrole.rbac.authorization.k8s.io/metallb-system:controller created
+clusterrole.rbac.authorization.k8s.io/metallb-system:speaker created
+role.rbac.authorization.k8s.io/config-watcher created
+role.rbac.authorization.k8s.io/pod-lister created
+clusterrolebinding.rbac.authorization.k8s.io/metallb-system:controller created
+clusterrolebinding.rbac.authorization.k8s.io/metallb-system:speaker created
+rolebinding.rbac.authorization.k8s.io/config-watcher created
+rolebinding.rbac.authorization.k8s.io/pod-lister created
+daemonset.apps/speaker created
+deployment.apps/controller created
+secret/memberlist created
+Sending build context to Docker daemon  8.192kB
+Step 1/8 : FROM alpine:latest
+latest: Pulling from library/alpine
+ba3557a56b15: Pulling fs layer
+ba3557a56b15: Verifying Checksum
+ba3557a56b15: Download complete
+ba3557a56b15: Pull complete
+Digest: sha256:a75afd8b57e7f34e4dad8d65e2c7ba2e1975c795ce1ee22fa34f8cf46f96a3be
+Status: Downloaded newer image for alpine:latest
+ ---> 28f6e2705743
+Step 2/8 : COPY nginx.conf index.html telegraf.conf setup.sh ./
+service/nginx-service created
+deployment.apps/nginx-deployment created
+Sending build context to Docker daemon   7.68kB
+Step 1/8 : FROM	alpine:latest
+latest: Pulling from library/alpine
+ba3557a56b15: Pulling fs layer
+ba3557a56b15: Verifying Checksum
+ba3557a56b15: Download complete
+ba3557a56b15: Pull complete
+Digest: sha256:a75afd8b57e7f34e4dad8d65e2c7ba2e1975c795ce1ee22fa34f8cf46f96a3be
+Status: Downloaded newer image for alpine:latest
+ ---> 28f6e2705743
+Step 2/8 : RUN		apk update && 		apk --update --no-cache add 		nginx 		openssl 		openssh-server
+ ---> Running in 90e80858f54a
+fetch https://dl-cdn.alpinelinux.org/alpine/v3.13/main/x86_64/APKINDEX.tar.gz
+fetch https://dl-cdn.alpinelinux.org/alpine/v3.13/community/x86_64/APKINDEX.tar.gz
+[91mERROR: https://dl-cdn.alpinelinux.org/alpine/v3.13/main: DNS lookup error
+WARNING: Ignoring https://dl-cdn.alpinelinux.org/alpine/v3.13/main: No such file or directory
+[0m2 errors; 14 distinct packages available
+[91mERROR: https://dl-cdn.alpinelinux.org/alpine/v3.13/community: DNS lookup error
+WARNING: Ignoring https://dl-cdn.alpinelinux.org/alpine/v3.13/community: No such file or directory
+[0mSending build context to Docker daemon   7.68kB
+Step 1/9 : FROM	alpine:latest
+latest: Pulling from library/alpine
+ba3557a56b15: Pulling fs layer
+ba3557a56b15: Verifying Checksum
+ba3557a56b15: Download complete
+ba3557a56b15: Pull complete
+Digest: sha256:a75afd8b57e7f34e4dad8d65e2c7ba2e1975c795ce1ee22fa34f8cf46f96a3be
+Status: Downloaded newer image for alpine:latest
+ ---> 28f6e2705743
+Step 2/9 : RUN		apk update && 		apk --update --no-cache add 		nginx 		openssl 		openssh-server
+ ---> Running in 323112a2a75d
+fetch https://dl-cdn.alpinelinux.org/alpine/v3.13/main/x86_64/APKINDEX.tar.gz
+fetch https://dl-cdn.alpinelinux.org/alpine/v3.13/community/x86_64/APKINDEX.tar.gz
+[91mERROR: https://dl-cdn.alpinelinux.org/alpine/v3.13/main: DNS lookup error
+WARNING: Ignoring https://dl-cdn.alpinelinux.org/alpine/v3.13/main: No such file or directory
+[0m2 errors; 14 distinct packages available
+[91mERROR: https://dl-cdn.alpinelinux.org/alpine/v3.13/community: DNS lookup error
+WARNING: Ignoring https://dl-cdn.alpinelinux.org/alpine/v3.13/community: No such file or directory
+[0mSending build context to Docker daemon  8.192kB
+Step 1/7 : FROM alpine:3.12.0
+3.12.0: Pulling from library/alpine
+df20fa9351a1: Pulling fs layer
+df20fa9351a1: Verifying Checksum
+df20fa9351a1: Download complete
+df20fa9351a1: Pull complete
+Digest: sha256:185518070891758909c9f839cf4ca393ee977ac378609f700f60a771a2dfe321
+Status: Downloaded newer image for alpine:3.12.0
+ ---> a24bb4013296
+Step 2/7 : RUN apk update 	&& apk --update --no-cache add 	nginx 	openssl 	openssh-server
+ ---> Running in 276762ac6919
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.12/main/x86_64/APKINDEX.tar.gz
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.12/community/x86_64/APKINDEX.tar.gz
+v3.12.3-119-gadcf08925b [http://dl-cdn.alpinelinux.org/alpine/v3.12/main]
+v3.12.3-114-g726dc65b43 [http://dl-cdn.alpinelinux.org/alpine/v3.12/community]
+OK: 12756 distinct packages available
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.12/main/x86_64/APKINDEX.tar.gz
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.12/community/x86_64/APKINDEX.tar.gz
+(1/6) Installing pcre (8.44-r0)
+(2/6) Installing nginx (1.18.0-r1)
+Executing nginx-1.18.0-r1.pre-install
+(3/6) Installing openssh-keygen (8.3_p1-r1)
+(4/6) Installing openssh-server-common (8.3_p1-r1)
+(5/6) Installing openssh-server (8.3_p1-r1)
+(6/6) Installing openssl (1.1.1j-r0)
+Executing busybox-1.31.1-r16.trigger
+OK: 9 MiB in 20 packages
+Removing intermediate container 276762ac6919
+ ---> 0c0ebdc5ce57
+Step 3/7 : COPY ./nginx_setup.sh /usr/sbin/nginx_setup.sh
+ ---> 2f2fbdaa5f61
+Step 4/7 : RUN chmod +x /usr/sbin/nginx_setup.sh
+ ---> Running in a7ac47c097bc
+Removing intermediate container a7ac47c097bc
+ ---> 0f3b9a1109ce
+Step 5/7 : COPY ./default.conf /etc/nginx/conf.d/
+ ---> 03ac015ce4b3
+Step 6/7 : EXPOSE 80 443 22
+ ---> Running in 50810b5b926d
+Removing intermediate container 50810b5b926d
+ ---> d111d180eaf5
+Step 7/7 : ENTRYPOINT ["/usr/sbin/nginx_setup.sh"]
+ ---> Running in 49b79b50f9e3
+Removing intermediate container 49b79b50f9e3
+ ---> adca582a2fad
+Successfully built adca582a2fad
+Successfully tagged ft_services-nginx:latest
+Sending build context to Docker daemon  8.192kB
+Step 1/8 : FROM alpine:3.12.0
+3.12.0: Pulling from library/alpine
+df20fa9351a1: Pulling fs layer
+df20fa9351a1: Verifying Checksum
+df20fa9351a1: Download complete
+df20fa9351a1: Pull complete
+Digest: sha256:185518070891758909c9f839cf4ca393ee977ac378609f700f60a771a2dfe321
+Status: Downloaded newer image for alpine:3.12.0
+ ---> a24bb4013296
+Step 2/8 : RUN apk update 	&& apk --update --no-cache add 	nginx 	openssl 	openssh-server
+ ---> Running in 8b8772100721
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.12/main/x86_64/APKINDEX.tar.gz
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.12/community/x86_64/APKINDEX.tar.gz
+v3.12.3-119-gadcf08925b [http://dl-cdn.alpinelinux.org/alpine/v3.12/main]
+v3.12.3-114-g726dc65b43 [http://dl-cdn.alpinelinux.org/alpine/v3.12/community]
+OK: 12756 distinct packages available
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.12/main/x86_64/APKINDEX.tar.gz
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.12/community/x86_64/APKINDEX.tar.gz
+(1/6) Installing pcre (8.44-r0)
+(2/6) Installing nginx (1.18.0-r1)
+Executing nginx-1.18.0-r1.pre-install
+(3/6) Installing openssh-keygen (8.3_p1-r1)
+(4/6) Installing openssh-server-common (8.3_p1-r1)
+(5/6) Installing openssh-server (8.3_p1-r1)
+(6/6) Installing openssl (1.1.1j-r0)
+Executing busybox-1.31.1-r16.trigger
+OK: 9 MiB in 20 packages
+Removing intermediate container 8b8772100721
+ ---> 31de44b7d75a
+Step 3/8 : COPY ./index.html /var/www/index.html
+ ---> 808f234faa2e
+Step 4/8 : COPY ./nginx_setup.sh /usr/sbin/nginx_setup.sh
+ ---> f819d373601b
+Step 5/8 : RUN chmod +x /usr/sbin/nginx_setup.sh
+ ---> Running in 7261277e3b42
+Removing intermediate container 7261277e3b42
+ ---> 5377cfd150c8
+Step 6/8 : COPY ./default.conf /etc/nginx/conf.d/
+ ---> cfa79ba2faf3
+Step 7/8 : EXPOSE 80 443 22
+ ---> Running in 4ddb1811423c
+Removing intermediate container 4ddb1811423c
+ ---> 0f995a0a2303
+Step 8/8 : ENTRYPOINT ["/usr/sbin/nginx_setup.sh"]
+ ---> Running in e4c3f6e6345c
+Removing intermediate container e4c3f6e6345c
+ ---> a679f3dcc90e
+Successfully built a679f3dcc90e
+Successfully tagged ft_services-nginx:latest
+Sending build context to Docker daemon   7.68kB
+Step 1/8 : FROM alpine:3.12.0
+ ---> a24bb4013296
+Step 2/8 : RUN		apk update 		&& apk --update --no-cache add 		nginx 		openssl 		openssh-server
+ ---> Running in fc8f52f36410
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.12/main/x86_64/APKINDEX.tar.gz
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.12/community/x86_64/APKINDEX.tar.gz
+v3.12.3-119-gadcf08925b [http://dl-cdn.alpinelinux.org/alpine/v3.12/main]
+v3.12.3-114-g726dc65b43 [http://dl-cdn.alpinelinux.org/alpine/v3.12/community]
+OK: 12756 distinct packages available
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.12/main/x86_64/APKINDEX.tar.gz
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.12/community/x86_64/APKINDEX.tar.gz
+(1/6) Installing pcre (8.44-r0)
+(2/6) Installing nginx (1.18.0-r1)
+Executing nginx-1.18.0-r1.pre-install
+(3/6) Installing openssh-keygen (8.3_p1-r1)
+(4/6) Installing openssh-server-common (8.3_p1-r1)
+(5/6) Installing openssh-server (8.3_p1-r1)
+(6/6) Installing openssl (1.1.1j-r0)
+Executing busybox-1.31.1-r16.trigger
+OK: 9 MiB in 20 packages
+Removing intermediate container fc8f52f36410
+ ---> 043ac2546772
+Step 3/8 : COPY	./index.html /var/www/index.html
+ ---> d1a2f996a114
+Step 4/8 : COPY	./nginx_setup.sh /usr/sbin/nginx_setup.sh
+ ---> 33e8c83542bc
+Step 5/8 : RUN		chmod +x /usr/sbin/nginx_setup.sh
+ ---> Running in 472d2ff5ac3d
+Removing intermediate container 472d2ff5ac3d
+ ---> d3a22e423399
+Step 6/8 : COPY	./default.conf /etc/nginx/conf.d/
+ ---> e35fb81927f5
+Step 7/8 : EXPOSE	80 443 22
+ ---> Running in 3a2056899b5b
+Removing intermediate container 3a2056899b5b
+ ---> 8e491c6f423f
+Step 8/8 : ENTRYPOINT ["/usr/sbin/nginx_setup.sh"]
+ ---> Running in 213daad1e5ad
+Removing intermediate container 213daad1e5ad
+ ---> e1404757370f
+Successfully built e1404757370f
+Successfully tagged ft_services-nginx:latest
+Sending build context to Docker daemon   7.68kB
+Step 1/8 : FROM alpine:3.12.0
+3.12.0: Pulling from library/alpine
+df20fa9351a1: Pulling fs layer
+df20fa9351a1: Download complete
+df20fa9351a1: Pull complete
+Digest: sha256:185518070891758909c9f839cf4ca393ee977ac378609f700f60a771a2dfe321
+Status: Downloaded newer image for alpine:3.12.0
+ ---> a24bb4013296
+Step 2/8 : RUN		apk update 		&& apk --update --no-cache add 		nginx 		openssl 		openssh-server
+ ---> Running in 14d3f3338600
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.12/main/x86_64/APKINDEX.tar.gz
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.12/community/x86_64/APKINDEX.tar.gz
+v3.12.3-119-gadcf08925b [http://dl-cdn.alpinelinux.org/alpine/v3.12/main]
+v3.12.3-114-g726dc65b43 [http://dl-cdn.alpinelinux.org/alpine/v3.12/community]
+OK: 12756 distinct packages available
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.12/main/x86_64/APKINDEX.tar.gz
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.12/community/x86_64/APKINDEX.tar.gz
+(1/6) Installing pcre (8.44-r0)
+(2/6) Installing nginx (1.18.0-r1)
+Executing nginx-1.18.0-r1.pre-install
+(3/6) Installing openssh-keygen (8.3_p1-r1)
+(4/6) Installing openssh-server-common (8.3_p1-r1)
+(5/6) Installing openssh-server (8.3_p1-r1)
+(6/6) Installing openssl (1.1.1j-r0)
+Executing busybox-1.31.1-r16.trigger
+OK: 9 MiB in 20 packages
+Removing intermediate container 14d3f3338600
+ ---> df59405c6573
+Step 3/8 : COPY	./index.html /var/www/index.html
+ ---> 6da6085552a3
+Step 4/8 : COPY	./nginx_setup.sh /usr/sbin/nginx_setup.sh
+ ---> 5929153f1fa1
+Step 5/8 : RUN		chmod +x /usr/sbin/nginx_setup.sh
+ ---> Running in 17372cc51505
+Removing intermediate container 17372cc51505
+ ---> ac27999ab319
+Step 6/8 : COPY	./default.conf /etc/nginx/conf.d/
+ ---> c2b18af5290c
+Step 7/8 : EXPOSE	80 443 22
+ ---> Running in 652f81b42816
+Removing intermediate container 652f81b42816
+ ---> 6cdfbf9be17f
+Step 8/8 : ENTRYPOINT ["/usr/sbin/nginx_setup.sh"]
+ ---> Running in ad76c6e6ade3
+Removing intermediate container ad76c6e6ade3
+ ---> 1cd22ad5a42f
+Successfully built 1cd22ad5a42f
+Successfully tagged ft_services-nginx:latest
+Sending build context to Docker daemon   7.68kB
+Step 1/8 : FROM alpine:3.12.0
+3.12.0: Pulling from library/alpine
+df20fa9351a1: Pulling fs layer
+df20fa9351a1: Verifying Checksum
+df20fa9351a1: Download complete
+df20fa9351a1: Pull complete
+Digest: sha256:185518070891758909c9f839cf4ca393ee977ac378609f700f60a771a2dfe321
+Status: Downloaded newer image for alpine:3.12.0
+ ---> a24bb4013296
+Step 2/8 : RUN		apk update 		&& apk --update --no-cache add 		nginx 		openssl 		openssh-server
+ ---> Running in 77445db8a5ea
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.12/main/x86_64/APKINDEX.tar.gz
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.12/community/x86_64/APKINDEX.tar.gz
+v3.12.3-119-gadcf08925b [http://dl-cdn.alpinelinux.org/alpine/v3.12/main]
+v3.12.3-114-g726dc65b43 [http://dl-cdn.alpinelinux.org/alpine/v3.12/community]
+OK: 12756 distinct packages available
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.12/main/x86_64/APKINDEX.tar.gz
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.12/community/x86_64/APKINDEX.tar.gz
+(1/6) Installing pcre (8.44-r0)
+(2/6) Installing nginx (1.18.0-r1)
+Executing nginx-1.18.0-r1.pre-install
+(3/6) Installing openssh-keygen (8.3_p1-r1)
+(4/6) Installing openssh-server-common (8.3_p1-r1)
+(5/6) Installing openssh-server (8.3_p1-r1)
+(6/6) Installing openssl (1.1.1j-r0)
+Executing busybox-1.31.1-r16.trigger
+OK: 9 MiB in 20 packages
+Removing intermediate container 77445db8a5ea
+ ---> 6a2c410bcc9b
+Step 3/8 : COPY	./index.html /var/www/index.html
+ ---> 1b44f05d9c6d
+Step 4/8 : COPY	./nginx_setup.sh /usr/sbin/nginx_setup.sh
+ ---> 7583542d17fa
+Step 5/8 : RUN		chmod +x /usr/sbin/nginx_setup.sh
+ ---> Running in 978f8fc9187b
+Removing intermediate container 978f8fc9187b
+ ---> b62996d28171
+Step 6/8 : COPY	./default.conf /etc/nginx/conf.d/
+ ---> 90b382d899be
+Step 7/8 : EXPOSE	80 443 22
+ ---> Running in a0f86ff6ebd6
+Removing intermediate container a0f86ff6ebd6
+ ---> fdb3e537e20b
+Step 8/8 : ENTRYPOINT ["/usr/sbin/nginx_setup.sh"]
+ ---> Running in 241690c997a6
+Removing intermediate container 241690c997a6
+ ---> 392e9f375707
+Successfully built 392e9f375707
+Successfully tagged ft_services-nginx:latest
+Sending build context to Docker daemon   7.68kB
+Step 1/8 : FROM alpine:3.12.0
+3.12.0: Pulling from library/alpine
+df20fa9351a1: Pulling fs layer
+df20fa9351a1: Verifying Checksum
+df20fa9351a1: Download complete
+df20fa9351a1: Pull complete
+Digest: sha256:185518070891758909c9f839cf4ca393ee977ac378609f700f60a771a2dfe321
+Status: Downloaded newer image for alpine:3.12.0
+ ---> a24bb4013296
+Step 2/8 : RUN		apk update 		&& apk --update --no-cache add 		nginx 		openssl 		openssh-server
+ ---> Running in f6b2ef8c70f5
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.12/main/x86_64/APKINDEX.tar.gz
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.12/community/x86_64/APKINDEX.tar.gz
+v3.12.3-119-gadcf08925b [http://dl-cdn.alpinelinux.org/alpine/v3.12/main]
+v3.12.3-114-g726dc65b43 [http://dl-cdn.alpinelinux.org/alpine/v3.12/community]
+OK: 12756 distinct packages available
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.12/main/x86_64/APKINDEX.tar.gz
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.12/community/x86_64/APKINDEX.tar.gz
+(1/6) Installing pcre (8.44-r0)
+(2/6) Installing nginx (1.18.0-r1)
+Executing nginx-1.18.0-r1.pre-install
+(3/6) Installing openssh-keygen (8.3_p1-r1)
+(4/6) Installing openssh-server-common (8.3_p1-r1)
+(5/6) Installing openssh-server (8.3_p1-r1)
+(6/6) Installing openssl (1.1.1j-r0)
+Executing busybox-1.31.1-r16.trigger
+OK: 9 MiB in 20 packages
+Removing intermediate container f6b2ef8c70f5
+ ---> 78a4d18c0890
+Step 3/8 : COPY	./index.html /var/www/index.html
+ ---> 310e93378909
+Step 4/8 : COPY	./nginx_setup.sh /usr/sbin/nginx_setup.sh
+ ---> e2c5223e95d7
+Step 5/8 : RUN		chmod +x /usr/sbin/nginx_setup.sh
+ ---> Running in 8f129a3df33f
+Removing intermediate container 8f129a3df33f
+ ---> 407bb477c485
+Step 6/8 : COPY	./default.conf /etc/nginx/conf.d/
+ ---> 1ccc5f8918d1
+Step 7/8 : EXPOSE	80 443 22
+ ---> Running in 18fabaf99452
+Removing intermediate container 18fabaf99452
+ ---> 94d1d7b4de6f
+Step 8/8 : ENTRYPOINT ["/usr/sbin/nginx_setup.sh"]
+ ---> Running in 421fc4d5bd95
+Removing intermediate container 421fc4d5bd95
+ ---> b07949ac6774
+Successfully built b07949ac6774
+Successfully tagged ft_services-nginx:latest
+Sending build context to Docker daemon   7.68kB
+Step 1/8 : FROM alpine:3.12.0
+3.12.0: Pulling from library/alpine
+df20fa9351a1: Pulling fs layer
+df20fa9351a1: Verifying Checksum
+df20fa9351a1: Download complete
+df20fa9351a1: Pull complete
+Digest: sha256:185518070891758909c9f839cf4ca393ee977ac378609f700f60a771a2dfe321
+Status: Downloaded newer image for alpine:3.12.0
+ ---> a24bb4013296
+Step 2/8 : RUN		apk update 		&& apk --update --no-cache add 		nginx 		openssl 		openssh-server
+ ---> Running in 92c220f2f407
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.12/main/x86_64/APKINDEX.tar.gz
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.12/community/x86_64/APKINDEX.tar.gz
+v3.12.3-119-gadcf08925b [http://dl-cdn.alpinelinux.org/alpine/v3.12/main]
+v3.12.3-114-g726dc65b43 [http://dl-cdn.alpinelinux.org/alpine/v3.12/community]
+OK: 12756 distinct packages available
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.12/main/x86_64/APKINDEX.tar.gz
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.12/community/x86_64/APKINDEX.tar.gz
+(1/6) Installing pcre (8.44-r0)
+(2/6) Installing nginx (1.18.0-r1)
+Executing nginx-1.18.0-r1.pre-install
+(3/6) Installing openssh-keygen (8.3_p1-r1)
+(4/6) Installing openssh-server-common (8.3_p1-r1)
+(5/6) Installing openssh-server (8.3_p1-r1)
+(6/6) Installing openssl (1.1.1j-r0)
+Executing busybox-1.31.1-r16.trigger
+OK: 9 MiB in 20 packages
+Removing intermediate container 92c220f2f407
+ ---> 407b2885371e
+Step 3/8 : COPY	./index.html /var/www/index.html
+ ---> 11cca5f43474
+Step 4/8 : COPY	./nginx_setup.sh /usr/sbin/nginx_setup.sh
+ ---> 081afbc847ba
+Step 5/8 : RUN		chmod +x /usr/sbin/nginx_setup.sh
+ ---> Running in 229c65be33de
+Removing intermediate container 229c65be33de
+ ---> b64c9a07bda4
+Step 6/8 : COPY	./default.conf /etc/nginx/conf.d/
+ ---> 5d8e79216807
+Step 7/8 : EXPOSE	80 443 22
+ ---> Running in e1ecb4899a6a
+Removing intermediate container e1ecb4899a6a
+ ---> 0a9c6392af3a
+Step 8/8 : ENTRYPOINT ["/usr/sbin/nginx_setup.sh"]
+ ---> Running in 91689455f60d
+Removing intermediate container 91689455f60d
+ ---> 121e4133bef5
+Successfully built 121e4133bef5
+Successfully tagged ft_services-nginx:latest
+Sending build context to Docker daemon  8.704kB
+Step 1/8 : FROM alpine:3.12.0
+3.12.0: Pulling from library/alpine
+df20fa9351a1: Pulling fs layer
+df20fa9351a1: Verifying Checksum
+df20fa9351a1: Download complete
+df20fa9351a1: Pull complete
+Digest: sha256:185518070891758909c9f839cf4ca393ee977ac378609f700f60a771a2dfe321
+Status: Downloaded newer image for alpine:3.12.0
+ ---> a24bb4013296
+Step 2/8 : RUN		apk update 		&& apk --update --no-cache add 		nginx 		openssl 		openssh-server
+ ---> Running in 69879295b988
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.12/main/x86_64/APKINDEX.tar.gz
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.12/community/x86_64/APKINDEX.tar.gz
+v3.12.3-119-gadcf08925b [http://dl-cdn.alpinelinux.org/alpine/v3.12/main]
+v3.12.3-114-g726dc65b43 [http://dl-cdn.alpinelinux.org/alpine/v3.12/community]
+OK: 12756 distinct packages available
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.12/main/x86_64/APKINDEX.tar.gz
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.12/community/x86_64/APKINDEX.tar.gz
+(1/6) Installing pcre (8.44-r0)
+(2/6) Installing nginx (1.18.0-r1)
+Executing nginx-1.18.0-r1.pre-install
+(3/6) Installing openssh-keygen (8.3_p1-r1)
+(4/6) Installing openssh-server-common (8.3_p1-r1)
+(5/6) Installing openssh-server (8.3_p1-r1)
+(6/6) Installing openssl (1.1.1j-r0)
+Executing busybox-1.31.1-r16.trigger
+OK: 9 MiB in 20 packages
+Removing intermediate container 69879295b988
+ ---> 932f2075d4e2
+Step 3/8 : COPY	./index.html /var/www/index.html
+ ---> a9254f45c750
+Step 4/8 : COPY	./nginx_setup.sh /usr/sbin/nginx_setup.sh
+ ---> 19563ceb6819
+Step 5/8 : RUN		chmod +x /usr/sbin/nginx_setup.sh
+ ---> Running in c767fbd6046f
+Removing intermediate container c767fbd6046f
+ ---> 71b0e258ba62
+Step 6/8 : COPY	./default.conf /etc/nginx/conf.d/
+ ---> 455386fe9c4c
+Step 7/8 : EXPOSE	80 443 22
+ ---> Running in 35a2b35072d0
+Removing intermediate container 35a2b35072d0
+ ---> 4ae97c4d5c05
+Step 8/8 : ENTRYPOINT ["/usr/sbin/nginx_setup.sh"]
+ ---> Running in f886c0179435
+Removing intermediate container f886c0179435
+ ---> 0c401e65bcf7
+Successfully built 0c401e65bcf7
+Successfully tagged ft_services-nginx:latest
+Sending build context to Docker daemon  8.704kB
+Step 1/8 : FROM alpine:3.12.0
+3.12.0: Pulling from library/alpine
+df20fa9351a1: Pulling fs layer
+df20fa9351a1: Verifying Checksum
+df20fa9351a1: Download complete
+df20fa9351a1: Pull complete
+Digest: sha256:185518070891758909c9f839cf4ca393ee977ac378609f700f60a771a2dfe321
+Status: Downloaded newer image for alpine:3.12.0
+ ---> a24bb4013296
+Step 2/8 : RUN		apk update 		&& apk --update --no-cache add 		nginx 		openssl 		openssh-server
+ ---> Running in 420cbe9b8706
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.12/main/x86_64/APKINDEX.tar.gz
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.12/community/x86_64/APKINDEX.tar.gz
+v3.12.3-119-gadcf08925b [http://dl-cdn.alpinelinux.org/alpine/v3.12/main]
+v3.12.3-114-g726dc65b43 [http://dl-cdn.alpinelinux.org/alpine/v3.12/community]
+OK: 12756 distinct packages available
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.12/main/x86_64/APKINDEX.tar.gz
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.12/community/x86_64/APKINDEX.tar.gz
+(1/6) Installing pcre (8.44-r0)
+(2/6) Installing nginx (1.18.0-r1)
+Executing nginx-1.18.0-r1.pre-install
+(3/6) Installing openssh-keygen (8.3_p1-r1)
+(4/6) Installing openssh-server-common (8.3_p1-r1)
+(5/6) Installing openssh-server (8.3_p1-r1)
+(6/6) Installing openssl (1.1.1j-r0)
+Executing busybox-1.31.1-r16.trigger
+OK: 9 MiB in 20 packages
+Removing intermediate container 420cbe9b8706
+ ---> fa12b0777cd6
+Step 3/8 : COPY	./index.html /var/www/index.html
+ ---> 13c6a64767a6
+Step 4/8 : COPY	./nginx_setup.sh /usr/sbin/nginx_setup.sh
+ ---> dbe55b771eba
+Step 5/8 : RUN		chmod +x /usr/sbin/nginx_setup.sh
+ ---> Running in 80cb5e2d5d84
+Removing intermediate container 80cb5e2d5d84
+ ---> 8dfeb060fd61
+Step 6/8 : COPY	./default.conf /etc/nginx/conf.d/
+ ---> 152fb8f65f81
+Step 7/8 : EXPOSE	80 443 22
+ ---> Running in 82cd68a87d33
+Removing intermediate container 82cd68a87d33
+ ---> 7973822b2216
+Step 8/8 : ENTRYPOINT ["/usr/sbin/nginx_setup.sh"]
+ ---> Running in bca30957ed2d
+Removing intermediate container bca30957ed2d
+ ---> 159bfb3949b9
+Successfully built 159bfb3949b9
+Successfully tagged ft_services-nginx:latest
+Sending build context to Docker daemon  8.704kB
+Step 1/8 : FROM alpine:3.12.0
+3.12.0: Pulling from library/alpine
+df20fa9351a1: Pulling fs layer
+df20fa9351a1: Verifying Checksum
+df20fa9351a1: Download complete
+df20fa9351a1: Pull complete
+Digest: sha256:185518070891758909c9f839cf4ca393ee977ac378609f700f60a771a2dfe321
+Status: Downloaded newer image for alpine:3.12.0
+ ---> a24bb4013296
+Step 2/8 : RUN		apk update 		&& apk --update --no-cache add 		nginx 		openssl 		openssh-server
+ ---> Running in 2c81fd3874a8
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.12/main/x86_64/APKINDEX.tar.gz
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.12/community/x86_64/APKINDEX.tar.gz
+v3.12.3-119-gadcf08925b [http://dl-cdn.alpinelinux.org/alpine/v3.12/main]
+v3.12.3-114-g726dc65b43 [http://dl-cdn.alpinelinux.org/alpine/v3.12/community]
+OK: 12756 distinct packages available
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.12/main/x86_64/APKINDEX.tar.gz
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.12/community/x86_64/APKINDEX.tar.gz
+(1/6) Installing pcre (8.44-r0)
+(2/6) Installing nginx (1.18.0-r1)
+Executing nginx-1.18.0-r1.pre-install
+(3/6) Installing openssh-keygen (8.3_p1-r1)
+(4/6) Installing openssh-server-common (8.3_p1-r1)
+(5/6) Installing openssh-server (8.3_p1-r1)
+(6/6) Installing openssl (1.1.1j-r0)
+Executing busybox-1.31.1-r16.trigger
+OK: 9 MiB in 20 packages
+Removing intermediate container 2c81fd3874a8
+ ---> a78047f5919e
+Step 3/8 : COPY	./index.html /var/www/index.html
+ ---> 2c8175648cf5
+Step 4/8 : COPY	./nginx_setup.sh /usr/sbin/nginx_setup.sh
+ ---> b3e61cd66195
+Step 5/8 : RUN		chmod +x /usr/sbin/nginx_setup.sh
+ ---> Running in 32e3128017b0
+Removing intermediate container 32e3128017b0
+ ---> 13973f639c73
+Step 6/8 : COPY	./default.conf /etc/nginx/conf.d/
+ ---> cc33a4cc44b8
+Step 7/8 : EXPOSE	80 443 22
+ ---> Running in 33774bb63eb2
+Removing intermediate container 33774bb63eb2
+ ---> 016d4a6221a1
+Step 8/8 : ENTRYPOINT ["/usr/sbin/nginx_setup.sh"]
+ ---> Running in 5d5e53d9643d
+Removing intermediate container 5d5e53d9643d
+ ---> e02a20c22273
+Successfully built e02a20c22273
+Successfully tagged ft_services-nginx:latest
+Sending build context to Docker daemon  8.704kB
+Step 1/8 : FROM alpine:3.12.0
+3.12.0: Pulling from library/alpine
+df20fa9351a1: Pulling fs layer
+df20fa9351a1: Download complete
+df20fa9351a1: Pull complete
+Digest: sha256:185518070891758909c9f839cf4ca393ee977ac378609f700f60a771a2dfe321
+Status: Downloaded newer image for alpine:3.12.0
+ ---> a24bb4013296
+Step 2/8 : RUN		apk update 		&& apk --update --no-cache add 		nginx 		openssl 		openssh-server
+ ---> Running in 9b272589aa2d
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.12/main/x86_64/APKINDEX.tar.gz
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.12/community/x86_64/APKINDEX.tar.gz
+v3.12.3-119-gadcf08925b [http://dl-cdn.alpinelinux.org/alpine/v3.12/main]
+v3.12.3-114-g726dc65b43 [http://dl-cdn.alpinelinux.org/alpine/v3.12/community]
+OK: 12756 distinct packages available
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.12/main/x86_64/APKINDEX.tar.gz
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.12/community/x86_64/APKINDEX.tar.gz
+(1/6) Installing pcre (8.44-r0)
+(2/6) Installing nginx (1.18.0-r1)
+Executing nginx-1.18.0-r1.pre-install
+(3/6) Installing openssh-keygen (8.3_p1-r1)
+(4/6) Installing openssh-server-common (8.3_p1-r1)
+(5/6) Installing openssh-server (8.3_p1-r1)
+(6/6) Installing openssl (1.1.1j-r0)
+Executing busybox-1.31.1-r16.trigger
+OK: 9 MiB in 20 packages
+Removing intermediate container 9b272589aa2d
+ ---> 411fd3a38f6c
+Step 3/8 : COPY	./index.html /var/www/index.html
+ ---> b04958a9d1a6
+Step 4/8 : COPY	./nginx_setup.sh /usr/sbin/nginx_setup.sh
+ ---> 82d2473f42af
+Step 5/8 : RUN		chmod +x /usr/sbin/nginx_setup.sh
+ ---> Running in e600176aed22
+Removing intermediate container e600176aed22
+ ---> 632fc237bba3
+Step 6/8 : COPY	./default.conf /etc/nginx/conf.d/
+ ---> 68c40c5f747b
+Step 7/8 : EXPOSE	80 443 22
+ ---> Running in 56ff0efc7c17
+Removing intermediate container 56ff0efc7c17
+ ---> e5bed45850b2
+Step 8/8 : ENTRYPOINT ["/usr/sbin/nginx_setup.sh"]
+ ---> Running in bdc4792ee4b2
+Removing intermediate container bdc4792ee4b2
+ ---> 12c4141c1ac2
+Successfully built 12c4141c1ac2
+Successfully tagged ft_services-nginx:latest
+Sending build context to Docker daemon  8.704kB
+Step 1/8 : FROM alpine:3.12.0
+3.12.0: Pulling from library/alpine
+df20fa9351a1: Pulling fs layer
+df20fa9351a1: Verifying Checksum
+df20fa9351a1: Download complete
+df20fa9351a1: Pull complete
+Digest: sha256:185518070891758909c9f839cf4ca393ee977ac378609f700f60a771a2dfe321
+Status: Downloaded newer image for alpine:3.12.0
+ ---> a24bb4013296
+Step 2/8 : RUN		apk update 		&& apk --update --no-cache add 		nginx 		openssl 		openssh-server
+ ---> Running in 73444969202f
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.12/main/x86_64/APKINDEX.tar.gz
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.12/community/x86_64/APKINDEX.tar.gz
+v3.12.3-119-gadcf08925b [http://dl-cdn.alpinelinux.org/alpine/v3.12/main]
+v3.12.3-114-g726dc65b43 [http://dl-cdn.alpinelinux.org/alpine/v3.12/community]
+OK: 12756 distinct packages available
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.12/main/x86_64/APKINDEX.tar.gz
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.12/community/x86_64/APKINDEX.tar.gz
+(1/6) Installing pcre (8.44-r0)
+(2/6) Installing nginx (1.18.0-r1)
+Executing nginx-1.18.0-r1.pre-install
+(3/6) Installing openssh-keygen (8.3_p1-r1)
+(4/6) Installing openssh-server-common (8.3_p1-r1)
+(5/6) Installing openssh-server (8.3_p1-r1)
+(6/6) Installing openssl (1.1.1j-r0)
+Executing busybox-1.31.1-r16.trigger
+OK: 9 MiB in 20 packages
+Removing intermediate container 73444969202f
+ ---> 52ae0050dafe
+Step 3/8 : COPY	./index.html /var/www/index.html
+ ---> 6f3971231001
+Step 4/8 : COPY	./nginx_setup.sh /usr/sbin/nginx_setup.sh
+ ---> a4c54f3c3766
+Step 5/8 : RUN		chmod +x /usr/sbin/nginx_setup.sh
+ ---> Running in 0705ef158afe
+Removing intermediate container 0705ef158afe
+ ---> bd18d82e4a38
+Step 6/8 : COPY	./default.conf /etc/nginx/conf.d/
+ ---> 24d842912584
+Step 7/8 : EXPOSE	80 443 22
+ ---> Running in 6afae3b07d83
+Removing intermediate container 6afae3b07d83
+ ---> 277575d6b2e1
+Step 8/8 : ENTRYPOINT ["/usr/sbin/nginx_setup.sh"]
+ ---> Running in 9ce7c50e9320
+Removing intermediate container 9ce7c50e9320
+ ---> bf6bbf0b6935
+Successfully built bf6bbf0b6935
+Successfully tagged ft_services-nginx:latest
+Sending build context to Docker daemon  8.704kB
+Step 1/8 : FROM alpine:3.12.0
+3.12.0: Pulling from library/alpine
+df20fa9351a1: Pulling fs layer
+df20fa9351a1: Verifying Checksum
+df20fa9351a1: Download complete
+df20fa9351a1: Pull complete
+Digest: sha256:185518070891758909c9f839cf4ca393ee977ac378609f700f60a771a2dfe321
+Status: Downloaded newer image for alpine:3.12.0
+ ---> a24bb4013296
+Step 2/8 : RUN		apk update 		&& apk --update --no-cache add 		nginx 		openssl 		openssh-server
+ ---> Running in 16e82071061f
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.12/main/x86_64/APKINDEX.tar.gz
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.12/community/x86_64/APKINDEX.tar.gz
+v3.12.3-119-gadcf08925b [http://dl-cdn.alpinelinux.org/alpine/v3.12/main]
+v3.12.3-114-g726dc65b43 [http://dl-cdn.alpinelinux.org/alpine/v3.12/community]
+OK: 12756 distinct packages available
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.12/main/x86_64/APKINDEX.tar.gz
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.12/community/x86_64/APKINDEX.tar.gz
+(1/6) Installing pcre (8.44-r0)
+(2/6) Installing nginx (1.18.0-r1)
+Executing nginx-1.18.0-r1.pre-install
+(3/6) Installing openssh-keygen (8.3_p1-r1)
+(4/6) Installing openssh-server-common (8.3_p1-r1)
+(5/6) Installing openssh-server (8.3_p1-r1)
+(6/6) Installing openssl (1.1.1j-r0)
+Executing busybox-1.31.1-r16.trigger
+OK: 9 MiB in 20 packages
+Removing intermediate container 16e82071061f
+ ---> e274b44dcce9
+Step 3/8 : COPY	./index.html /var/www/index.html
+ ---> 755c95bca136
+Step 4/8 : COPY	./nginx_setup.sh /usr/sbin/nginx_setup.sh
+ ---> d5bc5e2bbf78
+Step 5/8 : RUN		chmod +x /usr/sbin/nginx_setup.sh
+ ---> Running in 42ecaf18553a
+Removing intermediate container 42ecaf18553a
+ ---> c213c8f6c4bb
+Step 6/8 : COPY	./default.conf /etc/nginx/conf.d/
+ ---> 150eb232c308
+Step 7/8 : EXPOSE	80 443 22
+ ---> Running in 720683e3adaa
+Removing intermediate container 720683e3adaa
+ ---> 489542b04417
+Step 8/8 : ENTRYPOINT ["/usr/sbin/nginx_setup.sh"]
+ ---> Running in dfb90b94d60e
+Removing intermediate container dfb90b94d60e
+ ---> 69be13ad2bd1
+Successfully built 69be13ad2bd1
+Successfully tagged ft_services-nginx:latest
+Sending build context to Docker daemon  8.704kB
+Step 1/8 : FROM alpine:3.12.0
+ ---> a24bb4013296
+Step 2/8 : RUN		apk update 		&& apk --update --no-cache add 		nginx 		openssl 		openssh-server
+ ---> Using cache
+ ---> e274b44dcce9
+Step 3/8 : COPY	./index.html /var/www/index.html
+ ---> Using cache
+ ---> 755c95bca136
+Step 4/8 : COPY	./nginx_setup.sh /usr/sbin/nginx_setup.sh
+ ---> Using cache
+ ---> d5bc5e2bbf78
+Step 5/8 : RUN		chmod +x /usr/sbin/nginx_setup.sh
+ ---> Using cache
+ ---> c213c8f6c4bb
+Step 6/8 : COPY	./default.conf /etc/nginx/conf.d/
+ ---> Using cache
+ ---> 150eb232c308
+Step 7/8 : EXPOSE	80 443 22
+ ---> Using cache
+ ---> 489542b04417
+Step 8/8 : ENTRYPOINT ["/usr/sbin/nginx_setup.sh"]
+ ---> Using cache
+ ---> 69be13ad2bd1
+Successfully built 69be13ad2bd1
+Successfully tagged ft_services-nginx:latest
+Sending build context to Docker daemon  8.704kB
+Step 1/8 : FROM alpine:3.12.0
+3.12.0: Pulling from library/alpine
+df20fa9351a1: Pulling fs layer
+df20fa9351a1: Verifying Checksum
+df20fa9351a1: Download complete
+df20fa9351a1: Pull complete
+Digest: sha256:185518070891758909c9f839cf4ca393ee977ac378609f700f60a771a2dfe321
+Status: Downloaded newer image for alpine:3.12.0
+ ---> a24bb4013296
+Step 2/8 : RUN		apk update 		&& apk --update --no-cache add 		nginx 		openssl 		openssh-server
+ ---> Running in 07372c733b70
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.12/main/x86_64/APKINDEX.tar.gz
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.12/community/x86_64/APKINDEX.tar.gz
+v3.12.3-119-gadcf08925b [http://dl-cdn.alpinelinux.org/alpine/v3.12/main]
+v3.12.3-114-g726dc65b43 [http://dl-cdn.alpinelinux.org/alpine/v3.12/community]
+OK: 12756 distinct packages available
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.12/main/x86_64/APKINDEX.tar.gz
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.12/community/x86_64/APKINDEX.tar.gz
+(1/6) Installing pcre (8.44-r0)
+(2/6) Installing nginx (1.18.0-r1)
+Executing nginx-1.18.0-r1.pre-install
+(3/6) Installing openssh-keygen (8.3_p1-r1)
+(4/6) Installing openssh-server-common (8.3_p1-r1)
+(5/6) Installing openssh-server (8.3_p1-r1)
+(6/6) Installing openssl (1.1.1j-r0)
+Executing busybox-1.31.1-r16.trigger
+OK: 9 MiB in 20 packages
+Removing intermediate container 07372c733b70
+ ---> d57aaf488f07
+Step 3/8 : COPY	./index.html /var/www/index.html
+ ---> 85fa43b30f9f
+Step 4/8 : COPY	./nginx_setup.sh /usr/sbin/nginx_setup.sh
+ ---> ae4b1b4e6483
+Step 5/8 : RUN		chmod +x /usr/sbin/nginx_setup.sh
+ ---> Running in 9beb3ea4bb08
+Removing intermediate container 9beb3ea4bb08
+ ---> d85cf9cb6683
+Step 6/8 : COPY	./default.conf /etc/nginx/conf.d/
+ ---> e8d5ee61c274
+Step 7/8 : EXPOSE	80 443 22
+ ---> Running in 2cc119557d12
+Removing intermediate container 2cc119557d12
+ ---> 42850d17b7d3
+Step 8/8 : ENTRYPOINT ["/usr/sbin/nginx_setup.sh"]
+ ---> Running in a5a62b06dd30
+Removing intermediate container a5a62b06dd30
+ ---> c204115edb4d
+Successfully built c204115edb4d
+Successfully tagged ft_services-nginx:latest
+Sending build context to Docker daemon  8.704kB
+Step 1/8 : FROM alpine:3.12.0
+3.12.0: Pulling from library/alpine
+df20fa9351a1: Pulling fs layer
+df20fa9351a1: Verifying Checksum
+df20fa9351a1: Download complete
+df20fa9351a1: Pull complete
+Digest: sha256:185518070891758909c9f839cf4ca393ee977ac378609f700f60a771a2dfe321
+Status: Downloaded newer image for alpine:3.12.0
+ ---> a24bb4013296
+Step 2/8 : RUN		apk update 		&& apk --update --no-cache add 		nginx 		openssl 		openssh-server
+ ---> Running in c3fdf336556b
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.12/main/x86_64/APKINDEX.tar.gz
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.12/community/x86_64/APKINDEX.tar.gz
+v3.12.3-119-gadcf08925b [http://dl-cdn.alpinelinux.org/alpine/v3.12/main]
+v3.12.3-114-g726dc65b43 [http://dl-cdn.alpinelinux.org/alpine/v3.12/community]
+OK: 12756 distinct packages available
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.12/main/x86_64/APKINDEX.tar.gz
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.12/community/x86_64/APKINDEX.tar.gz
+(1/6) Installing pcre (8.44-r0)
+(2/6) Installing nginx (1.18.0-r1)
+Executing nginx-1.18.0-r1.pre-install
+(3/6) Installing openssh-keygen (8.3_p1-r1)
+(4/6) Installing openssh-server-common (8.3_p1-r1)
+(5/6) Installing openssh-server (8.3_p1-r1)
+(6/6) Installing openssl (1.1.1j-r0)
+Executing busybox-1.31.1-r16.trigger
+OK: 9 MiB in 20 packages
+Removing intermediate container c3fdf336556b
+ ---> e361d3a6f118
+Step 3/8 : COPY	./index.html /var/www/index.html
+ ---> ef63b9c6452d
+Step 4/8 : COPY	./nginx_setup.sh /usr/sbin/nginx_setup.sh
+ ---> dbf94e5503f7
+Step 5/8 : RUN		chmod +x /usr/sbin/nginx_setup.sh
+ ---> Running in fac30064d459
+Removing intermediate container fac30064d459
+ ---> a202938a3fd9
+Step 6/8 : COPY	./default.conf /etc/nginx/conf.d/
+ ---> 647ee660ddd7
+Step 7/8 : EXPOSE	80 443 22
+ ---> Running in ef95381a86e8
+Removing intermediate container ef95381a86e8
+ ---> e828304445f1
+Step 8/8 : ENTRYPOINT ["/usr/sbin/nginx_setup.sh"]
+ ---> Running in 00619342c870
+Removing intermediate container 00619342c870
+ ---> 7015f09ad7bf
+Successfully built 7015f09ad7bf
+Successfully tagged ft_services-nginx:latest
+secret/ssh-secret created
+deployment.apps/nginx created
+service/nginx created
