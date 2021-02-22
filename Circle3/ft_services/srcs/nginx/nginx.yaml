@@ -21,17 +21,17 @@ spec:
       containers:
       - image: ft_services-nginx
         imagePullPolicy: Never
-        env:
-        - name: SSH_USERNAME
-          valueFrom:
-            secretKeyRef:
-              name: ssh-secret
-              key: username
-        - name: SSH_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: ssh-secret
-              key: password
+        # env:
+        # - name: SSH_USERNAME
+        #   valueFrom:
+        #     secretKeyRef:
+        #       name: ssh-secret
+        #       key: username
+        # - name: SSH_PASSWORD
+        #   valueFrom:
+        #     secretKeyRef:
+        #       name: ssh-secret
+        #       key: password
         name: nginx
         ports:
         - containerPort: 80

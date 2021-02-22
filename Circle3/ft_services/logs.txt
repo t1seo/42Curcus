@@ -1362,3 +1362,159 @@ Successfully tagged ft_services-nginx:latest
 secret/ssh-secret created
 deployment.apps/nginx created
 service/nginx created
+Sending build context to Docker daemon  9.216kB
+Step 1/8 : FROM alpine:3.12.0
+3.12.0: Pulling from library/alpine
+df20fa9351a1: Pulling fs layer
+df20fa9351a1: Verifying Checksum
+df20fa9351a1: Download complete
+df20fa9351a1: Pull complete
+Digest: sha256:185518070891758909c9f839cf4ca393ee977ac378609f700f60a771a2dfe321
+Status: Downloaded newer image for alpine:3.12.0
+ ---> a24bb4013296
+Step 2/8 : RUN		apk update 		&& apk --update --no-cache add 		nginx 		openssl 		openssh-server
+ ---> Running in 6b925c6463e7
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.12/main/x86_64/APKINDEX.tar.gz
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.12/community/x86_64/APKINDEX.tar.gz
+v3.12.3-119-gadcf08925b [http://dl-cdn.alpinelinux.org/alpine/v3.12/main]
+v3.12.3-114-g726dc65b43 [http://dl-cdn.alpinelinux.org/alpine/v3.12/community]
+OK: 12756 distinct packages available
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.12/main/x86_64/APKINDEX.tar.gz
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.12/community/x86_64/APKINDEX.tar.gz
+(1/6) Installing pcre (8.44-r0)
+(2/6) Installing nginx (1.18.0-r1)
+Executing nginx-1.18.0-r1.pre-install
+(3/6) Installing openssh-keygen (8.3_p1-r1)
+(4/6) Installing openssh-server-common (8.3_p1-r1)
+(5/6) Installing openssh-server (8.3_p1-r1)
+(6/6) Installing openssl (1.1.1j-r0)
+Executing busybox-1.31.1-r16.trigger
+OK: 9 MiB in 20 packages
+Removing intermediate container 6b925c6463e7
+ ---> 22ae4b2a6628
+Step 3/8 : COPY	./index.html /var/www/index.html
+ ---> 6b1e17682c9c
+Step 4/8 : COPY	./nginx_setup.sh /usr/sbin/nginx_setup.sh
+ ---> 348de2dc2113
+Step 5/8 : RUN		chmod +x /usr/sbin/nginx_setup.sh
+ ---> Running in 0a785e0bd6ad
+Removing intermediate container 0a785e0bd6ad
+ ---> 558615946b28
+Step 6/8 : COPY	./default.conf /etc/nginx/conf.d/
+ ---> e51f508700da
+Step 7/8 : EXPOSE	80 443 22
+ ---> Running in a62a841a5dfe
+Removing intermediate container a62a841a5dfe
+ ---> 6c866dd86c9e
+Step 8/8 : ENTRYPOINT ["/usr/sbin/nginx_setup.sh"]
+ ---> Running in 1c1f91d1dcd6
+Removing intermediate container 1c1f91d1dcd6
+ ---> aadda13e019f
+Successfully built aadda13e019f
+Successfully tagged ft_services-nginx:latest
+deployment.apps/nginx created
+service/nginx created
+Sending build context to Docker daemon  9.216kB
+Step 1/8 : FROM alpine:3.12.0
+3.12.0: Pulling from library/alpine
+df20fa9351a1: Pulling fs layer
+df20fa9351a1: Verifying Checksum
+df20fa9351a1: Download complete
+df20fa9351a1: Pull complete
+Digest: sha256:185518070891758909c9f839cf4ca393ee977ac378609f700f60a771a2dfe321
+Status: Downloaded newer image for alpine:3.12.0
+ ---> a24bb4013296
+Step 2/8 : RUN		apk update 		&& apk --update --no-cache add 		nginx 		openssl 		openssh-server
+ ---> Running in cdf3b5bcc204
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.12/main/x86_64/APKINDEX.tar.gz
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.12/community/x86_64/APKINDEX.tar.gz
+v3.12.3-119-gadcf08925b [http://dl-cdn.alpinelinux.org/alpine/v3.12/main]
+v3.12.3-114-g726dc65b43 [http://dl-cdn.alpinelinux.org/alpine/v3.12/community]
+OK: 12756 distinct packages available
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.12/main/x86_64/APKINDEX.tar.gz
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.12/community/x86_64/APKINDEX.tar.gz
+(1/6) Installing pcre (8.44-r0)
+(2/6) Installing nginx (1.18.0-r1)
+Executing nginx-1.18.0-r1.pre-install
+(3/6) Installing openssh-keygen (8.3_p1-r1)
+(4/6) Installing openssh-server-common (8.3_p1-r1)
+(5/6) Installing openssh-server (8.3_p1-r1)
+(6/6) Installing openssl (1.1.1j-r0)
+Executing busybox-1.31.1-r16.trigger
+OK: 9 MiB in 20 packages
+Removing intermediate container cdf3b5bcc204
+ ---> 5c03534f8451
+Step 3/8 : COPY	./index.html /var/www/index.html
+ ---> e7bd2c318eba
+Step 4/8 : COPY	./nginx_setup.sh /usr/sbin/nginx_setup.sh
+ ---> 03f35186d664
+Step 5/8 : RUN		chmod +x /usr/sbin/nginx_setup.sh
+ ---> Running in ba00976c92cd
+Removing intermediate container ba00976c92cd
+ ---> 69bd911a27eb
+Step 6/8 : COPY	./default.conf /etc/nginx/conf.d/
+ ---> b893e73c24e1
+Step 7/8 : EXPOSE	80 443 22
+ ---> Running in b4696314afb2
+Removing intermediate container b4696314afb2
+ ---> 447f96b34342
+Step 8/8 : ENTRYPOINT ["/usr/sbin/nginx_setup.sh"]
+ ---> Running in a3942ed9e0a6
+Removing intermediate container a3942ed9e0a6
+ ---> 6547211c0e19
+Successfully built 6547211c0e19
+Successfully tagged ft_services-nginx:latest
+deployment.apps/nginx created
+service/nginx created
+Sending build context to Docker daemon  8.704kB
+Step 1/8 : FROM alpine:3.12.0
+3.12.0: Pulling from library/alpine
+df20fa9351a1: Pulling fs layer
+df20fa9351a1: Verifying Checksum
+df20fa9351a1: Download complete
+df20fa9351a1: Pull complete
+Digest: sha256:185518070891758909c9f839cf4ca393ee977ac378609f700f60a771a2dfe321
+Status: Downloaded newer image for alpine:3.12.0
+ ---> a24bb4013296
+Step 2/8 : RUN		apk update 		&& apk --update --no-cache add 		nginx 		openssl 		openssh-server
+ ---> Running in 3602e7a4d707
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.12/main/x86_64/APKINDEX.tar.gz
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.12/community/x86_64/APKINDEX.tar.gz
+v3.12.3-119-gadcf08925b [http://dl-cdn.alpinelinux.org/alpine/v3.12/main]
+v3.12.3-114-g726dc65b43 [http://dl-cdn.alpinelinux.org/alpine/v3.12/community]
+OK: 12756 distinct packages available
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.12/main/x86_64/APKINDEX.tar.gz
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.12/community/x86_64/APKINDEX.tar.gz
+(1/6) Installing pcre (8.44-r0)
+(2/6) Installing nginx (1.18.0-r1)
+Executing nginx-1.18.0-r1.pre-install
+(3/6) Installing openssh-keygen (8.3_p1-r1)
+(4/6) Installing openssh-server-common (8.3_p1-r1)
+(5/6) Installing openssh-server (8.3_p1-r1)
+(6/6) Installing openssl (1.1.1j-r0)
+Executing busybox-1.31.1-r16.trigger
+OK: 9 MiB in 20 packages
+Removing intermediate container 3602e7a4d707
+ ---> 78fbd18407c5
+Step 3/8 : COPY	./index.html /var/www/index.html
+ ---> 6e4ceed2e96b
+Step 4/8 : COPY	./nginx_setup.sh /usr/sbin/nginx_setup.sh
+ ---> 10e13ce2e3b4
+Step 5/8 : RUN		chmod +x /usr/sbin/nginx_setup.sh
+ ---> Running in 6a34fab808d1
+Removing intermediate container 6a34fab808d1
+ ---> 9796bcbcca90
+Step 6/8 : COPY	./default.conf /etc/nginx/conf.d/
+ ---> 8bb10832639f
+Step 7/8 : EXPOSE	80 443 22
+ ---> Running in a76415d435b7
+Removing intermediate container a76415d435b7
+ ---> 0a487e9cb3a9
+Step 8/8 : ENTRYPOINT ["/usr/sbin/nginx_setup.sh"]
+ ---> Running in ebfb0644c84f
+Removing intermediate container ebfb0644c84f
+ ---> 4ece80ac5c56
+Successfully built 4ece80ac5c56
+Successfully tagged ft_services-nginx:latest
+deployment.apps/nginx created
+service/nginx created
