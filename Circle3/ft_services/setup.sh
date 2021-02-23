@@ -53,7 +53,7 @@ kubectl apply -f ./srcs/telegraf/telegraf.yaml >> logs.txt
 printf "⚓️  Deploying Telegraf Done...\n"
 
 # grafana
-docker build -t ft_services-grafana srcs/telegraf >> logs.txt
+docker build -t ft_services-grafana srcs/grafana >> logs.txt
 printf "🐳  Building Grafana Docker Image Done...\n"
 kubectl apply -f ./srcs/grafana/grafana.yaml >> logs.txt
 printf "⚓️  Deploying Grafana Done...\n"

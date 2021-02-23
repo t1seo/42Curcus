@@ -70,7 +70,7 @@ data:
       ## database already exists.
       # skip_database_creation = false
       username = "admin"
-      password = "admin"
+      password = "password"
     [[inputs.docker]]
       ## Docker Endpoint
       ##   To use TCP, set endpoint = "tcp://[ip]:[port]"

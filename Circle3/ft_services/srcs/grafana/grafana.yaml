@@ -40,7 +40,9 @@ spec:
             path: dashboards/dashboards.yml
           - key: datasources.yml
             path: datasources/datasources.yml
+
 ---
+
 apiVersion: v1
 kind: Service
 metadata:
@@ -57,7 +59,9 @@ spec:
   ports:
   - port: 3000
     name: grafana
+
 ---
+
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -84,7 +88,7 @@ data:
       database: telegraf
       isDefault: true
       user: admin
-      password: admin
+      password: password
       url: http://influxdb:8086
   dashboards.yml: |
     apiVersion: 1
