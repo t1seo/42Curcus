@@ -8,10 +8,12 @@ type: Opaque
 stringData:
   INFLUXDB_DB: telegraf
   INFLUXDB_ADMIN_USER: admin
-  INFLUXDB_ADMIN_PASSWORD: password
-  INFLUXDB_USER: user
-  INFLUXDB_USER_PASSWORD: userpassword
+  INFLUXDB_ADMIN_PASSWORD: admin
+  INFLUXDB_USER: tseo
+  INFLUXDB_USER_PASSWORD: tseo
+
 ---
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -36,17 +38,19 @@ spec:
         ports:
         - containerPort: 8086
         volumeMounts:
-        - name: influxdb-pv-claim
+        - name: influxdb-pvc
           mountPath: /var/lib/influxdb
       volumes:
-      - name: influxdb-pv-claim
+      - name: influxdb-pvc
         persistentVolumeClaim:
-          claimName: influxdb-pv-claim
+          claimName: influxdb-pvc
+
 ---
+
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: influxdb-pv-claim
+  name: influxdb-pvc
   labels:
     app: influxdb
 spec:
@@ -55,7 +59,9 @@ spec:
   resources:
     requests:
       storage: 1Gi
+
 ---
+
 apiVersion: v1
 kind: Service
 metadata:

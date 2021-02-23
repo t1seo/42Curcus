@@ -1,10 +1,10 @@
 FROM alpine:3.12.0
 
-RUN apk update \
-		&& apk --update --no-cache add \
-				bash \
-				vsftpd \
-				openssl
+RUN apk update && \
+	apk --update --no-cache add \
+	bash \
+	vsftpd \
+	openssl
 
 ENV FTP_USER=tseo \
     FTP_PASS=tseo
