@@ -35,7 +35,9 @@ spec:
           hostPath:
             path: /var/run/docker.sock
             type: Socket
+
 ---
+
 apiVersion: v1
 kind: ConfigMap
 metadata:

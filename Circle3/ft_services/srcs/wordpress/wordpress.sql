@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: mysql
--- 생성 시간: 21-02-23 07:09
+-- 생성 시간: 21-02-24 00:11
 -- 서버 버전: 10.4.17-MariaDB-log
 -- PHP 버전: 7.3.27
 
@@ -469,7 +469,9 @@ CREATE TABLE `wp_users` (
 --
 
 INSERT INTO `wp_users` (`ID`, `user_login`, `user_pass`, `user_nicename`, `user_email`, `user_url`, `user_registered`, `user_activation_key`, `user_status`, `display_name`) VALUES
-(1, 'tseo', '$P$BXlUm7ZtbcdfhdIS1b/KPTttbSQHos.', 'tseo', 'tseo@tseo.com', 'http://192.168.99.100/wordpress', '2021-02-22 12:55:40', '', 0, 'tseo');
+(1, 'tseo', '$P$BXlUm7ZtbcdfhdIS1b/KPTttbSQHos.', 'tseo', 'tseo@tseo.com', 'http://192.168.99.100/wordpress', '2021-02-22 12:55:40', '', 0, 'tseo'),
+(2, 'user1', 'user1', 'user1', 'user1@42seoul.kr', '', '2021-02-24 09:07:09', '', 0, 'user1'),
+(3, 'user2', 'user2', 'user2', 'user2@42seou.kr', '', '2021-02-24 09:10:10', '', 0, 'user2');
 
 --
 -- 덤프된 테이블의 인덱스
@@ -643,7 +645,7 @@ ALTER TABLE `wp_usermeta`
 -- 테이블의 AUTO_INCREMENT `wp_users`
 --
 ALTER TABLE `wp_users`
-  MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
