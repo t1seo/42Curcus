@@ -1,37 +1,67 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include <unistd.h>
 #include <sys/wait.h>
 
-int main()
+int		main(void)
 {
-	pid_t	childPid;
+	int		counter = 1;
 	int		status;
+	pid_t	pid;
+	pid_t	pid_child;
 
-	childPid = fork();
+	printf("부모: 첫번째 자식 프로세스를 생성한다.\n");
+	pid = fork();
 
-	if (childPid > 0) // 부모 프로세스
+	if (pid < 0)
 	{
-		int ret;
-		printf("부모 PID: %ld, pid: %d\n", (long)getpid(), childPid);
-		sleep(3); // 부모는 3초 동안 동작
-		ret = waitpid(childPid, &status, WNOHANG); // WNOHANG 옵션을 사용하면 자식 프로세스가 종료되지 않았을 경우 blocking 되지 않고 즉시 0값을 리턴한다
-
-		printf("부모 종료 %d %d %d\n", ret, WIFEXITED(status), WEXITSTATUS(status));
-		exit(0);
+		printf("자식 프로세스 생성 실패\n");
+		return -1;
 	}
-	else if (childPid == 0) // 자식 코드
+	else if (pid == 0)
 	{
-		printf("자식 시작 PID: %ld\n", (long)getpid());
-		sleep(8);  // 자식은 8초 동안 동작
+		printf("첫번째 자식: 5까지 카운트하고 종료\n");
 
-		printf("자식 종료\n");
-		exit(0);
+		while (6 > counter)
+		{
+			printf("1st: %d\n", counter++);
+			sleep(1);
+		}
+		return 99;
 	}
-	else // fork 실패
+	else if (pid > 0)
 	{
-		perror("fork fail!\n");
-		return 01;
+		printf("부모: 두번째 자식 프로세스를 생성\n");
+		pid = fork();
+
+		if (pid < 0)
+		{
+			printf("자식 프로세스 생성 실패\n");
+			return -1;
+		}
+		else if (pid == 0)
+		{
+			printf("두번쨰 자식: 10까지 카운트하고 종료\n");
+			while (11 > counter)
+			{
+				printf("2nd: %d\n", counter++);
+				sleep(1);
+			}
+			return 99;
+		}
+		else if (pid > 0)
+		{
+			printf("부모: 부모 프로세스로 자식 프로세스 작업이 종료되었는지 확인하면서 일을 한다\n");
+
+			while (1)
+			{
+				printf("부모: %d\n", counter++);
+				pid_child = waitpid(pid, &status, WNOHANG);
+				if (0 != pid_child)
+				{
+					printf("자식 프로세스가 종료되었다.\n");
+				}
+				sleep(1);
+			}
+		}
 	}
-	return 0;
 }

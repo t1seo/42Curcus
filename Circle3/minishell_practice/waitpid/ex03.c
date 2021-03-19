@@ -2,8 +2,6 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <sys/wait.h>
-#include <string.h>
-#include <errno.h>
 
 int main()
 {
@@ -17,9 +15,9 @@ int main()
 		int ret;
 		printf("부모 PID: %ld, pid: %d\n", (long)getpid(), childPid);
 		sleep(3); // 부모는 3초 동안 동작
-		ret = waitpid(99999, &status, WNOHANG); // pid로 99999(존재하지 않는 프로세스 ID)
+		ret = waitpid(childPid, &status, 0); // 세번쨰 인자에 0을 넣었으므로 wait 함수와 동일한 동작을 한다
 
-		printf("부모 종료 %d %d %s\n", ret, errno, strerror(errno)); // 오류가 발생하였을 경우 errno값을 확인
+		printf("부모 종료 %d %d %d\n", ret, WIFEXITED(status), WEXITSTATUS(status));
 		exit(0);
 	}
 	else if (childPid == 0) // 자식 코드
