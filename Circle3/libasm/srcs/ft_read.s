@@ -3,7 +3,7 @@ section .text
 	extern ___error
 
 _ft_read:
-	mov rax, 0x2000003 ; read
+	mov rax, 0x2000003
 	syscall
 	jc _err
 	ret
@@ -12,7 +12,7 @@ _err:
 	push rax
 	call ___error
 	pop rdx
-	mov [rax], rdx ; save error num to errno
+	mov [rax], rdx
 	mov rax, -1
 	ret
 

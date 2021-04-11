@@ -9,9 +9,9 @@ _ft_write:
 	ret
 
 _err:
-	push rax
-	call ___error
-	pop rdx
-	mov [rax], rdx
-	mov rax, -1
-	ret
+	push rax ; 현재 rax에는 errno 저장
+	call ___error ; rax에는 error 포인터 주소
+	pop rdx ; pop을 해서 rdx에는 errno 저장되어있는 상태
+	mov [rax], rdx ; *rax = rdx      rax 주소, rdx errno
+	mov rax, -1 ; 리턴값으로 -1
+	ret ; rax 리턴

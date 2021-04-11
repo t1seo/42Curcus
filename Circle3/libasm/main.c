@@ -6,13 +6,14 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 22:10:27 by tseo              #+#    #+#             */
-/*   Updated: 2021/04/04 18:56:43 by tseo             ###   ########.fr       */
+/*   Updated: 2021/04/04 23:06:51 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
 #include <unistd.h>
 #include <fcntl.h>
+#include <errno.h>
 #include "./srcs/libasm.h"
 
 void	ft_strlen_test(void)
@@ -58,7 +59,7 @@ void	ft_strcmp_test(void)
 	char *empty_string = "";
 	char *test1 = "a";
 	char *test2 = "b";
-	char *test3 = "a";
+	char *test3 = "aa";
 	char *test4 = "libasm";
 	char *test5 = "libft";
 
@@ -72,6 +73,9 @@ void	ft_strcmp_test(void)
 	strcmp(empty_string, test1), ft_strcmp(empty_string, test1));
 	printf("One Empty String TEST 3: %d %d\n", \
 	strcmp(test1, empty_string), ft_strcmp(test1, empty_string));
+
+	printf("TEST: %d %d\n", \
+	strcmp(test1, test3), ft_strcmp(test1, test3));
 
 	printf("TEST 4 : %d %d\n", \
 	strcmp(test4, test4), ft_strcmp(test4, test4));
@@ -100,17 +104,20 @@ void	ft_write_test(void)
 	// printf("FT_WRITE: %zd\n", ft_write(-7, NULL, 0));
 
 	// write in files
-	write(fd1, str, 13);
-	ft_write(fd2, str, 13);
+	// write(fd1, str, 13);
+	// ft_write(fd2, str, 13);
 
 	// write in wrong file
 	// write(fd3, str, 13);
 	// ft_write(fd3, str, 13);
-	// write(fd4, str, 13);
-	// ft_write(fd4, str, 13);
 
-	close(fd1);
-	close(fd2);
+	write(-1, str, 13);
+	printf("errno: %d\n", errno);
+	ft_write(-1, str, 13);
+	printf("errno: %d\n", errno);
+
+	// close(fd1);
+	// close(fd2);
 	printf("\n");
 }
 
@@ -134,11 +141,11 @@ void	ft_read_test(void)
 	// b[9] = 0;
 	// printf("%s\n", b);
 
-	printf("===== TEST FT_READ =====\n");
-	printf("TEST READ: %zd %s\n", read(fd1, str1, 50), str1);
-	printf("TEST FT_READ: %zd %s\n", ft_read(fd2, str2, 50), str2);
-	printf("TEST READ: %zd\n", read(fd3, str3, 50));
-	printf("TEST FT_READ: %zd\n", ft_read(fd3, str4, 50));
+	// printf("===== TEST FT_READ =====\n");
+	// printf("TEST READ: %zd %s\n", read(fd1, str1, 50), str1);
+	// printf("TEST FT_READ: %zd %s\n", ft_read(fd2, str2, 50), str2);
+	// printf("TEST READ: %zd\n", read(fd3, str3, 50));
+	// printf("TEST FT_READ: %zd\n", ft_read(fd3, str4, 50));
 
 	close(fd1);
 	close(fd2);
@@ -178,8 +185,8 @@ int		main(void)
 	// ft_strlen_test();
 	// ft_strcpy_test();
 	// ft_strcmp_test();
-	ft_write_test();
-	// ft_read_test();
+	// ft_write_test();
+	ft_read_test();
 	// ft_strdup_test();
 
 	return (0);
