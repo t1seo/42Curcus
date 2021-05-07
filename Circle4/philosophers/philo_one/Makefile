@@ -1,18 +1,28 @@
 CC = gcc
 FLAG = -Wall -Wextra -Wextra
+
 INCLUDE = ./
-SRCS = main.c
+SRCS = main.c \
+	   message.c \
+	   parser.c \
+	   utils.c \
+	#    setting.c \
+	#    checker.c \
+	#    routine.c
+
+DEBUG = -g -fsanitize=address
 NAME = philo_one
+OBJS = ${SRCS:.c=.o}
 
 .c.o :
-	$(CC) $(FLAG) -c $< -o $(<:.c=.o) $(INCLUDE)
+	$(CC) $(FLAG) -c $< -o $(<:.c=.o) -I $(INCLUDE)
+
+$(NAME) : $(OBJS)
+	$(CC) $(FLAG) $(OBJS) $(DEBUG) -o $(NAME)
 
 all : $(NAME)
 
-$(NAME) : $(OBJS)
-	$(CC) $(FLAGS) $(OBJS) -o $(NAME) $(INCLUDE)
-
-clean : 
+clean :
 	rm -rf $(OBJS)
 
 fclean : clean
