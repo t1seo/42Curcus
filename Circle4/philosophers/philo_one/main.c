@@ -6,7 +6,7 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/07 19:48:59 by tseo              #+#    #+#             */
-/*   Updated: 2021/05/07 20:05:50 by tseo             ###   ########.fr       */
+/*   Updated: 2021/05/07 20:17:59 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,16 +25,8 @@ int		main(int argc, char *argv[])
 		return (print_error(MALLOC_FAIL));
 	if (!(g_info.forks = malloc(sizeof(pthread_mutex_t) * g_info.num_of_philos)))
 		return (print_error(MALLOC_FAIL));
-
-	printf("The number of philos: %d\n", g_info.num_of_philos);
-	printf("Time to die : %lu\n", g_info.time_to_die);
-	printf("Time to eat : %lu\n", g_info.time_to_eat);
-	printf("Time to sleep : %lu\n", g_info.time_to_sleep);
-	if (g_info.num_of_must_eat)
-		printf("The number of must eat : %d\n", g_info.num_of_must_eat);
-
-	// set_table();
+	set_table();
 	// start_eating();
-	// unset_table();
+	unset_table();
 	return (0);
 }

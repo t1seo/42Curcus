@@ -6,7 +6,7 @@ SRCS = main.c \
 	   message.c \
 	   parser.c \
 	   utils.c \
-	#    setting.c \
+	   setting.c \
 	#    checker.c \
 	#    routine.c
 

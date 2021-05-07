@@ -6,7 +6,7 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/07 12:06:53 by tseo              #+#    #+#             */
-/*   Updated: 2021/05/07 20:06:40 by tseo             ###   ########.fr       */
+/*   Updated: 2021/05/07 20:16:09 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,12 @@ int					ft_atoi(const char *str);
 unsigned long		get_time(void);
 void				vsleep(unsigned long time);
 int					is_num(char *num);
+
+/*
+** setting
+*/
+void				set_table(void);
+void				unset_table(void);
 
 
 #endif
