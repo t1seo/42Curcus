@@ -6,7 +6,7 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/07 19:50:18 by tseo              #+#    #+#             */
-/*   Updated: 2021/05/07 21:32:20 by tseo             ###   ########.fr       */
+/*   Updated: 2021/05/07 22:00:34 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,24 @@ int		print_error(char *err_msg)
 	return (1);
 }
 
+void	print_red_msg(char *msg, t_philo *philo, unsigned long cur_time)
+{
+	printf(ANSI_COLOR_RED);
+	printf("%lu %d", cur_time - g_info.start_time, philo->idx);
+	printf("%s\n", msg);
+	printf(ANSI_COLOR_RESET);
+}
+
+void	print_green_msg(char *msg, t_philo *philo, unsigned long cur_time)
+{
+	printf(ANSI_COLOR_GREEN);
+	printf("%lu %d", cur_time - g_info.start_time, philo->idx);
+	printf("%s\n", msg);
+	printf(ANSI_COLOR_RESET);
+}
+
+
+
 int		print_message(t_philo *philo, t_status status, unsigned long cur_time)
 {
 	pthread_mutex_lock(&g_info.message);
@@ -26,21 +44,20 @@ int		print_message(t_philo *philo, t_status status, unsigned long cur_time)
 		pthread_mutex_unlock(&g_info.message);
 		return (1);
 	}
-	printf("%lu %d", cur_time - g_info.start_time, philo->idx);
 	if (status == TAKEN_FORK)
-		printf(" has taken a fork\n");
+		print_green_msg(" has taken a fork", philo, cur_time);
 	if (status == EATING)
 	{
-		printf(" is eating\n");
+		print_green_msg(" is eating", philo, cur_time);
 		philo->last_ate_time = cur_time;
 	}
 	if (status == SLEEPING)
-		printf(" is sleeping\n");
+		print_green_msg(" is sleeping", philo, cur_time);
 	if (status == THINKING)
-		printf(" is thinking\n");
+		print_green_msg(" is thinking", philo, cur_time);
 	if (status == DEAD)
 	{
-		printf(ANSI_COLOR_RED " is died" ANSI_COLOR_RESET "\n");
+		print_red_msg(" is thinking", philo, cur_time);
 		g_info.num_of_dead += 1;
 	}
 	pthread_mutex_unlock(&g_info.message);

@@ -6,7 +6,7 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/07 12:06:53 by tseo              #+#    #+#             */
-/*   Updated: 2021/05/07 20:52:01 by tseo             ###   ########.fr       */
+/*   Updated: 2021/05/07 21:42:44 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@
 /*
 ** COLORS FOR PROMPT MESSAGES
 */
+# define ANSI_COLOR_GREEN "\x1b[32m"
 # define ANSI_COLOR_RED "\x1b[31m"
 # define ANSI_COLOR_RESET "\x1b[0m"
 
@@ -70,7 +71,7 @@ typedef struct		s_philo
 	pthread_t		tid;
 }					t_philo;
 
-extern t_info	g_info;
+extern t_info		g_info;
 extern t_philo		*g_philos;
 
 /*
