@@ -7,8 +7,8 @@ SRCS = main.c \
 	   parser.c \
 	   utils.c \
 	   setting.c \
-	#    checker.c \
-	#    routine.c
+	   routine.c \
+	   checker.c
 
 DEBUG = -g -fsanitize=address
 NAME = philo_one

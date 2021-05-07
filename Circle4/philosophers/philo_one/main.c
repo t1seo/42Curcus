@@ -6,7 +6,7 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/07 19:48:59 by tseo              #+#    #+#             */
-/*   Updated: 2021/05/07 20:17:59 by tseo             ###   ########.fr       */
+/*   Updated: 2021/05/07 20:58:42 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int		main(int argc, char *argv[])
 	if (!(g_info.forks = malloc(sizeof(pthread_mutex_t) * g_info.num_of_philos)))
 		return (print_error(MALLOC_FAIL));
 	set_table();
-	// start_eating();
+	start_eating();
 	unset_table();
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/07 12:06:53 by tseo              #+#    #+#             */
-/*   Updated: 2021/05/07 20:16:09 by tseo             ###   ########.fr       */
+/*   Updated: 2021/05/07 20:52:01 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,24 +21,21 @@
 # include <pthread.h>
 
 /*
-** error messages
+** ERROR MESSAGES
 */
-
 # define WRONG_ARGC "Error: The number of arguments is incorrect"
 # define WRONG_ARGS "Error: It contains the wrong argument"
 # define MALLOC_FAIL "Error: Memory allocation failed"
 
 /*
-** colors for prompt messages
+** COLORS FOR PROMPT MESSAGES
 */
-
 # define ANSI_COLOR_RED "\x1b[31m"
 # define ANSI_COLOR_RESET "\x1b[0m"
 
 /*
-** philosopher's status
+** PHILOSOPHER'S STATUS
 */
-
 typedef enum	e_status
 {
 	TAKEN_FORK = 0,
@@ -61,8 +58,6 @@ typedef struct		s_info
 	int				num_of_dead;
 	pthread_mutex_t	*forks;
 	pthread_mutex_t	message;
-	pthread_mutex_t	check;
-	pthread_mutex_t eat;
 }					t_info;
 
 typedef struct		s_philo
@@ -72,7 +67,6 @@ typedef struct		s_philo
 	int				fork_2;
 	int				num_of_eat;
 	unsigned long	last_ate_time;
-	t_info	*info;
 	pthread_t		tid;
 }					t_philo;
 
@@ -80,17 +74,18 @@ extern t_info	g_info;
 extern t_philo		*g_philos;
 
 /*
-** parser
+** PARSER
 */
 int					parse_argv(t_info *info, char **argv);
 
 /*
-** message
+** MESSAGE
 */
 int					print_error(char *err_msg);
+int					print_message(t_philo *philo, t_status status, unsigned long cur_time);
 
 /*
-** utils
+** UTILS
 */
 int					ft_atoi(const char *str);
 unsigned long		get_time(void);
@@ -98,10 +93,20 @@ void				vsleep(unsigned long time);
 int					is_num(char *num);
 
 /*
-** setting
+** SETTING
 */
 void				set_table(void);
 void				unset_table(void);
+
+/*
+** ROUTINE
+*/
+void				start_eating(void);
+
+/*
+** CHECKER
+*/
+void				*check_status(void *arg);
 
 
 #endif
