@@ -6,7 +6,7 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/07 19:50:18 by tseo              #+#    #+#             */
-/*   Updated: 2021/05/13 16:55:25 by tseo             ###   ########.fr       */
+/*   Updated: 2021/05/13 17:20:04 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int		print_message(t_philo *philo, t_status status, unsigned long cur_time)
 		print_green_msg(" is thinking", philo, cur_time);
 	if (status == DEAD)
 	{
-		print_red_msg(" is thinking", philo, cur_time);
+		print_red_msg(" is died", philo, cur_time);
 		g_info.num_of_dead += 1;
 	}
 	pthread_mutex_unlock(&g_info.message);
