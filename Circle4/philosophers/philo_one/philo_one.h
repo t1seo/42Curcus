@@ -6,16 +6,15 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/07 12:06:53 by tseo              #+#    #+#             */
-/*   Updated: 2021/05/07 21:42:44 by tseo             ###   ########.fr       */
+/*   Updated: 2021/05/13 17:02:52 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHILO_ONE
-# define PHILO_ONE
+#ifndef PHILO_ONE_H
+# define PHILO_ONE_H
 
 # include <stdio.h>
 # include <stdlib.h>
-# include <unistd.h>
 # include <unistd.h>
 # include <sys/time.h>
 # include <pthread.h>
@@ -83,7 +82,8 @@ int					parse_argv(t_info *info, char **argv);
 ** MESSAGE
 */
 int					print_error(char *err_msg);
-int					print_message(t_philo *philo, t_status status, unsigned long cur_time);
+int					print_message(t_philo *philo, t_status status,
+								unsigned long cur_time);
 
 /*
 ** UTILS
@@ -108,6 +108,5 @@ void				start_eating(void);
 ** CHECKER
 */
 void				*check_status(void *arg);
-
 
 #endif

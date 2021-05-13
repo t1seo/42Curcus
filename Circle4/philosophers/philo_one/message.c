@@ -6,7 +6,7 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/07 19:50:18 by tseo              #+#    #+#             */
-/*   Updated: 2021/05/07 22:00:34 by tseo             ###   ########.fr       */
+/*   Updated: 2021/05/13 16:55:25 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int		print_error(char *err_msg)
 {
 	printf(ANSI_COLOR_RED "%s" ANSI_COLOR_RESET "\n", err_msg);
-	return (1);
+	return (-1);
 }
 
 void	print_red_msg(char *msg, t_philo *philo, unsigned long cur_time)
@@ -33,8 +33,6 @@ void	print_green_msg(char *msg, t_philo *philo, unsigned long cur_time)
 	printf("%s\n", msg);
 	printf(ANSI_COLOR_RESET);
 }
-
-
 
 int		print_message(t_philo *philo, t_status status, unsigned long cur_time)
 {

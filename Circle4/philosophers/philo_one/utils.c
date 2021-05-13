@@ -6,7 +6,7 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/07 19:50:54 by tseo              #+#    #+#             */
-/*   Updated: 2021/05/07 19:59:07 by tseo             ###   ########.fr       */
+/*   Updated: 2021/05/13 16:42:32 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int				ft_atoi(const char *str)
 unsigned long	get_time(void)
 {
 	struct timeval	tv;
-	const double milli = 1000.0L;
+	const double	milli = 1000.0L;
 
 	gettimeofday(&tv, NULL);
 	return (tv.tv_sec * milli + tv.tv_usec / milli);
