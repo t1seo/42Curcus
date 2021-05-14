@@ -6,7 +6,7 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/07 12:06:53 by tseo              #+#    #+#             */
-/*   Updated: 2021/05/14 15:42:09 by tseo             ###   ########.fr       */
+/*   Updated: 2021/05/14 19:13:06 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 # define WRONG_ARGC "Error: The number of arguments is incorrect"
 # define WRONG_ARGS "Error: It contains the wrong argument"
 # define MALLOC_FAIL "Error: Memory allocation failed"
+# define SEM_FAIL "Error: Semaphore failed"
 
 /*
 ** COLORS FOR PROMPT MESSAGES
@@ -98,7 +99,7 @@ int					is_num(char *num);
 /*
 ** SETTING
 */
-void				set_table(void);
+int					set_table(void);
 void				unset_table(void);
 
 /*
