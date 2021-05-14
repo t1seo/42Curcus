@@ -6,11 +6,11 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/07 19:50:18 by tseo              #+#    #+#             */
-/*   Updated: 2021/05/14 15:12:28 by tseo             ###   ########.fr       */
+/*   Updated: 2021/05/14 15:42:22 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo_one.h"
+#include "philo_two.h"
 
 int		print_error(char *err_msg)
 {
@@ -32,10 +32,10 @@ void	print_green_msg(char *msg, t_philo *philo, unsigned long cur_time)
 
 int		print_message(t_philo *philo, t_status status, unsigned long cur_time)
 {
-	pthread_mutex_lock(&g_info.message);
+	sem_wait(g_info.message);
 	if (g_info.num_of_dead != 0)
 	{
-		pthread_mutex_unlock(&g_info.message);
+		sem_post(g_info.message);
 		return (1);
 	}
 	if (status == TAKEN_FORK)
@@ -54,6 +54,6 @@ int		print_message(t_philo *philo, t_status status, unsigned long cur_time)
 		print_red_msg(" is died", philo, cur_time);
 		g_info.num_of_dead += 1;
 	}
-	pthread_mutex_unlock(&g_info.message);
+	sem_post(g_info.message);
 	return (0);
 }
