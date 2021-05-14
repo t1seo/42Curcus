@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo_two.h                                        :+:      :+:    :+:   */
+/*   philo_three.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/07 12:06:53 by tseo              #+#    #+#             */
-/*   Updated: 2021/05/14 19:24:23 by tseo             ###   ########.fr       */
+/*   Updated: 2021/05/14 20:57:45 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHILO_TWO_H
-# define PHILO_TWO_H
+#ifndef PHILO_THREE_H
+# define PHILO_THREE_H
 
 # include <stdio.h>
 # include <stdlib.h>
@@ -19,6 +19,7 @@
 # include <sys/time.h>
 # include <pthread.h>
 # include <semaphore.h>
+# include <signal.h>
 
 /*
 ** ERROR MESSAGES
@@ -68,7 +69,7 @@ typedef struct		s_philo
 	int				idx;
 	int				num_of_eat;
 	unsigned long	last_ate_time;
-	pthread_t		tid;
+	pid_t			pid;
 }					t_philo;
 
 extern t_info		g_info;
@@ -109,5 +110,10 @@ void				start_eating(void);
 ** CHECKER
 */
 void				*check_status(void *arg);
+
+/*
+** CHECK PROCESS
+*/
+void				check_process(void);
 
 #endif
