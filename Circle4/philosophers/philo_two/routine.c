@@ -6,7 +6,7 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/07 20:19:52 by tseo              #+#    #+#             */
-/*   Updated: 2021/05/14 19:11:38 by tseo             ###   ########.fr       */
+/*   Updated: 2021/05/16 05:39:45 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,6 @@ void	*start_routine(void *arg)
 	pthread_t	tid;
 
 	philo = (t_philo *)arg;
-	if (philo->idx % 2 == 0)
-		vsleep(1);
 	pthread_create(&tid, NULL, check_status, philo);
 	while (1)
 	{
