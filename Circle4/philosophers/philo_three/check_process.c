@@ -6,7 +6,7 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/14 20:46:20 by tseo              #+#    #+#             */
-/*   Updated: 2021/05/14 21:26:44 by tseo             ###   ########.fr       */
+/*   Updated: 2021/05/15 18:16:15 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	check_process(void)
 			if (eat_done == g_info.num_of_philos)
 				break ;
 		}
-		if (i != g_info.num_of_philos)
+		if (status == 256 || eat_done == g_info.num_of_philos)
 		{
 			kill_process();
 			break ;

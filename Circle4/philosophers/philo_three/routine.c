@@ -6,7 +6,7 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/07 20:19:52 by tseo              #+#    #+#             */
-/*   Updated: 2021/05/14 21:19:35 by tseo             ###   ########.fr       */
+/*   Updated: 2021/05/15 18:01:24 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,16 +62,17 @@ void	start_eating(void)
 	i = 0;
 	while (i < g_info.num_of_philos)
 	{
-		g_philos[i].pid = fork();
+		if ((g_philos[i].pid = fork()) == -1)
+			return ;
 		if (g_philos[i].pid == 0)
-			break ;
+		{
+			start_routine(&g_philos[i]);
+			exit(0);
+		}
 		i++;
 	}
-	if (i != g_info.num_of_philos)
+	if (g_philos[i].pid > 0)
 	{
-		start_routine(&g_philos[i]);
-		exit(0);
-	}
-	else
 		check_process();
+	}
 }
