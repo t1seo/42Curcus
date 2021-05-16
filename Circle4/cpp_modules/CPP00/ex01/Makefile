@@ -3,8 +3,11 @@ CC = clang++
 OPT = -std=c++98
 FLAG = -Wall -Wextra -Werror
 
-NAME = megaphone
-SRCS = megaphone.cpp
+NAME = PhoneBook
+SRCS = main.cpp \
+	   ContactInfo.cpp \
+	   PhoneBook.cpp
+	   
 OBJS = $(SRCS:.cpp=.o)
 
 %.o: %.cpp
