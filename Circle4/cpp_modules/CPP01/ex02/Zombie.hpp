@@ -1,8 +1,8 @@
-#ifndef PONY
-#define PONY
+#ifndef ZOMBIE
+#define ZOMBIE
 
-#include <string>
 #include <iostream>
+#include <string>
 
 #define ANSI_COLOR_RED "\x1b[31m"
 #define ANSI_COLOR_GREEN "\x1b[32m"
@@ -12,17 +12,18 @@
 #define ANSI_COLOR_CYAN "\x1b[36m"
 #define ANSI_COLOR_RESET "\x1b[0m"
 
-class Pony
+class Zombie
 {
 public:
-    Pony(std::string name);
-    ~Pony();
-    void Eat(void) const;
-    void Run(void) const;
-    void Sleep(void) const;
+    Zombie();
+    ~Zombie();
+    Zombie(std::string name, std::string type);
+    void announce() const;
+    static int mZombieNum;
 
 private:
-    std::string mName;
+    std::string name;
+    std::string type;
 };
 
 #endif
