@@ -6,7 +6,7 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/07 12:06:53 by tseo              #+#    #+#             */
-/*   Updated: 2021/05/14 20:57:45 by tseo             ###   ########.fr       */
+/*   Updated: 2021/05/17 15:02:28 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ typedef struct		s_info
 	int				num_of_dead;
 	sem_t			*act;
 	sem_t			*message;
-	sem_t			*fork;
 }					t_info;
 
 typedef struct		s_philo

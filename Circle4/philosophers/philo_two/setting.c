@@ -6,7 +6,7 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/07 20:09:02 by tseo              #+#    #+#             */
-/*   Updated: 2021/05/14 19:15:45 by tseo             ###   ########.fr       */
+/*   Updated: 2021/05/17 15:01:43 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,8 @@ int		set_table(void)
 	if ((g_info.message = sem_open("/message",
 	O_CREAT | O_EXCL, 0644, 1)) == SEM_FAILED)
 		return (0);
-	if ((g_info.fork = sem_open("/fork", O_CREAT | O_EXCL,
-	0644, g_info.num_of_philos)) == SEM_FAILED)
-		return (0);
 	sem_unlink("/act");
 	sem_unlink("/message");
-	sem_unlink("/fork");
 	return (1);
 }
 
@@ -45,6 +41,5 @@ void	unset_table(void)
 {
 	sem_close(g_info.act);
 	sem_close(g_info.message);
-	sem_close(g_info.fork);
 	free(g_philos);
 }

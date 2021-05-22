@@ -6,7 +6,7 @@
 /*   By: tseo <tseo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/07 20:19:52 by tseo              #+#    #+#             */
-/*   Updated: 2021/05/16 05:39:45 by tseo             ###   ########.fr       */
+/*   Updated: 2021/05/17 15:01:22 by tseo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,11 @@
 int		eating(t_philo *philo)
 {
 	sem_wait(g_info.act);
-	sem_wait(g_info.fork);
 	print_message(philo, TAKEN_FORK, get_time());
-	sem_wait(g_info.fork);
 	print_message(philo, TAKEN_FORK, get_time());
 	print_message(philo, EATING, get_time());
 	vsleep(g_info.time_to_eat);
 	sem_post(g_info.act);
-	sem_post(g_info.fork);
-	sem_post(g_info.fork);
 	philo->num_of_eat += 1;
 	if (philo->num_of_eat == g_info.num_of_must_eat)
 	{

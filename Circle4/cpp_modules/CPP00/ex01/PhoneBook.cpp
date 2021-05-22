@@ -68,7 +68,7 @@ void PhoneBook::SearchContact(void)
                 PrintError("Exit Program");
                 exit(0);
             }
-            if (std::cin.good() && inputNum >= 1 && inputNum - 1 < mInfoIndex)
+            if (inputNum >= 1 && inputNum - 1 < mInfoIndex)
             {
                 mInfo[inputNum - 1].GetInfo();
                 std::cin.ignore();

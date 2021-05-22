@@ -1,26 +1,25 @@
-
 CC = clang++
 OPT = -std=c++98
-FLAG = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror
 
-NAME = phonebook
-SRCS = phonebook.cpp 
+NAME = megaphone
+SRCS = megaphone.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 %.o: %.cpp
-	$(CC) $(FLAG) $(OPT) -c $< -o $@
+	$(CC) $(FLAGS) $(OPT) -c $< -o $@
 
 $(NAME): $(OBJS)
-	$(CC) $(FLAG) $(OPT) $(OBJS) -o $(NAME)
+	$(CC) $(FLAGS) $(OPT) $(OBJS) -o $(NAME)
 
 all: $(NAME)
 
 clean :
 	rm -f $(OBJS)
 
-fclean : clean
+fclean: clean
 	rm -f $(NAME)
 
-re : fclean all
+re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re .cpp.o
