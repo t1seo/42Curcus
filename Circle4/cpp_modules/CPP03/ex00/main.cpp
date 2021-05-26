@@ -8,6 +8,8 @@ int main(void)
 
     // ranged and melee attack
     beta.takeDamage(alpha.rangedAttack(beta.getName()));
+    beta.takeDamage(alpha.rangedAttack(beta.getName()));
+    beta.takeDamage(alpha.rangedAttack(beta.getName()));
     beta.showStatus();
     alpha.takeDamage(beta.meleeAttack(alpha.getName()));
     alpha.showStatus();
