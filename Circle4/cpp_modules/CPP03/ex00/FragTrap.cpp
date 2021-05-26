@@ -65,7 +65,7 @@ FragTrap::FragTrap(const FragTrap &fragTrap)
 {
     srand(time(NULL));
     *this = fragTrap;
-    printCurrentSituation(mName, " has created.");
+    printCurrentSituation(mName, " has copied.");
 }
 
 // destructor
@@ -86,30 +86,35 @@ FragTrap &FragTrap::operator=(const FragTrap &fragTrap)
     mMeleeAttackDamage = fragTrap.mMeleeAttackDamage;
     mRangedAttackDamage = fragTrap.mRangedAttackDamage;
     mArmorDamageReduction = fragTrap.mArmorDamageReduction;
+    std::cout << ANSI_COLOR_RED << "ASSIGNMENT" << ANSI_COLOR_RESET << std::endl;
     return (*this);
 }
 
-void FragTrap::rangedAttack(std::string const &target)
+unsigned int FragTrap::rangedAttack(std::string const &target)
 {
     if (getHitPoint() > 0)
     {
         printAttackSituation(mName, target, "range", mRangedAttackDamage);
+        return mRangedAttackDamage;
     }
     else
     {
         printCurrentSituation(mName, "has already been destroyed.");
+        return 0;
     }
 }
 
-void FragTrap::meleeAttack(std::string const &target)
+unsigned int FragTrap::meleeAttack(std::string const &target)
 {
     if (getHitPoint() > 0)
     {
-        printAttackSituation(mName, target, "melee", mRangedAttackDamage);
+        printAttackSituation(mName, target, "melee", mMeleeAttackDamage);
+        return mMeleeAttackDamage;
     }
     else
     {
         printCurrentSituation(mName, "has already been destroyed.");
+        return 0;
     }
 }
 
@@ -158,7 +163,7 @@ void FragTrap::beRepaired(unsigned int amount)
     printCurrentSituation(mName, " has been repaired.");
 }
 
-void FragTrap::vaulthunter_dot_exe(std::string const &target)
+unsigned int FragTrap::vaulthunter_dot_exe(std::string const &target)
 {
 
     if (getHitPoint() > 0)
@@ -174,20 +179,24 @@ void FragTrap::vaulthunter_dot_exe(std::string const &target)
             {
                 mEnergyPoint -= randEnergy;
                 printAttackSituation(mName, target, randAttack, randDamage);
+                return randDamage;
             }
             else
             {
                 printCurrentSituation(mName, " has not enough energy.");
+                return 0;
             }
         }
         else
         {
             printCurrentSituation(mName, " has not enough energy.");
+            return 0;
         }
     }
     else
     {
         printCurrentSituation(mName, " has already been destroyed.");
+        return 0;
     }
 }
 
@@ -199,6 +208,11 @@ int FragTrap::getHitPoint() const
 int FragTrap::getEnergyPoint() const
 {
     return (mEnergyPoint);
+}
+
+std::string FragTrap::getName() const
+{
+    return (mName);
 }
 
 void FragTrap::showStatus()

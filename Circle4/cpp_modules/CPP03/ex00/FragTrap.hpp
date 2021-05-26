@@ -21,14 +21,15 @@ public:
 
     FragTrap &operator=(const FragTrap &fragTrap);
 
-    void rangedAttack(std::string const &target);
-    void meleeAttack(std::string const &target);
+    unsigned int rangedAttack(std::string const &target);
+    unsigned int meleeAttack(std::string const &target);
     void takeDamage(unsigned int amount);
     void beRepaired(unsigned int amount);
-    void vaulthunter_dot_exe(std::string const &target);
+    unsigned int vaulthunter_dot_exe(std::string const &target);
 
     int getHitPoint() const;
     int getEnergyPoint() const;
+    std::string getName() const;
     void showStatus();
 
 private:
