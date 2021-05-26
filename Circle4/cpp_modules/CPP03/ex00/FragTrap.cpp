@@ -48,7 +48,7 @@ FragTrap::FragTrap(void) : mName("No name"),
                            mMeleeAttackDamage(30), mRangedAttackDamage(20), mArmorDamageReduction(5)
 {
     srand(time(NULL));
-    printCurrentSituation(mName, " has created.");
+    printCurrentSituation(mName, " has been created.");
 }
 
 // constructor
@@ -57,7 +57,7 @@ FragTrap::FragTrap(const std::string &name) : mName(name), mHitPoint(100), mMaxH
                                               mMeleeAttackDamage(30), mRangedAttackDamage(20), mArmorDamageReduction(5)
 {
     srand(time(NULL));
-    printCurrentSituation(mName, " has created.");
+    printCurrentSituation(mName, " has been created.");
 }
 
 // copy constructor
@@ -65,13 +65,13 @@ FragTrap::FragTrap(const FragTrap &fragTrap)
 {
     srand(time(NULL));
     *this = fragTrap;
-    printCurrentSituation(mName, " has copied.");
+    printCurrentSituation(mName, " has been copied.");
 }
 
 // destructor
 FragTrap::~FragTrap()
 {
-    printCurrentSituation(mName, " has destroyed.");
+    printCurrentSituation(mName, " has been destroyed.");
 }
 
 // assignation operator overloading
@@ -142,7 +142,7 @@ void FragTrap::takeDamage(unsigned int amount)
         else
         {
             mHitPoint = 0;
-            printCurrentSituation(mName, "has destroyed.");
+            printCurrentSituation(mName, "has been destroyed.");
         }
     }
     else

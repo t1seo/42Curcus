@@ -46,7 +46,7 @@ ScavTrap::ScavTrap(void) : mName("No name"),
                            mMeleeAttackDamage(20), mRangedAttackDamage(15), mArmorDamageReduction(3)
 {
     srand(time(NULL));
-    printCurrentSituation(mName, " has created.");
+    printCurrentSituation(mName, " has been created.");
 }
 
 ScavTrap::ScavTrap(const std::string &name) : mName(name),
@@ -55,19 +55,19 @@ ScavTrap::ScavTrap(const std::string &name) : mName(name),
                                               mMeleeAttackDamage(20), mRangedAttackDamage(15), mArmorDamageReduction(3)
 {
     srand(time(NULL));
-    printCurrentSituation(mName, " has created.");
+    printCurrentSituation(mName, " has been created.");
 }
 
 ScavTrap::ScavTrap(const ScavTrap &scavTrap)
 {
     srand(time(NULL));
     *this = scavTrap;
-    printCurrentSituation(mName, " has copied.");
+    printCurrentSituation(mName, " has been copied.");
 }
 
 ScavTrap::~ScavTrap()
 {
-    printCurrentSituation(mName, " has destroyed.");
+    printCurrentSituation(mName, " has been destroyed.");
 }
 
 ScavTrap &ScavTrap::operator=(const ScavTrap &scavTrap)
@@ -136,7 +136,7 @@ void ScavTrap::takeDamage(unsigned int amount)
         else
         {
             mHitPoint = 0;
-            printCurrentSituation(mName, "has destroyed.");
+            printCurrentSituation(mName, "has been destroyed.");
         }
     }
     else
