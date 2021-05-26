@@ -42,21 +42,19 @@ void ClapTrap::printAttackSituation(std::string target, std::string attack, int 
               << std::endl;
 }
 
-ClapTrap::ClapTrap() : mName("No name"),
+ClapTrap::ClapTrap() : mName("No name"), mType("Claptrap"),
                        mHitPoint(100), mMaxHitPoint(100),
                        mEnergyPoint(100), mMaxEnergyPoint(100), mLevel(1),
-                       mMeleeAttackDamage(30), mRangedAttackDamage(20), mArmorDamageReduction(5),
-                       mType("Claptrap")
+                       mMeleeAttackDamage(30), mRangedAttackDamage(20), mArmorDamageReduction(5)
 {
     srand(time(NULL));
     printCurrentSituation("is ready!");
 }
 
-ClapTrap::ClapTrap(const std::string &name) : mName(name),
+ClapTrap::ClapTrap(const std::string &name) : mName(name), mType("Claptrap"),
                                               mHitPoint(100), mMaxHitPoint(100),
                                               mEnergyPoint(100), mMaxEnergyPoint(100), mLevel(1),
-                                              mMeleeAttackDamage(30), mRangedAttackDamage(20), mArmorDamageReduction(5),
-                                              mType("Claptrap")
+                                              mMeleeAttackDamage(30), mRangedAttackDamage(20), mArmorDamageReduction(5)
 {
     srand(time(NULL));
     printCurrentSituation("is ready!");
