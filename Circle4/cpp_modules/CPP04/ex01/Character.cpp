@@ -53,7 +53,6 @@ void Character::attack(Enemy *enemy)
 {
     if (mWeapon && mAP >= mWeapon->getAPCost() && enemy)
     {
-        mAP -= mWeapon->getAPCost();
         std::cout << ANSI_COLOR_YELLOW
                   << mName
                   << ANSI_COLOR_GREEN
@@ -77,17 +76,14 @@ void Character::attack(Enemy *enemy)
         else
         {
             mWeapon->attack();
+            mAP -= mWeapon->getAPCost();
             enemy->takeDamage(mWeapon->getDamage());
 
             if (enemy && enemy->getHP() <= 0)
             {
-                // std::cout << ANSI_COLOR_CYAN
-                //           << "The enemy has been killed."
-                //           << ANSI_COLOR_RESET
-                //           << std::endl;
                 // delete enemy;
                 enemy->~Enemy();
-                // enemy = nullptr;
+                // enemy = NULL;
             }
         }
     }
