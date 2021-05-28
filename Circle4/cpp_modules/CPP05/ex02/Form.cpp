@@ -89,3 +89,8 @@ const char *Form::GradeTooLowException::what() const throw()
 {
     return (ANSI_COLOR_RED "FormException: Grade too low" ANSI_COLOR_RESET);
 }
+
+const char *Form::NotSignedException::what() const throw()
+{
+    return (ANSI_COLOR_RED "FormException: Not signed" ANSI_COLOR_RESET);
+}
