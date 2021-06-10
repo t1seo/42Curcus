@@ -10,7 +10,6 @@ public:
     Brain();
     ~Brain();
     std::string identify() const;
-    void SetThink(std::string think);
     void GetThink() const;
 
 private:

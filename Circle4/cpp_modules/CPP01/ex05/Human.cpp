@@ -17,3 +17,8 @@ std::string Human::identify() const
 {
     return this->mBrain.identify();
 }
+
+void Human::getThink()
+{
+    mBrain.GetThink();
+}

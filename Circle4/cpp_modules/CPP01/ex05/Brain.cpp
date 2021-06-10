@@ -17,11 +17,6 @@ std::string Brain::identify() const
     return ss.str();
 }
 
-void Brain::SetThink(std::string think)
-{
-    this->mDeepThink = think;
-}
-
 void Brain::GetThink() const
 {
     std::cout << "I think " << mDeepThink << std::endl;

@@ -11,6 +11,8 @@ public:
     const Brain &getBrain() const;
     std::string identify() const;
 
+    void getThink();
+
 private:
     const Brain mBrain;
 };
