@@ -15,7 +15,7 @@ Fixed::Fixed(const int value)
 Fixed::Fixed(const float value)
 {
     std::cout << "Float constructor called" << std::endl;
-    mValue = round(value * (1 << bits));
+    mValue = roundf(value * (1 << bits));
 }
 
 Fixed::~Fixed()
