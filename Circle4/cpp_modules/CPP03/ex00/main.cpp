@@ -20,7 +20,7 @@ int main(void)
     alpha.showStatus();
     beta.showStatus();
 
-    // random attack
+    // random attack(vaulthuner_dot_exe)
     for (int i = 0; i < 3; i++)
     {
         theta.takeDamage(beta.vaulthunter_dot_exe(theta.getName()));
