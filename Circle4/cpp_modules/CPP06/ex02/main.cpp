@@ -25,6 +25,7 @@ Base *generate(void)
     }
 }
 
+// pointer: if not return NULL
 void identify_from_pointer(Base *p)
 {
     if (dynamic_cast<A *>(p))
@@ -41,6 +42,7 @@ void identify_from_pointer(Base *p)
     }
 }
 
+// reference: if not throw exception
 void identify_from_reference(Base &p)
 {
     try
@@ -75,6 +77,7 @@ void identify_from_reference(Base &p)
 int main(void)
 {
     Base *base;
+    srand(time(NULL));
     base = generate();
     identify_from_pointer(base);
     identify_from_reference(*base);
