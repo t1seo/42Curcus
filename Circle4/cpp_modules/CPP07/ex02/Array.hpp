@@ -5,7 +5,7 @@ template <typename T>
 class Array
 {
 public:
-    Array() : mElem(nullptr), mSize(0){};
+    Array() : mElem(NULL), mSize(0){};
     Array(unsigned int n) : mElem(new T[n]), mSize(n){};
     ~Array()
     {
@@ -34,7 +34,7 @@ public:
     T &operator[](unsigned int idx)
     {
         if (idx < 0 || idx >= mSize)
-            throw OutOfBoundsException();
+            throw OutOfRangeException();
         else
             return mElem[idx];
     };
@@ -42,7 +42,7 @@ public:
     const T &operator[](unsigned int idx) const
     {
         if (idx < 0 || idx >= mSize)
-            throw OutOfBoundsException();
+            throw OutOfRangeException();
         else
             return mElem[idx];
     };
@@ -52,11 +52,11 @@ public:
         return mSize;
     };
 
-    class OutOfBoundsException : public std::exception
+    class OutOfRangeException : public std::exception
     {
         virtual const char *what() const throw()
         {
-            return ("ArrayException: Out of bound");
+            return ("ArrayException: Out of index range");
         };
     };
 

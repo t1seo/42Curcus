@@ -29,8 +29,8 @@ int main(void)
     double f = 200.0;
     printResult(e, f);
 
-    std::string s1 = "chaine1";
-    std::string s2 = "chaine2";
+    std::string s1 = "str1";
+    std::string s2 = "str2";
     printResult(s1, s2);
 
     return 0;

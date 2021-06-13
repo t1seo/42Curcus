@@ -1,16 +1,17 @@
-// TODO : remake main file
-
 #include <iostream>
 #include "Array.hpp"
 
 int main(void)
 {
+    // print array
     Array<int> arr1(10);
-    for (int i = 0; i < 10; i++)
+    for (int i = 0; i < static_cast<int>(arr1.size()); i++)
         arr1[i] = i;
-    for (int i = 0; i < 10; i++)
+    for (int i = 0; i < static_cast<int>(arr1.size()); i++)
         std::cout << arr1[i] << ' ';
-    std::cout << '\n';
+    std::cout << std::endl;
+
+    // raise out of range exception
     try
     {
         arr1[10] = 10;
@@ -20,6 +21,7 @@ int main(void)
         std::cout << e.what() << '\n';
     }
 
+    // size 0 array
     Array<char> arr2(0);
     try
     {
@@ -30,10 +32,7 @@ int main(void)
         std::cout << e.what() << '\n';
     }
 
-    // const 객체에도 인덱스 접근은 가능
-    // const 객체를 반환하는 []연산자 오버로딩을 하지않으면 에러남
-    Array<double> const arr3(3);
-    for (int i = 0; i < 3; i++)
+    Array<double> const arr3(3); // const Array
+    for (int i = 0; i < static_cast<int>(arr3.size()); i++)
         std::cout << arr3[i] << ' ';
-    std::cout << '\n';
 }
