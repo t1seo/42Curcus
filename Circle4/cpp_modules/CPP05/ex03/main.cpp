@@ -1,5 +1,3 @@
-// TODO : remake main
-
 #include "PresidentialPardonForm.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
@@ -8,12 +6,33 @@
 
 int main(void)
 {
+    Bureaucrat tom("Thomas Shelby", 1);
+    Bureaucrat arthur("Arthur Shelby", 30);
+    Bureaucrat polly("Elizabeth \"Polly\" Gray", 30);
+    Bureaucrat john("John \"Johnny\" Shelby", 60);
+    Bureaucrat finn("Finn Shelby", 146);
+
     Intern intern;
     Form *form;
 
-    form = intern.makeForm("PresidentialPardon", "Rock");
+    try
+    {
+        form = intern.makeForm("PresidentialPardon", "Winston Churchill");
+    }
+    catch (const std::exception &e)
+    {
+        std::cerr << e.what() << '\n';
+    }
 
-    Bureaucrat jack("jack", 30);
-    jack.signForm(*form);
-    jack.executeForm(*form);
+    tom.signForm(*form);
+    tom.executeForm(*form);
+
+    try
+    {
+        form = intern.makeForm("FakeForm", "Winston Churchill");
+    }
+    catch (const std::exception &e)
+    {
+        std::cerr << e.what() << '\n';
+    }
 }

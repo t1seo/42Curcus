@@ -75,6 +75,8 @@ void Bureaucrat::signForm(Form &form) const
                   << ANSI_COLOR_YELLOW
                   << form.getName()
                   << ANSI_COLOR_GREEN
+                  << " because "
+                  << e.what()
                   << "."
                   << ANSI_COLOR_RESET
                   << std::endl;
@@ -106,6 +108,8 @@ void Bureaucrat::executeForm(const Form &form)
                   << ANSI_COLOR_YELLOW
                   << form.getName()
                   << ANSI_COLOR_GREEN
+                  << " because "
+                  << e.what()
                   << "."
                   << ANSI_COLOR_RESET
                   << std::endl;

@@ -1,24 +1,25 @@
-// TODO: 다시 작성
 #include "Bureaucrat.hpp"
 
 int main(void)
 {
-    Bureaucrat A("A", 1);
+    Bureaucrat tom("Thomas Shelby", 1);
 
-    std::cout << A;
+    // Tom is a boss
+    std::cout << tom;
+    // std::cout << tom.getName() << " " << tom.getGrade() << std::endl;
     try
     {
-        A.incrementGrade();
+        tom.incrementGrade(); // exception
     }
     catch (const std::exception &e)
     {
         std::cout << e.what() << std::endl;
     }
 
-    Bureaucrat *B;
+    Bureaucrat *finn;
     try
     {
-        B = new Bureaucrat("B", 151);
+        finn = new Bureaucrat("Finn Shelby", 151);
     }
     catch (const std::exception &e)
     {

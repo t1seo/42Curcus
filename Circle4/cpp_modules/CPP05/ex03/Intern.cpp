@@ -53,9 +53,8 @@ Form *Intern::makeForm(const std::string &form, const std::string &target)
             }
         }
     }
-    // std::cout << "Heloo" << std::endl;
-    // throw Intern::InvalidFormException();
-    return nullptr;
+    throw Intern::InvalidFormException();
+    return NULL;
 }
 
 const char *Intern::InvalidFormException::what() const throw()

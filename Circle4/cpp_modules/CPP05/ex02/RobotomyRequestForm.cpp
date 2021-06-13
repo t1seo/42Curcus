@@ -36,8 +36,8 @@ void RobotomyRequestForm::execute(Bureaucrat const &Bureaucrat) const
             {
                 std::cout << ANSI_COLOR_YELLOW
                           << mTarget
-                          << ANSI_COLOR_GREEN
-                          << "has been robotomized successfully."
+                          << ANSI_COLOR_BLUE
+                          << " has been robotomized successfully."
                           << ANSI_COLOR_RESET
                           << std::endl;
             }
@@ -45,9 +45,8 @@ void RobotomyRequestForm::execute(Bureaucrat const &Bureaucrat) const
             {
                 std::cout << ANSI_COLOR_YELLOW
                           << mTarget
-                          << ANSI_COLOR_GREEN
-                          << "has been robotomized successfully."
-                          << "has been robotomized failed."
+                          << ANSI_COLOR_RED
+                          << " has been robotomized failed."
                           << ANSI_COLOR_RESET
                           << std::endl;
             }
