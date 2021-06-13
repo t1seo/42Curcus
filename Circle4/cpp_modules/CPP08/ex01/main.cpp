@@ -1,43 +1,36 @@
-// TODO : remake main
 #include "span.hpp"
 
-int main()
+int main(void)
 {
-    Span sp(5);
-
-    sp.addNumber(3);
-    // span을 구하려면 원소 2개가 필요한데 1개밖에없어서 예외처리
+    Span s1(5);
     try
     {
-        std::cout << sp.shortestSpan() << '\n';
+        for (int i = 0; i < s1.getSize(); i++)
+        {
+            s1.addNumber(i * 10);
+        }
     }
     catch (const std::exception &e)
     {
         std::cerr << e.what() << '\n';
     }
+    // std::cout << s1.longestSpan() << " " << s1.shortestSpan() << std::endl;
+    std::cout << "Shortest Span of s1: " << s1.shortestSpan() << std::endl;
 
-    sp.addNumber(10);
-    sp.addNumber(6);
-    sp.addNumber(16);
-    sp.addNumber(1);
-    // sp의 크기가 5라 그 크기 이상 원소를 넣으면 예외처리
-    try
-    {
-        sp.addNumber(21);
-    }
-    catch (const std::exception &e)
-    {
-        std::cerr << e.what() << '\n';
-    }
-    std::cout << sp.shortestSpan() << '\n';
-    std::cout << sp.longestSpan() << '\n';
+    // try
+    // {
+    //     s1.addNumber(100); // exception
+    // }
+    // catch (const std::exception &e)
+    // {
+    //     std::cerr << e.what() << '\n';
+    // }
 
-    std::vector<int> temp;
-    Span sp2(10000);
+    // std::vector<int> vec;
+    // Span s2(10000);
 
-    for (int i = 0; i < 10000; i++)
-        temp.push_back(i * 3);               // 0부터 29997이 들어감
-    sp2.addNumber(temp.begin(), temp.end()); // addNumber 한번호출로 원소 10000개 다넣음
-    std::cout << sp2.shortestSpan() << '\n';
-    std::cout << sp2.longestSpan() << '\n';
+    // for (int i = 0; i < 10000; i++)
+    //     vec.push_back(i * 10);
+    // s2.addNumber(vec.begin(), vec.end());
+    // std::cout << s2.longestSpan() << " " << s2.shortestSpan() << std::endl;
 }

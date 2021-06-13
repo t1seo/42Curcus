@@ -17,7 +17,9 @@ public:
     Span(const Span &span);
     Span &operator=(const Span &span);
 
+    int getSize() const;
     std::vector<int> getVector() const;
+
     void addNumber(int value);
     void addNumber(iter begin, iter end);
     unsigned int longestSpan();
