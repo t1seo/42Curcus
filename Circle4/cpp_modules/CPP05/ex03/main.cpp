@@ -1,3 +1,16 @@
+/*
+ShrubberyCreationForm
+- sign : over 145
+- execute : over 137
+
+RobotomyRequestForm
+- sign : over 72
+- execute : over 45
+
+PresidentialPardonForm
+- sign : over 25
+- execute : over 5
+*/
 #include "PresidentialPardonForm.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
