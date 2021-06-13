@@ -18,6 +18,12 @@ int main(void)
         cur->meleeAttack();
     }
 
+    std::cout << "Tommy is back" << std::endl;
+    ISpaceMarine *tom;
+    tom = jim->clone();
+
+    std::cout << "Squad num: " << vlc->getCount() << std::endl;
+
     delete vlc;
 
     return (0);

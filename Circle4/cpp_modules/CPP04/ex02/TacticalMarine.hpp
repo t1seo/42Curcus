@@ -12,10 +12,10 @@ public:
     virtual ~TacticalMarine();
     TacticalMarine &operator=(const TacticalMarine &tacticalMarine);
 
-    TacticalMarine *clone() const;
-    void battleCry() const;
-    void rangedAttack() const;
-    void meleeAttack() const;
+    virtual TacticalMarine *clone() const;
+    virtual void battleCry() const;
+    virtual void rangedAttack() const;
+    virtual void meleeAttack() const;
 };
 
 #endif

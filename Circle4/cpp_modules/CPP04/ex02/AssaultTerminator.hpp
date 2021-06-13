@@ -12,10 +12,10 @@ public:
     virtual ~AssaultTerminator();
     AssaultTerminator &operator=(const AssaultTerminator &assaultTerminator);
 
-    ISpaceMarine *clone() const;
-    void battleCry() const;
-    void rangedAttack() const;
-    void meleeAttack() const;
+    virtual ISpaceMarine *clone() const;
+    virtual void battleCry() const;
+    virtual void rangedAttack() const;
+    virtual void meleeAttack() const;
 };
 
 #endif

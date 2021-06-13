@@ -6,44 +6,50 @@
 
 int main()
 {
-    Character *me = new Character("me");
+    Character *buzz = new Character("Buzz Lightyear");
 
-    std::cout << *me;
+    std::cout << *buzz;
 
     Enemy *b = new SuperMutant();
+    b->setType("Emperor Zurg");
 
     AWeapon *pr = new PlasmaRifle();
     AWeapon *pf = new PowerFist();
 
-    me->equip(pr);
-    std::cout << *me;
-    me->equip(pf);
+    buzz->equip(pr);
+    std::cout << *buzz;
+    buzz->equip(pf);
 
-    me->attack(b);
-    std::cout << *me;
-    me->equip(pr);
-    std::cout << *me;
-    me->attack(b);
-    std::cout << *me;
-    me->attack(b);
-    std::cout << *me;
-    me->recoverAP();
-    me->attack(b);
-    std::cout << *me;
-    me->attack(b);
-    std::cout << *me;
-    me->recoverAP();
-    me->attack(b);
-    std::cout << *me;
-    me->recoverAP();
-    me->attack(b);
-    std::cout << *me;
-    me->recoverAP();
-    me->attack(b);
-    std::cout << *me;
-    me->recoverAP();
-    me->attack(b);
-    std::cout << *me;
+    buzz->attack(b);
+    std::cout << *buzz;
+    buzz->equip(pr);
+    std::cout << *buzz;
+    buzz->attack(b);
+    std::cout << *buzz;
+    buzz->attack(b);
+    std::cout << *buzz;
+    buzz->recoverAP();
+    buzz->attack(b);
+    std::cout << *buzz;
+    buzz->attack(b);
+    std::cout << *buzz;
+    buzz->recoverAP();
+    buzz->attack(b);
+    std::cout << *buzz;
+    buzz->recoverAP();
+    buzz->attack(b);
+    std::cout << *buzz;
+    buzz->recoverAP();
+    buzz->attack(b);
+    std::cout << *buzz;
+    buzz->recoverAP();
+    buzz->attack(b);
+    std::cout << *buzz;
+
+    delete buzz;
+    delete b;
+    delete pr;
+    delete pf;
 
     return 0;
 }

@@ -11,8 +11,8 @@ public:
     virtual ~MateriaSource();
     MateriaSource &operator=(const MateriaSource &materiaSource);
 
-    void learnMateria(AMateria *m);
-    AMateria *createMateria(const std::string &type);
+    virtual void learnMateria(AMateria *m);
+    virtual AMateria *createMateria(const std::string &type);
 
 private:
     int mCount;

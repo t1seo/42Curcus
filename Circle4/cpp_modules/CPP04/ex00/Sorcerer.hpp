@@ -14,7 +14,6 @@
 class Sorcerer
 {
 public:
-    Sorcerer();
     Sorcerer(const std::string &name, const std::string &title);
     Sorcerer(const Sorcerer &sorcerer);
     ~Sorcerer();
@@ -26,6 +25,7 @@ public:
     void polymorph(const Victim &victim) const;
 
 private:
+    Sorcerer(); // not to be created without parameters
     std::string mName;
     std::string mTitle;
 };

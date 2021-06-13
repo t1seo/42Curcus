@@ -32,6 +32,7 @@ Squad &Squad::operator=(const Squad &squad)
         mUnits = nullptr;
     }
     mCount = 0;
+    // deep copy
     for (int i = 0; i < squad.getCount(); ++i)
     {
         push(squad.getUnit(i)->clone());

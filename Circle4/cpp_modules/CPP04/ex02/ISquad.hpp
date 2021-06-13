@@ -3,6 +3,7 @@
 
 #include "ISpaceMarine.hpp"
 
+// interface
 class ISquad
 {
 public:

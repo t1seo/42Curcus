@@ -12,9 +12,9 @@ public:
     virtual ~Squad();
     Squad &operator=(const Squad &squad);
 
-    int getCount() const;
-    ISpaceMarine *getUnit(int idx) const;
-    int push(ISpaceMarine *marine);
+    virtual int getCount() const;
+    virtual ISpaceMarine *getUnit(int idx) const;
+    virtual int push(ISpaceMarine *marine);
 
 private:
     int mCount;

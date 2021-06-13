@@ -11,10 +11,10 @@ public:
     virtual ~Character();
     Character &operator=(const Character &character);
 
-    const std::string &getName() const;
-    void equip(AMateria *m);
-    void unequip(int idx);
-    void use(int idx, ICharacter &target);
+    virtual const std::string &getName() const;
+    virtual void equip(AMateria *m);
+    virtual void unequip(int idx);
+    virtual void use(int idx, ICharacter &target);
 
 private:
     Character();

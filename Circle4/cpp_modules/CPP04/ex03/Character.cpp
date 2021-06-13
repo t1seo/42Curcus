@@ -71,10 +71,14 @@ void Character::unequip(int idx)
         mInventory[idx] = NULL;
         mCount--;
     }
+    else
+        std::cout << "Empty inventory" << std::endl;
 }
 
 void Character::use(int idx, ICharacter &target)
 {
     if (0 <= idx && idx <= mCount && mInventory[idx])
         mInventory[idx]->use(target);
+    else
+        std::cout << "Empty inventory" << std::endl;
 }

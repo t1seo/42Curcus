@@ -10,8 +10,8 @@ int main(void)
 
     std::cout << robert << jim << joe;
 
-    robert.polymorph(jim);
-    robert.polymorph(joe);
+    robert.polymorph(jim); // Victim
+    robert.polymorph(joe); // Peon
 
     return 0;
 }

@@ -14,7 +14,7 @@ public:
     Peon &operator=(const Peon &peon);
 
 private:
-    void getPolymorphed() const;
+    virtual void getPolymorphed() const;
 };
 
 #endif
