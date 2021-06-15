@@ -1,4 +1,5 @@
 #include "Sorcerer.hpp"
+#include "Peasant.hpp"
 #include "Peon.hpp"
 
 int main(void)
@@ -12,6 +13,9 @@ int main(void)
 
     robert.polymorph(jim); // Victim
     robert.polymorph(joe); // Peon
+
+    Peasant jack("Jack");
+    robert.polymorph(jack);
 
     return 0;
 }

@@ -51,7 +51,7 @@ void Character::equip(AWeapon *weapon)
 
 void Character::attack(Enemy *enemy)
 {
-    if (mWeapon && mAP >= mWeapon->getAPCost() && enemy)
+    if (mWeapon && getAP() >= mWeapon->getAPCost() && enemy)
     {
         std::cout << ANSI_COLOR_YELLOW
                   << mName
@@ -68,8 +68,8 @@ void Character::attack(Enemy *enemy)
 
         if (enemy->getHP() <= 0)
         {
-            std::cout << ANSI_COLOR_GREEN
-                      << "The enemy is already dead"
+            std::cout << ANSI_COLOR_RED
+                      << "The enemy is already dead."
                       << ANSI_COLOR_RESET
                       << std::endl;
         }
@@ -86,6 +86,13 @@ void Character::attack(Enemy *enemy)
                 // enemy = NULL;
             }
         }
+    }
+    if (mWeapon && getAP() < mWeapon->getAPCost())
+    {
+        std::cout << ANSI_COLOR_RED
+                  << "Not enough energy/"
+                  << ANSI_COLOR_RESET
+                  << std::endl;
     }
 }
 

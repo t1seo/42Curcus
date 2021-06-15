@@ -9,7 +9,16 @@ Character::Character(const std::string &name)
 
 Character::Character(const Character &character)
 {
-    *this = character;
+    mName = character.mName;
+
+    for (int i = 0; i < mCount; ++i)
+        mInventory[i] = NULL;
+
+    mCount = 0;
+    for (int i = 0; i < character.mCount; ++i)
+    {
+        equip(character.mInventory[i]->clone());
+    }
 }
 
 Character::~Character()

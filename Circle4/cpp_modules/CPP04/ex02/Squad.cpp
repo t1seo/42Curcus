@@ -8,6 +8,7 @@ Squad::Squad()
 Squad::Squad(const Squad &squad)
     : mCount(0), mUnits(NULL)
 {
+    // deep copy
     for (int i = 0; i < squad.getCount(); ++i)
         push(squad.getUnit(i)->clone());
 }

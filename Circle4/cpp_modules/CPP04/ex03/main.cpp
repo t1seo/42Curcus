@@ -18,6 +18,7 @@ int main(void)
     me->equip(tmp);
 
     ICharacter *bob = new Character("bob");
+    // ICharacter *bob2(me);
 
     me->use(0, *bob);
     me->use(1, *bob);

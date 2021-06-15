@@ -10,8 +10,9 @@ int main()
 
     std::cout << *buzz;
 
-    Enemy *b = new SuperMutant();
-    b->setType("Emperor Zurg");
+    Enemy *enemy = new SuperMutant();
+    // Enemy *enemy = new RadScorpion();
+    enemy->setType("Emperor Zurg");
 
     AWeapon *pr = new PlasmaRifle();
     AWeapon *pf = new PowerFist();
@@ -20,34 +21,50 @@ int main()
     std::cout << *buzz;
     buzz->equip(pf);
 
-    buzz->attack(b);
+    buzz->attack(enemy);
     std::cout << *buzz;
     buzz->equip(pr);
     std::cout << *buzz;
-    buzz->attack(b);
+    buzz->attack(enemy);
     std::cout << *buzz;
-    buzz->attack(b);
+    buzz->attack(enemy);
+    std::cout << *buzz;
+    // buzz->attack(enemy);
+    // std::cout << *buzz;
+    // buzz->attack(enemy);
+    // std::cout << *buzz;
+    // buzz->attack(enemy);
+    // std::cout << *buzz;
+    // buzz->attack(enemy);
+    // std::cout << *buzz;
+    // buzz->attack(enemy);
+    // std::cout << *buzz;
+    // buzz->attack(enemy);
+    // std::cout << *buzz;
+    // buzz->attack(enemy);
+    // std::cout << *buzz;
+    // buzz->attack(enemy);
+    // std::cout << *buzz;
+    buzz->recoverAP();
+    buzz->attack(enemy);
+    std::cout << *buzz;
+    buzz->attack(enemy);
     std::cout << *buzz;
     buzz->recoverAP();
-    buzz->attack(b);
-    std::cout << *buzz;
-    buzz->attack(b);
+    buzz->attack(enemy);
     std::cout << *buzz;
     buzz->recoverAP();
-    buzz->attack(b);
+    buzz->attack(enemy);
     std::cout << *buzz;
     buzz->recoverAP();
-    buzz->attack(b);
+    buzz->attack(enemy);
     std::cout << *buzz;
     buzz->recoverAP();
-    buzz->attack(b);
-    std::cout << *buzz;
-    buzz->recoverAP();
-    buzz->attack(b);
+    buzz->attack(enemy); // enemy alread dead
     std::cout << *buzz;
 
     delete buzz;
-    delete b;
+    delete enemy;
     delete pr;
     delete pf;
 
