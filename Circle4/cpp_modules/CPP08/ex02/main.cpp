@@ -32,5 +32,16 @@ int main()
         ++it;
     }
     std::stack<int> s(mstack);
+
+    // reverse
+    MutantStack<int> reverse;
+    reverse.push(1);
+    reverse.push(2);
+    reverse.push(3);
+    reverse.push(4);
+    reverse.push(5);
+    for (MutantStack<int>::reverse_iterator iter = reverse.rbegin(); iter != reverse.rend(); iter++)
+        std::cout << "reverse : " << *iter << std::endl;
+
     return 0;
 }
