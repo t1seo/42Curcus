@@ -42,7 +42,7 @@ int main(void)
     iter(sArr, sizeof(sArr) / sizeof(std::string), &printElem);
     std::cout << std::endl;
 
-    // std::cout << "\n*** Test6 : Class ***" << std::endl;
+    // Class Test
     Awesome awesomes[5];
     ::iter(awesomes, 5, print);
 
