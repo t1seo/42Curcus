@@ -19,8 +19,8 @@ int main(void)
     }
 
     std::cout << "Tommy is back" << std::endl;
-    ISpaceMarine *tom;
-    tom = jim->clone();
+    ISpaceMarine *tom = new TacticalMarine;
+    vlc->push(tom);
 
     std::cout << "Squad num: " << vlc->getCount() << std::endl;
 

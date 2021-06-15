@@ -14,9 +14,18 @@ int main(void)
     {
         std::cerr << e.what() << '\n';
     }
-    // std::cout << s1.longestSpan() << " " << s1.shortestSpan() << std::endl;
+    std::cout << "Longest Span of s1 :" << s1.longestSpan() << std::endl;
     std::cout << "Shortest Span of s1: " << s1.shortestSpan() << std::endl;
 
+    Span s2(5);
+    s2.addNumber(2);
+    s2.addNumber(3);
+    s2.addNumber(5);
+    s2.addNumber(7);
+    s2.addNumber(11);
+
+    std::cout << "Longest Span of s2 :" << s2.longestSpan() << std::endl;
+    std::cout << "Shortest Span of s2: " << s2.shortestSpan() << std::endl;
     // try
     // {
     //     s1.addNumber(100); // exception

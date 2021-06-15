@@ -63,7 +63,7 @@ unsigned int Span::shortestSpan()
         throw Span::NoSpanException();
 
     std::vector<int> vec1(mVector);        // the vector same as mVector
-    std::vector<int> vec2(mVector.size()); // the vector same size of mVector
+    std::vector<int> vec2(mVector.size()); // an empty vector same size of mVector
 
     std::sort(vec1.begin(), vec1.end());                              // sort the vector2
     std::adjacent_difference(vec1.begin(), vec1.end(), vec2.begin()); // save the adjacent difference of the vector1 to the vector2
