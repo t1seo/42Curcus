@@ -6,9 +6,9 @@ int main(void)
     // print array
     Array<int> arr1(10);
     for (int i = 0; i < static_cast<int>(arr1.size()); i++)
-        arr1[i] = i;
+        arr1[i] = i; // access writing
     for (int i = 0; i < static_cast<int>(arr1.size()); i++)
-        std::cout << arr1[i] << ' ';
+        std::cout << arr1[i] << ' '; // access reading
     std::cout << std::endl;
 
     // raise out of range exception

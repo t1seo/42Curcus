@@ -1,14 +1,17 @@
-#ifndef ITER
-#define ITER
+#ifndef ITER_HPP
+#define ITER_HPP
 
 #include <iostream>
 
 template <typename T>
-void iter(T *arr, std::size_t len, void (*f)(T &elem))
+void iter(T *arr, std::size_t len, void (*f)(T const &))
 {
-    for (std::size_t i = 0; i < len; ++i)
+    if (arr == NULL)
+        std::cout << "Error: Parameter arr is NULL" << std::endl;
+    else
     {
-        (*f)(arr[i]);
+        for (std::size_t i = 0; i < len; ++i)
+            (*f)(arr[i]);
     }
 }
 
