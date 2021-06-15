@@ -1,3 +1,4 @@
+#include <list>
 #include "span.hpp"
 
 int main(void)
@@ -19,12 +20,12 @@ int main(void)
 
     Span s2(5);
     s2.addNumber(2);
-    s2.addNumber(3);
+    s2.addNumber(5);
     s2.addNumber(5);
     s2.addNumber(7);
     s2.addNumber(11);
 
-    std::cout << "Longest Span of s2 :" << s2.longestSpan() << std::endl;
+    std::cout << "Longest Span of s2: " << s2.longestSpan() << std::endl;
     std::cout << "Shortest Span of s2: " << s2.shortestSpan() << std::endl;
     // try
     // {
@@ -35,7 +36,7 @@ int main(void)
     //     std::cerr << e.what() << '\n';
     // }
 
-    // std::vector<int> vec;
+    // std::list<int> vec;
     // Span s2(10000);
 
     // for (int i = 0; i < 10000; i++)

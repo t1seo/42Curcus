@@ -21,7 +21,15 @@ public:
     std::vector<int> getVector() const;
 
     void addNumber(int value);
-    void addNumber(iter begin, iter end);
+
+    template <class Iter> // TODO
+    void addNumber(Iter begin, Iter end)
+    {
+        if (this->mVector.size() + std::distance(begin, end) > this->mSize)
+            throw Span::NoSpaceException();
+        this->mVector.insert(mVector.end(), begin, end);
+    }
+
     unsigned int longestSpan();
     unsigned int shortestSpan();
 

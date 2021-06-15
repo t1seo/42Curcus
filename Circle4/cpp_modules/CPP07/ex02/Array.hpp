@@ -23,9 +23,10 @@ public:
             return (*this);
 
         mSize = array.size();
+        delete[] mElem;
         mElem = new T[mSize];
 
-        for (int i = 0; i < mSize; ++i)
+        for (int i = 0; i < static_cast<int>(mSize); ++i)
             mElem[i] = array.mElem[i];
 
         return (*this);
