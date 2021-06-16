@@ -11,6 +11,8 @@ int main(void)
         std::cout << arr1[i] << ' '; // access reading
     std::cout << std::endl;
 
+    // TODO: assignation
+
     // raise out of range exception
     try
     {

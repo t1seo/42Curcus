@@ -65,7 +65,8 @@ unsigned int Span::shortestSpan()
     std::vector<int> vec1(mVector);        // temp vector
     std::vector<int> vec2(mVector.size()); // to save adjacent_difference and find shortest span (minimum value)
 
-    std::sort(vec1.begin(), vec1.end());                              // sort vector1
+    std::sort(vec1.begin(), vec1.end()); // sort vector1
+    // TODO: adjacent_difference is C++20 method so it have to be changed
     std::adjacent_difference(vec1.begin(), vec1.end(), vec2.begin()); // get adjacent differences and save them to the vec2
 
     std::sort(vec2.begin() + 1, vec2.end()); // sort the vector2 to get minimum // TODO: using find minimum
