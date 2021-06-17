@@ -11,8 +11,6 @@ int main(void)
         std::cout << arr1[i] << ' '; // access reading
     std::cout << std::endl;
 
-    // TODO: assignation
-
     // raise out of range exception
     try
     {
@@ -34,7 +32,21 @@ int main(void)
         std::cout << e.what() << '\n';
     }
 
-    Array<double> const arr3(3); // const Array
+    // const Array
+    Array<double> const arr3(3);
     for (int i = 0; i < static_cast<int>(arr3.size()); i++)
         std::cout << arr3[i] << ' ';
+    std::cout << std::endl;
+
+    // assignment test
+    // Array<int> arr4(arr1);
+    Array<int> arr4;
+    arr4 = arr1;
+    for (int i = 0; i < static_cast<int>(arr4.size()); i++)
+        arr1[i] = i; // access writing
+    for (int i = 0; i < static_cast<int>(arr4.size()); i++)
+        std::cout << arr1[i] << ' '; // access reading
+    std::cout << std::endl;
+
+    return 0;
 }

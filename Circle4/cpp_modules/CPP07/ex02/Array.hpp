@@ -1,5 +1,5 @@
 #ifndef ARRAY_HPP
-#define ARRAYH__
+#define ARRAY_HPP
 
 template <typename T>
 class Array
