@@ -7,8 +7,6 @@
 #include <numeric>
 #include <algorithm>
 
-typedef std::vector<int>::iterator iter;
-
 class Span
 {
 public:
@@ -22,7 +20,7 @@ public:
 
     void addNumber(int value);
 
-    template <class Iter> // TODO
+    template <class Iter>
     void addNumber(Iter begin, Iter end)
     {
         if (this->mVector.size() + std::distance(begin, end) > this->mSize)
