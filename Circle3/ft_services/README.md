@@ -1,28 +1,28 @@
 # ft_services
 
-## 프로젝트 개요
+## Project Overview
 
-ft_services는 Kubernetes를 사용하여 다양한 서비스를 클러스터로 배포하는 프로젝트입니다. 컨테이너 오케스트레이션, 서비스 디스커버리, 로드 밸런싱 등을 학습합니다.
+ft_services is a project to deploy various services as a cluster using Kubernetes. It covers container orchestration, service discovery, and load balancing.
 
-## 기술 스택
+## Tech Stack
 
 - **Container Runtime**: Docker
 - **Orchestration**: Kubernetes (Minikube)
 - **Services**:
-  - Nginx (리버스 프록시, SSH)
-  - MySQL (데이터베이스)
+  - Nginx (reverse proxy, SSH)
+  - MySQL (database)
   - WordPress (CMS)
-  - phpMyAdmin (DB 관리)
-  - Grafana (모니터링)
-  - InfluxDB (메트릭 저장)
-  - FTPS (파일 전송)
+  - phpMyAdmin (DB management)
+  - Grafana (monitoring)
+  - InfluxDB (metrics storage)
+  - FTPS (file transfer)
 
-## 구조
+## Structure
 
 ```
 ft_services/
-├── setup.sh         # 클러스터 설정 스크립트
-├── logs.txt         # 로그 파일
+├── setup.sh         # Cluster setup script
+├── logs.txt         # Log file
 └── srcs/
     ├── nginx/
     │   ├── Dockerfile
@@ -47,50 +47,50 @@ ft_services/
         └── ftps.yaml
 ```
 
-## Kubernetes 기본 개념
+## Kubernetes Basic Concepts
 
 ### Pod
-가장 작은 배포 단위, 하나 이상의 컨테이너를 포함
+Smallest deployment unit, contains one or more containers
 
 ### Service
-Pod에 대한 네트워크 접근을 제공
-- **ClusterIP**: 내부 통신용
-- **NodePort**: 외부에서 접근 가능
-- **LoadBalancer**: 외부 로드 밸런서 사용
+Provides network access to Pods
+- **ClusterIP**: Internal communication
+- **NodePort**: Externally accessible
+- **LoadBalancer**: Uses external load balancer
 
 ### Deployment
-Pod의 복제본(ReplicaSet) 관리
+Manages Pod replicas (ReplicaSet)
 
 ### ConfigMap / Secret
-설정 정보 및 민감한 데이터 저장
+Stores configuration and sensitive data
 
-## 주요 kubectl 명령어
+## Essential kubectl Commands
 
 ```bash
-# 클러스터 상태 확인
+# Check cluster status
 kubectl get nodes
 kubectl get pods
 kubectl get services
 kubectl get deployments
 
-# 리소스 생성/삭제
+# Create/Delete resources
 kubectl apply -f nginx.yaml
 kubectl delete -f nginx.yaml
 
-# 로그 확인
+# Check logs
 kubectl logs <pod-name>
 
-# Pod 접속
+# Access Pod
 kubectl exec -it <pod-name> -- /bin/sh
 
-# 포트 포워딩
+# Port forwarding
 kubectl port-forward <pod-name> 8080:80
 ```
 
-## 서비스 포트 구성
+## Service Port Configuration
 
-| 서비스 | 내부 포트 | 외부 포트 | 프로토콜 |
-|--------|-----------|-----------|----------|
+| Service | Internal Port | External Port | Protocol |
+|---------|---------------|---------------|----------|
 | Nginx HTTP | 80 | 80 | HTTP |
 | Nginx HTTPS | 443 | 443 | HTTPS |
 | Nginx SSH | 22 | 22 | SSH |
@@ -101,38 +101,38 @@ kubectl port-forward <pod-name> 8080:80
 | InfluxDB | 8086 | 8086 | HTTP |
 | FTPS | 21 | 21 | FTP |
 
-## 실행 방법
+## Execution
 
 ```bash
-# Minikube 시작
+# Start Minikube
 minikube start --driver=docker
 
-# 환경 설정
+# Environment setup
 eval $(minikube docker-env)
 
-# 서비스 배포
+# Deploy services
 ./setup.sh
 
-# 대시보드 확인
+# Check dashboard
 minikube dashboard
 
-# 서비스 URL 확인
+# Check service URLs
 minikube service list
 ```
 
-## 모니터링 구성
+## Monitoring Setup
 
 ### InfluxDB
-- 메트릭 데이터 저장소
-- Telegraf로 데이터 수집
+- Metrics data storage
+- Data collection via Telegraf
 
 ### Grafana
-- InfluxDB 데이터 시각화
-- 대시보드 구성
+- InfluxDB data visualization
+- Dashboard configuration
 
-## 헬스 체크
+## Health Check
 
-각 서비스는 livenessProbe와 readinessProbe를 설정해야 합니다:
+Each service should have livenessProbe and readinessProbe configured:
 
 ```yaml
 livenessProbe:
@@ -150,9 +150,9 @@ readinessProbe:
   periodSeconds: 5
 ```
 
-## 자동 재시작
+## Auto Restart
 
-Pod가 충돌하면 Kubernetes가 자동으로 재시작합니다:
+Kubernetes automatically restarts Pods when they crash:
 
 ```yaml
 spec:
@@ -161,7 +161,7 @@ spec:
 
 ## MetalLB (LoadBalancer)
 
-Minikube에서 LoadBalancer 서비스를 사용하기 위한 구성:
+Configuration for using LoadBalancer services in Minikube:
 
 ```yaml
 apiVersion: v1

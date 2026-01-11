@@ -1,81 +1,81 @@
 # cub3D Tutorial
 
-## 프로젝트 개요
+## Project Overview
 
-cub3D 프로젝트를 완성하기 위해 학습한 튜토리얼과 연습 코드들을 모아놓은 폴더입니다.
+This folder contains tutorials and practice code studied to complete the cub3D project.
 
-## 구조
+## Structure
 
 ```
 cub3d_tutorial/
-├── 01_math_library_tutorial/   # 수학 라이브러리 학습
-├── 02_error/                   # 에러 처리 학습
-├── 03_mlx_tutorial/            # MiniLibX 학습
-│   ├── 01_open_window/         # 윈도우 열기
-│   ├── 02_key_handling/        # 키 입력 처리
-│   ├── 03_image_loading/       # 이미지 로딩
-│   ├── 04_image_making/        # 이미지 생성
-│   ├── 05_img_loading_and_modifying/  # 이미지 수정
-│   └── 06_2d_map/              # 2D 맵 렌더링
-└── pikuma_tutorial/            # Pikuma 강의 자료
+├── 01_math_library_tutorial/   # Math library study
+├── 02_error/                   # Error handling study
+├── 03_mlx_tutorial/            # MiniLibX study
+│   ├── 01_open_window/         # Opening window
+│   ├── 02_key_handling/        # Key input handling
+│   ├── 03_image_loading/       # Image loading
+│   ├── 04_image_making/        # Image creation
+│   ├── 05_img_loading_and_modifying/  # Image modification
+│   └── 06_2d_map/              # 2D map rendering
+└── pikuma_tutorial/            # Pikuma course materials
 ```
 
-## 학습 주제
+## Study Topics
 
-### 1. MiniLibX 기초
+### 1. MiniLibX Basics
 
-#### 윈도우 생성
+#### Window Creation
 ```c
 void *mlx_ptr = mlx_init();
 void *win_ptr = mlx_new_window(mlx_ptr, 800, 600, "Title");
 mlx_loop(mlx_ptr);
 ```
 
-#### 키 이벤트 처리
+#### Key Event Handling
 ```c
-mlx_hook(win_ptr, 2, 0, key_press_handler, &data);   // 키 누름
-mlx_hook(win_ptr, 3, 0, key_release_handler, &data); // 키 뗌
-mlx_hook(win_ptr, 17, 0, close_handler, &data);      // 창 닫기
+mlx_hook(win_ptr, 2, 0, key_press_handler, &data);   // Key press
+mlx_hook(win_ptr, 3, 0, key_release_handler, &data); // Key release
+mlx_hook(win_ptr, 17, 0, close_handler, &data);      // Window close
 ```
 
-#### 이미지 처리
+#### Image Handling
 ```c
-// 이미지 생성
+// Create image
 void *img = mlx_new_image(mlx_ptr, width, height);
 int *data = (int *)mlx_get_data_addr(img, &bpp, &size_l, &endian);
 
-// XPM 파일 로드
+// Load XPM file
 void *img = mlx_xpm_file_to_image(mlx_ptr, "texture.xpm", &width, &height);
 ```
 
-### 2. 레이캐스팅 수학
+### 2. Raycasting Mathematics
 
-#### 벡터 연산
-- 방향 벡터 회전
-- 카메라 평면 계산
-- 광선 방향 계산
+#### Vector Operations
+- Direction vector rotation
+- Camera plane calculation
+- Ray direction calculation
 
-#### DDA 알고리즘
-- 그리드 기반 광선 추적
-- 벽과의 교차점 계산
+#### DDA Algorithm
+- Grid-based ray tracing
+- Wall intersection calculation
 
-### 3. 렌더링 파이프라인
+### 3. Rendering Pipeline
 
-1. 각 화면 열에 대해 광선 계산
-2. DDA로 벽 충돌 검출
-3. 벽까지의 거리로 높이 계산
-4. 텍스처 좌표 계산
-5. 픽셀 그리기
+1. Calculate ray for each screen column
+2. Detect wall collision with DDA
+3. Calculate height from distance to wall
+4. Calculate texture coordinates
+5. Draw pixels
 
-## 빌드 (각 튜토리얼 폴더에서)
+## Build (In each tutorial folder)
 
 ```bash
 make
 ./program
 ```
 
-## 참고 자료
+## References
 
-- [MiniLibX 문서](https://harm-smits.github.io/42docs/libs/minilibx)
+- [MiniLibX Documentation](https://harm-smits.github.io/42docs/libs/minilibx)
 - [Pikuma Raycasting Course](https://pikuma.com/)
 - [Lode's Computer Graphics Tutorial](https://lodev.org/cgtutor/)

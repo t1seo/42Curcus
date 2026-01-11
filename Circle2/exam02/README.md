@@ -1,63 +1,63 @@
 # Exam 02
 
-## 프로젝트 개요
+## Project Overview
 
-Exam 02는 42 Seoul의 두 번째 시험으로, 제한된 시간 내에 특정 과제들을 완성해야 합니다. 이 폴더에는 시험 대비 연습 코드들이 포함되어 있습니다.
+Exam 02 is the second exam at 42 Seoul, where specific tasks must be completed within a time limit. This folder contains practice code for exam preparation.
 
-## 시험 과제 목록
+## Exam Tasks
 
 ### 1. inter
-두 문자열에 공통으로 존재하는 문자들을 출력합니다.
+Output characters that exist in both strings.
 
 ```c
-// 사용법: ./inter "문자열1" "문자열2"
-// 예시: ./inter "padinton" "pototan" → "padinto"
+// Usage: ./inter "string1" "string2"
+// Example: ./inter "padinton" "pototan" → "padinto"
 ```
 
 ### 2. union
-두 문자열의 합집합을 출력합니다 (중복 제거).
+Output the union of two strings (no duplicates).
 
 ```c
-// 사용법: ./union "문자열1" "문자열2"
-// 예시: ./union "zpadinton" "pototan" → "zpadinton"
+// Usage: ./union "string1" "string2"
+// Example: ./union "zpadinton" "pototan" → "zpadinton"
 ```
 
 ### 3. get_next_line
-파일에서 한 줄씩 읽는 함수를 구현합니다.
+Implement a function that reads a file line by line.
 
 ### 4. ft_printf
-printf 함수의 일부 기능을 구현합니다.
+Implement partial functionality of the printf function.
 
-## 구조
+## Structure
 
 ```
 exam02/
-├── exam/            # 시험 관련 자료
-├── inter/           # inter 과제 풀이
-├── union/           # union 과제 풀이
-├── get_next_line/   # GNL 과제 풀이
-└── ft_printf/       # ft_printf 과제 풀이
+├── exam/            # Exam-related materials
+├── inter/           # inter solution
+├── union/           # union solution
+├── get_next_line/   # GNL solution
+└── ft_printf/       # ft_printf solution
 ```
 
-## inter 풀이 전략
+## inter Solution Strategy
 
 ```c
 #include <unistd.h>
 
 int main(int argc, char **argv)
 {
-    int seen[256] = {0};  // 첫 번째 문자열의 문자 기록
-    int printed[256] = {0};  // 이미 출력한 문자 기록
+    int seen[256] = {0};  // Record characters from first string
+    int printed[256] = {0};  // Record already printed characters
     int i = 0;
 
     if (argc == 3)
     {
-        // 첫 번째 문자열의 문자들 기록
+        // Record characters from first string
         while (argv[1][i])
             seen[(unsigned char)argv[1][i++]] = 1;
 
         i = 0;
-        // 두 번째 문자열 순회하며 공통 문자 출력
+        // Iterate second string and print common characters
         while (argv[2][i])
         {
             if (seen[(unsigned char)argv[2][i]] &&
@@ -74,7 +74,7 @@ int main(int argc, char **argv)
 }
 ```
 
-## union 풀이 전략
+## union Solution Strategy
 
 ```c
 #include <unistd.h>
@@ -107,14 +107,14 @@ int main(int argc, char **argv)
 }
 ```
 
-## 시험 팁
+## Exam Tips
 
-1. **시간 관리**: 각 문제에 할당된 시간을 철저히 지키기
-2. **컴파일 테스트**: 제출 전 반드시 컴파일 확인
-3. **엣지 케이스**: 빈 문자열, NULL, 특수 문자 처리
-4. **Norminette**: 코드 스타일 규칙 준수
+1. **Time Management**: Strictly follow time allocated for each problem
+2. **Compile Test**: Always verify compilation before submission
+3. **Edge Cases**: Handle empty strings, NULL, special characters
+4. **Norminette**: Follow code style rules
 
-## 컴파일
+## Compile
 
 ```bash
 gcc -Wall -Wextra -Werror inter.c -o inter

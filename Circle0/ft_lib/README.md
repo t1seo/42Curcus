@@ -1,42 +1,42 @@
 # ft_lib
 
-## 프로젝트 개요
+## Project Overview
 
-ft_lib는 libft를 확장한 개인 C 라이브러리입니다. 기존 libft의 모든 함수를 포함하면서, 추가적인 문자열 유틸리티 함수를 제공합니다.
+ft_lib is a personal C library that extends libft. It includes all functions from the original libft while providing additional string utility functions.
 
-## 구조
+## Structure
 
 ```
 ft_lib/
 ├── Makefile
-├── ft_lib.h         # 통합 헤더 파일
-├── libft/           # 기존 libft 함수들
+├── ft_lib.h         # Unified header file
+├── libft/           # Original libft functions
 │   └── ft_*.c
-└── ft_string/       # 추가 문자열 함수들
+└── ft_string/       # Additional string functions
     └── ft_*.c
 ```
 
-## 포함된 함수
+## Included Functions
 
-### libft 함수 (기존)
+### libft Functions (Original)
 
-메모리, 문자열, 문자 분류, 연결 리스트 관련 모든 libft 함수가 포함되어 있습니다.
+All libft functions for memory, strings, character classification, and linked lists are included.
 
-### ft_string 추가 함수
+### ft_string Additional Functions
 
-- `ft_strappend` - 두 문자열을 연결하고 첫 번째 문자열 메모리 해제
-- `ft_putstr` - 표준 출력으로 문자열 출력
+- `ft_strappend` - Concatenate two strings and free the first string's memory
+- `ft_putstr` - Output string to standard output
 
-## 빌드
+## Build
 
 ```bash
-make        # ft_lib.a 생성
-make clean  # 오브젝트 파일 삭제
-make fclean # 오브젝트 파일 및 라이브러리 삭제
-make re     # 재빌드
+make        # Generate ft_lib.a
+make clean  # Remove object files
+make fclean # Remove object files and library
+make re     # Rebuild
 ```
 
-## 사용법
+## Usage
 
 ```c
 #include "ft_lib.h"
@@ -46,7 +46,7 @@ int main(void)
     char *s1 = ft_strdup("Hello, ");
     char *s2 = ft_strdup("World!");
 
-    // s1의 메모리를 해제하고 연결된 새 문자열 반환
+    // Free s1's memory and return concatenated new string
     s1 = ft_strappend(s1, s2);
     ft_putstr(s1);
 
@@ -56,15 +56,15 @@ int main(void)
 }
 ```
 
-## libft와의 차이점
+## Differences from libft
 
-| 항목 | libft | ft_lib |
+| Item | libft | ft_lib |
 |------|-------|--------|
-| 헤더 | libft.h | ft_lib.h |
-| 추가 함수 | - | ft_strappend, ft_putstr |
-| 용도 | 기본 과제 제출용 | 개인 프로젝트 확장용 |
+| Header | libft.h | ft_lib.h |
+| Additional Functions | - | ft_strappend, ft_putstr |
+| Purpose | Basic project submission | Personal project extension |
 
-## 컴파일러 플래그
+## Compiler Flags
 
 ```
 -Wall -Wextra -Werror

@@ -1,20 +1,20 @@
 # Exam 03
 
-## 프로젝트 개요
+## Project Overview
 
-Exam 03은 42 Seoul의 세 번째 시험입니다. 그래픽 관련 과제가 출제되며, MiniLibX를 사용하여 도형을 그리는 프로그램을 구현해야 합니다.
+Exam 03 is the third exam at 42 Seoul. It features graphics-related tasks where you implement programs to draw shapes using MiniLibX.
 
-## 시험 과제 목록
+## Exam Tasks
 
 ### 1. micro_paint (rectangle)
-파일에서 직사각형 정보를 읽어 그립니다.
+Read rectangle information from a file and draw them.
 
 ### 2. mini_paint (circle)
-파일에서 원 정보를 읽어 그립니다.
+Read circle information from a file and draw them.
 
-## micro_paint 과제
+## micro_paint Task
 
-### 입력 형식
+### Input Format
 
 ```
 WIDTH HEIGHT BACKGROUND_CHAR
@@ -23,12 +23,12 @@ TYPE X Y WIDTH HEIGHT CHAR
 ...
 ```
 
-- **TYPE**: `r` (직사각형) 또는 `R` (채워진 직사각형)
-- **X, Y**: 좌상단 좌표
-- **WIDTH, HEIGHT**: 크기
-- **CHAR**: 그릴 문자
+- **TYPE**: `r` (rectangle) or `R` (filled rectangle)
+- **X, Y**: Top-left coordinates
+- **WIDTH, HEIGHT**: Size
+- **CHAR**: Character to draw
 
-### 예시 입력 (example.txt)
+### Example Input (example.txt)
 
 ```
 20 10 .
@@ -36,7 +36,7 @@ r 1 1 10 5 *
 R 15 3 4 4 #
 ```
 
-### 출력
+### Output
 
 ```
 ....................
@@ -51,10 +51,10 @@ R 15 3 4 4 #
 ....................
 ```
 
-### 구현 로직
+### Implementation Logic
 
 ```c
-// 직사각형인지 확인
+// Check if point is on rectangle border
 int is_rectangle_border(float x, float y, float rect_x, float rect_y,
                          float width, float height)
 {
@@ -63,15 +63,15 @@ int is_rectangle_border(float x, float y, float rect_x, float rect_y,
     {
         if (x == rect_x || x == rect_x + width ||
             y == rect_y || y == rect_y + height)
-            return (1);  // 테두리
+            return (1);  // Border
     }
     return (0);
 }
 ```
 
-## mini_paint 과제
+## mini_paint Task
 
-### 입력 형식
+### Input Format
 
 ```
 WIDTH HEIGHT BACKGROUND_CHAR
@@ -80,12 +80,12 @@ TYPE X Y RADIUS CHAR
 ...
 ```
 
-- **TYPE**: `c` (원) 또는 `C` (채워진 원)
-- **X, Y**: 중심 좌표
-- **RADIUS**: 반지름
-- **CHAR**: 그릴 문자
+- **TYPE**: `c` (circle) or `C` (filled circle)
+- **X, Y**: Center coordinates
+- **RADIUS**: Radius
+- **CHAR**: Character to draw
 
-### 예시 입력 (circle.txt)
+### Example Input (circle.txt)
 
 ```
 40 20 .
@@ -93,10 +93,10 @@ C 20 10 8 *
 c 20 10 5 #
 ```
 
-### 구현 로직
+### Implementation Logic
 
 ```c
-// 점이 원 안에 있는지 확인
+// Check if point is inside circle
 int is_in_circle(float x, float y, float center_x, float center_y, float radius)
 {
     float distance = sqrtf((x - center_x) * (x - center_x) +
@@ -106,7 +106,7 @@ int is_in_circle(float x, float y, float center_x, float center_y, float radius)
     return (0);
 }
 
-// 점이 원 테두리인지 확인
+// Check if point is on circle border
 int is_circle_border(float x, float y, float center_x, float center_y, float radius)
 {
     float distance = sqrtf((x - center_x) * (x - center_x) +
@@ -117,38 +117,38 @@ int is_circle_border(float x, float y, float center_x, float center_y, float rad
 }
 ```
 
-## 폴더 구조
+## Folder Structure
 
 ```
 exam03/
-├── micro_paint(rectangle)/  # 직사각형 과제 연습
-└── mini_paint(circle)/      # 원 과제 연습
+├── micro_paint(rectangle)/  # Rectangle task practice
+└── mini_paint(circle)/      # Circle task practice
 ```
 
-## 컴파일
+## Compile
 
 ```bash
 gcc -Wall -Wextra -Werror mini_paint.c -lm -o mini_paint
 gcc -Wall -Wextra -Werror micro_paint.c -o micro_paint
 ```
 
-## 실행
+## Run
 
 ```bash
 ./mini_paint circle.txt
 ./micro_paint rectangle.txt
 ```
 
-## 시험 팁
+## Exam Tips
 
-1. **파싱 주의**: 입력 형식을 정확히 파싱하기
-2. **좌표 계산**: 부동소수점 연산 정확도 주의
-3. **그리기 순서**: 나중에 그린 도형이 위에 표시됨
-4. **에러 처리**: 잘못된 입력에 대해 "Error: Operation file corrupted\n" 출력
+1. **Parsing Caution**: Parse input format accurately
+2. **Coordinate Calculation**: Be careful with floating-point precision
+3. **Drawing Order**: Later shapes appear on top
+4. **Error Handling**: Output "Error: Operation file corrupted\n" for invalid input
 
-## 에러 케이스
+## Error Cases
 
-- 인자가 1개가 아닌 경우
-- 파일을 열 수 없는 경우
-- 첫 줄 형식이 잘못된 경우
-- 도형 정보 형식이 잘못된 경우
+- Argument count is not 1
+- Cannot open file
+- First line format is incorrect
+- Shape information format is incorrect

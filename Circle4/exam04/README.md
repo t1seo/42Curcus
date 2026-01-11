@@ -1,39 +1,39 @@
 # Exam 04
 
-## 프로젝트 개요
+## Project Overview
 
-Exam 04는 42 Seoul의 네 번째 시험입니다. 주로 microshell 과제가 출제되며, 간단한 셸을 구현해야 합니다.
+Exam 04 is the fourth exam at 42 Seoul. It primarily features the microshell task, where you implement a simple shell.
 
-## microshell 과제
+## microshell Task
 
-### 요구사항
+### Requirements
 
-- `cd` 빌트인 명령어 구현
-- 파이프(`|`) 지원
-- 세미콜론(`;`) 지원 (순차 실행)
-- 외부 명령어 실행
+- Implement `cd` builtin command
+- Support pipes (`|`)
+- Support semicolons (`;`) for sequential execution
+- External command execution
 
-### 제한사항
+### Restrictions
 
-- 변수, 와일드카드, 따옴표 처리 불필요
-- 환경 변수 확장 불필요
-- `cd`는 정확히 2개의 인자만 받음 (cd + 경로)
+- No variable, wildcard, or quote handling needed
+- No environment variable expansion needed
+- `cd` takes exactly 2 arguments (cd + path)
 
-### 에러 메시지
+### Error Messages
 
 ```c
-// cd 에러
-"error: cd: bad arguments\n"          // 인자 개수 오류
-"error: cd: cannot change directory to PATH\n"  // 디렉토리 변경 실패
+// cd errors
+"error: cd: bad arguments\n"          // Wrong argument count
+"error: cd: cannot change directory to PATH\n"  // Directory change failed
 
-// 실행 에러
-"error: cannot execute COMMAND\n"     // execve 실패
+// Execution error
+"error: cannot execute COMMAND\n"     // execve failed
 
-// 치명적 에러
-"error: fatal\n"                      // fork, pipe 실패
+// Fatal error
+"error: fatal\n"                      // fork, pipe failed
 ```
 
-### 구현 예시
+### Implementation Example
 
 ```c
 #include <unistd.h>
@@ -60,61 +60,20 @@ int cd(char **argv, int i)
     }
     return 0;
 }
-
-int exec(char **argv, int i, char **envp)
-{
-    int pid;
-    int status;
-
-    if (i == 0)
-        return 0;
-    if (!strcmp(argv[0], "cd"))
-        return cd(argv, i);
-
-    pid = fork();
-    if (pid == 0)
-    {
-        execve(argv[0], argv, envp);
-        err("error: cannot execute ");
-        err(argv[0]);
-        err("\n");
-        exit(1);
-    }
-    else if (pid < 0)
-    {
-        err("error: fatal\n");
-        exit(1);
-    }
-    waitpid(pid, &status, 0);
-    return WIFEXITED(status) && WEXITSTATUS(status);
-}
-
-int main(int argc, char **argv, char **envp)
-{
-    int i = 0;
-    int status = 0;
-    int fd[2];
-    int prev_fd = 0;
-
-    // 파이프와 세미콜론 처리 로직
-    // ...
-
-    return status;
-}
 ```
 
-### 파이프 처리 핵심 로직
+### Pipe Handling Core Logic
 
 ```c
-// 파이프가 있는 경우
+// When pipe exists
 if (has_pipe)
 {
     pipe(fd);
     pid = fork();
     if (pid == 0)
     {
-        dup2(prev_fd, 0);    // 이전 출력을 입력으로
-        dup2(fd[1], 1);      // 현재 출력을 파이프로
+        dup2(prev_fd, 0);    // Previous output as input
+        dup2(fd[1], 1);      // Current output to pipe
         close(fd[0]);
         close(fd[1]);
         execve(argv[0], argv, envp);
@@ -126,54 +85,54 @@ if (has_pipe)
 }
 ```
 
-## 폴더 구조
+## Folder Structure
 
 ```
 exam04/
-└── microshell/      # microshell 과제 연습
+└── microshell/      # microshell practice
 ```
 
-## 컴파일
+## Compile
 
 ```bash
 gcc -Wall -Wextra -Werror microshell.c -o microshell
 ```
 
-## 테스트
+## Test
 
 ```bash
-# 기본 명령어 실행
+# Basic command
 ./microshell /bin/ls
 
-# 파이프
+# Pipe
 ./microshell /bin/ls "|" /usr/bin/wc -l
 
-# 세미콜론
+# Semicolon
 ./microshell /bin/ls ";" /bin/pwd
 
 # cd
 ./microshell cd /tmp ";" /bin/pwd
 
-# 복합
+# Combined
 ./microshell /bin/ls "|" /usr/bin/grep microshell ";" /bin/echo done
 ```
 
-## 시험 팁
+## Exam Tips
 
-1. **간결하게 작성**: 코드가 길어지면 실수 확률 증가
-2. **에러 메시지 정확히**: 출력 형식이 틀리면 감점
-3. **stderr 사용**: 에러 메시지는 fd 2로 출력
-4. **메모리 누수 무시 가능**: 시험에서는 누수보다 기능 구현이 중요
-5. **테스트 철저히**: 파이프, 세미콜론, cd 조합 테스트
+1. **Keep It Simple**: Longer code increases error probability
+2. **Exact Error Messages**: Wrong output format means point deduction
+3. **Use stderr**: Error messages go to fd 2
+4. **Memory Leaks OK**: Functionality is more important than leaks in exams
+5. **Thorough Testing**: Test pipe, semicolon, cd combinations
 
-## 필수 시스템 콜
+## Required System Calls
 
-| 함수 | 용도 |
-|------|------|
-| `fork()` | 프로세스 생성 |
-| `execve()` | 프로그램 실행 |
-| `waitpid()` | 자식 프로세스 대기 |
-| `pipe()` | 파이프 생성 |
-| `dup2()` | 파일 디스크립터 복제 |
-| `chdir()` | 디렉토리 변경 |
-| `close()` | 파일 디스크립터 닫기 |
+| Function | Purpose |
+|----------|---------|
+| `fork()` | Create process |
+| `execve()` | Execute program |
+| `waitpid()` | Wait for child process |
+| `pipe()` | Create pipe |
+| `dup2()` | Duplicate file descriptor |
+| `chdir()` | Change directory |
+| `close()` | Close file descriptor |

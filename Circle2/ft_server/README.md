@@ -1,10 +1,10 @@
 # ft_server
 
-## 프로젝트 개요
+## Project Overview
 
-ft_server는 Docker를 사용하여 완전한 웹 서버 환경을 구축하는 프로젝트입니다. Nginx, MariaDB, phpMyAdmin, WordPress를 포함한 LEMP 스택을 단일 Docker 컨테이너에 설정합니다.
+ft_server is a project to build a complete web server environment using Docker. It sets up a LEMP stack including Nginx, MariaDB, phpMyAdmin, and WordPress in a single Docker container.
 
-## 기술 스택
+## Tech Stack
 
 - **OS**: Debian Buster
 - **Web Server**: Nginx
@@ -12,33 +12,33 @@ ft_server는 Docker를 사용하여 완전한 웹 서버 환경을 구축하는 
 - **Language**: PHP 7.3
 - **CMS**: WordPress
 - **DB Admin**: phpMyAdmin
-- **SSL**: OpenSSL (자체 서명 인증서)
+- **SSL**: OpenSSL (self-signed certificate)
 
-## 기능
+## Features
 
-- HTTPS (SSL/TLS) 지원
-- WordPress 블로그 호스팅
-- phpMyAdmin을 통한 데이터베이스 관리
-- autoindex 토글 기능
+- HTTPS (SSL/TLS) support
+- WordPress blog hosting
+- Database management via phpMyAdmin
+- Autoindex toggle functionality
 
-## 구조
+## Structure
 
 ```
 ft_server/
-├── Dockerfile           # Docker 이미지 정의
+├── Dockerfile           # Docker image definition
 └── srcs/
-    ├── run.sh          # 컨테이너 시작 스크립트
-    ├── default         # Nginx 설정 파일
-    ├── wp-config.php   # WordPress 설정
-    └── config.inc.php  # phpMyAdmin 설정
+    ├── run.sh          # Container startup script
+    ├── default         # Nginx configuration file
+    ├── wp-config.php   # WordPress configuration
+    └── config.inc.php  # phpMyAdmin configuration
 ```
 
-## Dockerfile 설명
+## Dockerfile Explanation
 
 ```dockerfile
-FROM debian:buster              # 베이스 이미지
+FROM debian:buster              # Base image
 
-# 필요한 패키지 설치
+# Install required packages
 RUN apt-get update && apt-get install -y \
     nginx \
     openssl \
@@ -48,59 +48,59 @@ RUN apt-get update && apt-get install -y \
     php7.3-fpm \
     wget
 
-# 설정 파일 복사
+# Copy configuration files
 COPY ./srcs/run.sh ./
 COPY ./srcs/default ./tmp
 COPY ./srcs/wp-config.php ./tmp
 COPY ./srcs/config.inc.php ./tmp
 
-# 포트 노출
+# Expose ports
 EXPOSE 80 443
 
-# 시작 명령
+# Startup command
 CMD bash run.sh
 ```
 
-## 빌드 및 실행
+## Build and Run
 
 ```bash
-# Docker 이미지 빌드
+# Build Docker image
 docker build -t ft_server .
 
-# 컨테이너 실행
+# Run container
 docker run -d -p 80:80 -p 443:443 --name ft_server ft_server
 
-# 컨테이너 접속
+# Access container
 docker exec -it ft_server bash
 
-# 컨테이너 중지
+# Stop container
 docker stop ft_server
 
-# 컨테이너 삭제
+# Remove container
 docker rm ft_server
 ```
 
-## 접속 URL
+## Access URLs
 
-| 서비스 | URL |
-|--------|-----|
+| Service | URL |
+|---------|-----|
 | WordPress | https://localhost |
 | phpMyAdmin | https://localhost/phpmyadmin |
 
-## autoindex 토글
+## Autoindex Toggle
 
 ```bash
-# 컨테이너 내에서
-# autoindex 켜기
+# Inside container
+# Enable autoindex
 sed -i 's/autoindex off/autoindex on/g' /etc/nginx/sites-available/default
 nginx -s reload
 
-# autoindex 끄기
+# Disable autoindex
 sed -i 's/autoindex on/autoindex off/g' /etc/nginx/sites-available/default
 nginx -s reload
 ```
 
-## SSL 인증서 생성
+## SSL Certificate Generation
 
 ```bash
 openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
@@ -108,13 +108,13 @@ openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
     -out /etc/ssl/certs/nginx-selfsigned.crt
 ```
 
-## Nginx 설정 주요 항목
+## Main Nginx Configuration
 
 ```nginx
 server {
     listen 80;
     listen [::]:80;
-    return 301 https://$host$request_uri;    # HTTP → HTTPS 리다이렉트
+    return 301 https://$host$request_uri;    # HTTP → HTTPS redirect
 }
 
 server {
@@ -134,14 +134,14 @@ server {
 }
 ```
 
-## 트러블슈팅
+## Troubleshooting
 
 ### 502 Bad Gateway
-- PHP-FPM이 실행 중인지 확인: `service php7.3-fpm status`
+- Check if PHP-FPM is running: `service php7.3-fpm status`
 
-### 데이터베이스 연결 실패
-- MariaDB 실행 확인: `service mysql status`
-- 권한 확인: `mysql -u root -p`
+### Database Connection Failed
+- Check MariaDB status: `service mysql status`
+- Verify permissions: `mysql -u root -p`
 
-### SSL 경고
-- 자체 서명 인증서이므로 브라우저에서 경고가 표시됨 (정상)
+### SSL Warning
+- Self-signed certificate causes browser warning (normal)

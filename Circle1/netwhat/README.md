@@ -1,29 +1,29 @@
 # Netwhat
 
-## 프로젝트 개요
+## Project Overview
 
-Netwhat은 네트워크 기초 지식을 학습하고 평가하는 프로젝트입니다. 코딩 없이 네트워크 관련 퀴즈를 통해 평가가 진행됩니다.
+Netwhat is a project for learning and evaluating basic networking knowledge. It is assessed through network-related quizzes without any coding involved.
 
-## 학습 주제
+## Study Topics
 
-### 1. IP 주소 (IP Address)
+### 1. IP Address
 
 #### IPv4
-- 32비트 주소 (4개의 8비트 옥텟)
-- 형식: `xxx.xxx.xxx.xxx` (각 옥텟은 0-255)
-- 예: `192.168.1.1`
+- 32-bit address (4 octets of 8 bits each)
+- Format: `xxx.xxx.xxx.xxx` (each octet is 0-255)
+- Example: `192.168.1.1`
 
 #### IPv6
-- 128비트 주소
-- 형식: 8개의 16비트 블록 (콜론으로 구분)
-- 예: `2001:0db8:85a3:0000:0000:8a2e:0370:7334`
+- 128-bit address
+- Format: 8 blocks of 16 bits (separated by colons)
+- Example: `2001:0db8:85a3:0000:0000:8a2e:0370:7334`
 
-### 2. 서브넷 마스크 (Subnet Mask)
+### 2. Subnet Mask
 
-네트워크 부분과 호스트 부분을 구분합니다.
+Distinguishes between network and host portions.
 
-| CIDR | 서브넷 마스크 | 호스트 수 |
-|------|---------------|-----------|
+| CIDR | Subnet Mask | Number of Hosts |
+|------|-------------|-----------------|
 | /24 | 255.255.255.0 | 254 |
 | /25 | 255.255.255.128 | 126 |
 | /26 | 255.255.255.192 | 62 |
@@ -32,70 +32,70 @@ Netwhat은 네트워크 기초 지식을 학습하고 평가하는 프로젝트�
 | /29 | 255.255.255.248 | 6 |
 | /30 | 255.255.255.252 | 2 |
 
-### 3. IP 주소 클래스
+### 3. IP Address Classes
 
-| 클래스 | 범위 | 기본 서브넷 |
-|--------|------|-------------|
+| Class | Range | Default Subnet |
+|-------|-------|----------------|
 | A | 1.0.0.0 - 126.255.255.255 | 255.0.0.0 |
 | B | 128.0.0.0 - 191.255.255.255 | 255.255.0.0 |
 | C | 192.0.0.0 - 223.255.255.255 | 255.255.255.0 |
 
-### 4. 사설 IP 주소
+### 4. Private IP Addresses
 
 - Class A: `10.0.0.0` - `10.255.255.255`
 - Class B: `172.16.0.0` - `172.31.255.255`
 - Class C: `192.168.0.0` - `192.168.255.255`
 
-### 5. OSI 7계층
+### 5. OSI 7 Layers
 
-| 계층 | 이름 | 프로토콜 예시 |
-|------|------|--------------|
-| 7 | 응용 (Application) | HTTP, FTP, SMTP |
-| 6 | 표현 (Presentation) | SSL, JPEG |
-| 5 | 세션 (Session) | NetBIOS |
-| 4 | 전송 (Transport) | TCP, UDP |
-| 3 | 네트워크 (Network) | IP, ICMP |
-| 2 | 데이터링크 (Data Link) | Ethernet, MAC |
-| 1 | 물리 (Physical) | 케이블, 허브 |
+| Layer | Name | Protocol Examples |
+|-------|------|-------------------|
+| 7 | Application | HTTP, FTP, SMTP |
+| 6 | Presentation | SSL, JPEG |
+| 5 | Session | NetBIOS |
+| 4 | Transport | TCP, UDP |
+| 3 | Network | IP, ICMP |
+| 2 | Data Link | Ethernet, MAC |
+| 1 | Physical | Cables, Hubs |
 
 ### 6. TCP vs UDP
 
-| 특성 | TCP | UDP |
-|------|-----|-----|
-| 연결 | 연결 지향 | 비연결 |
-| 신뢰성 | 보장 | 비보장 |
-| 순서 | 보장 | 비보장 |
-| 속도 | 느림 | 빠름 |
-| 용도 | 웹, 이메일 | 스트리밍, DNS |
+| Property | TCP | UDP |
+|----------|-----|-----|
+| Connection | Connection-oriented | Connectionless |
+| Reliability | Guaranteed | Not guaranteed |
+| Order | Guaranteed | Not guaranteed |
+| Speed | Slower | Faster |
+| Use Cases | Web, Email | Streaming, DNS |
 
 ### 7. DHCP (Dynamic Host Configuration Protocol)
 
-클라이언트에게 자동으로 IP 주소를 할당하는 프로토콜
+Protocol that automatically assigns IP addresses to clients.
 
 ### 8. DNS (Domain Name System)
 
-도메인 이름을 IP 주소로 변환하는 시스템
+System that translates domain names to IP addresses.
 
-## 계산 예시
+## Calculation Examples
 
-### 네트워크 주소 계산
+### Network Address Calculation
 ```
 IP: 192.168.1.130
-서브넷: /26 (255.255.255.192)
+Subnet: /26 (255.255.255.192)
 
-네트워크 주소: 192.168.1.128
-브로드캐스트: 192.168.1.191
-사용 가능 호스트: 192.168.1.129 - 192.168.1.190 (62개)
+Network Address: 192.168.1.128
+Broadcast: 192.168.1.191
+Usable Hosts: 192.168.1.129 - 192.168.1.190 (62 hosts)
 ```
 
-### 호스트 수 계산
+### Host Count Calculation
 ```
-호스트 수 = 2^(32-CIDR) - 2
+Hosts = 2^(32-CIDR) - 2
 /26 → 2^(32-26) - 2 = 2^6 - 2 = 64 - 2 = 62
 ```
 
-## 평가 방식
+## Assessment Format
 
-- 온라인 퀴즈 형식
-- 네트워크 기초 개념 문제
-- IP 계산 문제
+- Online quiz format
+- Network fundamentals questions
+- IP calculation problems

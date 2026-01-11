@@ -1,20 +1,20 @@
 # CPP Modules
 
-## 프로젝트 개요
+## Project Overview
 
-CPP Modules는 C++의 핵심 개념들을 단계별로 학습하는 시리즈입니다. 총 9개의 모듈(CPP00 ~ CPP08)로 구성되어 있으며, 각 모듈은 특정 C++ 개념에 초점을 맞춥니다.
+CPP Modules is a series for learning core C++ concepts step by step. It consists of 9 modules (CPP00 ~ CPP08), each focusing on specific C++ concepts.
 
-## 모듈 구성
+## Module Structure
 
-### CPP00 - C++ 기초
-- **학습 주제**: 네임스페이스, 클래스, 멤버 함수, stdio 스트림, 초기화 리스트, static, const
-- **예제**:
-  - ex00: 문자열 대문자 변환
-  - ex01: PhoneBook 클래스 구현
+### CPP00 - C++ Basics
+- **Topics**: Namespaces, classes, member functions, stdio streams, initialization lists, static, const
+- **Exercises**:
+  - ex00: String uppercase conversion
+  - ex01: PhoneBook class implementation
 
-### CPP01 - 메모리 관리
-- **학습 주제**: new/delete, 참조, 포인터와 참조의 차이, 파일 스트림
-- **핵심 개념**:
+### CPP01 - Memory Management
+- **Topics**: new/delete, references, difference between pointers and references, file streams
+- **Key Concepts**:
   ```cpp
   // new/delete
   int *ptr = new int(42);
@@ -23,33 +23,33 @@ CPP Modules는 C++의 핵심 개념들을 단계별로 학습하는 시리즈입
   int *arr = new int[10];
   delete[] arr;
 
-  // 참조
+  // Reference
   int a = 10;
-  int &ref = a;  // ref는 a의 별칭
+  int &ref = a;  // ref is an alias for a
   ```
 
-### CPP02 - 연산자 오버로딩
-- **학습 주제**: Ad-hoc 다형성, 연산자 오버로딩, 정규 형식 (Orthodox Canonical Form)
-- **정규 형식**:
+### CPP02 - Operator Overloading
+- **Topics**: Ad-hoc polymorphism, operator overloading, Orthodox Canonical Form
+- **Canonical Form**:
   ```cpp
   class Sample {
   public:
-      Sample();                              // 기본 생성자
-      Sample(const Sample& other);           // 복사 생성자
-      Sample& operator=(const Sample& rhs);  // 할당 연산자
-      ~Sample();                             // 소멸자
+      Sample();                              // Default constructor
+      Sample(const Sample& other);           // Copy constructor
+      Sample& operator=(const Sample& rhs);  // Assignment operator
+      ~Sample();                             // Destructor
   };
   ```
 
-### CPP03 - 상속
-- **학습 주제**: 상속, 접근 지정자, 다중 상속, 다이아몬드 문제
-- **상속 예시**:
+### CPP03 - Inheritance
+- **Topics**: Inheritance, access specifiers, multiple inheritance, diamond problem
+- **Inheritance Example**:
   ```cpp
   class Animal {
   protected:
       std::string name;
   public:
-      virtual void speak() = 0;  // 순수 가상 함수
+      virtual void speak() = 0;  // Pure virtual function
   };
 
   class Dog : public Animal {
@@ -58,13 +58,13 @@ CPP Modules는 C++의 핵심 개념들을 단계별로 학습하는 시리즈입
   };
   ```
 
-### CPP04 - 다형성
-- **학습 주제**: 서브타입 다형성, 추상 클래스, 인터페이스
-- **가상 함수**:
+### CPP04 - Polymorphism
+- **Topics**: Subtype polymorphism, abstract classes, interfaces
+- **Virtual Functions**:
   ```cpp
   class Base {
   public:
-      virtual ~Base() {}  // 가상 소멸자
+      virtual ~Base() {}  // Virtual destructor
       virtual void func() { std::cout << "Base" << std::endl; }
   };
 
@@ -74,9 +74,9 @@ CPP Modules는 C++의 핵심 개념들을 단계별로 학습하는 시리즈입
   };
   ```
 
-### CPP05 - 예외 처리
-- **학습 주제**: try/catch, throw, 사용자 정의 예외
-- **예외 처리**:
+### CPP05 - Exception Handling
+- **Topics**: try/catch, throw, custom exceptions
+- **Exception Handling**:
   ```cpp
   class GradeTooHighException : public std::exception {
   public:
@@ -92,29 +92,29 @@ CPP Modules는 C++의 핵심 개념들을 단계별로 학습하는 시리즈입
   }
   ```
 
-### CPP06 - 타입 캐스팅
-- **학습 주제**: static_cast, dynamic_cast, reinterpret_cast, const_cast
-- **캐스팅 종류**:
+### CPP06 - Type Casting
+- **Topics**: static_cast, dynamic_cast, reinterpret_cast, const_cast
+- **Cast Types**:
   ```cpp
-  // static_cast - 컴파일 타임 타입 변환
+  // static_cast - Compile-time type conversion
   double d = 3.14;
   int i = static_cast<int>(d);
 
-  // dynamic_cast - 런타임 타입 확인 (다형성 필요)
+  // dynamic_cast - Runtime type checking (requires polymorphism)
   Base* base = new Derived();
   Derived* derived = dynamic_cast<Derived*>(base);
 
-  // reinterpret_cast - 비트 단위 재해석
+  // reinterpret_cast - Bit-level reinterpretation
   int* p = reinterpret_cast<int*>(0x12345678);
 
-  // const_cast - const 제거
+  // const_cast - Remove const
   const int* cp = &i;
   int* mp = const_cast<int*>(cp);
   ```
 
-### CPP07 - 템플릿
-- **학습 주제**: 함수 템플릿, 클래스 템플릿
-- **템플릿 예시**:
+### CPP07 - Templates
+- **Topics**: Function templates, class templates
+- **Template Examples**:
   ```cpp
   template <typename T>
   T max(T a, T b) {
@@ -132,9 +132,9 @@ CPP Modules는 C++의 핵심 개념들을 단계별로 학습하는 시리즈입
   };
   ```
 
-### CPP08 - STL 컨테이너
-- **학습 주제**: STL 컨테이너, 반복자, 알고리즘
-- **주요 컨테이너**:
+### CPP08 - STL Containers
+- **Topics**: STL containers, iterators, algorithms
+- **Main Containers**:
   ```cpp
   #include <vector>
   #include <list>
@@ -146,12 +146,12 @@ CPP Modules는 C++의 핵심 개념들을 단계별로 학습하는 시리즈입
   std::list<int> lst(vec.begin(), vec.end());
   std::map<std::string, int> mp;
 
-  // 알고리즘
+  // Algorithms
   std::sort(vec.begin(), vec.end());
   auto it = std::find(vec.begin(), vec.end(), 3);
   ```
 
-## 폴더 구조
+## Folder Structure
 
 ```
 cpp_modules/
@@ -174,34 +174,34 @@ cpp_modules/
 │   └── ex00-ex02/
 ├── CPP08/
 │   └── ex00-ex02/
-└── Practice/        # 연습 코드
+└── Practice/        # Practice code
 ```
 
-## 빌드 (각 exercise 폴더에서)
+## Build (In each exercise folder)
 
 ```bash
-make        # 컴파일
-make clean  # 오브젝트 파일 삭제
-make fclean # 전체 삭제
-make re     # 재빌드
+make        # Compile
+make clean  # Remove object files
+make fclean # Remove all
+make re     # Rebuild
 ```
 
-## 컴파일러 플래그
+## Compiler Flags
 
 ```
 c++ -Wall -Wextra -Werror -std=c++98
 ```
 
-**주의**: 42 과제에서는 C++98 표준을 사용해야 합니다.
+**Note**: 42 projects must use C++98 standard.
 
-## 금지된 기능
+## Forbidden Features
 
-- STL 컨테이너 (CPP08 이전)
-- `<algorithm>` 헤더 (CPP08 이전)
+- STL containers (before CPP08)
+- `<algorithm>` header (before CPP08)
 - `using namespace std;`
-- `friend` 키워드 (명시적으로 허용된 경우 제외)
+- `friend` keyword (except where explicitly allowed)
 
-## 참고 자료
+## References
 
 - [cppreference.com](https://en.cppreference.com/)
 - [C++ Core Guidelines](https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines)

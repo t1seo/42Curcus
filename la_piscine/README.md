@@ -1,151 +1,151 @@
 # La Piscine
 
-## 프로젝트 개요
+## Project Overview
 
-La Piscine(수영장)은 42 Seoul 입학을 위한 4주간의 집중 프로그래밍 부트캠프입니다. C 언어와 Shell 스크립팅의 기초를 학습하며, 42의 교육 방식에 적응하는 기간입니다.
+La Piscine (The Pool) is a 4-week intensive programming bootcamp for admission to 42 Seoul. It teaches C language and shell scripting basics while adapting to 42's educational approach.
 
-## 구성
+## Structure
 
 ```
 la_piscine/
-├── Shell00/     # Shell 기초
-└── Shell01/     # Shell 심화
+├── Shell00/     # Shell basics
+└── Shell01/     # Advanced shell
 ```
 
-## Shell00 - Shell 기초
+## Shell00 - Shell Basics
 
-### 학습 주제
-- 기본 Shell 명령어
-- 파일 권한
-- 입출력 리다이렉션
-- 파이프
+### Topics
+- Basic shell commands
+- File permissions
+- I/O redirection
+- Pipes
 
-### 주요 명령어
+### Key Commands
 
-| 명령어 | 설명 |
-|--------|------|
-| `ls` | 파일 목록 표시 |
-| `cd` | 디렉토리 이동 |
-| `pwd` | 현재 디렉토리 출력 |
-| `chmod` | 파일 권한 변경 |
-| `cat` | 파일 내용 출력 |
-| `touch` | 빈 파일 생성/시간 변경 |
-| `mkdir` | 디렉토리 생성 |
-| `rm` | 파일/디렉토리 삭제 |
-| `cp` | 파일 복사 |
-| `mv` | 파일 이동/이름 변경 |
+| Command | Description |
+|---------|-------------|
+| `ls` | List files |
+| `cd` | Change directory |
+| `pwd` | Print working directory |
+| `chmod` | Change file permissions |
+| `cat` | Display file contents |
+| `touch` | Create empty file/update timestamp |
+| `mkdir` | Create directory |
+| `rm` | Remove files/directories |
+| `cp` | Copy files |
+| `mv` | Move/rename files |
 
-### 파일 권한
+### File Permissions
 
 ```bash
-# 권한 형식: rwxrwxrwx (소유자/그룹/기타)
+# Format: rwxrwxrwx (owner/group/others)
 chmod 755 file  # rwxr-xr-x
 chmod 644 file  # rw-r--r--
-chmod u+x file  # 소유자에게 실행 권한 추가
+chmod u+x file  # Add execute permission for owner
 ```
 
-## Shell01 - Shell 심화
+## Shell01 - Advanced Shell
 
-### 학습 주제
-- 정규 표현식
+### Topics
+- Regular expressions
 - sed, awk
-- 환경 변수
-- Shell 스크립트 작성
+- Environment variables
+- Shell scripting
 
-### 주요 명령어
+### Key Commands
 
-| 명령어 | 설명 |
-|--------|------|
-| `grep` | 패턴 검색 |
-| `sed` | 스트림 편집기 |
-| `awk` | 텍스트 처리 |
-| `find` | 파일 검색 |
-| `wc` | 단어/줄 수 세기 |
-| `sort` | 정렬 |
-| `uniq` | 중복 제거 |
-| `cut` | 텍스트 잘라내기 |
-| `tr` | 문자 변환 |
-| `head/tail` | 앞/뒤 부분 출력 |
+| Command | Description |
+|---------|-------------|
+| `grep` | Pattern search |
+| `sed` | Stream editor |
+| `awk` | Text processing |
+| `find` | File search |
+| `wc` | Word/line count |
+| `sort` | Sort |
+| `uniq` | Remove duplicates |
+| `cut` | Cut text |
+| `tr` | Character translation |
+| `head/tail` | Display beginning/end |
 
-### grep 예시
-
-```bash
-grep "pattern" file         # 기본 검색
-grep -r "pattern" dir/      # 재귀 검색
-grep -i "pattern" file      # 대소문자 무시
-grep -n "pattern" file      # 줄 번호 표시
-grep -v "pattern" file      # 역 매칭
-```
-
-### sed 예시
+### grep Examples
 
 ```bash
-sed 's/old/new/' file       # 첫 번째 매칭만 치환
-sed 's/old/new/g' file      # 모든 매칭 치환
-sed -n '5p' file            # 5번째 줄만 출력
-sed '1d' file               # 첫 번째 줄 삭제
+grep "pattern" file         # Basic search
+grep -r "pattern" dir/      # Recursive search
+grep -i "pattern" file      # Case insensitive
+grep -n "pattern" file      # Show line numbers
+grep -v "pattern" file      # Inverse match
 ```
 
-### awk 예시
+### sed Examples
 
 ```bash
-awk '{print $1}' file       # 첫 번째 필드 출력
-awk -F: '{print $1}' file   # 구분자 지정
-awk 'NR==5' file            # 5번째 줄 출력
-awk '{sum+=$1} END {print sum}' file  # 합계
+sed 's/old/new/' file       # Replace first match only
+sed 's/old/new/g' file      # Replace all matches
+sed -n '5p' file            # Print only line 5
+sed '1d' file               # Delete first line
 ```
 
-## Piscine 일정 (4주)
+### awk Examples
 
-### 1주차
-- C00: C 언어 기초 (변수, 조건문, 반복문)
-- Shell00: Shell 기초
+```bash
+awk '{print $1}' file       # Print first field
+awk -F: '{print $1}' file   # Specify delimiter
+awk 'NR==5' file            # Print line 5
+awk '{sum+=$1} END {print sum}' file  # Sum
+```
 
-### 2주차
-- C01: 포인터 기초
-- C02: 문자열 처리
-- Shell01: Shell 심화
+## Piscine Schedule (4 weeks)
 
-### 3주차
-- C03: 문자열 함수
-- C04: 숫자 처리 함수
-- C05: 재귀 함수
+### Week 1
+- C00: C basics (variables, conditionals, loops)
+- Shell00: Shell basics
 
-### 4주차
+### Week 2
+- C01: Pointer basics
+- C02: String handling
+- Shell01: Advanced shell
+
+### Week 3
+- C03: String functions
+- C04: Number handling functions
+- C05: Recursive functions
+
+### Week 4
 - C06: argc, argv
-- C07: 동적 메모리 할당
-- C08: 헤더 파일, 매크로
-- Rush: 팀 프로젝트
+- C07: Dynamic memory allocation
+- C08: Header files, macros
+- Rush: Team project
 
-## 평가 시스템
+## Evaluation System
 
-- **동료 평가 (Peer Evaluation)**: 다른 학생들과 서로 코드 리뷰
-- **Moulinette**: 자동 채점 시스템
-- **시험**: 주 1회 시험
+- **Peer Evaluation**: Code review with other students
+- **Moulinette**: Automated grading system
+- **Exams**: Weekly exams
 
-## 필수 도구
+## Required Tools
 
-- **Git**: 버전 관리 및 과제 제출
-- **Vim/Emacs**: 텍스트 편집기 (IDE 사용 금지)
-- **gcc**: C 컴파일러
+- **Git**: Version control and assignment submission
+- **Vim/Emacs**: Text editor (IDE prohibited)
+- **gcc**: C compiler
 
 ## Norminette
 
-42의 코딩 스타일 규칙:
-- 함수당 최대 25줄
-- 한 줄 최대 80자
-- 함수당 최대 4개의 매개변수
-- 전역 변수 금지 (대부분의 과제)
-- 들여쓰기는 탭 사용
+42's coding style rules:
+- Maximum 25 lines per function
+- Maximum 80 characters per line
+- Maximum 4 parameters per function
+- No global variables (in most assignments)
+- Use tabs for indentation
 
 ```bash
 norminette file.c
 ```
 
-## 팁
+## Tips
 
-1. **기초를 탄탄히**: 포인터, 메모리 관리 철저히 학습
-2. **동료와 협력**: 서로 가르치며 학습
-3. **Man 페이지 활용**: `man 함수명`으로 문서 확인
-4. **충분한 테스트**: 엣지 케이스 고려
-5. **시간 관리**: 4주는 생각보다 짧음
+1. **Master the Basics**: Thoroughly learn pointers and memory management
+2. **Collaborate**: Learn by teaching each other
+3. **Use Man Pages**: Check documentation with `man function_name`
+4. **Test Thoroughly**: Consider edge cases
+5. **Time Management**: 4 weeks is shorter than you think
